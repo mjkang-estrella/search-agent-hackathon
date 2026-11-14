@@ -91,3 +91,29 @@ test("no new results and failed searches permit retry; late completions cannot r
   await t.mutation(internal.discovery.expireMore, { runId, attempt: 2 });
   assert.equal((await t.run((ctx) => ctx.db.get(runId)))?.more?.status, "running");
 });
+
+test("show more skips only sites already shown as a way forward", async () => {
+  const { t, runId } = await fixture();
+  await t.run(async (ctx) => {
+    const notFetched = { status: "not_fetched" as const, provider: null, cacheState: null, fetchedAt: null, contentLength: null, truncated: false, latencyMs: null, error: null, providerChain: [] };
+    const source = (url: string) => ctx.db.insert("sources", {
+      runId, round: "initial", url, normalizedUrl: url.replace(/^https:\/\//, ""), title: null, snippet: null,
+      hits: [{ provider: "exa", query: "pottery classes", rank: 1 }], fetch: notFetched, content: null,
+    });
+    const shownSource = await source("https://shown.example/classes");
+    await source("https://hit-only.example/studio");
+    const opportunity = (sourceId: typeof shownSource, url: string) => ctx.db.insert("opportunities", {
+      runId, sourceId, round: "initial", url, title: "Pottery", participationRoute: null, conditions: [], fetched: true,
+    });
+    const option = (opportunityId: Awaited<ReturnType<typeof opportunity>>, excluded: boolean) => ctx.db.insert("options", {
+      runId, kind: "public", title: "Pottery", summary: "Pottery", fitCategory: "possible_fit", constraintResults: [], questions: [], nextStep: "Visit",
+      candidateId: null, opportunityId, trace: { queries: [], sourceUrls: [], conditionLabels: [], inferredCapabilities: [] },
+      rank: 1, excluded, excludedReason: excluded ? "Conflicts" : null,
+    });
+    await option(await opportunity(shownSource, "https://shown.example/classes"), false);
+    await option(await opportunity(shownSource, "https://rejected.example/page"), true);
+  });
+  const before = await t.query(internal.discovery.moreResults, { runId });
+  assert.deepEqual(before.shownHosts, ["shown.example"]);
+  assert.deepEqual(before.sources.map((s) => s.normalizedUrl).sort(), ["hit-only.example/studio", "shown.example/classes"]);
+});

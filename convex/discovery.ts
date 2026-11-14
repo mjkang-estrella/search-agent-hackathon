@@ -256,8 +256,9 @@ export const moreResults = internalQuery({
   args: { runId: v.id("runs") },
   returns: v.object({
     people: v.array(v.object({ url: v.string(), provider: v.string(), author: v.union(v.string(), v.null()), query: v.string() })),
-    sources: v.array(v.object({ url: v.string(), hits: v.array(v.object({ query: v.string() })) })),
+    sources: v.array(v.object({ url: v.string(), normalizedUrl: v.string(), hits: v.array(v.object({ query: v.string() })) })),
     options: v.array(v.object({ kind: vOptionKind, excluded: v.boolean() })),
+    shownHosts: v.array(v.string()),
   }),
   handler: async (ctx, { runId }) => {
     const [people, sources, options] = await Promise.all([
@@ -265,10 +266,13 @@ export const moreResults = internalQuery({
       ctx.db.query("sources").withIndex("by_run", (q) => q.eq("runId", runId)).take(1000),
       ctx.db.query("options").withIndex("by_run", (q) => q.eq("runId", runId)).take(200),
     ]);
+    // Sites the board already shows as a way forward. Sites that were only search hits stay open to "Show more".
+    const shown = await Promise.all(options.filter((o) => !o.excluded && o.opportunityId).map((o) => ctx.db.get(o.opportunityId!)));
     return {
       people: people.map((p) => ({ url: p.url, provider: p.provider, author: p.author, query: p.query })),
-      sources: sources.map((s) => ({ url: s.url, hits: s.hits.map((h) => ({ query: h.query })) })),
+      sources: sources.map((s) => ({ url: s.url, normalizedUrl: s.normalizedUrl, hits: s.hits.map((h) => ({ query: h.query })) })),
       options: options.map((o) => ({ kind: o.kind, excluded: o.excluded })),
+      shownHosts: [...new Set(shown.flatMap((o) => (o ? [hostOf(o.url)] : [])))],
     };
   },
 });
@@ -323,7 +327,10 @@ Return up to 3 new search queries. Do not include these blocked terms: ${brief.b
       } else {
         const snapshot: Snapshot = await ctx.runQuery(internal.discovery.runSnapshot, { runId });
         const known = new Set(snapshot.opportunities.map((o) => o._id));
-        const result = await publicBranch(c, "initial", queries, brief.blockedTerms, intention.card.title, new Set(before.sources.map((s) => hostOf(s.url))));
+        const result = await publicBranch(c, "initial", queries, brief.blockedTerms, intention.card.title, {
+          hosts: new Set(before.shownHosts),
+          urls: new Set(before.sources.map((s) => s.normalizedUrl)),
+        });
         c.partial = result.partial;
         const after: Snapshot = await ctx.runQuery(internal.discovery.runSnapshot, { runId });
         const fresh = new Set(after.opportunities.filter((o) => !known.has(o._id)).map((o) => o._id));
@@ -964,7 +971,8 @@ async function publicBranch(
   rawQueries: string[],
   blockedTerms: string[],
   intentionTitle: string,
-  excludedHosts: Set<string> = new Set(),
+  // "Show more" skips sites already shown as a way forward and pages this run already stored.
+  exclude: { hosts: Set<string>; urls: Set<string> } = { hosts: new Set(), urls: new Set() },
 ): Promise<{ partial: boolean; revealed: Revealed[] }> {
   const stage: RunStage = round === "initial" ? "discovery" : "followup_decision";
   const queries: string[] = [];
@@ -986,7 +994,7 @@ async function publicBranch(
   }
   const providers = [...new Set(search.runs.map((r) => r.provider))];
   const failedRuns = search.runs.filter((r) => r.status !== "succeeded");
-  const merged = mergeHits(search.hits).filter((h) => !excludedHosts.has(hostOf(h.url))).sort((a, b) => scoreSource(b) - scoreSource(a));
+  const merged = mergeHits(search.hits).filter((h) => !exclude.hosts.has(hostOf(h.url)) && !exclude.urls.has(h.normalizedUrl)).sort((a, b) => scoreSource(b) - scoreSource(a));
   await event(c, stage, "telem_search", failedRuns.length ? "partial" : "succeeded",
     `Telem search: ${queries.length} queries, ${providers.length} providers, ${search.hits.length} results, ${merged.length} unique URLs`, {
       durationMs: search.durationMs,
