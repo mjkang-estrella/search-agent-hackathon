@@ -250,7 +250,13 @@ export default defineSchema({
     url: v.string(),
     author: v.union(v.string(), v.null()),
     title: v.string(),
-    reason: v.optional(v.string()), // why this person's experience is relevant (LLM, from the post text)
+    reason: v.optional(v.string()), // generated relevance explanation, separate from source text
+    about: v.optional(v.string()),
+    excerpt: v.optional(v.string()),
+    evidenceQuote: v.optional(v.string()),
+    matchChecked: v.optional(v.boolean()),
+    avatarUrl: v.optional(v.string()),
+    profileUrl: v.optional(v.string()),
     publishedAt: v.union(v.string(), v.null()),
     query: v.string(),
   }).index("by_run", ["runId"]),

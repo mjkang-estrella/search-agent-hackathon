@@ -61,3 +61,16 @@ test("selected details return only the requested memory and reject a foreign mem
   const foreign = await t.query(api.board.get, { sessionId, memoryId: foreignId });
   assert.deepEqual(foreign, { memories: [], proposals: [] });
 });
+
+test("guest queries cannot open or search a signed-in user's board", async () => {
+  const { t } = await fixture();
+  const sessionId = await t.run(async (ctx) => {
+    const userId = await ctx.db.insert("users", { name: "Sample account" });
+    const sessionId = await ctx.db.insert("demoSessions", { createdAt: 0, userId });
+    await ctx.db.insert("memorySources", { sessionId, scenarioId: null, text: "A pottery class", createdAt: 0 });
+    return sessionId;
+  });
+  assert.equal(await t.query(api.board.get, { sessionId }), null);
+  const list = await t.query(api.board.listMemories, { sessionId, search: "pottery", paginationOpts: { numItems: 25, cursor: null } });
+  assert.deepEqual(list.page, []);
+});

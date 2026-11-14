@@ -1,0 +1,6 @@
+{
+  "tool": "Built-in imagegen",
+  "purpose": "Generated portraits for fictional sample members only. Never assign these to public authors.",
+  "prompt": "Use case: photorealistic-natural. Asset type: one profile portrait contact sheet for fictional demo members. Create a square image with an EXACT 8 by 8 grid of 64 equally sized square headshot photographs, no gaps, no borders, no text. Each cell is a DISTINCT fictional adult human, natural friendly candid profile photograph, head and shoulders, entire face centered safely within its own cell with margin for circular avatar crop. Diverse genders, skin tones, hair, adult ages 22 to 75, ordinary varied casual clothing and softly blurred neutral backgrounds, realistic skin and daylight, no celebrities. Every cell contains exactly one face, consistent scale. This sheet will be cropped into individual app avatars. No graphics, no letters, no watermarks.",
+  "processing": "57 distinct cells cropped and saved as 192 by 192 WebP portraits. Member assignments are in lib/demo-portraits.ts."
+}

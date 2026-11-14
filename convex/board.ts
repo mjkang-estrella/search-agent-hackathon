@@ -1,5 +1,7 @@
 // The one-page view: memories, their intentions, ways forward, and a proposal.
 // Returns client-safe projections only: no member private constraints, no counterpart reasoning, no page content.
+import { demoPortrait } from "../lib/demo-portraits";
+import { recordedPostPreviews } from "../lib/people";
 import { paginationOptsValidator } from "convex/server";
 import { v } from "convex/values";
 import { query } from "./_generated/server";
@@ -37,9 +39,10 @@ async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessi
       why: o.why ?? o.summary.split(/(?<=[.!?])\s/)[0],
       fit: o.fitCategory,
       nextStep: o.nextStep,
+      summary: o.summary,
       questions: o.questions.slice(0, 2),
       constraints: o.constraintResults.map((r) => ({ label: r.constraint.split(":")[0].trim(), result: r.result })),
-      member: member && cand ? { name: member.displayName, wants: cand.networkCard.title, agent: cand.counterpart?.outcome ?? null, note: cand.counterpart?.sharedNote ?? null } : null,
+      member: member && cand ? { name: member.displayName, avatarUrl: demoPortrait(member.key), about: cand.networkCard.contributions.slice(0, 2).join(". ") || cand.networkCard.aim, wants: cand.networkCard.aim, agent: cand.counterpart?.outcome ?? null, note: cand.counterpart?.sharedNote ?? null } : null,
       source: opp
         ? { title: opp.title, url: opp.url, host: hostOf(opp.url), read: opp.fetched, quote, provider: source?.fetch.provider ?? source?.hits[0]?.provider ?? null, route: opp.participationRoute }
         : null,
@@ -82,6 +85,12 @@ export const get = query({
           .first();
         const result = run && run.status !== "running" ? await waysFor(ctx, run, sessionId) : null;
         const people = run ? await ctx.db.query("people").withIndex("by_run", (q) => q.eq("runId", run._id)).take(12) : [];
+        // Older saved demos kept only titles. Recover their source previews without another search.
+        const recordingRunId = run?.replayOf ?? run?._id;
+        const recording = recordingRunId && people.some((p) => !p.excerpt)
+          ? await ctx.db.query("callLog").withIndex("by_run_key", (q) => q.eq("runId", recordingRunId).eq("key", "telem:people")).first()
+          : null;
+        const previews = recordedPostPreviews(recording?.response);
         return {
           _id: it._id,
           title: it.card.title,
@@ -105,7 +114,12 @@ export const get = query({
             saved: run.mode === "replay",
           },
           ways: result?.ways ?? [],
-          people: people.map((p) => ({ _id: p._id, platform: p.platform, url: p.url, author: p.author, title: p.title, reason: p.reason ?? null, publishedAt: p.publishedAt })),
+          people: people.map((p) => ({
+            _id: p._id, platform: p.platform, url: p.url, author: p.author, title: p.title,
+            reason: p.reason ?? null, about: p.about ?? null, excerpt: p.excerpt ?? previews.get(p.url) ?? null,
+            evidenceQuote: p.evidenceQuote ?? null, matchChecked: p.matchChecked ?? false,
+            avatarUrl: p.avatarUrl ?? null, profileUrl: p.profileUrl ?? null, publishedAt: p.publishedAt,
+          })),
           excluded: result?.excluded ?? 0,
         };
       }));
