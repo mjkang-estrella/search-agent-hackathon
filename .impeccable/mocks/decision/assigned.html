@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Wayfinder · Ways forward</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#2F6B4F;--gd:#255A42;--y:#F2C230;--s:#DDE3E1;--p:#EEF2F0;--w:#F6F8F7;--i:#17201C;--r:#C8402E;--b:#2C5DA8;--h:#B3BFBA;--m:#4E5C56}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:var(--s);color:var(--i);font:400 13px/1.45 Barlow,sans-serif}
+.app{position:relative;display:grid;grid-template-columns:232px 720px 488px;grid-template-rows:76px 52px 772px;height:900px}
+.k{font:600 13px/1 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.t{font:600 22px/1.2 Barlow,sans-serif;letter-spacing:-.01em}
+.mu{color:var(--m)}
+/* rail */
+.rail{grid-row:1/4;background:var(--g);color:#fff;display:flex;flex-direction:column}
+.brand{height:76px;display:flex;align-items:center;gap:10px;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.18)}
+.mark{width:18px;height:18px;border:2px solid var(--y);border-radius:3px;background:linear-gradient(var(--y),var(--y)) 3px 3px/8px 8px no-repeat}
+.steps{list-style:none;padding:16px 0}
+.steps li{display:flex;align-items:center;gap:12px;height:44px;padding:0 24px;color:rgba(255,255,255,.62);font-weight:500}
+.steps li b{width:22px;font:600 13px/1 'Barlow Condensed';color:rgba(255,255,255,.5)}
+.steps li.done{color:rgba(255,255,255,.86)}
+.steps li.on{background:var(--gd);color:#fff;font-weight:600;box-shadow:inset 4px 0 0 var(--y)}
+.steps li.on b{color:var(--y)}
+.note{margin-top:auto;padding:20px 24px;border-top:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78)}
+.note .k{display:block;color:var(--y);margin-bottom:8px}
+/* top bar */
+.top{grid-column:2/4;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--p);border-bottom:1px solid var(--h)}
+.top .k{display:block;margin-bottom:6px;color:var(--m)}
+.run{display:flex;align-items:center;gap:14px}
+.live{display:inline-flex;align-items:center;gap:7px;height:24px;padding:0 10px;background:var(--g);color:#fff;border-radius:3px}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--y)}
+.stats span+span::before{content:"·";margin:0 8px;color:var(--h)}
+/* filter */
+.filter{grid-column:2;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--h);border-right:1px solid var(--h)}
+.seg{display:flex;border:1px solid var(--h);border-radius:4px;overflow:hidden;background:var(--w)}
+.seg button{font:500 13px Barlow;color:var(--i);background:none;border:0;border-right:1px solid var(--h);height:30px;padding:0 14px;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button em{font-style:normal;color:var(--m);margin-left:6px}
+.seg button[aria-pressed=true]{background:var(--i);color:#fff}
+.seg button[aria-pressed=true] em{color:var(--y)}
+.legend{display:flex;gap:16px;align-items:center;color:var(--m)}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:18px;height:12px;border:2px solid var(--y);border-radius:2px;outline:3px solid var(--g)}
+.sw.ok{background:var(--y)}.sw.un{border-style:dashed;background:var(--g)}.sw.no{background:var(--g);box-shadow:inset 0 0 0 3px var(--r)}
+/* list */
+.list{grid-column:2;border-right:1px solid var(--h)}
+.row{padding:16px 24px 18px;border-bottom:1px solid var(--h)}
+.row.sel{background:var(--p);box-shadow:inset 4px 0 0 var(--i);margin-right:-1px;position:relative}
+.meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.fit{color:var(--g)}.fit.pos{color:var(--m)}
+.syn{border:1px solid var(--i);border-radius:2px;padding:3px 6px 2px}
+.next{margin-left:auto;font-weight:600;color:var(--g)}
+.why{margin:4px 0 12px;color:var(--m)}
+/* signature: shadow board slots */
+.board{display:inline-flex;gap:8px;padding:8px;border-radius:3px;background:var(--g) radial-gradient(circle,rgba(10,30,20,.38) 1.5px,transparent 1.8px) 4px 4px/12px 12px}
+.slot{position:relative;width:118px;height:38px;border:2px solid var(--y);border-radius:3px;display:flex;align-items:center;justify-content:center;font:600 13px/1 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase}
+.slot.ok{background:var(--y);color:var(--i)}
+.slot.un{border-style:dashed;color:var(--y);background:rgba(10,30,20,.3)}
+.slot.no{color:#fff;background:rgba(10,30,20,.3)}
+.rt{position:absolute;top:-8px;right:6px;background:var(--r);color:#fff;padding:3px 6px 2px;border-radius:2px;transform:rotate(4deg)}
+.excl{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--h);color:var(--m)}
+.excl .chev{width:24px;height:24px;border:1px solid var(--h);border-radius:3px;display:grid;place-items:center;background:var(--w);color:var(--i)}
+.excl .board{padding:5px}.excl .slot{width:96px;height:26px}
+/* detail */
+.detail{grid-column:3;grid-row:2/4;position:relative;background:var(--p);padding:20px 28px 0}
+.detail header{padding-bottom:16px}
+.detail header .meta{margin-bottom:10px}
+.claim{padding:14px 0;border-top:1px solid var(--h)}
+.claim p{margin-top:8px}
+.tag{position:relative;display:inline-flex;align-items:center;height:22px;padding:2px 9px 0 20px;border-radius:9px 3px 3px 9px;font:600 13px/1 'Barlow Condensed';letter-spacing:.07em;text-transform:uppercase}
+.tag::before{content:"";position:absolute;left:7px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--p);box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)}
+.tag.inf{border:2px solid var(--y);padding-left:18px}.tag.inf::before{left:5px}
+.tag.pub{background:var(--b);color:#fff}.tag.mem{background:var(--g);color:#fff}
+.tag small{font:inherit;opacity:.8;margin-left:6px}
+q{display:block;margin-top:8px;padding-left:12px;border-left:2px solid var(--b);font-weight:500}
+.src{margin-top:4px;color:var(--b);font-weight:500}
+.unk{display:flex;gap:16px;align-items:flex-start}
+.unk p{margin-top:0}
+.actions{position:absolute;left:0;right:0;bottom:0;display:flex;gap:12px;padding:16px 28px 20px;border-top:1px solid var(--h);background:var(--p)}
+.btn{height:40px;padding:0 18px;border-radius:4px;font:600 13px Barlow;cursor:pointer}
+.btn.pri{background:var(--g);color:#fff;border:1px solid var(--g)}
+.btn.sec{background:var(--w);color:var(--i);border:1px solid var(--i)}
+.actions .mu{align-self:center;margin-left:auto}
+/* registration marks */
+.reg{position:absolute;width:11px;height:11px;z-index:2}
+.reg::before,.reg::after{content:"";position:absolute;background:var(--i)}
+.reg::before{left:0;right:0;top:5px;height:1px}.reg::after{top:0;bottom:0;left:5px;width:1px}
+</style></head><body>
+<div class="app">
+<nav class="rail" aria-label="Steps">
+  <div class="brand"><span class="mark"></span><span class="t">Wayfinder</span></div>
+  <ol class="steps">
+    <li class="done"><b>01</b>Bring context</li><li class="done"><b>02</b>Review intention</li>
+    <li class="done"><b>03</b>Review sharing</li><li class="done"><b>04</b>Follow discovery</li>
+    <li class="on" aria-current="step"><b>05</b>Ways forward</li><li><b>06</b>Compare</li>
+    <li><b>07</b>Introduction</li><li><b>08</b>Evidence &amp; evaluation</li>
+  </ol>
+  <div class="note"><span class="k">Demo labels</span>Members are synthetic. Acceptance is simulated. Public results come from this live run.</div>
+</nav>
+<header class="top">
+  <div><span class="k">Intention · revision 2 · approved</span><h1 class="t">Turn one of my poems into a song</h1></div>
+  <div class="run"><span class="live k"><i></i>Live</span>
+    <span class="stats mu"><span>42 s</span><span>6 queries</span><span>7 providers</span><span>4 pages read</span><span>follow-up skipped</span></span></div>
+</header>
+<div class="filter">
+  <div class="seg" role="group" aria-label="Filter options"><button aria-pressed="true">All<em>4</em></button><button aria-pressed="false">Public<em>1</em></button><button aria-pressed="false">Member<em>2</em></button><button aria-pressed="false">Combined<em>1</em></button></div>
+  <div class="legend k"><span><i class="sw ok"></i>Meets</span><span><i class="sw no"></i>Conflicts</span><span><i class="sw un"></i>Unknown</span></div>
+</div>
+<main class="list">
+  <article class="row sel">
+    <div class="meta k"><span>Combined</span><span class="fit">Strong fit</span><span class="syn">Synthetic member</span></div>
+    <h2 class="t">Co-write with Theo, then debut it at the Discovery Collab Open Mic</h2>
+    <p class="why">Theo has melodies that need words. The open mic says “Music and poetry welcome.”</p>
+    <div class="board"><span class="slot ok">Budget</span><span class="slot ok">Weeknights</span><span class="slot ok">Oakland/video</span><span class="slot un">Cost ?</span></div>
+  </article>
+  <article class="row">
+    <div class="meta k"><span>Member</span><span class="fit">Strong fit</span><span class="syn">Synthetic member</span><span class="next">Next: request introduction</span></div>
+    <h2 class="t">Introduction to Theo M.</h2>
+    <p class="why">His melodies need words. Your poems need music.</p>
+    <div class="board"><span class="slot ok">Budget</span><span class="slot ok">Weeknights</span><span class="slot ok">Oakland/video</span><span class="slot ok">Stays east bay</span></div>
+  </article>
+  <article class="row">
+    <div class="meta k"><span>Public</span><span class="fit pos">Possible fit</span></div>
+    <h2 class="t">FLUID Open Mic, 7th West, Oakland</h2>
+    <p class="why">Every 3rd Thursday, with a live band. “$10 Performer • $15 General.”</p>
+    <div class="board"><span class="slot ok">Budget</span><span class="slot ok">Weeknights</span><span class="slot ok">Oakland/video</span><span class="slot un">Collab ?</span></div>
+  </article>
+  <article class="row">
+    <div class="meta k"><span>Member</span><span class="fit pos">Possible fit</span><span class="syn">Synthetic member</span></div>
+    <h2 class="t">Rena O. songwriting feedback circle</h2>
+    <p class="why">Meeting schedule is missing. Wayfinder asked Rena’s agent instead of guessing.</p>
+    <div class="board"><span class="slot ok">Budget</span><span class="slot un">Schedule ?</span><span class="slot ok">Oakland/video</span><span class="slot ok">Stays east bay</span></div>
+  </article>
+  <div class="excl"><span class="chev" aria-hidden="true">▸</span><span class="k" style="color:var(--i)">3 candidates excluded</span>
+    <span class="board"><span class="slot no">Budget<span class="rt k">$120</span></span></span>
+    <span>Hana W. (synthetic): hard conflict on budget · Marisol V. · Ines P.</span></div>
+</main>
+<aside class="detail" aria-label="Selected option">
+  <header><div class="meta k"><span>Combined</span><span class="fit">Strong fit</span></div>
+    <h2 class="t">Co-write with Theo, then debut it at the Discovery Collab Open Mic</h2></header>
+  <section class="claim"><span class="tag mem">Member intention</span><span class="syn k" style="margin-left:8px">Synthetic member</span>
+    <q style="border-color:var(--g)">Find a lyricist for my unfinished melodies</q>
+    <p>Theo M. · weeknights, video or Oakland, free collaboration. Counterpart agent: compatible. His agent asks: “Are you open to adapting a poem to fit an existing melody?”</p></section>
+  <section class="claim"><span class="tag pub">Public source<small>exa</small></span>
+    <p>Discovery Collab Open Mic, Discovery Community Cafe, Oakland. Last Friday monthly, 7pm.</p>
+    <q>Music and poetry welcome.</q><div class="src">bayareaopenmics.com · page fetched in this run</div></section>
+  <section class="claim"><span class="tag inf">Inferred</span>
+    <p>A composer with unfinished melodies could set a poem to music.</p></section>
+  <section class="claim unk"><span class="board"><span class="slot un">Cost ?</span></span>
+    <p><b>Unknown: open mic cost.</b> The fetched page does not list a performer fee. Ask the venue: “Is there a charge to perform at the Discovery Collab Open Mic?”</p></section>
+  <div class="actions"><button class="btn pri">Request introduction</button><button class="btn sec">Open published route</button><span class="mu">Acceptance is simulated</span></div>
+</aside>
+<span class="reg" style="left:227px;top:71px"></span><span class="reg" style="left:947px;top:71px"></span>
+<span class="reg" style="left:227px;top:123px"></span><span class="reg" style="left:947px;top:123px"></span>
+</div>
+</body></html>

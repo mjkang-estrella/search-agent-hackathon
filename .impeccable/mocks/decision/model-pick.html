@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Wayfinder · Ways forward</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1D3F8F;--blue-2:#2A4FA3;--red:#C8323C;--paper:#FBFBF8;--ground:#E9EDF4;--violet:#5B5577;--kraft:#B98E5A;--kraft-ink:#85602F;--ink:#18202F;--muted:#5A6376;--line:#D6DCE7;--soft:#F1F3F8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden;background:var(--ground);color:var(--ink);font:14px/1.45 "Public Sans",sans-serif;font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:224px 1fr;grid-template-rows:116px minmax(0,1fr);height:900px}
+.rail{grid-row:1/3;background:var(--blue);color:#DCE4F5;padding:22px 14px;display:flex;flex-direction:column}
+.brand{font-weight:800;font-size:19px;color:#fff;letter-spacing:-.01em;padding:0 10px 22px;display:flex;align-items:center;gap:9px}
+.brand i{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px rgba(255,255,255,.18)}
+.rail h6{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#9FB0D6;padding:0 10px 8px;font-weight:600}
+.step{display:grid;grid-template-columns:26px 1fr;align-items:center;height:38px;padding:0 10px;border-radius:6px;font-size:13.5px;font-weight:500;position:relative}
+.step b{font-size:11.5px;font-weight:600;color:#9FB0D6}
+.step.done{color:#C9D4EE}.step.done b{color:#C9D4EE}
+.step.on{background:rgba(255,255,255,.13);color:#fff;font-weight:700}.step.on b{color:#fff}
+.step.on::before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:3px;background:var(--red);border-radius:0 2px 2px 0}
+.step.todo{color:#A9B7DA}
+.rail .foot{margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding:14px 10px 0;font-size:12px;color:#B6C3E2;line-height:1.5}
+.rail .foot strong{color:#fff;font-weight:600;display:block;margin-bottom:2px}
+.top{background:var(--blue);color:#fff;padding:20px 28px 0 28px;display:grid;grid-template-columns:1fr auto;column-gap:24px;border-bottom:3px solid var(--red);border-left:1px solid rgba(255,255,255,.12)}
+.eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A9B9DF;font-weight:600}
+.top h1{font-size:26px;line-height:1.2;font-weight:700;letter-spacing:-.015em;margin:4px 0 10px;display:flex;align-items:center;gap:18px}
+.stats{display:flex;gap:0;font-size:12.5px;color:#C9D4EE}
+.stats span{padding:0 14px;border-left:1px solid rgba(255,255,255,.2)}.stats span:first-child{padding-left:0;border:0}
+.stats b{color:#fff;font-weight:700}
+.cancel{display:flex;align-items:center;margin-top:-4px}
+.topacts{display:flex;gap:8px;align-items:center;align-self:start}
+.ghost{height:32px;padding:0 12px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:6px;font:600 12.5px "Public Sans";}
+.work{display:grid;grid-template-columns:1fr 440px;grid-template-rows:minmax(0,1fr);gap:20px;padding:18px 24px 20px;min-height:0}.work>section{min-height:0;overflow:hidden}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 1px 0 rgba(24,32,47,.04)}
+.listhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.listhead h2{font-size:17px;font-weight:700;letter-spacing:-.01em}.listhead h2 small{font-size:12.5px;color:var(--muted);font-weight:500;margin-left:8px}
+.seg{display:inline-flex;background:#DCE2EC;border-radius:7px;padding:3px}
+.seg button{border:0;background:transparent;font:600 12.5px "Public Sans";color:var(--muted);height:28px;padding:0 12px;border-radius:5px;display:flex;gap:6px;align-items:center}
+.seg button em{font-style:normal;font-size:11px;color:#7A8396}
+.seg .on{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(24,32,47,.12)}
+.hard{display:flex;gap:5px;align-items:center;font-size:11.5px;color:var(--muted);margin-bottom:12px;white-space:nowrap}
+.hard span{background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:2px 7px;color:var(--ink);font-weight:500}
+.decl .cols{display:grid;grid-template-columns:44px 1fr 200px;padding:9px 18px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line)}
+.decl .cols :last-child{text-align:right}
+.item{display:grid;grid-template-columns:44px 1fr 200px;column-gap:16px;padding:12px 18px;border-bottom:1px solid var(--line);position:relative}
+.item.sel{background:#F3F6FC}.item.sel::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue)}
+.no{font-size:20px;font-weight:300;color:#8C94A6;line-height:1.1;letter-spacing:-.02em}.sel .no{color:var(--blue);font-weight:600}
+.kind{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--blue);display:flex;gap:10px;align-items:center}
+.kind .fit{letter-spacing:0;font-size:12px;font-weight:600;color:var(--ink);text-transform:none}.kind .fit.p{color:var(--muted);font-weight:500}
+.item h3{font-size:15px;font-weight:650;font-weight:600;line-height:1.3;margin:3px 0 4px;letter-spacing:-.005em}
+.sub{font-size:12.5px;color:var(--muted)}
+.marks{display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap}
+.syn{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:4px;background:#ECEAF3;color:var(--violet);font-size:11px;font-weight:700}
+.pm{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border:1.5px solid var(--violet);outline:1px solid var(--violet);outline-offset:2px;border-radius:50%;color:var(--violet);padding:4px 16px;font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;line-height:1.15;transform:rotate(-4deg);white-space:nowrap;opacity:.92}
+.pm i{font-style:normal;font-weight:600;font-size:8.5px;letter-spacing:.12em;border-top:1px solid currentColor;margin-top:2px;padding-top:1px}
+.pm.r{transform:rotate(3deg)}.marks .pm{padding:3px 14px;font-size:8.5px;outline-offset:1.5px}.marks .pm i{font-size:8px}.pm.llm{color:#6E6880;border-style:dashed;outline-style:dashed}
+.cons{display:flex;flex-direction:column;gap:5px;align-items:stretch}
+.c{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--ink);gap:10px}
+.st{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:1.5px solid;border-radius:3px;padding:1px 6px;transform:rotate(-2deg);min-width:76px;text-align:center}
+.meets{color:var(--blue);border-color:var(--blue)}.unk{color:var(--kraft-ink);border-color:var(--kraft);background:#F6EFE5}.conf{color:var(--red);border-color:var(--red)}
+.excl{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;font-size:13px;color:var(--muted)}
+.excl b{color:var(--ink);font-weight:600}
+.link{border:1px solid var(--line);background:var(--paper);border-radius:6px;height:30px;padding:0 12px;font:600 12.5px "Public Sans";color:var(--ink)}
+.detail{display:flex;flex-direction:column;overflow:hidden}
+.dh{padding:14px 20px 12px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:19px;font-weight:700;line-height:1.28;letter-spacing:-.012em;margin-top:5px}
+.sec{padding:11px 20px;border-bottom:1px solid var(--line)}
+.sec h4{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between}
+.sec h4 span{letter-spacing:0;text-transform:none;font-weight:600;color:var(--blue);font-size:12px}
+.who{display:flex;gap:8px;align-items:center;font-weight:700;font-size:14px}
+.claim{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;margin-top:6px}
+.claim q{font-size:14px;color:var(--ink);quotes:"\201C" "\201D"}
+.claim small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.dcons .c{padding:3px 0}.dcons .c+.c{border-top:1px dashed var(--line)}
+.ask{margin-top:6px;background:#F6EFE5;border-left:3px solid var(--kraft);padding:8px 10px;font-size:12.5px;border-radius:0 5px 5px 0}
+.ask b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft-ink);display:block}
+.acts{margin-top:auto;padding:14px 20px;display:flex;gap:10px;align-items:center;background:var(--soft);border-top:1px solid var(--line)}
+.btn{height:38px;padding:0 16px;white-space:nowrap;border-radius:6px;font:700 13.5px "Public Sans";border:1px solid var(--blue)}
+.btn.p{background:var(--blue);color:#fff}.btn.s{background:var(--paper);color:var(--blue)}
+.acts small{font-size:11.5px;color:var(--muted);margin-left:auto;max-width:120px;line-height:1.3}
+</style></head><body>
+<div class="app">
+<nav class="rail">
+ <div class="brand"><i></i>Wayfinder</div>
+ <h6>Intention flow</h6>
+ <div class="step done"><b>1</b>Bring context</div>
+ <div class="step done"><b>2</b>Review intention</div>
+ <div class="step done"><b>3</b>Review sharing</div>
+ <div class="step done"><b>4</b>Follow discovery</div>
+ <div class="step on"><b>5</b>Ways forward</div>
+ <div class="step todo"><b>6</b>Compare</div>
+ <div class="step todo"><b>7</b>Introduction</div>
+ <div class="step todo"><b>8</b>Evidence &amp; evaluation</div>
+ <div class="foot"><strong>Members in this run are synthetic</strong>Acceptance is simulated. Contact details appear only after both sides accept.</div>
+</nav>
+<header class="top">
+ <div>
+  <div class="eyebrow">Intention · Dana · Revision 2 · Approved</div>
+  <h1>Turn one of my poems into a song</h1>
+  <div class="stats"><span><b>42 s</b> run</span><span><b>6</b> Telem queries</span><span><b>7</b> providers</span><span><b>169</b> unique URLs</span><span><b>4</b> pages read</span><span>Follow-up search <b>skipped</b></span></div>
+ </div>
+ <div class="topacts">
+  <svg class="cancel" width="196" height="88" viewBox="0 0 196 88" aria-label="Live run, 14 November 2026" role="img"><defs><path id="ring" d="M44 44 m-31 0 a31 31 0 1 1 62 0 a31 31 0 1 1 -62 0"/></defs>
+   <g fill="none" stroke="#fff" stroke-opacity=".85"><circle cx="44" cy="44" r="40" stroke-width="1.6"/><circle cx="44" cy="44" r="26" stroke-width="1"/>
+   <path d="M90 28q9-6 18 0t18 0t18 0t18 0t18 0M90 39q9-6 18 0t18 0t18 0t18 0t18 0M90 50q9-6 18 0t18 0t18 0t18 0t18 0M90 61q9-6 18 0t18 0t18 0t18 0t18 0" stroke-width="1.5" stroke-opacity=".5"/></g>
+   <text fill="#fff" font-family="Public Sans" font-size="6.6" font-weight="700" letter-spacing="1.2"><textPath href="#ring" startOffset="1%">TELEM · LIVE SEARCH · WAYFINDER ·</textPath></text>
+   <text x="44" y="43" text-anchor="middle" fill="#fff" font-family="Public Sans" font-size="12.5" font-weight="800" letter-spacing="1.5">LIVE</text>
+   <text x="44" y="53" text-anchor="middle" fill="#fff" font-family="Public Sans" font-size="6" font-weight="700" letter-spacing=".3">14 NOV 2026</text></svg>
+ </div>
+</header>
+<main class="work">
+ <section>
+  <div class="listhead"><h2>Ways forward<small>4 options · same constraints</small></h2>
+   <div class="seg" role="tablist"><button class="on">All <em>4</em></button><button>Public <em>1</em></button><button>Member <em>2</em></button><button>Combined <em>1</em></button></div></div>
+  <div class="hard">Hard constraints<span>At most $40/month</span><span>Weeknights after 7pm</span><span>Oakland in person or video call</span><span>Will not cross the bay</span></div>
+  <div class="card decl">
+   <div class="cols"><span>No.</span><span>Declared option</span><span>Constraint result</span></div>
+   <div class="item sel"><div class="no">01</div><div>
+     <div class="kind">COMBINED <span class="fit">Strong fit</span></div>
+     <h3>Co-write with Theo, then debut it at the Discovery Collab Open Mic</h3>
+     <div class="sub">Theo M. + Discovery Community Cafe, Oakland</div>
+     <div class="marks"><span class="syn">Synthetic member</span><span class="pm">Member intention<i>Synthetic</i></span><span class="pm r">Public source<i>exa · 14 Nov</i></span></div></div>
+    <div class="cons"><div class="c">Budget<span class="st meets">Meets</span></div><div class="c">Weeknights<span class="st meets">Meets</span></div><div class="c">Oakland / video<span class="st meets">Meets</span></div><div class="c">Open mic cost<span class="st unk">Unknown</span></div></div></div>
+   <div class="item"><div class="no">02</div><div>
+     <div class="kind">MEMBER <span class="fit">Strong fit</span></div>
+     <h3>Introduction to Theo M. (synthetic)</h3>
+     <div class="sub">Melodies need words; your poems need music. Next: request introduction.</div>
+     <div class="marks"><span class="syn">Synthetic member</span><span class="pm r">Member intention<i>Synthetic</i></span></div></div>
+    <div class="cons"><div class="c">Budget<span class="st meets">Meets</span></div><div class="c">Weeknights<span class="st meets">Meets</span></div><div class="c">Oakland / video<span class="st meets">Meets</span></div></div></div>
+   <div class="item"><div class="no">03</div><div>
+     <div class="kind">PUBLIC <span class="fit p">Possible fit</span></div>
+     <h3>FLUID Open Mic, 7th West, Oakland</h3>
+     <div class="sub">Every 3rd Thursday · “$10 Performer • $15 General” · live band</div>
+     <div class="marks"><span class="pm">Public source<i>Telem · 14 Nov</i></span></div></div>
+    <div class="cons"><div class="c">Budget<span class="st meets">Meets</span></div><div class="c">Weeknights<span class="st meets">Meets</span></div><div class="c">Collaboration<span class="st unk">Unknown</span></div></div></div>
+   <div class="item"><div class="no">04</div><div>
+     <div class="kind">MEMBER <span class="fit p">Possible fit</span></div>
+     <h3>Rena O. (synthetic) songwriting feedback circle</h3>
+     <div class="sub">Meeting schedule is a missing fact, asked as a question.</div>
+     <div class="marks"><span class="syn">Synthetic member</span><span class="pm r">Member intention<i>Synthetic</i></span></div></div>
+    <div class="cons"><div class="c">Meeting schedule<span class="st unk">Unknown</span></div></div></div>
+   <div class="excl"><span>▸ <b>3 candidates excluded</b> · hard conflict, reverse need, or no fitting intention</span><button class="link">Show excluded</button></div>
+  </div>
+ </section>
+ <aside class="card detail">
+  <div class="dh"><div class="eyebrow" style="color:var(--blue)">Item 01 · Combined · Strong fit</div>
+   <h2>Co-write with Theo, then debut it at the Discovery Collab Open Mic</h2></div>
+  <div class="sec"><h4>Member <span>Counterpart agent: compatible</span></h4>
+   <div class="who">Theo M. <span class="syn">Synthetic member</span></div>
+   <div class="claim"><div><q>Find a lyricist for my unfinished melodies</q><small>Weeknights · video or Oakland · free collaboration</small></div><span class="pm">Member intention<i>Synthetic</i></span></div></div>
+  <div class="sec"><h4>Public route</h4>
+   <div class="who">Discovery Collab Open Mic <span style="font-weight:500;font-size:12.5px;color:var(--muted)">Oakland · last Friday monthly, 7pm</span></div>
+   <div class="claim"><div><q>Music and poetry welcome.</q><small>bayareaopenmics.com · confirmed quote</small></div><span class="pm r">Public source<i>exa · 14 Nov</i></span></div></div>
+  <div class="sec"><h4>Why these fit</h4>
+   <div class="claim" style="margin-top:0"><div style="font-size:14px">A composer with unfinished melodies could set a poem to music.</div><span class="pm llm">Inferred<i>LLM · no search</i></span></div></div>
+  <div class="sec dcons"><h4>Constraints</h4>
+   <div class="c">Budget at most $40/month<span class="st meets">Meets</span></div>
+   <div class="c">Weeknights after 7pm<span class="st meets">Meets</span></div>
+   <div class="c">In person in Oakland or video call<span class="st meets">Meets</span></div>
+   <div class="c">Cost of open mic<span class="st unk">Unknown</span></div>
+   <div class="ask"><b>Question</b>Does the Discovery Collab Open Mic charge performers? No fetched page states a fee.</div></div>
+  <div class="acts"><button class="btn p">Request introduction</button><button class="btn s">Open published route</button></div>
+ </aside>
+</main>
+</div>
+</body></html>
