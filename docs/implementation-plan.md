@@ -46,6 +46,8 @@ Select the lead story after a live Telem search and fetch. Keep the product and 
 
 The firmware scenario provides a second complete example. Telem finds a public issue or relevant technical evidence. A synthetic member has recent experience with the exact hardware and version. A combined option proposes working together on a contribution to the public issue. Posting remains a user action.
 
+The founder scenario tests people search on social platforms. Maya runs operations at a clinic network and wants a technical co-founder for a healthcare AI tool: full-time and Bay Area based. The LLM proposes roles such as an ML engineer with healthcare data experience. Telem searches X, Product Hunt, Substack, and LinkedIn through platform-specific providers, then fetches promising posts to confirm their date and stated needs. A synthetic member is an ML engineer looking for a business co-founder in healthcare. Near misses include a remote-only engineer and a strong match whose only public post is many months old. Public authors stay public leads; only the synthetic member can receive an introduction.
+
 The crosswalk scenario demonstrates shared intentions across several people. Match the same place and outcome, rather than treating every road-safety concern as one group.
 
 ## Eight screens
@@ -206,7 +208,7 @@ Demonstrate a supported combined option and simulated mutual acceptance. Also de
 
 ### Prove the same engine across different intentions
 
-Complete the eight screens, the firmware scenario, and the civic group scenario. Add replay controls and make all synthetic, cached, and replay labels visible. Validate that the counterpart view contains only approved disclosures.
+Complete the eight screens, the founder scenario, the firmware scenario, and the civic group scenario. Add replay controls and make all synthetic, cached, and replay labels visible. Validate that the counterpart view contains only approved disclosures.
 
 ### Measure quality and test failure behavior
 
@@ -220,7 +222,7 @@ These stages preserve the full discovery and matching scope. If a stage fails it
 
 ## Evaluation and completion criteria
 
-Use 12 labeled scenarios across the creative, technical, and civic examples. Include relevant matches, misleading interests, hard conflicts, unknown conditions, and no-match cases. Use the same synthetic dataset for every matching method.
+Use 12 labeled scenarios across the creative, founder, technical, and civic examples. Include relevant matches, misleading interests, hard conflicts, unknown conditions, and no-match cases. Use the same synthetic dataset for every matching method.
 
 Compare keyword retrieval, whole-profile embeddings, and intention-field embeddings with LLM-inferred counterpart capabilities. Then compare LLM planning and member matching alone with the full evidence-enriched pipeline. Assess the correctness and usefulness of the resulting options, not only member retrieval. Report how often a useful member appears in the first three results and whether hard conflicts survive into recommendations.
 
