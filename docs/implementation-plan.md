@@ -1,6 +1,6 @@
 # Implementation plan
 
-This plan covers a five-hour build by three contributors. The target is a complete demonstration with live Telem discovery, synthetic members, private compatibility checks, replay, and measured results. No application code exists yet.
+This plan covers a complete demonstration built by three contributors. The target includes live Telem discovery, synthetic members, private compatibility checks, replay, and measured results. Completion depends on demonstrated behavior and evidence. No application code exists yet.
 
 ## Product decision
 
@@ -34,7 +34,7 @@ The agents check the match from both sides. Telem's second round looks for a pub
 
 The demonstration includes a candidate with the right interests but no relevant intention, a candidate with a conflicting hard constraint, and a plausible option with a missing fact. Those cases prove different behavior. A missing fact remains unknown.
 
-Select the lead story after a live Telem search and fetch during the first 30 minutes of implementation. Keep the product and schema fixed if the story changes. Never invent a public opportunity to fit a prepared story.
+Select the lead story after a live Telem search and fetch. Keep the product and schema fixed if the story changes. Never invent a public opportunity to fit a prepared story.
 
 The firmware scenario provides a second complete example. Telem finds a public issue or relevant technical evidence. A synthetic member has recent experience with the exact hardware and version. A combined option proposes working together on a contribution to the public issue. Posting remains a user action.
 
@@ -174,41 +174,41 @@ Retry transient failures once when the remaining budget allows it. Respect Retry
 
 Record one complete live run for replay after the implementation works. Replay uses the same saved input, model outputs, and tool responses, and displays its recording timestamp. A changed intention cannot reuse that replay as if it were a new live search. Reused live results show a cached label and their age. Never switch to replay silently.
 
-## Three-person build schedule
+## Three-person build ownership and completion criteria
 
 Contributor A owns the interface. Contributor B owns Telem and run coordination. Contributor C owns matching, evidence, and evaluation. All three use the same contracts and fixtures. Coordinate changes to shared files through one owner.
 
-### First 30 minutes
+### Establish shared contracts and prove public discovery
 
 Agree on shared types, one complete fixture, and the public operation signatures. Establish Next.js and Convex. Confirm server-side credential configuration without printing secrets. Run a real Telem search and fetch. Test the creative story against real results and select the lead scenario.
 
 Contributor A builds the context and intention screens against the agreed fixture. Contributor B proves Telem responses and records a sample run. Contributor C creates the schema, synthetic dataset, and expected matches.
 
-### Minutes 30 to 90
+### Integrate the first real results
 
 Contributor A builds the trace and result screens. Contributor B connects extraction, approval, round one, source reads, and stage events. Contributor C implements embedding facets, vector retrieval, and the keyword baseline.
 
-At minute 90, the interface must show a live public result and a retrieved synthetic member for the same approved intention. The result can lack final ranking at this checkpoint. The full scope remains scheduled below.
+Complete this stage when the interface shows a live public result and a retrieved synthetic member for the same approved intention. Final ranking follows in the next stage.
 
-### Minutes 90 to 150
+### Complete the combined option and introduction
 
 Contributor A adds comparison, introduction controls, and the counterpart view. Contributor B connects second-round discovery and replay storage. Contributor C adds the separate compatibility checks, quote validation, and ranked options.
 
-At minute 150, complete the lead story through a combined option and simulated mutual acceptance. Exercise a real hard conflict and an unknown condition in the same flow.
+Complete the lead story through a combined option and simulated mutual acceptance. Exercise a real hard conflict and an unknown condition in the same flow.
 
-### Minutes 150 to 210
+### Prove the same engine across different intentions
 
 Complete the eight screens, the firmware scenario, and the civic group scenario. Add replay controls and make all synthetic, cached, and replay labels visible. Validate that the counterpart view contains only approved disclosures.
 
-### Minutes 210 to 255
+### Measure quality and test failure behavior
 
 Run the evaluation suite and collect real latency, source-fetch, and usage observations. Test failed fetches, model errors, revoked intentions, repeated requests, and stale runs. Fix the causes of incorrect recommendations. Record the complete live demo and its labeled replay.
 
-### Minutes 255 to 300
+### Rehearse and verify the demonstration
 
 Freeze new behavior. Rehearse the stage demo and fallback. Prepare the judging evidence, source links, a concise startup argument, and the measured limits. Verify the exact build used for the demonstration.
 
-The schedule preserves the full discovery and matching scope. If a checkpoint slips, expose the unfinished work and reassign contributors rather than quietly replacing live behavior with fixtures.
+These stages preserve the full discovery and matching scope. If a stage fails its completion criteria, fix the cause and reassign contributors as needed. Do not replace live behavior with fixtures without a visible replay or synthetic label.
 
 ## Evaluation and completion criteria
 
@@ -234,7 +234,7 @@ Track intentions on which users report progress. Separate public opportunities u
 
 ## Further development
 
-After the complete scheduled build, Telem monitors can support standing intentions. A participant can approve a topic to watch and return when a relevant opportunity appears. Confirm monitor limits, costs, and cleanup before enabling scheduled searches.
+Telem monitors can extend the completed discovery flow to standing intentions. A participant can approve a topic to watch and return when a relevant opportunity appears. Confirm monitor limits, costs, and cleanup before enabling scheduled searches.
 
 A second browser can let a judge accept a synthetic introduction. Supermemory can supply retrieved context through the same extraction input. Real accounts, messaging, direct AI-tool imports, and payments require a separate implementation scope. The current user decision remains a synthetic-member hackathon demo.
 
@@ -247,4 +247,4 @@ A second browser can let a judge accept a synthetic introduction. Supermemory ca
 - [OpenAI structured outputs](https://developers.openai.com/api/docs/guides/structured-outputs) documents schema-constrained output and refusal handling.
 - [pstack technical-writing](https://github.com/cursor/plugins/blob/main/pstack/skills/technical-writing/SKILL.md) and [pstack unslop](https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md) guide the documentation.
 
-Claude Opus 5.5 at high effort reviewed the product and implementation approach. This plan keeps its full discovery and matching scope, adds the team's five-hour schedule, and uses the Convex Agent component to follow this project's backend guidance.
+Claude Opus 5.5 at high effort reviewed the product and implementation approach. This plan keeps its full discovery and matching scope, defines teammate ownership and completion criteria, and uses the Convex Agent component to follow this project's backend guidance.

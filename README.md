@@ -10,7 +10,7 @@ Memory from AI tools → Understand intention → Discover opportunities + Match
 
 Built for [SearchHack: Build the next layer of AI search](https://luma.com/e13wf1bd), November 14, 2026. Our goal is to win by demonstrating a useful new way to search for people through the context their agents already understand.
 
-The [implementation plan](docs/implementation-plan.md) defines the five-hour, three-person build, the Telem demonstration, the data model, and the evaluation. It refines the initial architecture below with two search rounds that shape member matching and a public next step.
+The [implementation plan](docs/implementation-plan.md) defines the three-person build, completion criteria, the Telem demonstration, the data model, and the evaluation. It refines the initial architecture below with two search rounds that shape member matching and a public next step.
 
 ## The idea
 
