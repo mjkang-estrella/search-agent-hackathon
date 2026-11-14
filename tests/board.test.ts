@@ -55,6 +55,7 @@ test("search finds old memories beyond the first page and stays within the sessi
 test("selected details return only the requested memory and reject a foreign memory", async () => {
   const { t, sessionId, memoryIds, foreignId } = await fixture();
   const result = await t.query(api.board.get, { sessionId, memoryId: memoryIds[0] });
+  assert.ok(result);
   assert.deepEqual(result.memories.map((m) => m._id), [memoryIds[0]]);
   assert.equal(result.memories[0].text, "A pottery class in the community");
   const foreign = await t.query(api.board.get, { sessionId, memoryId: foreignId });

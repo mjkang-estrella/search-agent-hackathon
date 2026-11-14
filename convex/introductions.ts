@@ -7,6 +7,7 @@ import type { Id } from "./_generated/dataModel";
 import { modelTask, newThread } from "./agents";
 import { counterpartCheck } from "./matching";
 import { vSharedFields } from "./validators";
+import { requireSession, requireSessionInAction, sessionAccess } from "./sessions";
 import { sharedProjection, zIntroDraft, type NetworkCard, type SharedFields } from "../lib/contracts";
 
 async function loadOption(
@@ -69,7 +70,10 @@ async function createIntroduction(
 export const requestIntroduction = mutation({
   args: { sessionId: v.id("demoSessions"), optionId: v.id("options"), sharedFields: vSharedFields, message: v.string() },
   returns: v.id("introductions"),
-  handler: async (ctx, args) => createIntroduction(ctx, args),
+  handler: async (ctx, args) => {
+    await requireSession(ctx, args.sessionId);
+    return createIntroduction(ctx, args);
+  },
 });
 
 /** One-click introduction: shares the aim, need, contributions, and timing, never private constraints. */
@@ -77,6 +81,7 @@ export const quickIntroduce = mutation({
   args: { sessionId: v.id("demoSessions"), optionId: v.id("options") },
   returns: v.id("introductions"),
   handler: async (ctx, { sessionId, optionId }) => {
+    await requireSession(ctx, sessionId);
     const { candidate, intention } = await loadOption(ctx, sessionId, optionId);
     const c = intention.card;
     const message = [
@@ -147,6 +152,7 @@ export const runCounterpartCheck = internalAction({
 export const respondToIntroduction = mutation({
   args: { sessionId: v.id("demoSessions"), introductionId: v.id("introductions"), response: v.union(v.literal("accept"), v.literal("decline")) },
   handler: async (ctx, args) => {
+    await requireSession(ctx, args.sessionId);
     const intro = await ctx.db.get(args.introductionId);
     if (!intro || intro.sessionId !== args.sessionId) throw new Error("Introduction not found");
     if (intro.state !== "pending_acceptance") throw new Error(`The introduction is ${intro.state.replace("_", " ")}, not waiting for a response`);
@@ -161,6 +167,7 @@ export const respondToIntroduction = mutation({
 export const getIntroduction = query({
   args: { sessionId: v.id("demoSessions"), introductionId: v.id("introductions") },
   handler: async (ctx, { sessionId, introductionId }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return null;
     const intro = await ctx.db.get(introductionId);
     if (!intro || intro.sessionId !== sessionId) return null;
     const option = await ctx.db.get(intro.optionId);
@@ -207,6 +214,7 @@ export const suggestIntroMessage = action({
   args: { sessionId: v.id("demoSessions"), optionId: v.id("options"), sharedFields: vSharedFields },
   returns: v.string(),
   handler: async (ctx, args): Promise<string> => {
+    await requireSessionInAction(ctx, args.sessionId);
     const { option, candidate, card, opp } = await ctx.runQuery(internal.introductions.introContext, { sessionId: args.sessionId, optionId: args.optionId });
     const shared = sharedProjection(card, args.sharedFields);
     const threadId = await newThread(ctx, "Introduction draft");

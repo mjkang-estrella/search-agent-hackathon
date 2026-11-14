@@ -5,6 +5,7 @@ import { v } from "convex/values";
 import { query } from "./_generated/server";
 import type { Doc, Id } from "./_generated/dataModel";
 import type { QueryCtx } from "./_generated/server";
+import { sessionAccess } from "./sessions";
 
 function hostOf(url: string): string {
   try {
@@ -66,6 +67,7 @@ async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessi
 export const get = query({
   args: { sessionId: v.id("demoSessions"), memoryId: v.optional(v.id("memorySources")) },
   handler: async (ctx, { sessionId, memoryId }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return null;
     const selected = memoryId ? await ctx.db.get(memoryId) : null;
     const memories = memoryId ? (selected?.sessionId === sessionId ? [selected] : []) : (await ctx.db.query("memorySources").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).collect()).sort(
       (a, b) => b.createdAt - a.createdAt,
@@ -139,6 +141,7 @@ export const listMemories = query({
     pageStatus: v.optional(v.union(v.literal("SplitRecommended"), v.literal("SplitRequired"), v.null())),
   }),
   handler: async (ctx, { sessionId, search, paginationOpts }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return { page: [], isDone: true, continueCursor: "" };
     const term = search.trim();
     const result = term
       ? await ctx.db.query("memorySources").withSearchIndex("search_text", (q) => q.search("text", term).eq("sessionId", sessionId)).paginate(paginationOpts)

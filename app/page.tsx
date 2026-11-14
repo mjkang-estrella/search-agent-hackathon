@@ -8,14 +8,15 @@ import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Globe, Loader2, Plu
 import type { FunctionReturnType } from "convex/server";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
-import { resetSession, useSessionId } from "@/components/providers";
+import { useSessionId, useStartOver } from "@/components/providers";
+import { Account, SignInButton } from "@/components/account";
 import { AddMemoryFlow, WaysFooter } from "@/components/add-memory-flow";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { errorText } from "@/lib/format";
 
-type Board = FunctionReturnType<typeof api.board.get>;
+type Board = NonNullable<FunctionReturnType<typeof api.board.get>>;
 type Memory = Board["memories"][number];
 type Intention = Memory["intentions"][number];
 type Way = Intention["ways"][number];
@@ -24,7 +25,8 @@ const isSearching = (i: Intention) => i.state === "planning" || i.state === "sea
 
 export default function Home() {
   const sessionId = useSessionId();
-  const board = useQuery(api.board.get, sessionId ? { sessionId } : "skip");
+  // Null means the board isn't open to this account yet, as during sign-in or sign-out. Show it as loading.
+  const board = useQuery(api.board.get, sessionId ? { sessionId } : "skip") ?? undefined;
   const [memoryId, setMemoryId] = useState<string | null>(null);
   const [intentionId, setIntentionId] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
@@ -83,7 +85,10 @@ export default function Home() {
           <span aria-hidden className="size-3 rounded-full bg-[var(--airmail-red)]" />
           Wayfinder
         </span>
-        {!empty && status !== "LoadingFirstPage" ? <McpButton /> : null}
+        <span className="flex items-center gap-2">
+          {!empty && status !== "LoadingFirstPage" ? <McpButton /> : null}
+          <Account />
+        </span>
       </header>
 
       <main className="mx-auto max-w-[1280px] px-5 pb-12">
@@ -312,12 +317,23 @@ function Connect() {
 }
 
 function McpDetails() {
-  const sessionId = useSessionId();
-  const enable = useMutation(api.intentions.enableMcp);
-  const [url, setUrl] = useState<string | null>(null);
+  const conn = useConnection();
+  const enable = useMutation(api.sessions.enableMcp);
+  const replace = useMutation(api.sessions.replaceMcpLink);
+  const signedIn = conn?.signedIn === true;
+  const url = conn?.mcpUrl ?? null;
   useEffect(() => {
-    if (sessionId) void enable({ sessionId }).then(setUrl).catch((e) => toast.error(errorText(e)));
-  }, [sessionId, enable]);
+    if (signedIn && !url) void enable({}).catch((e) => toast.error(errorText(e)));
+  }, [signedIn, url, enable]);
+  if (conn === undefined) return <Loader2 className="mt-4 size-4 animate-spin" />;
+  if (!signedIn) {
+    return (
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <span className="text-[14px] text-muted-foreground">Sign in to get your private MCP link.</span>
+        <SignInButton label="Sign in with Google" className="h-10" />
+      </div>
+    );
+  }
   if (!url) return <Loader2 className="mt-4 size-4 animate-spin" />;
   return (
     <div className="mt-4 grid gap-2">
@@ -338,13 +354,26 @@ function McpDetails() {
           <Copy className="size-4" /> Copy
         </Button>
       </div>
-      <span className="text-[13px] text-muted-foreground">Tools: add_memory, list_memories. New memories show up here on their own.</span>
+      <span className="text-[13px] text-muted-foreground">
+        Tools: add_memory, list_memories. New memories show up here on their own. Keep the link private.{" "}
+        <button
+          className="font-semibold text-foreground underline underline-offset-2"
+          onClick={() =>
+            void replace({})
+              .then(() => toast.success("New link ready. Update your agent."))
+              .catch((e) => toast.error(errorText(e)))
+          }
+        >
+          New link
+        </button>
+      </span>
     </div>
   );
 }
 
 function McpButton() {
   const conn = useConnection();
+  const startOver = useStartOver();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -368,7 +397,7 @@ function McpButton() {
         <div className="absolute right-0 z-30 mt-2 w-[min(420px,calc(100vw-40px))] rounded-2xl bg-white p-4 shadow-lg">
           <span className="block text-[15px] font-bold">Memory MCP</span>
           <McpDetails />
-          <Button variant="outline" className="mt-4 h-9 w-full rounded-full font-bold" onClick={resetSession}>
+          <Button variant="outline" className="mt-4 h-9 w-full rounded-full font-bold" onClick={() => void startOver().catch((e) => toast.error(errorText(e)))}>
             Start over
           </Button>
         </div>
@@ -379,7 +408,7 @@ function McpButton() {
 
 function useConnection() {
   const sessionId = useSessionId();
-  return useQuery(api.intentions.getConnection, sessionId ? { sessionId } : "skip");
+  return useQuery(api.sessions.getConnection, sessionId ? { sessionId } : "skip");
 }
 
 type Progress = { done: number; failed: number; total: number };

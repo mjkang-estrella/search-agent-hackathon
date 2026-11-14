@@ -48,9 +48,9 @@ function rpcError(id: RpcRequest["id"], code: number, message: string) {
 const mcp = httpAction(async (ctx, request) => {
   const url = new URL(request.url);
   const key = url.searchParams.get("key") ?? request.headers.get("Authorization")?.replace(/^Bearer\s+/i, "") ?? "";
-  const session = key ? await ctx.runQuery(internal.intentions.sessionByMcpKey, { key }) : null;
-  if (!session) return json(rpcError(null, -32001, "Unknown or missing Wayfinder memory key"), 401);
-  const sessionId = session._id as Id<"demoSessions">;
+  const board: Id<"demoSessions"> | null = key ? await ctx.runMutation(internal.sessions.boardForMcpKey, { key }) : null;
+  if (!board) return json(rpcError(null, -32001, "Unknown or missing Wayfinder memory key"), 401);
+  const sessionId = board;
 
   let body: RpcRequest | RpcRequest[];
   try {
@@ -96,9 +96,9 @@ const mcp = httpAction(async (ctx, request) => {
             text: args.text.slice(0, 8000),
             source: (args.source ?? "MCP agent").slice(0, 40),
           });
-          return {
-            content: [{ type: "text", text: `Saved. Wayfinder found ${ids.length} ${ids.length === 1 ? "intention" : "intentions"} and is looking for ways forward.` }],
-          };
+          const found = `Saved. Wayfinder found ${ids.length} ${ids.length === 1 ? "intention" : "intentions"} and is looking for ways forward.`;
+          const app = process.env.APP_URL;
+          return { content: [{ type: "text", text: app ? `${found} See them at ${app}` : found }] };
         }
         if (name === "list_memories") {
           const rows = await ctx.runQuery(internal.intentions.listMemoriesForMcp, { sessionId });

@@ -9,6 +9,7 @@ import { modelName, modelTask, newThread, recorded, ReplayMissingError, type Io 
 import { telemFetch, telemSearch, type FetchResult, type SearchResult } from "./telem";
 import { counterpartCheck, requesterChecks, retrievalQueries, vectorRetrieve, type RetrievedMember } from "./matching";
 import { verifyConditions } from "./evidence";
+import { requireSession, sessionAccess } from "./sessions";
 import {
   EMBEDDING_MODEL,
   vCondition,
@@ -51,6 +52,7 @@ export const startDiscovery = mutation({
   },
   returns: v.id("runs"),
   handler: async (ctx, args) => {
+    await requireSession(ctx, args.sessionId);
     const intention = await ctx.db.get(args.intentionId);
     if (!intention || intention.owner.kind !== "requester" || intention.owner.sessionId !== args.sessionId) {
       throw new Error("Intention not found in this session");
@@ -125,6 +127,7 @@ export async function createRun(
 export const getDiscovery = query({
   args: { sessionId: v.id("demoSessions"), runId: v.id("runs") },
   handler: async (ctx, { sessionId, runId }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return null;
     const run = await ctx.db.get(runId);
     if (!run || run.sessionId !== sessionId) return null;
     const intention = await ctx.db.get(run.intentionId);
@@ -200,6 +203,7 @@ export const getDiscovery = query({
 export const listSessionRuns = query({
   args: { sessionId: v.id("demoSessions") },
   handler: async (ctx, { sessionId }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return [];
     const runs = await ctx.db.query("runs").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).order("desc").take(20);
     return runs.map((r) => ({ _id: r._id, intentionId: r.intentionId, mode: r.mode, status: r.status, stage: r.stage, startedAt: r.startedAt }));
   },

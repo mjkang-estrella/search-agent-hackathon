@@ -27,11 +27,23 @@ import {
 } from "./validators";
 
 export default defineSchema({
+  // People who signed in with Google. Each has one memory MCP key.
+  users: defineTable({
+    name: v.optional(v.string()),
+    email: v.optional(v.string()),
+    image: v.optional(v.string()),
+    mcpKey: v.optional(v.string()), // secret in this user's memory MCP URL
+  }).index("by_mcp_key", ["mcpKey"]),
+
+  // A board. A guest opens it by its id, kept in localStorage. A signed-in user's board opens only for them.
   demoSessions: defineTable({
     createdAt: v.number(),
-    mcpKey: v.optional(v.string()), // secret in the memory MCP URL for this session
+    userId: v.optional(v.id("users")),
+    mcpKey: v.optional(v.string()), // legacy per-board MCP key from before sign-in
     persona: v.optional(v.string()), // set when the demo persona was loaded
-  }).index("by_mcp_key", ["mcpKey"]),
+  })
+    .index("by_mcp_key", ["mcpKey"])
+    .index("by_user", ["userId"]),
 
   // A hidden session that holds one complete live run of the demo persona.
   // "Start with demo persona" copies it, so the demo does not search again every time.
