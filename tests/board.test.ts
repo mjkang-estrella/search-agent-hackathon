@@ -109,5 +109,6 @@ test("guest queries cannot open or search a signed-in user's board", async () =>
     return sessionId;
   });
   assert.equal(await t.query(api.board.get, { sessionId }), null);
-  await assert.rejects(t.query(api.board.listMemories, { sessionId, search: "pottery", paginationOpts: { numItems: 25, cursor: null } }), /belongs to another account/);
+  const list = await t.query(api.board.listMemories, { sessionId, search: "pottery", paginationOpts: { numItems: 25, cursor: null } });
+  assert.deepEqual(list.page, []);
 });

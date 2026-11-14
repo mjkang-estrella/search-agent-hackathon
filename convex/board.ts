@@ -7,7 +7,7 @@ import { v } from "convex/values";
 import { query } from "./_generated/server";
 import type { Doc, Id } from "./_generated/dataModel";
 import type { QueryCtx } from "./_generated/server";
-import { requireSession, sessionAccess } from "./sessions";
+import { sessionAccess } from "./sessions";
 
 function hostOf(url: string): string {
   try {
@@ -189,7 +189,8 @@ export const listMemories = query({
     pageStatus: v.optional(v.union(v.literal("SplitRecommended"), v.literal("SplitRequired"), v.null())),
   }),
   handler: async (ctx, { sessionId, search, paginationOpts }) => {
-    await requireSession(ctx, sessionId);
+    // A board this caller can't open lists nothing, as during sign-in or sign-out. Throwing would break the page.
+    if (!(await sessionAccess(ctx, sessionId))) return { page: [], isDone: true, continueCursor: "" };
     const term = search.trim();
     const result = term
       ? await ctx.db.query("memorySources").withSearchIndex("search_text", (q) => q.search("text", term).eq("sessionId", sessionId)).paginate(paginationOpts)
