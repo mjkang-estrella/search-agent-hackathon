@@ -5,7 +5,7 @@ import { z } from "zod";
 export const SCENARIO_IDS = ["creative", "firmware", "civic"] as const;
 export type ScenarioId = (typeof SCENARIO_IDS)[number];
 
-export const PROMPT_VERSION = "2026-11-14.1";
+export const PROMPT_VERSION = "2026-11-14.2";
 
 export type Audience = "network" | "private";
 export type IntentionStatus = "draft" | "approved" | "hidden" | "withdrawn";
@@ -309,7 +309,7 @@ export const zRanking = z.object({
     z.object({
       kind: z.enum(["public", "member", "combined"]),
       title: z.string().describe("At most 6 words, starting with a verb, e.g. 'Co-write with Theo'"),
-      why: z.string().describe("At most 12 words: why this fits"),
+      why: z.string().describe("One sentence, at most 30 words. Explain how this option addresses the requester intention using a specific capability or source detail. Avoid generic claims of a good fit."),
       summary: z.string(),
       candidateId: z.string().nullable().describe("Candidate alias such as c1, or null"),
       opportunityId: z.string().nullable().describe("Opportunity alias such as o1, or null"),
@@ -331,7 +331,12 @@ export const zIntroDraft = z.object({ message: z.string() });
 
 export const zPeoplePick = z.object({
   picks: z
-    .array(z.object({ index: z.number().int(), reason: z.string().describe("At most 8 words, e.g. 'Just back from Seoul, vegetarian tips'") }))
+    .array(z.object({
+      index: z.number().int(),
+      reason: z.string().describe("One sentence, at most 30 words. Connect a specific detail from this post to the requester intention. Do not claim availability or willingness to help."),
+      about: z.string().nullable().describe("At most 16 words about the author's relevant experience, supported by the post. Null if unknown. Do not invent a job title or biography."),
+      evidenceQuote: z.string().describe("An exact short excerpt from the supplied post that supports both the description and match reason."),
+    }))
     .max(6)
     .describe("Posts whose author clearly has the experience the person needs. Skip brands, ads, and off-topic posts"),
 });

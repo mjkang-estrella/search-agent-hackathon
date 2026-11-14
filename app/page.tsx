@@ -11,6 +11,8 @@ import type { Id } from "@/convex/_generated/dataModel";
 import { useSessionId, useStartOver } from "@/components/providers";
 import { Account, SignInButton } from "@/components/account";
 import { AddMemoryFlow, WaysFooter } from "@/components/add-memory-flow";
+import { PersonAvatar } from "@/components/person-avatar";
+import { PublicPersonCard } from "@/components/public-person-card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -558,61 +560,23 @@ function Searching({ stage }: { stage?: string }) {
 
 type Person = Intention["people"][number];
 
-const PLATFORM: Record<string, { mark: string; color: string }> = {
-  X: { mark: "X", color: "#111111" },
-  TikTok: { mark: "TT", color: "#141414" },
-  Reddit: { mark: "r/", color: "#ff4500" },
-  Facebook: { mark: "f", color: "#1877f2" },
-  Instagram: { mark: "IG", color: "#d62976" },
-  LinkedIn: { mark: "in", color: "#0a66c2" },
-};
-
 function PeopleList({ people, offer }: { people: Person[]; offer: boolean }) {
   return (
     <>
       <h3 className="flex items-baseline justify-between gap-3 px-1 pt-3">
-        <span className="text-[15px] font-bold text-muted-foreground">{offer ? "People asking for this" : "People who've done it"}</span>
+        <span className="text-[15px] font-bold text-muted-foreground">{offer ? "People who may need this" : "Related people"}</span>
         <span className="text-[12.5px] text-muted-foreground">public posts</span>
       </h3>
-      {people.map((p) => (
-        <a key={p._id} href={p.url} target="_blank" rel="noreferrer" className="flex items-center gap-3.5 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md">
-          <span
-            className="flex size-11 shrink-0 items-center justify-center rounded-full text-[13px] font-extrabold text-white"
-            style={{ background: PLATFORM[p.platform]?.color ?? "#1d2433" }}
-          >
-            {PLATFORM[p.platform]?.mark ?? p.platform.slice(0, 2)}
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-[15px] leading-snug font-bold">{p.reason ?? p.title}</span>
-            <span className="block truncate text-[13.5px] text-muted-foreground">
-              {p.author} on {p.platform}
-            </span>
-          </span>
-          <ArrowUpRight className="size-5 shrink-0 text-[var(--airmail)]" />
-        </a>
-      ))}
+      {people.map((p) => <PublicPersonCard key={p._id} person={p} />)}
     </>
   );
 }
 
 function Avatar({ way: w, large }: { way: Way; large?: boolean }) {
-  const size = large ? "size-14 text-[20px]" : "size-11 text-[16px]";
-  if (w.member) {
-    const initials = w.member.name.split(/\s+/).map((x) => x[0]).join("").slice(0, 2);
-    return (
-      <span title="Sample person for this demo" className={cn("relative flex shrink-0 items-center justify-center rounded-full bg-[#f2c9cc] font-bold text-[var(--airmail-red)]", size)}>
-        {initials}
-        {w.source ? (
-          <span className="absolute -right-1 -bottom-1 flex size-5 items-center justify-center rounded-full bg-white text-[var(--airmail)] shadow">
-            <Globe className="size-3" />
-          </span>
-        ) : null}
-      </span>
-    );
-  }
+  if (w.member) return <PersonAvatar src={w.member.avatarUrl} name={w.member.name} sample large={large} />;
   return (
-    <span className={cn("flex shrink-0 items-center justify-center rounded-full bg-[#dfe7f6] text-[var(--airmail)]", size)}>
-      <Globe className={large ? "size-6" : "size-5"} />
+    <span className={cn("flex shrink-0 items-center justify-center rounded-full bg-[#dfe7f6] text-[var(--airmail)]", large ? "size-14" : "size-11")}>
+      <Globe aria-hidden className={large ? "size-6" : "size-5"} />
     </span>
   );
 }
@@ -620,28 +584,39 @@ function Avatar({ way: w, large }: { way: Way; large?: boolean }) {
 function WayCard({ way: w }: { way: Way }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <div className="flex flex-wrap items-center gap-3.5">
+    <article className="min-w-0 rounded-2xl bg-white p-4 shadow-sm">
+      <div className="flex items-start gap-3.5">
         <Avatar way={w} />
-        <button className="min-w-0 flex-1 basis-[160px] text-left [overflow-wrap:anywhere]" onClick={() => setOpen(!open)} aria-expanded={open}>
-          <span className="block text-[16px] leading-snug font-bold">
-            {w.title}
-            {w.fit === "strong_fit" ? <Star aria-label="Great fit" className="mb-0.5 ml-1.5 inline size-3.5 fill-[var(--kraft)] text-[var(--kraft)]" /> : null}
-          </span>
-          <span className="flex items-center gap-1 text-[13.5px] text-muted-foreground">
-            <span className="truncate">{[w.member ? `${w.member.name} (sample)` : null, w.source?.host].filter(Boolean).join(" · ")}</span>
-            <ChevronDown aria-hidden className={cn("size-3.5 shrink-0 transition-transform", open && "rotate-180")} />
-          </span>
+        <div className="min-w-0 flex-1 [overflow-wrap:anywhere]">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <h3 className="text-[16px] leading-snug font-bold">{w.member?.name ?? w.title}</h3>
+            {w.member ? <span className="rounded-full bg-[#f3f5f8] px-2 py-0.5 text-[11px] text-muted-foreground">Sample · AI photo</span> : null}
+            {w.fit === "strong_fit" ? <Star aria-label="Great fit" className="size-3.5 fill-[var(--kraft)] text-[var(--kraft)]" /> : null}
+          </div>
+          <p className="mt-1 text-[13.5px] leading-snug text-muted-foreground">{w.member?.about ?? w.source?.host}</p>
+        </div>
+      </div>
+      <div className="mt-3 text-[14px] leading-relaxed [overflow-wrap:anywhere]">
+        <p className="text-[11px] font-bold text-muted-foreground">Why this fits</p>
+        <p className="mt-0.5">{w.why}</p>
+        {w.member ? (
+          <p className="mt-2 text-[13px] text-muted-foreground"><span className="font-semibold">Looking for </span>{w.member.wants}</p>
+        ) : null}
+      </div>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+        <button className="inline-flex items-center gap-1 text-[12px] font-semibold text-muted-foreground hover:text-foreground" onClick={() => setOpen(!open)} aria-expanded={open}>
+          {open ? "Less" : "Details"}<ChevronDown aria-hidden className={cn("size-3.5 transition-transform", open && "rotate-180")} />
         </button>
-        <div className="ml-auto"><WayAction way={w} /></div>
+        <WayAction way={w} />
       </div>
       {open ? (
-        <div className="mt-3 ml-[58px] grid gap-2 text-[14px]">
-          <p>{w.why}</p>
-          {w.source?.quote ? <p className="line-clamp-2 text-muted-foreground">“{w.source.quote}”</p> : null}
+        <div className="mt-3 grid gap-2 border-t border-[var(--line)] pt-3 text-[13px] leading-relaxed [overflow-wrap:anywhere]">
+          <p>{w.summary}</p>
+          {w.source?.quote ? <blockquote className="text-muted-foreground">&ldquo;{w.source.quote}&rdquo;</blockquote> : null}
+          {w.questions.length ? <p className="text-muted-foreground">Still to check: {w.questions.join(" ")}</p> : null}
         </div>
       ) : null}
-    </div>
+    </article>
   );
 }
 

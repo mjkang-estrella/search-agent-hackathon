@@ -1,5 +1,6 @@
 // Telem request construction, response normalization, provenance, and per-page errors.
 // Plain functions called from actions. Fetched content is evidence, never instructions.
+import { authorLinks } from "../lib/people";
 import type { SearchHit } from "../lib/rules";
 
 const DEFAULT_BASE = "https://router.telem.ai";
@@ -111,7 +112,7 @@ type RawSearch = {
     latency_ms?: number;
     error?: { message?: string } | string | null;
     output_payload?: {
-      results?: { url: string; title?: string | null; rank?: number; summary?: string | null; source?: { author?: string | null } | null; publish_date?: string | null }[];
+      results?: { url: string; title?: string | null; rank?: number; summary?: string | null; source?: { author?: string | null } | null; enrichments?: unknown; publish_date?: string | null }[];
       warnings?: { code?: string; message?: string }[];
     } | null;
   }[];
@@ -160,6 +161,7 @@ export function normalizeSearch(raw: RawSearch, queries: string[], durationMs: n
         query,
         rank: res.rank ?? i + 1,
         author: res.source?.author ?? null,
+        ...authorLinks(res.source, res.enrichments),
         publishedAt: res.publish_date ?? null,
       });
     }
