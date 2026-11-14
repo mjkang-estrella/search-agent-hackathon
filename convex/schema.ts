@@ -33,6 +33,15 @@ export default defineSchema({
     persona: v.optional(v.string()), // set when the demo persona was loaded
   }).index("by_mcp_key", ["mcpKey"]),
 
+  // A hidden session that holds one complete live run of the demo persona.
+  // "Start with demo persona" copies it, so the demo does not search again every time.
+  demoTemplates: defineTable({
+    version: v.string(),
+    sessionId: v.id("demoSessions"),
+    status: v.union(v.literal("building"), v.literal("ready")),
+    createdAt: v.number(),
+  }).index("by_version", ["version"]),
+
   // Synthetic participants. Every UI surface labels them as synthetic.
   members: defineTable({
     key: v.string(),

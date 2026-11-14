@@ -4,11 +4,12 @@ import { useAction, useMutation, useQuery } from "convex/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Globe, Loader2, Sparkles, Star, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Globe, Loader2, Plus, Sparkles, Star, X } from "lucide-react";
 import type { FunctionReturnType } from "convex/server";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { resetSession, useSessionId } from "@/components/providers";
+import { AddMemoryFlow, WaysFooter } from "@/components/add-memory-flow";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { errorText } from "@/lib/format";
@@ -25,6 +26,7 @@ export default function Home() {
   const board = useQuery(api.board.get, sessionId ? { sessionId } : "skip");
   const [memoryId, setMemoryId] = useState<string | null>(null);
   const [intentionId, setIntentionId] = useState<string | null>(null);
+  const [adding, setAdding] = useState(false);
   const memoryList = useRef<HTMLDivElement>(null);
   const waysColumn = useRef<HTMLElement>(null);
 
@@ -81,9 +83,33 @@ export default function Home() {
         ) : (
           <>
             <Proposal board={board} progress={progress} onOpen={openIdea} />
+            <AddMemoryFlow
+              open={adding}
+              board={board}
+              onClose={() => setAdding(false)}
+              onDone={(m, i) => {
+                setAdding(false);
+                openIdea(m, i);
+              }}
+            />
 
             <div className="mt-6 grid items-start gap-5 lg:grid-cols-[1fr_1fr_1.5fr]">
-              <Column title="Your memories" action={<Aside>{memories.length}</Aside>} className="lg:sticky lg:top-4">
+              <Column
+                title="Your memories"
+                action={
+                  <span className="flex items-center gap-2">
+                    <Aside>{memories.length}</Aside>
+                    <button
+                      onClick={() => setAdding(true)}
+                      aria-label="Add a memory"
+                      className="flex size-8 items-center justify-center rounded-full bg-[var(--airmail)] text-white transition hover:scale-105"
+                    >
+                      <Plus className="size-4" />
+                    </button>
+                  </span>
+                }
+                className="lg:sticky lg:top-4"
+              >
                 <div
                   ref={memoryList}
                   className="no-scrollbar relative -mx-5 -mt-1 flex snap-x scroll-px-5 gap-2 overflow-x-auto px-5 pt-1 pb-3 lg:-mx-2 lg:max-h-[calc(100dvh-5.5rem)] lg:flex-col lg:overflow-y-auto lg:px-2"
@@ -154,7 +180,6 @@ function Ways({ intention }: { intention: Intention }) {
   const places = intention.ways.filter((w) => !w.member);
   const found = intention.ways.length + intention.people.length > 0;
   const trace = intention.run ? `/r/${intention.run._id}` : null;
-  const traceLink = "px-1 pt-1 text-[13px] font-semibold text-[var(--airmail)] hover:underline";
 
   if (!searching && !found) {
     return (
@@ -179,11 +204,7 @@ function Ways({ intention }: { intention: Intention }) {
       {places.map((w) => (
         <WayCard key={w._id} way={w} />
       ))}
-      {!searching && trace ? (
-        <Link href={trace} className={traceLink}>
-          How we found these
-        </Link>
-      ) : null}
+      {!searching ? <WaysFooter intention={intention} /> : null}
     </>
   );
 }

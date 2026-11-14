@@ -51,9 +51,9 @@ export const DEMO_PERSONA: Persona = {
         category: "Just a passing remark",
         scenarioId: null,
         text: `Mentioned to Dot:
-- My 3D printer has been sitting idle since I printed a phone stand.
+- My 3D printer has been sitting idle since I printed a phone stand. I barely use it.
 - I can model simple parts.
-- It feels wasteful that it just collects dust.`,
+- Either it should be useful to someone, or maybe I should just sell it.`,
       },
       {
         source: "Muse",
@@ -123,8 +123,31 @@ export const DEMO_PERSONA: Persona = {
 const hard = (label: string, value: string | null): Constraint => ({ label, value, hard: true });
 const soft = (label: string, value: string | null): Constraint => ({ label, value, hard: false });
 
+/** Bump when DEMO_PERSONA changes, so the saved demo results are rebuilt. */
+export const DEMO_VERSION = "dana-2026-11-14.5";
+
 /** Sample members added for the wider demo: people who need what passive offers can give. */
 export const EXTRA_MEMBERS: FixtureMember[] = [
+  {
+    key: "leo-printer-buyer",
+    displayName: "Leo M.",
+    scenarioId: "general",
+    contact: "leo.m@synthetic.example",
+    profile: "Middle school science teacher in Oakland who coaches a robotics club.",
+    intention: {
+      title: "Buy a used 3D printer for my robotics club",
+      aim: "Buy a working used 3D printer so my students can print robot parts.",
+      blocker: "New printers are over our budget.",
+      contributions: ["Up to $200", "Pickup anywhere in the East Bay"],
+      timing: "Before the spring competition in March",
+      topics: ["used 3D printer", "school robotics club"],
+      hardConstraints: [hard("Budget", "Up to $200"), hard("Location", "East Bay pickup")],
+      softConstraints: [soft("Model", "Any common hobby printer")],
+      privateConstraints: [],
+    },
+    shareableWithRequesters: ["Budget up to $200", "East Bay pickup", "For a school robotics club"],
+    notes: "relevant match for selling an idle 3D printer",
+  },
   {
     key: "mira-car-wash",
     displayName: "Mira K.",
