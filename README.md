@@ -10,7 +10,7 @@ Memory from AI tools → Understand intention → Discover opportunities + Match
 
 Built for [SearchHack: Build the next layer of AI search](https://luma.com/e13wf1bd), November 14, 2026. Our goal is to win by demonstrating a useful new way to search for people through the context their agents already understand.
 
-The [implementation plan](docs/implementation-plan.md) defines the three-person build, completion criteria, the Telem demonstration, the data model, and the evaluation. It refines the initial architecture below with two search rounds that shape member matching and a public next step.
+The [implementation plan](docs/implementation-plan.md) defines the three-person build, completion criteria, the Telem demonstration, the data model, and the evaluation. The LLM plans possible solutions. Telem retrieves public evidence, and our matching system searches approved member intentions. Further searches answer specific unresolved questions.
 
 ## The idea
 
@@ -101,7 +101,7 @@ Telem AI is a core dependency of the proposed public discovery path. Its [offici
 
 For each approved intention, the agent should:
 
-1. **Plan searches for ways forward.** Translate a blocker into relevant services, listings, projects, communities, or collaboration requests, rather than simply repeating the user's words.
+1. **Let the LLM plan ways forward.** Infer possible solutions and relevant capabilities from the intention. These are hypotheses. Generating them does not require a web search.
 2. **Search through Telem.** Use `POST /v1/search` with automatic routing or an explicit provider selection to find public evidence of relevant work and requests.
 3. **Read promising sources.** Use `POST /v1/fetch` to inspect the actual pages for the stated need, contribution, dates, and contact or participation route.
 4. **Rank with evidence.** Combine these public opportunities with approved network matches, clearly distinguish their origins, and cite the supporting sources. Public content does not establish someone's current willingness to connect.
@@ -109,7 +109,13 @@ For each approved intention, the agent should:
 
 For example, a poet's intention could lead Telem searches toward composers explicitly seeking lyrics or community songwriting projects. A public request can provide a useful next step even before another person joins our network. This is a hypothesis to validate through real search results.
 
-The demo must show a connection opportunity found through Telem, the fetched evidence that supports it, and why it was selected over near misses. Record queries, selected providers when returned, sources, latency, failures, and usage information when available. Compare network-only retrieval with network plus Telem to measure what public discovery adds.
+The demo must show useful public evidence retrieved through Telem and how that evidence affected a recommendation. Record queries, selected providers when returned, sources, latency, failures, and usage information when available. Compare LLM planning and member matching alone with the evidence-enriched pipeline to measure what public discovery adds. A second search is optional and must answer a specific unresolved question. An introduction can already be a complete outcome.
+
+### Discovery pools
+
+Telem searches the public web for projects, communities, listings, open requests, resources, and events. Convex searches the approved intentions of participating members. The requester's selected memory supplies private planning context. Other people's private context stays within their permitted counterpart checks.
+
+The intention determines search terms and constraints. Demo scenarios supply example inputs and synthetic members. They do not define a whitelist of public destinations or a separate production search pool. The runtime must accept a new intention without requiring a scenario template.
 
 Only a user-approved search brief may leave the application. Keep raw memory, private excerpts, and identifying details out of external queries unless explicitly approved. A public result remains a public lead until that person joins and approves an intention; search cannot expose their private agent context.
 
@@ -136,10 +142,10 @@ Selected memory
     → intention extraction
     → user review and sharing approval
     → approved intention index + approved external search brief
-    → Telem search and fetch to discover relevant approaches and counterpart roles
-    → member retrieval using intentions and source-backed roles
+    → LLM solution hypotheses and capability requirements
+    → Telem public search and fetch + approved member retrieval
     → requester and counterpart compatibility checks
-    → second Telem search and fetch for a public next step
+    → optional targeted search for an unresolved question
     → evidence checks and option ranking
     → evidence-backed comparison and user choice
     → published participation route OR introduction request and mutual acceptance
@@ -185,7 +191,7 @@ For each scenario:
 5. Compare against keyword search and profile similarity on the same dataset; measure rather than assume an improvement.
 6. For a network match, finish with an introduction request and a clearly labeled simulation of mutual acceptance. For a public result, show its published participation route and the limits of what has been verified.
 
-The demo should answer how Telem changed the proposed connection and what the people could do together next.
+The demo should show what the LLM inferred, what Telem established from public sources, and why a proposed option fits. A shared public activity is useful when it advances the intention. It is not required for every connection.
 
 ## What would make this competitive?
 
@@ -221,4 +227,4 @@ These are product requirements for implementation, not claims about protections 
 
 ## Project status
 
-Initial concept and hackathon plan. This repository currently contains this README; no application, AI-tool integration, search index, or agent protocol has been implemented yet. Setup instructions and demo results will be added as the working prototype takes shape.
+Implementation is in progress. The implementation plan describes target behavior. Setup instructions and measured demo results will be added as the working prototype takes shape.

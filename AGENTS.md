@@ -6,6 +6,6 @@ Apply the pstack unslop skill to documentation, implementation notes, and user-f
 
 The accepted stack is Next.js, TypeScript, Convex, and Telem AI. OpenAI is the recommended model provider. The first build uses live public search, synthetic members, and labeled simulated acceptance. See docs/implementation-plan.md for the detailed plan and teammate responsibilities.
 
-Keep the product general across personal, professional, creative, and community intentions. Travel and housing are examples only. Telem must contribute to finding a useful connection, with visible source evidence and query provenance.
+Keep the product general across personal, professional, creative, and community intentions. Travel and housing are examples only. The LLM proposes solutions and counterpart capabilities. Telem retrieves public evidence. Convex searches approved member intentions. Follow-up searches require a specific unresolved question. Do not require two search rounds or a shared public activity for every match. Demo scenarios must not restrict runtime search pools.
 
 Keep live, cached, and replay behavior distinct. Label synthetic members and simulated actions. Never replace an unavailable public result with invented evidence.

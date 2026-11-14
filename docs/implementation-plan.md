@@ -1,16 +1,24 @@
 # Implementation plan
 
-This plan covers a complete demonstration built by three contributors. The target includes live Telem discovery, synthetic members, private compatibility checks, replay, and measured results. Completion depends on demonstrated behavior and evidence. No application code exists yet.
+This plan covers a complete demonstration built by three contributors. The target includes live Telem discovery, synthetic members, private compatibility checks, replay, and measured results. Completion depends on demonstrated behavior and evidence. This document describes the target behavior rather than claiming that every component already works.
 
 ## Product decision
 
 Search Agent turns approved personal context into an intention, finds ways to act on it, and connects people who could help each other.
 
-Telem changes which connections the agent proposes. Its first search round finds relevant work, approaches, and counterpart roles. Member retrieval uses those findings. A second search round finds a public opportunity that compatible people could pursue together.
+The LLM interprets the intention and proposes possible solutions, counterpart roles, and capability requirements. These hypotheses do not require web search. Telem retrieves current public evidence that helps evaluate the hypotheses. Our matching system searches approved member intentions.
+
+Public discovery and member retrieval can run concurrently. Fetched evidence may change a recommendation or suggest a new capability to search for. The coordinator runs a follow-up search only when it can answer a specific unresolved question. It does not require two Telem rounds or a shared public activity for every match.
 
 The results include public opportunities, member connections, and combined options. A combined option explains who could work together, what they could do, and which public source supports the proposed next step. A public source never establishes a person's willingness to participate.
 
-The product stays general. A scenario changes the context and data, not the screens, intention schema, or pipeline.
+The product stays general. A scenario changes the context and test data, not the screens, intention schema, or runtime search pools.
+
+## Discovery pools
+
+Telem searches the public web for relevant projects, services, listings, open requests, resources, communities, and events. Our Convex index contains intentions that participating members approved for the selected audience. The requester's selected memory provides private planning context. A counterpart's private context is available only to that counterpart's permitted check.
+
+Generate queries from the intention, solution hypotheses, and approved constraints. A scenario ID selects a demo fixture or evaluation case. It must not select a closed list of public opportunities or restrict which topics the runtime can handle. A newly typed intention uses the same pipeline without a scenario template.
 
 ## Decisions already made
 
@@ -28,9 +36,9 @@ The product stays general. A scenario changes the context and data, not the scre
 
 Dana has written poems and wants to turn one into a song. She has no composition experience, wants an evening collaboration, and states her budget and preferred format. Separate approved context says she wants to perform something she helped create.
 
-Telem finds public approaches to that goal. The agent cites the sources that suggest a composer, co-writer, songwriting group, or another relevant role. These roles expand the member search. A synthetic composer has an approved intention to find a lyric collaborator and compatible working preferences.
+The LLM proposes a composer, co-writer, songwriting group, or another relevant role. Telem searches for actual collaboration requests and public offerings. Member retrieval searches approved contributions and intentions. A synthetic composer has an approved intention to find a lyric collaborator and compatible working preferences.
 
-The agents check the match from both sides. Telem's second round looks for a public workshop, open collaboration, or performance opportunity relevant to their shared goal. The final result compares an existing public option, a member connection, and a combined option where the evidence supports one.
+The agents check the match from both sides. The result can include a public offering, a useful introduction, or a combined option. Run another Telem search if it can resolve a stated question, such as whether a promising public project accepts their contribution. Do not add a venue or event merely to create another search round.
 
 The demonstration includes a candidate with the right interests but no relevant intention, a candidate with a conflicting hard constraint, and a plausible option with a missing fact. Those cases prove different behavior. A missing fact remains unknown.
 
@@ -45,7 +53,7 @@ The crosswalk scenario demonstrates shared intentions across several people. Mat
 1. **Bring context.** Paste selected text or load a synthetic example. Explain that the selected text goes to the model for extraction. Allow direct intention entry as well.
 2. **Review intentions.** Show the aim, blocker, contributions, timing, constraints, and supporting excerpts. Allow edits, hiding, and approval. Ask at most two questions about missing information that affects discovery.
 3. **Review external sharing.** Show the exact initial queries and the approved public search brief. Explain what later topic-based query expansion may use. Keep names, contact information, and private excerpts out of that brief.
-4. **Follow discovery.** Show Telem queries, returned providers, results, fetch outcomes, and stage timing. Show the roles suggested by the sources and which role changed the member search. Display concise decisions and tool events, not hidden model reasoning.
+4. **Follow discovery.** Show the LLM's solution hypotheses separately from Telem queries, returned providers, fetched evidence, and stage timing. Explain which evidence changed a recommendation. When a follow-up search runs, show its unresolved question and expected effect on the decision. Display concise decisions and tool events, not hidden model reasoning.
 5. **Explore ways forward.** Use one list with public, member, and combined labels. Show why each option fits, its supporting evidence, and unresolved conditions. Keep rejected candidates under a separate explanation.
 6. **Compare options.** Compare selected options against the same constraints. Use meets, conflicts, and unknown. Do not invent compatibility percentages.
 7. **Request an introduction.** Show exactly what the requester will share. Run the counterpart check under its own data permissions. Show a simulated human acceptance step, then reveal synthetic contact details only after both sides accept. A counterpart view shows what that side received.
@@ -53,22 +61,22 @@ The crosswalk scenario demonstrates shared intentions across several people. Mat
 
 ## Pipeline and permissions
 
-The initial external search brief requires user approval. Any later query may use only fields approved for external sharing. A network-only contribution does not become public because a second search round needs it.
+The initial external search brief requires user approval. Any later query may use only fields approved for external sharing. A network-only contribution does not become public because a follow-up search needs it.
 
 1. Extract an intention and evidence references from the selected context.
 2. Save a revision when the user approves the intention and external brief.
 3. Start a discovery run tied to that revision, brief, prompt version, and model configuration.
-4. Run Telem round one with several public queries. Preserve provider provenance and deduplicate URLs without dropping attribution.
-5. Fetch promising sources. Derive counterpart roles and evidence-backed approaches. Label roles based only on snippets as provisional.
-6. Retrieve member intentions using the original aim, desired contributions, and web-derived roles. Search contributions against needs in both directions where relevant. Recheck approval and audience after retrieval.
+4. Use the LLM to propose solution hypotheses, counterpart capabilities, and a public query plan. Distinguish inferred roles from facts later found in sources.
+5. Run Telem public discovery and approved member retrieval concurrently. Retrieve members using the aim, desired contributions, and inferred capabilities. Search contributions against needs in both directions where relevant. Recheck approval and audience after retrieval.
+6. Fetch promising sources. Preserve provider provenance, deduplicate URLs without dropping attribution, and attach evidence to public claims. If a source reveals a relevant new capability, record why the member query should change before retrieving again.
 7. Check shortlisted candidates from the requester side. The check sees only network-approved candidate fields.
 8. Run separate counterpart checks for up to three candidates. Each check can use that synthetic member's private constraints. Return compatible, needs input, or decline. Return only questions and details that the member permits sharing.
-9. Plan Telem round two using externally approved shared topics. Find a public next step for the selected pair. Do not put the candidate's identity or network-only context in the query.
-10. Fetch promising round-two sources and extract cited conditions.
+9. Decide whether further public evidence can resolve a material uncertainty. Record the question and which recommendation it could change. Skip the follow-up if the existing public option or member introduction is already sufficient.
+10. When justified, run the targeted follow-up and fetch relevant pages using externally approved topics. Do not put a candidate's identity or network-only context in the query. A combined option requires a useful relationship between the public resource and member contribution, not an arbitrary shared venue.
 11. Validate evidence references and check constraints. Produce public, member, and combined options when supported.
 12. Let the user choose a published participation route or request an introduction.
 
-Each stage persists its output before the next stage starts. Independent counterpart checks and page reads can run concurrently. An event records the stage, status, duration, and error when present.
+Each stage persists its output before dependent work starts. Independent public discovery, member retrieval, counterpart checks, and page reads can run concurrently. An event records the stage, status, duration, and error when present.
 
 Raw context can reach the selected model for the owner's extraction step. It never reaches Telem or another member's check. This distinction must be explicit in the interface. Do not claim that all memory stays on the device.
 
@@ -90,11 +98,11 @@ Use fit categories such as strong fit, possible fit, and not a fit. Keep vector 
 
 ## Telem features the demo must make visible
 
-- Query planning across different ways to fulfill one intention.
+- Public evidence that helps evaluate the LLM's proposed ways to fulfill an intention.
 - Automatic provider routing and provider attribution from the actual response. If routing is unavailable, show that outcome.
 - Results from multiple providers in a shared result format, with URL deduplication and retained provenance.
 - Page fetching that confirms, contradicts, or fails to establish a condition from a search result.
-- A second search whose purpose follows from the proposed connection.
+- A targeted follow-up search when a stated uncertainty warrants one. A run without a follow-up is valid.
 - A trace linking each recommendation to a query, a source, and an extracted condition.
 - Partial results when a provider or page fails.
 
@@ -145,7 +153,7 @@ Keep these conceptual records. Several small records may share a table if the re
 - Search briefs contain the externally approved fields, initial queries, permitted query expansion, and approval revision.
 - Runs contain their input references, live or replay mode, stage state, errors, and budget use.
 - Tool events contain Telem requests, response references, provider provenance, duration, timestamps, and failures. Model-call metadata points to Agent component records rather than duplicating a message store.
-- Counterpart roles contain the capability, rationale, source references, and whether fetched text supports the role.
+- Solution hypotheses and counterpart roles contain the capability, rationale, origin, and any supporting public references. Origin distinguishes LLM inference from observed public evidence.
 - Web opportunities contain source URLs, fetch results, cited conditions, and published participation routes.
 - Member candidates contain retrieval methods, diagnostic similarity, and permission-safe compatibility outcomes.
 - Options contain source type, supporting record references, constraint results, fit category, unresolved questions, and a next step.
@@ -156,7 +164,7 @@ Store large responses through Convex storage when necessary. Keep secrets out of
 
 ## Run states and introduction states
 
-Run stages are created, web round one, role extraction, member retrieval, compatibility checks, web round two, evidence verification, ranking, and complete. Track running, succeeded, partial, failed, or cancelled separately from the stage name.
+Run stages are created, solution planning, discovery, compatibility checks, follow-up decision, evidence verification, ranking, and complete. Discovery tracks public search and member retrieval as separate branches. An optional follow-up has its own question and status, including skipped. Track running, succeeded, partial, failed, or cancelled separately from the stage name.
 
 An introduction moves through drafted, requester approved, counterpart checked, pending acceptance, and accepted or declined. Contact disclosure requires both acceptance fields. Repeating a request must not create duplicate introductions.
 
@@ -164,9 +172,9 @@ Do not implement an open-ended negotiation loop. The two checks and human respon
 
 ## Calls, deadlines, and replay
 
-The initial budget allows two Telem search rounds and eight fetched pages across two fetch batches. Round one allows six queries. Round two allows four. These are application budgets, not promises about provider cost or latency.
+The initial budget allows an initial Telem search and one optional follow-up, with eight fetched pages across two fetch batches. The initial search allows six queries. The follow-up allows four. These are ceilings, not required call counts or promises about provider cost or latency. An unresolved question must justify each follow-up query.
 
-The model tasks are extraction, initial search planning, role derivation, batched requester checks, up to three isolated counterpart checks, second-round planning, two batches of source-fact extraction, final ranking, and an introduction draft. That is at most 12 task calls before one bounded retry. Batch seed embeddings, then batch the query embeddings for each run.
+The model tasks are extraction, solution and search planning, batched requester checks, up to three isolated counterpart checks, two batches of source-fact extraction, optional follow-up planning, final ranking, and an introduction draft. Allow at most 12 task calls before one bounded retry. Skip tasks that the run does not need. Batch seed embeddings, then batch the query embeddings for each run.
 
 Use configurable per-call timeouts and a whole-run deadline. Measure the first complete run before fixing the demo deadline. Show partial results as soon as a stage has useful output. Never let retries consume the remaining run budget without a visible status change.
 
@@ -186,15 +194,15 @@ Contributor A builds the context and intention screens against the agreed fixtur
 
 ### Integrate the first real results
 
-Contributor A builds the trace and result screens. Contributor B connects extraction, approval, round one, source reads, and stage events. Contributor C implements embedding facets, vector retrieval, and the keyword baseline.
+Contributor A builds the trace and result screens. Contributor B connects extraction, solution planning, approval, public discovery, source reads, and stage events. Contributor C implements embedding facets, vector retrieval, and the keyword baseline.
 
 Complete this stage when the interface shows a live public result and a retrieved synthetic member for the same approved intention. Final ranking follows in the next stage.
 
 ### Complete the combined option and introduction
 
-Contributor A adds comparison, introduction controls, and the counterpart view. Contributor B connects second-round discovery and replay storage. Contributor C adds the separate compatibility checks, quote validation, and ranked options.
+Contributor A adds comparison, introduction controls, and the counterpart view. Contributor B connects the conditional follow-up decision, targeted discovery, and replay storage. Contributor C adds the separate compatibility checks, quote validation, and ranked options.
 
-Complete the lead story through a combined option and simulated mutual acceptance. Exercise a real hard conflict and an unknown condition in the same flow.
+Demonstrate a supported combined option and simulated mutual acceptance. Also demonstrate a run where a useful introduction completes the intention without a second public search. Exercise a real hard conflict and an unknown condition in the same flow.
 
 ### Prove the same engine across different intentions
 
@@ -214,7 +222,9 @@ These stages preserve the full discovery and matching scope. If a stage fails it
 
 Use 12 labeled scenarios across the creative, technical, and civic examples. Include relevant matches, misleading interests, hard conflicts, unknown conditions, and no-match cases. Use the same synthetic dataset for every matching method.
 
-Compare keyword retrieval, whole-profile embeddings, intention-field embeddings, and intention fields plus web-derived roles. Then evaluate the full constrained ranking. Report how often a useful member appears in the first three results and whether hard conflicts survive into recommendations.
+Compare keyword retrieval, whole-profile embeddings, and intention-field embeddings with LLM-inferred counterpart capabilities. Then compare LLM planning and member matching alone with the full evidence-enriched pipeline. Assess the correctness and usefulness of the resulting options, not only member retrieval. Report how often a useful member appears in the first three results and whether hard conflicts survive into recommendations.
+
+Test a newly typed intention without a scenario template. Verify that the public query planner searches the general web and that member discovery uses the approved network pool. Include both justified follow-up and skipped-follow-up cases.
 
 Measure quote existence separately from whether the source supports the claim. Have a contributor review the highest-ranked web options and disclose the sample size and labeling method. A negative or unchanged result is still a result.
 
@@ -222,7 +232,7 @@ Record Telem provider attribution, duplicate results, fetch outcomes, query coun
 
 Complete the build only after type checking, a Convex deploy check, and an end-to-end live run pass. Test the acceptance state machine and permission projections with fixtures. Verify the eight screens at desktop and narrow widths during the implementation's browser testing.
 
-The finished demonstration must show how Telem changed a proposed connection, where a fetched source ruled an option out, what the counterpart learned, and which action the user chose.
+The finished demonstration must separate what the LLM inferred from what public evidence supports. Show where a fetched source changed or ruled out an option, what the counterpart learned, and which action the user chose. Do not force a shared event or second search when an introduction is already useful.
 
 ## Startup case
 
