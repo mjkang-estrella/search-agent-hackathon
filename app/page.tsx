@@ -190,7 +190,7 @@ export default function Home() {
                 {memory && memory.intentions.length === 0 ? <Quiet>Nothing to act on here.</Quiet> : null}
               </Column>
 
-              <Column title="Ways to get there" ref={waysColumn} className="scroll-mt-4">
+              <Column title="People & opportunities" ref={waysColumn} className="scroll-mt-4">
                 {!intention ? null : intention.state === "failed" ? (
                   <Quiet>Search failed. Your agent can save this memory again.</Quiet>
                 ) : (
