@@ -1,33 +1,26 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { RelayMark } from "@/components/relay-mark";
 import { cn } from "@/lib/utils";
 
-export function TopBar({ children }: { children?: ReactNode }) {
+/** The one header every page shares: the Relay mark on the left, account controls on the right. */
+export function SiteHeader({ children }: { children?: ReactNode }) {
   return (
-    <header className="sticky top-0 z-20 flex h-[52px] items-center justify-between gap-4 bg-[var(--airmail)] px-4 text-white sm:px-6">
-      <Link href="/" className="flex items-center gap-2.5 text-[17px] font-extrabold tracking-[-0.01em]">
-        <span aria-hidden className="size-2.5 rounded-full bg-[var(--airmail-red)] ring-[3px] ring-white/20" />
-        Wayfinder
+    <header className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-5 pt-6 pb-2">
+      <Link href="/" className="flex shrink-0 items-center gap-2 text-[20px] font-extrabold tracking-[-0.02em] text-[var(--airmail)]">
+        <RelayMark className="size-7" />
+        Relay
       </Link>
-      <nav className="flex items-center gap-4 text-[13px] font-semibold text-[var(--airmail-ink)]">{children}</nav>
+      {children ? <span className="flex min-w-0 items-center gap-2">{children}</span> : null}
     </header>
   );
 }
 
 export function Panel({ className, children, ...rest }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <section className={cn("rounded-lg border border-border bg-card shadow-[0_1px_2px_rgba(24,32,47,0.05)]", className)} {...rest}>
+    <section className={cn("rounded-2xl bg-card shadow-sm", className)} {...rest}>
       {children}
     </section>
-  );
-}
-
-export function SectionLabel({ children, aside, className }: { children: ReactNode; aside?: ReactNode; className?: string }) {
-  return (
-    <h3 className={cn("mb-2 flex items-center justify-between gap-3 text-[10.5px] font-bold tracking-[0.12em] text-muted-foreground uppercase", className)}>
-      <span>{children}</span>
-      {aside ? <span className="text-xs font-semibold tracking-normal text-[var(--airmail)] normal-case">{aside}</span> : null}
-    </h3>
   );
 }
 

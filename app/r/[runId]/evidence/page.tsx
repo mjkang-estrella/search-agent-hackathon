@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { ExternalLink, RotateCcw } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import { Panel } from "@/components/shell";
-import { ResultStamp, Postmark } from "@/components/stamps";
+import { Postmark, UnknownTag } from "@/components/stamps";
 import { EvaluationPanel } from "@/components/evaluation-panel";
 import { useSessionId } from "@/components/providers";
 import { useRun } from "@/components/run-context";
@@ -53,7 +53,7 @@ export default function EvidenceAndEvaluation() {
               {new Date(r.startedAt).toLocaleDateString()} {clockTime(r.startedAt)}
             </dd>
             <dt className="text-muted-foreground">Duration</dt>
-            <dd>{seconds((r.completedAt ?? Date.now()) - r.startedAt)}</dd>
+            <dd>{r.completedAt ? seconds(r.completedAt - r.startedAt) : "Still running"}</dd>
             <dt className="text-muted-foreground">Model</dt>
             <dd>{r.model}</dd>
             <dt className="text-muted-foreground">Embeddings</dt>
@@ -67,7 +67,7 @@ export default function EvidenceAndEvaluation() {
             <dt className="text-muted-foreground">Telem calls</dt>
             <dd className="break-all text-xs">{interactionIds.length ? interactionIds.join(", ") : "None"}</dd>
           </dl>
-          <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-4">
+          <div className="mt-4 flex flex-wrap gap-2 border-t border-[var(--line)] pt-4">
             {canReplay ? (
               <Button variant="outline" disabled={busy} onClick={replay}>
                 <RotateCcw data-icon="inline-start" /> Replay this run
@@ -78,7 +78,7 @@ export default function EvidenceAndEvaluation() {
         </Panel>
 
         <Panel className="min-w-0">
-          <div className="border-b border-border px-5 py-3">
+          <div className="border-b border-[var(--line)] px-5 py-3">
             <h2 className="text-[15px] font-bold">Public conditions and their quotes</h2>
             <p className="text-[12.5px] text-muted-foreground">Confirmed means the quote occurs in the fetched page after whitespace normalization. It does not prove the page is right.</p>
           </div>
@@ -87,10 +87,10 @@ export default function EvidenceAndEvaluation() {
           ) : (
             <ul>
               {view.opportunities.map((o) => (
-                <li key={o._id} className="border-b border-border px-5 py-3 last:border-b-0">
+                <li key={o._id} className="border-b border-[var(--line)] px-5 py-3 last:border-b-0">
                   <div className="mb-1.5 flex flex-wrap items-center justify-between gap-2">
                     <a href={o.url} target="_blank" rel="noreferrer" className="font-semibold text-[var(--airmail)] hover:underline">
-                      {o.title} <ExternalLink className="inline size-3.5" />
+                      {o.title} <ExternalLink aria-hidden className="inline size-3.5" />
                     </a>
                     <span className="text-xs text-muted-foreground">
                       {o.round === "followup" ? "Follow-up search" : "Initial search"} · {o.fetched ? "page read" : "page not read, unverified lead"}
@@ -105,11 +105,11 @@ export default function EvidenceAndEvaluation() {
                           {c.quote ? <q className="block text-muted-foreground">{c.quote}</q> : null}
                         </span>
                         {c.status === "confirmed" ? (
-                          <span className="text-[10.5px] font-extrabold tracking-[0.1em] text-[var(--airmail)] uppercase">Quote found</span>
+                          <span className="inline-flex h-5 items-center rounded-full bg-[var(--airmail-tint)] px-2 text-[11px] font-bold whitespace-nowrap text-[var(--airmail)]">Quote found</span>
                         ) : c.status === "unknown" ? (
-                          <ResultStamp result="unknown" className="min-w-0" />
+                          <UnknownTag />
                         ) : (
-                          <span className="text-[10.5px] font-extrabold tracking-[0.1em] text-[var(--kraft-ink)] uppercase">Unverified</span>
+                          <span className="inline-flex h-5 items-center rounded-full bg-[var(--chip)] px-2 text-[11px] font-bold whitespace-nowrap text-[var(--ink-muted)]">Unverified</span>
                         )}
                       </li>
                     ))}
@@ -122,7 +122,7 @@ export default function EvidenceAndEvaluation() {
       </div>
 
       <Panel className="min-w-0">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] px-5 py-3">
           <div>
             <h2 className="text-[15px] font-bold">Sources from Telem</h2>
             <p className="text-[12.5px] text-muted-foreground">
@@ -134,7 +134,7 @@ export default function EvidenceAndEvaluation() {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[820px] text-[12.5px]">
             <thead>
-              <tr className="border-b border-border text-left text-[10.5px] tracking-[0.1em] text-muted-foreground uppercase">
+              <tr className="border-b border-[var(--line)] text-left text-[12px] text-muted-foreground">
                 <th className="px-5 py-2 font-bold">Source</th>
                 <th className="px-3 py-2 font-bold">Providers</th>
                 <th className="px-3 py-2 font-bold">Queries</th>
@@ -146,7 +146,7 @@ export default function EvidenceAndEvaluation() {
                 const providers = [...new Set(s.hits.map((h) => h.provider))];
                 const queries = new Set(s.hits.map((h) => h.query)).size;
                 return (
-                  <tr key={s._id} className="border-b border-dashed border-border last:border-b-0">
+                  <tr key={s._id} className="border-b border-[var(--line)] last:border-b-0">
                     <td className="max-w-[420px] px-5 py-1.5">
                       <a href={s.url} target="_blank" rel="noreferrer" className="block truncate font-semibold hover:text-[var(--airmail)]">
                         {s.title || hostOf(s.url)}

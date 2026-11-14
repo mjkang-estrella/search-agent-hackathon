@@ -37,7 +37,7 @@ export function EvaluationPanel() {
       <Panel className="p-5">
         <h2 className="mb-1 text-[15px] font-bold">Evaluation</h2>
         <p className="text-[13.5px] text-muted-foreground">
-          No results stored yet. Run <code className="rounded bg-[var(--soft)] px-1">npx tsx scripts/evaluate.ts</code> to compare the methods on {cases.length} labeled cases.
+          No results stored yet. Run <code className="rounded bg-[var(--chip)] px-1">npx tsx scripts/evaluate.ts</code> to compare the methods on {cases.length} labeled cases.
         </p>
       </Panel>
     );
@@ -52,7 +52,7 @@ export function EvaluationPanel() {
 
   return (
     <Panel>
-      <div className="border-b border-border px-5 py-3">
+      <div className="border-b border-[var(--line)] px-5 py-3">
         <h2 className="text-[15px] font-bold">Evaluation on {cases.length} labeled cases</h2>
         <p className="text-[12.5px] text-muted-foreground">
           Dataset {results.datasetVersion} · {results.createdAt ? `measured ${ago(results.createdAt)}` : ""} · labels written with the synthetic fixtures and not yet reviewed by a person. Live web results change between runs.
@@ -61,7 +61,7 @@ export function EvaluationPanel() {
       <div className="overflow-x-auto px-5 py-3">
         <table className="w-full min-w-[620px] text-[13px]">
           <thead>
-            <tr className="border-b border-border text-left text-[10.5px] tracking-[0.1em] text-muted-foreground uppercase">
+            <tr className="border-b border-[var(--line)] text-left text-[12px] text-muted-foreground">
               <th className="py-2 font-bold">Method</th>
               <th className="py-2 font-bold">Useful member in top 3</th>
               <th className="py-2 font-bold">Hard conflicts</th>
@@ -73,7 +73,7 @@ export function EvaluationPanel() {
               const obs = rows as { caseId: string; observation: RetrievalObs }[];
               const hits = obs.filter((r) => relevantCases.has(r.caseId) && r.observation.relevantInTop3.length).length;
               return (
-                <tr key={m} className="border-b border-dashed border-border">
+                <tr key={m} className="border-b border-[var(--line)]">
                   <td className="py-2">{METHOD_LABEL[m] ?? m} <span className="text-xs text-muted-foreground">· retrieval only</span></td>
                   <td className="py-2 font-semibold tabular-nums">{pct(hits, relevantCases.size)}</td>
                   <td className="py-2 tabular-nums">{obs.reduce((n, r) => n + r.observation.hardConflictsInTop3.length, 0)} in top 3</td>
@@ -85,7 +85,7 @@ export function EvaluationPanel() {
               const obs = rows as { caseId: string; observation: PipelineObs }[];
               const rel = obs.filter((r) => r.observation.usefulMemberInTop3 !== null);
               return (
-                <tr key={m} className="border-b border-dashed border-border last:border-b-0">
+                <tr key={m} className="border-b border-[var(--line)] last:border-b-0">
                   <td className="py-2 font-semibold">{METHOD_LABEL[m] ?? m}</td>
                   <td className="py-2 font-semibold tabular-nums">{pct(rel.filter((r) => r.observation.usefulMemberInTop3).length, rel.length)}</td>
                   <td className="py-2 tabular-nums">{obs.reduce((n, r) => n + r.observation.hardConflictSurvived.length, 0)} recommended</td>
@@ -98,11 +98,11 @@ export function EvaluationPanel() {
         <p className="mt-2 text-xs text-muted-foreground">Retrieval ranks members before any constraint check, so hard conflicts are expected there. The pipeline rows count what reached a recommendation.</p>
       </div>
       {full.length ? (
-        <div className="overflow-x-auto border-t border-border px-5 py-3">
+        <div className="overflow-x-auto border-t border-[var(--line)] px-5 py-3">
           <h3 className="mb-2 text-[13px] font-bold">What public evidence added, per case</h3>
           <table className="w-full min-w-[720px] text-[12.5px]">
             <thead>
-              <tr className="border-b border-border text-left text-[10.5px] tracking-[0.1em] text-muted-foreground uppercase">
+              <tr className="border-b border-[var(--line)] text-left text-[12px] text-muted-foreground">
                 <th className="py-1.5 font-bold">Case</th>
                 <th className="py-1.5 font-bold">Public or combined options</th>
                 <th className="py-1.5 font-bold">Conditions confirmed / unverified / unknown</th>
@@ -112,7 +112,7 @@ export function EvaluationPanel() {
             </thead>
             <tbody>
               {full.map((r) => (
-                <tr key={r.caseId} className="border-b border-dashed border-border last:border-b-0">
+                <tr key={r.caseId} className="border-b border-[var(--line)] last:border-b-0">
                   <td className="py-1.5">{r.caseId}</td>
                   <td className="py-1.5 tabular-nums">{r.observation.publicOptionsRecommended}</td>
                   <td className="py-1.5 tabular-nums">

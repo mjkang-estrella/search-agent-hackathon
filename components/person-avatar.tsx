@@ -15,7 +15,7 @@ function Portrait({ src, name, sample, large }: { src: string | null; name: stri
   return (
     <span
       title={sample ? `AI-generated portrait for ${name}, a fictional sample member` : name}
-      className={cn("relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e7ecf5] text-[var(--airmail)]", large ? "size-14" : "size-11")}
+      className={cn("relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[var(--tint)] text-[var(--airmail)]", large ? "size-14" : "size-11")}
     >
       {src && !failed ? (
         <Image src={src} alt="" width={pixels} height={pixels} sizes={`${pixels}px`} unoptimized={!src.startsWith("/")} className="size-full object-cover" onError={() => setFailed(true)} />

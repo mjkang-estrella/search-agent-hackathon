@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowRight, Check, ChevronDown, CircleAlert, CircleDashed, Loader2, Minus } from "lucide-react";
 import { Panel } from "@/components/shell";
-import { Postmark, SyntheticTag } from "@/components/stamps";
+import { Postmark, SampleTag } from "@/components/stamps";
 import { useRun, type RunView } from "@/components/run-context";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -46,9 +46,11 @@ export default function FollowDiscovery() {
   const excluded = view.candidates.filter((c) => c.status === "rejected");
   const conditions = view.opportunities.flatMap((o) => o.conditions);
   const quotesFound = conditions.filter((c) => c.status === "confirmed").length;
-  const ways = view.options.filter((o) => !o.excluded).length;
+  const ways = countWays(view);
+  const found = ways + view.publicPosts;
   const running = run.status === "running";
-  const noWays = !running && ways === 0;
+  const noWays = !running && found === 0;
+  const back = view.intention?.memoryId ? `/?m=${view.intention.memoryId}&i=${view.intention._id}` : "/";
 
   const fu = run.followUp;
   const followUpText = fu.status === "skipped" ? "Not needed" : fu.status === "running" ? "Searching again" : fu.status === "succeeded" ? "Searched once more" : fu.status === "failed" ? "Failed" : "Waiting";
@@ -86,7 +88,7 @@ export default function FollowDiscovery() {
               <DetailLabel>Providers</DetailLabel>
               <div className="flex flex-wrap items-center gap-1.5">
                 {shownProviders.map(([p, n]) => (
-                  <span key={p} className="rounded border border-border bg-white px-1.5 py-0.5 text-[11.5px]">
+                  <span key={p} className="rounded-full bg-[var(--chip)] px-2 py-0.5 text-[11.5px]">
                     <b className="font-semibold">{p}</b> {n}
                   </span>
                 ))}
@@ -131,7 +133,7 @@ export default function FollowDiscovery() {
               <li key={c._id} className="flex items-center justify-between gap-3 text-[13px]">
                 <span className="flex min-w-0 items-center gap-1.5">
                   <span className="truncate font-semibold">{c.member.displayName}</span>
-                  <SyntheticTag>Sample</SyntheticTag>
+                  <SampleTag />
                 </span>
                 <CandidateStatus status={c.status} outcome={c.counterpart?.outcome} />
               </li>
@@ -167,29 +169,46 @@ export default function FollowDiscovery() {
 
       <div
         className={cn(
-          "flex flex-wrap items-center justify-between gap-3 rounded-lg px-5 py-4",
+          "flex flex-wrap items-center justify-between gap-3 rounded-3xl px-6 py-5",
           running || noWays ? "border border-dashed border-border bg-card" : "bg-[var(--airmail)] text-white",
         )}
       >
         <div>
-          <p className="text-[15px] font-bold">{running ? "Finding ways…" : noWays ? "No ways found" : `${ways} ${ways === 1 ? "way" : "ways"} forward`}</p>
+          {/* Same total as the count on the board's intention tile: ways forward plus public posts. */}
+          <p className="text-[17px] font-bold">{running ? "Finding ways…" : noWays ? "Nothing found" : `${found} found`}</p>
+          {!running && !noWays ? (
+            <p className="mt-0.5 text-[13px] text-[var(--on-airmail-muted)]">
+              {ways} {ways === 1 ? "way" : "ways"} forward · {view.publicPosts} public {view.publicPosts === 1 ? "post" : "posts"}
+            </p>
+          ) : null}
           {run.error ? <p className={cn("mt-0.5 text-[13px]", running || noWays ? "text-[var(--airmail-red)]" : "text-[var(--airmail-ink)]")}>{run.error}</p> : null}
         </div>
         {noWays ? null : <Link
-          href="/"
+          href={back}
           className={cn(
             buttonVariants({ size: "lg" }),
-            "h-10 px-4 font-bold",
+            "h-10 rounded-full px-4 font-bold",
             running ? "pointer-events-none opacity-50" : "bg-white text-[var(--airmail)] hover:bg-[var(--airmail-ink)]",
           )}
         >
-          See them <ArrowRight data-icon="inline-end" />
+          See them <ArrowRight aria-hidden data-icon="inline-end" />
         </Link>}
       </div>
 
       <RunLog events={events} />
     </div>
   );
+}
+
+/** Ways forward as the board lists them: each person once and each website once. */
+function countWays(view: RunView) {
+  const keys = view.options.filter((o) => !o.excluded).map((o) => {
+    const member = o.candidateId ? view.candidates.find((c) => c._id === o.candidateId)?.member.displayName : undefined;
+    if (member) return `member:${member}`;
+    const opp = o.opportunityId ? view.opportunities.find((x) => x._id === o.opportunityId) : undefined;
+    return opp ? `site:${hostOf(opp.url)}` : `option:${o._id}`;
+  });
+  return new Set(keys).size;
 }
 
 function useStageStatus(view: RunView) {
@@ -221,31 +240,37 @@ function Step({ status, title, summary, meta, badge, children }: { status: Statu
     <div className="flex items-start gap-3">
       <StatusDot status={status} />
       <div className="min-w-0 flex-1">
-        <p className="flex flex-wrap items-baseline gap-x-2 text-[11px] font-bold tracking-[0.1em] text-muted-foreground uppercase">
+        <p className="flex flex-wrap items-baseline gap-x-1.5 text-[12.5px] font-bold text-muted-foreground">
           {title}
-          {meta ? <span className="font-semibold tracking-normal normal-case">· {meta}</span> : null}
+          {meta ? <span className="font-medium">· {meta}</span> : null}
         </p>
-        <p className={cn("mt-0.5 text-[14.5px] leading-snug font-semibold text-balance", status === "pending" && "text-muted-foreground")}>{summary}</p>
+        <p className={cn("mt-0.5 text-[15px] leading-snug font-semibold text-balance", status === "pending" && "text-muted-foreground")}>{summary}</p>
       </div>
       {badge ? <span className="hidden shrink-0 sm:block">{badge}</span> : null}
       {children ? <ChevronDown aria-hidden className="mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" /> : null}
     </div>
   );
-  const box = cn("rounded-lg border bg-card", status === "active" ? "border-[var(--airmail)]" : status === "failed" ? "border-[var(--airmail-red)]" : "border-border");
+  const box = cn(status === "active" ? "ring-2 ring-[var(--airmail)]" : status === "failed" ? "ring-2 ring-[var(--airmail-red)]" : "");
   if (!children) return <Panel className={cn(box, "px-4 py-3")}>{head}</Panel>;
   return (
     <Panel className={box}>
       <details className="group">
-        <summary className="cursor-pointer list-none rounded-lg px-4 py-3 hover:bg-[var(--soft)] focus-visible:outline-2 focus-visible:outline-[var(--airmail)] [&::-webkit-details-marker]:hidden">
+        <summary className="cursor-pointer list-none rounded-2xl px-4 py-3 hover:bg-[var(--soft)] focus-visible:outline-2 focus-visible:outline-[var(--airmail-2)] [&::-webkit-details-marker]:hidden">
           {head}
         </summary>
-        <div className="grid gap-3 border-t border-border px-4 py-3">{children}</div>
+        <div className="grid gap-3 border-t border-[var(--line)] px-4 py-3">{children}</div>
       </details>
     </Panel>
   );
 }
 
+const STATUS_LABEL: Record<Status, string> = { done: "Done", active: "In progress", pending: "Not started", skipped: "Skipped", failed: "Failed", partial: "Partly done" };
+
 function StatusDot({ status }: { status: Status }) {
+  return <span role="img" aria-label={STATUS_LABEL[status]} className="contents"><StatusIcon status={status} /></span>;
+}
+
+function StatusIcon({ status }: { status: Status }) {
   const base = "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-[1.5px]";
   if (status === "done") return <span className={cn(base, "border-[var(--airmail)] bg-[var(--airmail)] text-white")}><Check className="size-3.5" /></span>;
   if (status === "active") return <span className={cn(base, "border-[var(--airmail)] text-[var(--airmail)]")}><Loader2 className="size-3.5 animate-spin" /></span>;
@@ -309,7 +334,7 @@ function Arrowhead({ on }: { on: boolean }) {
 }
 
 function DetailLabel({ children }: { children: ReactNode }) {
-  return <p className="mb-1 text-[10.5px] font-bold tracking-[0.12em] text-muted-foreground uppercase">{children}</p>;
+  return <p className="mb-1 text-[12px] font-bold text-muted-foreground">{children}</p>;
 }
 
 function DetailList({ label, items }: { label: string; items: string[] }) {
@@ -338,11 +363,11 @@ function DetailRow({ label, children }: { label: string; children: ReactNode }) 
 function RunLog({ events }: { events: Event[] }) {
   return (
     <details className="group mt-8 text-[13px]">
-      <summary className="flex cursor-pointer list-none items-center gap-1.5 font-semibold text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-10 cursor-pointer list-none items-center gap-1.5 font-semibold text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
         <ChevronDown aria-hidden className="size-4 transition-transform group-open:rotate-180" />
         Run log · {events.length}
       </summary>
-      <ol className="mt-2 max-h-[420px] overflow-auto rounded-lg border border-border bg-card px-4 py-2">
+      <ol className="mt-2 max-h-[420px] overflow-auto rounded-2xl bg-card px-4 py-2 shadow-sm">
         {events.map((e) => (
           <li key={e._id} className="grid grid-cols-[56px_minmax(0,1fr)_56px] items-start gap-3 border-b border-dashed border-border py-1.5 last:border-b-0">
             <span className="text-muted-foreground tabular-nums">{clockTime(e.at)}</span>

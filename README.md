@@ -1,4 +1,4 @@
-# Search Agent
+# Relay
 
 **Your agents know you best. Why can't you find someone you need by searching others' agents?**
 
@@ -227,7 +227,7 @@ These are product requirements for implementation, not claims about protections 
 
 ## Project status
 
-A first working version is live at https://wayfinder-woad.vercel.app. Wayfinder is a memory MCP server for personal agents such as Grok, Dot, or Muse. An agent saves memories with the `add_memory` tool, and Wayfinder turns each memory into intentions and starts looking on its own. Telem searches the public web and, through its social providers (X, TikTok, Reddit, Instagram, Facebook, LinkedIn), finds posts by people who have done what you need. Convex searches 51 sample member intentions, and both sides' agents check the fit. The best option becomes the "Idea for you." **Start with a demo persona** loads sample memories for one of four people:
+A first working version is live at https://wayfinder-woad.vercel.app. Relay is a memory MCP server for personal agents such as Grok, Dot, or Muse. An agent saves memories with the `add_memory` tool, and Relay turns each memory into intentions and starts looking on its own. Telem searches the public web and, through its social providers (X, TikTok, Reddit, Instagram, Facebook, LinkedIn), finds posts by people who have done what you need. Convex searches 51 sample member intentions, and both sides' agents check the fit. The best option becomes the "Idea for you." **Start with a demo persona** loads sample memories for one of four people:
 
 - **Dana (personal and creative).** Turn a poem into a song, plan a first trip to Seoul, build a bench.
 - **Jun (passing remarks).** "I like washing cars" becomes an offer to wash cars for neighbors who would pay. An idle 3D printer and unused Korean become offers too.

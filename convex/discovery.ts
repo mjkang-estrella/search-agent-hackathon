@@ -1,6 +1,7 @@
 // Run creation, stage progression, and client subscriptions.
 // The coordinator owns the stage order and calls bounded helpers. Each stage persists before dependents start.
 import { v } from "convex/values";
+import { z } from "zod";
 import { internalAction, internalMutation, internalQuery, mutation, query, type MutationCtx } from "./_generated/server";
 import { internal } from "./_generated/api";
 import type { ActionCtx } from "./_generated/server";
@@ -142,6 +143,8 @@ export const getDiscovery = query({
       ctx.db.query("options").withIndex("by_run", (q) => q.eq("runId", runId)).collect(),
       ctx.db.query("introductions").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).collect(),
     ]);
+    // The board lists public posts next to the ways, so the run page counts them the same way.
+    const publicPosts = (await ctx.db.query("people").withIndex("by_run", (q) => q.eq("runId", runId)).take(200)).length;
     const memberNames = new Map<Id<"members">, { displayName: string; key: string }>();
     for (const c of candidates) {
       const m = await ctx.db.get(c.memberId);
@@ -173,8 +176,10 @@ export const getDiscovery = query({
       intention: intention && {
         _id: intention._id,
         title: intention.card.title,
+        memoryId: intention.memorySourceId,
         card: intention.card, // the owner is viewing their own run
       },
+      publicPosts,
       brief: brief && { sharedTopics: brief.sharedTopics, initialQueries: brief.initialQueries, allowExpansion: brief.allowExpansion },
       events: events.map((e) => ({ ...e, detail: e.detail ?? null })),
       hypotheses,
@@ -207,6 +212,142 @@ export const listSessionRuns = query({
     if (!(await sessionAccess(ctx, sessionId))) return [];
     const runs = await ctx.db.query("runs").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).order("desc").take(20);
     return runs.map((r) => ({ _id: r._id, intentionId: r.intentionId, mode: r.mode, status: r.status, stage: r.stage, startedAt: r.startedAt }));
+  },
+});
+
+const vMoreTarget = v.union(v.literal("people"), v.literal("places"));
+
+/** Continue a finished search without replacing its results or introductions. */
+export const findMore = mutation({
+  args: { sessionId: v.id("demoSessions"), runId: v.id("runs"), target: vMoreTarget },
+  returns: v.null(),
+  handler: async (ctx, { sessionId, runId, target }) => {
+    await requireSession(ctx, sessionId);
+    const run = await ctx.db.get(runId);
+    if (!run || run.sessionId !== sessionId) throw new Error("Search not found in this board");
+    const intention = await ctx.db.get(run.intentionId);
+    if (!intention || intention.owner.kind !== "requester" || intention.owner.sessionId !== sessionId || intention.revision !== run.revision || intention.status !== "approved") {
+      throw new Error("This intention has changed. Open its latest search.");
+    }
+    if (run.status === "running") throw new Error("The first search is still running");
+    // The transaction prevents double clicks and concurrent tabs from scheduling duplicate searches.
+    if (run.more?.status === "running") return null;
+    const attempt = (run.more?.attempt ?? 0) + 1;
+    await ctx.db.patch(runId, { more: { target, status: "running", attempt, startedAt: Date.now(), added: 0, error: null } });
+    await ctx.scheduler.runAfter(0, internal.discovery.runMore, { runId, target, attempt });
+    await ctx.scheduler.runAfter(RUN_DEADLINE_MS, internal.discovery.expireMore, { runId, attempt });
+    return null;
+  },
+});
+
+export const expireMore = internalMutation({
+  args: { runId: v.id("runs"), attempt: v.number() },
+  returns: v.null(),
+  handler: async (ctx, { runId, attempt }) => {
+    const run = await ctx.db.get(runId);
+    if (run?.more?.attempt === attempt && run.more.status === "running") {
+      await ctx.db.patch(runId, { more: { ...run.more, status: "failed", error: "Search timed out. Try again." } });
+    }
+    return null;
+  },
+});
+
+export const moreResults = internalQuery({
+  args: { runId: v.id("runs") },
+  returns: v.object({
+    people: v.array(v.object({ url: v.string(), provider: v.string(), author: v.union(v.string(), v.null()), query: v.string() })),
+    sources: v.array(v.object({ url: v.string(), normalizedUrl: v.string(), hits: v.array(v.object({ query: v.string() })) })),
+    options: v.array(v.object({ kind: vOptionKind, excluded: v.boolean() })),
+    shownHosts: v.array(v.string()),
+  }),
+  handler: async (ctx, { runId }) => {
+    const [people, sources, options] = await Promise.all([
+      ctx.db.query("people").withIndex("by_run", (q) => q.eq("runId", runId)).take(200),
+      ctx.db.query("sources").withIndex("by_run", (q) => q.eq("runId", runId)).take(1000),
+      ctx.db.query("options").withIndex("by_run", (q) => q.eq("runId", runId)).take(200),
+    ]);
+    // Sites the board already shows as a way forward. Sites that were only search hits stay open to "Show more".
+    const shown = await Promise.all(options.filter((o) => !o.excluded && o.opportunityId).map((o) => ctx.db.get(o.opportunityId!)));
+    return {
+      people: people.map((p) => ({ url: p.url, provider: p.provider, author: p.author, query: p.query })),
+      sources: sources.map((s) => ({ url: s.url, normalizedUrl: s.normalizedUrl, hits: s.hits.map((h) => ({ query: h.query })) })),
+      options: options.map((o) => ({ kind: o.kind, excluded: o.excluded })),
+      shownHosts: [...new Set(shown.flatMap((o) => (o ? [hostOf(o.url)] : [])))],
+    };
+  },
+});
+
+export const finishMore = internalMutation({
+  args: { runId: v.id("runs"), attempt: v.number(), added: v.number(), error: v.union(v.string(), v.null()), budget: v.object({ searchQueries: v.number(), fetchedPages: v.number(), modelCalls: v.number() }) },
+  returns: v.null(),
+  handler: async (ctx, { runId, attempt, added, error, budget }) => {
+    const run = await ctx.db.get(runId);
+    if (!run?.more || run.more.attempt !== attempt) return null;
+    await ctx.db.patch(runId, { more: { ...run.more, status: error ? "failed" : "succeeded", added, error }, budget });
+    return null;
+  },
+});
+
+export const runMore = internalAction({
+  args: { runId: v.id("runs"), target: vMoreTarget, attempt: v.number() },
+  returns: v.null(),
+  handler: async (ctx, { runId, target, attempt }) => {
+    const { run, intention, brief, plan }: RunContext = await ctx.runQuery(internal.discovery.loadRunContext, { runId });
+    if (run.more?.attempt !== attempt || run.more.status !== "running") return null;
+    const c: Ctx = {
+      ctx, runId, io: { mode: "live", runId, keyPrefix: `more:${attempt}:` }, threadId: null,
+      budget: { ...run.budget }, partial: false, startedAt: Date.now(), variant: "full",
+    };
+    let added = 0;
+    let error: string | null = null;
+    try {
+      const before = await ctx.runQuery(internal.discovery.moreResults, { runId });
+      const previousQueries = new Set([
+        ...brief.initialQueries, ...(plan.peopleQueries ?? []),
+        ...before.people.map((p) => p.query), ...before.sources.flatMap((s) => s.hits.map((h) => h.query)),
+      ]);
+      const proposal = await task(c, "discovery", `Plan more ${target}`, () => modelTask(ctx, c.io, {
+        key: "more_queries", agent: "requester", threadId: null,
+        schema: z.object({ queries: z.array(z.string()).min(1).max(3) }),
+        prompt: `Find additional ${target === "people" ? "public posts by relevant people on social platforms" : "places, resources, or opportunities someone can act on"} for this intention.
+Aim: ${intention.card.aim}
+Needs: ${intention.card.blocker ?? "none"}
+Offers: ${intention.card.contributions.join("; ")}
+${intention.kind === "offer" ? "This person offers help. Find people asking for it or places to contribute, not competitors selling it." : "Find relevant experience and help."}
+Use different search angles and terms from earlier queries. Keep the original location, timing, and constraints. Only use these search topics: ${brief.sharedTopics.join("; ")}.
+Hard constraints: ${intention.card.hardConstraints.map((h) => `${h.label}: ${h.value ?? "unknown"}`).join("; ")}
+Previous queries: ${JSON.stringify([...previousQueries].slice(-80))}
+Already found, seek alternatives: ${JSON.stringify(target === "people" ? before.people.map((p) => ({ author: p.author, url: p.url })) : before.sources.map((s) => s.url))}
+Return up to 3 new search queries. Do not include these blocked terms: ${brief.blockedTerms.join("; ")}.`,
+      }));
+      const queries = [...new Set(proposal.queries)].filter((q) => !previousQueries.has(q) && !guardQuery(q, brief.blockedTerms));
+      if (!queries.length) throw new Error("No new search queries found. Try again.");
+      if (target === "people") {
+        added = await peopleBranch(c, queries, `${intention.card.aim} ${intention.card.blocker ?? ""}`, intention.kind === "offer", before.people);
+      } else {
+        const snapshot: Snapshot = await ctx.runQuery(internal.discovery.runSnapshot, { runId });
+        const known = new Set(snapshot.opportunities.map((o) => o._id));
+        const result = await publicBranch(c, "initial", queries, brief.blockedTerms, intention.card.title, {
+          hosts: new Set(before.shownHosts),
+          urls: new Set(before.sources.map((s) => s.normalizedUrl)),
+        });
+        c.partial = result.partial;
+        const after: Snapshot = await ctx.runQuery(internal.discovery.runSnapshot, { runId });
+        const fresh = new Set(after.opportunities.filter((o) => !known.has(o._id)).map((o) => o._id));
+        if (fresh.size) {
+          await verifyStage(c);
+          await rankStage(c, intention, fresh, before.options.length);
+        }
+        const results = await ctx.runQuery(internal.discovery.moreResults, { runId });
+        added = results.options.filter((o) => !o.excluded && o.kind === "public").length - before.options.filter((o) => !o.excluded && o.kind === "public").length;
+      }
+      await event(c, "discovery", "decision", "succeeded", `Found ${added} more ${target}`);
+    } catch (e) {
+      error = e instanceof Error ? e.message : "Search failed. Try again.";
+      await event(c, "discovery", "decision", "failed", `Search for more ${target} failed`, { error });
+    }
+    await ctx.runMutation(internal.discovery.finishMore, { runId, attempt, added, error, budget: c.budget });
+    return null;
   },
 });
 
@@ -718,7 +859,7 @@ function plain(text: string): string {
 }
 
 /** Searches public posts by people who have the needed experience, on social platforms through Telem. */
-async function peopleBranch(c: Ctx, queries: string[], intentText: string, offer: boolean): Promise<number> {
+async function peopleBranch(c: Ctx, queries: string[], intentText: string, offer: boolean, existing: Pick<Doc<"people">, "url" | "provider" | "author">[] = []): Promise<number> {
   c.budget.searchQueries += queries.length;
   let result: SearchResult;
   try {
@@ -730,7 +871,7 @@ async function peopleBranch(c: Ctx, queries: string[], intentText: string, offer
     throw e;
   }
   // Keep readable posts that name their author, one per author, interleaved across platforms.
-  const seen = new Set<string>();
+  const seen = new Set(existing.flatMap((p) => [p.url, `${p.provider}:${p.author}`]));
   const byProvider = new Map<string, typeof result.hits>();
   for (const h of result.hits.sort((a, b) => a.rank - b.rank)) {
     const text = `${h.title ?? ""} ${h.snippet ?? ""}`;
@@ -830,6 +971,8 @@ async function publicBranch(
   rawQueries: string[],
   blockedTerms: string[],
   intentionTitle: string,
+  // "Show more" skips sites already shown as a way forward and pages this run already stored.
+  exclude: { hosts: Set<string>; urls: Set<string> } = { hosts: new Set(), urls: new Set() },
 ): Promise<{ partial: boolean; revealed: Revealed[] }> {
   const stage: RunStage = round === "initial" ? "discovery" : "followup_decision";
   const queries: string[] = [];
@@ -851,7 +994,7 @@ async function publicBranch(
   }
   const providers = [...new Set(search.runs.map((r) => r.provider))];
   const failedRuns = search.runs.filter((r) => r.status !== "succeeded");
-  const merged = mergeHits(search.hits).sort((a, b) => scoreSource(b) - scoreSource(a));
+  const merged = mergeHits(search.hits).filter((h) => !exclude.hosts.has(hostOf(h.url)) && !exclude.urls.has(h.normalizedUrl)).sort((a, b) => scoreSource(b) - scoreSource(a));
   await event(c, stage, "telem_search", failedRuns.length ? "partial" : "succeeded",
     `Telem search: ${queries.length} queries, ${providers.length} providers, ${search.hits.length} results, ${merged.length} unique URLs`, {
       durationMs: search.durationMs,
@@ -875,6 +1018,7 @@ async function publicBranch(
     picked.push({ url: s.url, sourceId: sourceIds[i], snippet: s.snippet, title: s.title });
     if (picked.length >= LIMITS.fetchPerRound) break;
   }
+  if (!picked.length) return { partial: failedRuns.length > 0, revealed: [] };
   c.budget.fetchedPages += picked.length;
   let fetched: FetchResult | null = null;
   try {
@@ -1050,8 +1194,12 @@ async function verifyStage(c: Ctx) {
     });
 }
 
-async function rankStage(c: Ctx, intention: Doc<"intentions">) {
+async function rankStage(c: Ctx, intention: Doc<"intentions">, newOpportunities?: Set<Id<"opportunities">>, rankOffset = 0) {
   const snap: Snapshot = await c.ctx.runQuery(internal.discovery.runSnapshot, { runId: c.runId });
+  if (newOpportunities) {
+    snap.opportunities = snap.opportunities.filter((o) => newOpportunities.has(o._id));
+    snap.candidates = [];
+  }
   const card = intention.card;
   const live = snap.candidates.filter((m) => m.status === "checked" || m.status === "shortlisted");
   const oppAlias = snap.opportunities.map((o, i) => ({ alias: `o${i + 1}`, o }));
@@ -1139,7 +1287,7 @@ ${candAlias.map(({ alias, m }) => `${alias} (${memberNames.get(m._id) ?? "a memb
     };
   });
   rows.sort((a, b) => Number(a.excluded) - Number(b.excluded) || FIT_ORDER[a.fitCategory] - FIT_ORDER[b.fitCategory] || a.rank - b.rank);
-  rows.forEach((r, i) => (r.rank = i));
+  rows.forEach((r, i) => (r.rank = rankOffset + i));
   await c.ctx.runMutation(internal.discovery.insertOptions, { runId: c.runId, rows });
   const counts = { public: 0, member: 0, combined: 0 };
   for (const r of rows) if (!r.excluded) counts[r.kind]++;

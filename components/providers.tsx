@@ -8,11 +8,13 @@ import type { Id } from "@/convex/_generated/dataModel";
 import { Toaster } from "@/components/ui/sonner";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-const STORAGE_KEY = `wayfinder.session:${process.env.NEXT_PUBLIC_CONVEX_URL}`;
+const STORAGE_KEY = `relay.session:${process.env.NEXT_PUBLIC_CONVEX_URL}`;
+// Boards saved before the rename to Relay keep working.
+const LEGACY_STORAGE_KEY = `wayfinder.session:${process.env.NEXT_PUBLIC_CONVEX_URL}`;
 
 function readStored(): string | undefined {
   try {
-    return window.localStorage.getItem(STORAGE_KEY) ?? undefined;
+    return window.localStorage.getItem(STORAGE_KEY) ?? window.localStorage.getItem(LEGACY_STORAGE_KEY) ?? undefined;
   } catch {
     // Storage can be unavailable in private windows. A new board is created instead.
     return undefined;
@@ -23,6 +25,7 @@ function store(id: string | null) {
   try {
     if (id) window.localStorage.setItem(STORAGE_KEY, id);
     else window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(LEGACY_STORAGE_KEY);
   } catch {}
 }
 

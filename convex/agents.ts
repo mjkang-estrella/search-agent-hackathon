@@ -48,7 +48,7 @@ export async function newThread(ctx: ActionCtx, title: string): Promise<string> 
  * replay: read the response recorded under `sourceRunId`. A missing record fails visibly.
  */
 export type Io =
-  | { mode: "live"; runId: Id<"runs"> }
+  | { mode: "live"; runId: Id<"runs">; keyPrefix?: string }
   | { mode: "replay"; runId: Id<"runs">; sourceRunId: Id<"runs"> }
   | { mode: "unrecorded" }; // extraction, planning before a run exists, and evaluation
 
@@ -64,7 +64,7 @@ export async function recorded<T>(ctx: ActionCtx, io: Io, key: string, live: () 
   const value = await live();
   const durationMs = Date.now() - started;
   if (io.mode === "live") {
-    await ctx.runMutation(internal.discovery.recordCall, { runId: io.runId, key, response: value, durationMs });
+    await ctx.runMutation(internal.discovery.recordCall, { runId: io.runId, key: `${io.keyPrefix ?? ""}${key}`, response: value, durationMs });
   }
   return { value, durationMs };
 }

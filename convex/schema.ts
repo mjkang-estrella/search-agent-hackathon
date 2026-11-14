@@ -189,6 +189,11 @@ export default defineSchema({
     embeddingModel: v.string(),
     promptVersion: v.string(),
     threadId: v.union(v.string(), v.null()),
+    more: v.optional(v.object({
+      target: v.union(v.literal("people"), v.literal("places")),
+      status: v.union(v.literal("running"), v.literal("succeeded"), v.literal("failed")),
+      attempt: v.number(), startedAt: v.number(), added: v.number(), error: v.union(v.string(), v.null()),
+    })),
     budget: v.object({ searchQueries: v.number(), fetchedPages: v.number(), modelCalls: v.number() }),
     error: v.union(v.string(), v.null()),
     startedAt: v.number(),
