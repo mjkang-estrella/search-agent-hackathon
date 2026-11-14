@@ -33,7 +33,7 @@ export default function Home() {
   const intention = memory?.intentions.find((i) => i._id === intentionId) ?? memory?.intentions[0];
   const empty = board !== undefined && memories.length === 0;
   const intentions = memories.flatMap((m) => m.intentions);
-  const progress = { done: intentions.filter((i) => !isSearching(i)).length, total: intentions.length };
+  const progress = { done: intentions.filter((i) => i.state === "ready").length, failed: intentions.filter((i) => i.state === "failed").length, total: intentions.length };
 
   // Keep the selected memory in view inside its own scroller: a row on phones, a list on desktop.
   const selectedMemoryId = memory?._id;
@@ -41,11 +41,15 @@ export default function Home() {
     const list = memoryList.current;
     const tile = list?.querySelector<HTMLElement>('[aria-pressed="true"]');
     if (!list || !tile) return;
-    list.scrollTo({
+    const reveal = () => list.scrollTo({
       left: tile.offsetLeft - (list.clientWidth - tile.clientWidth) / 2,
       top: tile.offsetTop - (list.clientHeight - tile.clientHeight) / 2,
-      behavior: "smooth",
+      behavior: "instant",
     });
+    reveal();
+    const observer = new ResizeObserver(reveal);
+    observer.observe(list);
+    return () => observer.disconnect();
   }, [selectedMemoryId]);
 
   /** Opens the memory and intention behind an idea. On a phone the columns stack, so bring the ways into view. */
@@ -108,7 +112,7 @@ export default function Home() {
               <Column title="What you want" className="lg:sticky lg:top-4">
                 {memory ? <MemoryQuote key={memory._id} memory={memory} /> : null}
                 {memory?.intentions.map((i) => (
-                  <Tile key={i._id} selected={i._id === intention?._id} onClick={() => setIntentionId(i._id)}>
+                  <Tile key={i._id} selected={i._id === intention?._id} onClick={() => openIdea(memory!._id, i._id)}>
                     <span className="min-w-0 flex-1">
                       <span className="block">{i.title}</span>
                       <span className={cn("flex items-center gap-1 text-[12.5px] font-medium", i._id === intention?._id ? "text-[#c9d4ee]" : "text-muted-foreground")}>
@@ -130,7 +134,7 @@ export default function Home() {
 
               <Column title="Ways to get there" ref={waysColumn} className="scroll-mt-4">
                 {!intention ? null : intention.state === "failed" ? (
-                  <Quiet>Something went wrong. Try adding it again.</Quiet>
+                  <Quiet>Search failed. Your agent can save this memory again.</Quiet>
                 ) : (
                   <Ways intention={intention} />
                 )}
@@ -171,7 +175,7 @@ function Ways({ intention }: { intention: Intention }) {
         <WayCard key={w._id} way={w} />
       ))}
       {intention.people.length ? <PeopleList people={intention.people} offer={intention.kind === "offer"} /> : null}
-      {places.length && intention.people.length ? <h3 className="px-1 pt-3 text-[15px] font-bold text-muted-foreground">Places to try</h3> : null}
+      {places.length > 0 ? <h3 className="px-1 pt-3 text-[15px] font-bold text-muted-foreground">Places to try</h3> : null}
       {places.map((w) => (
         <WayCard key={w._id} way={w} />
       ))}
@@ -259,19 +263,23 @@ function McpDetails() {
   const enable = useMutation(api.intentions.enableMcp);
   const [url, setUrl] = useState<string | null>(null);
   useEffect(() => {
-    if (sessionId) void enable({ sessionId }).then(setUrl);
+    if (sessionId) void enable({ sessionId }).then(setUrl).catch((e) => toast.error(errorText(e)));
   }, [sessionId, enable]);
   if (!url) return <Loader2 className="mt-4 size-4 animate-spin" />;
   return (
     <div className="mt-4 grid gap-2">
       <span className="text-[13px] font-semibold text-muted-foreground">Add this MCP server to your agent</span>
       <div className="flex items-center gap-2">
-        <code className="block min-w-0 flex-1 truncate rounded-xl bg-[#eef1f6] px-3 py-2.5 text-[13px]">{url}</code>
+        <code className="block min-w-0 flex-1 break-all select-all rounded-xl bg-[#eef1f6] px-3 py-2.5 text-[13px]">{url}</code>
         <Button
           className="h-10 rounded-full px-4 font-bold"
-          onClick={() => {
-            void navigator.clipboard.writeText(url);
-            toast.success("Copied");
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(url);
+              toast.success("Copied");
+            } catch {
+              toast.error("Could not copy. Select the URL to copy it.");
+            }
           }}
         >
           <Copy className="size-4" /> Copy
@@ -321,13 +329,13 @@ function useConnection() {
   return useQuery(api.intentions.getConnection, sessionId ? { sessionId } : "skip");
 }
 
-type Progress = { done: number; total: number };
+type Progress = { done: number; failed: number; total: number };
 
 function Proposal({ board, progress, onOpen }: { board: Board; progress: Progress; onOpen: (m: string, i: string) => void }) {
   const [index, setIndex] = useState(0);
   const proposals = board.proposals;
   const p = proposals.length ? proposals[index % proposals.length] : undefined;
-  const searching = progress.done < progress.total || progress.total === 0;
+  const searching = progress.done + progress.failed < progress.total;
   if (!p) {
     return (
       <div className="rounded-3xl bg-[var(--airmail)] p-6 text-white">
@@ -376,14 +384,14 @@ function Proposal({ board, progress, onOpen }: { board: Board; progress: Progres
 }
 
 /** One bar for every search in flight. It leaves once all of them finish. */
-function SearchProgress({ progress: { done, total } }: { progress: Progress }) {
-  if (total === 0 || done >= total) return null;
+function SearchProgress({ progress: { done, failed, total } }: { progress: Progress }) {
+  if (total === 0 || done + failed >= total) return null;
   return (
     <div role="status" className="mt-5 flex items-center gap-3 text-[13px] font-semibold text-[#c9d4ee]">
       <span aria-hidden className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/15">
-        <span className="block h-full rounded-full bg-white transition-[width] duration-700" style={{ width: `${Math.max(3, (done / total) * 100)}%` }} />
+        <span className="block h-full rounded-full bg-white transition-[width] duration-700" style={{ width: `${Math.max(3, ((done + failed) / total) * 100)}%` }} />
       </span>
-      {done} of {total} searched
+      {done + failed} of {total} finished{failed ? ` · ${failed} failed` : ""}
     </div>
   );
 }
@@ -461,7 +469,7 @@ function Searching({ stage }: { stage?: string }) {
           </li>
         ))}
       </ol>
-      <p className="mt-3 text-[13px] text-muted-foreground">About a minute</p>
+      <p className="mt-3 text-[13px] text-muted-foreground">Results appear as we find them</p>
     </div>
   );
 }
@@ -531,9 +539,9 @@ function WayCard({ way: w }: { way: Way }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <div className="flex items-center gap-3.5">
+      <div className="flex flex-wrap items-center gap-3.5">
         <Avatar way={w} />
-        <button className="min-w-0 flex-1 text-left" onClick={() => setOpen(!open)} aria-expanded={open}>
+        <button className="min-w-0 flex-1 basis-[160px] text-left [overflow-wrap:anywhere]" onClick={() => setOpen(!open)} aria-expanded={open}>
           <span className="block text-[16px] leading-snug font-bold">
             {w.title}
             {w.fit === "strong_fit" ? <Star aria-label="Great fit" className="mb-0.5 ml-1.5 inline size-3.5 fill-[var(--kraft)] text-[var(--kraft)]" /> : null}
@@ -543,7 +551,7 @@ function WayCard({ way: w }: { way: Way }) {
             <ChevronDown aria-hidden className={cn("size-3.5 shrink-0 transition-transform", open && "rotate-180")} />
           </span>
         </button>
-        <WayAction way={w} />
+        <div className="ml-auto"><WayAction way={w} /></div>
       </div>
       {open ? (
         <div className="mt-3 ml-[58px] grid gap-2 text-[14px]">
@@ -592,9 +600,9 @@ function WayAction({ way: w, light, onStart }: { way: Way; light?: boolean; onSt
     }
     if (w.intro.state === "accepted") {
       return (
-        <a href={`mailto:${w.intro.contact}`} className={cn(base, "inline-flex items-center gap-1.5 bg-[#e3f1ea] text-[#1f6b47]", light && "bg-white text-[#1f6b47]")} title={`${w.intro.contact} (sample contact)`}>
+        <span className={cn(base, "inline-flex items-center gap-1.5 bg-[#e3f1ea] text-[#1f6b47]", light && "bg-white text-[#1f6b47]")} title={`${w.intro.contact} (sample contact)`}>
           <Check className="size-4" /> Connected
-        </a>
+        </span>
       );
     }
     if (w.intro.state === "pending_acceptance") {
@@ -606,7 +614,7 @@ function WayAction({ way: w, light, onStart }: { way: Way; light?: boolean; onSt
           disabled={busy}
           onClick={() => act(() => respond({ sessionId: sessionId!, introductionId: w.intro!._id, response: "accept" }))}
         >
-          Accept as {name}
+          Accept as {name} <span className="text-[11px] font-medium">(demo)</span>
         </Button>
       );
     }
