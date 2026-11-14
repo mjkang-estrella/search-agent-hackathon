@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check, CircleAlert, CircleDashed, Loader2, Minus, SkipForward } from "lucide-react";
-import { Panel, SectionLabel } from "@/components/shell";
+import type { ReactNode } from "react";
+import { ArrowRight, Check, ChevronDown, CircleAlert, CircleDashed, Loader2, Minus } from "lucide-react";
+import { Panel } from "@/components/shell";
 import { Postmark, SyntheticTag } from "@/components/stamps";
 import { useRun, type RunView } from "@/components/run-context";
 import { buttonVariants } from "@/components/ui/button";
@@ -10,310 +11,343 @@ import { cn } from "@/lib/utils";
 import { clockTime, hostOf, seconds } from "@/lib/format";
 import { RUN_STAGES, type RunStage } from "@/lib/contracts";
 
-const STAGE_LABEL: Record<RunStage, string> = {
-  created: "Created",
-  solution_planning: "Plan",
-  discovery: "Discover",
-  compatibility_checks: "Check both sides",
-  followup_decision: "Follow-up",
-  evidence_verification: "Verify quotes",
-  ranking: "Rank",
-  complete: "Done",
-};
-
+type Status = "done" | "active" | "pending" | "skipped" | "failed" | "partial";
 type Event = RunView["events"][number];
 type SearchDetail = {
   queries?: string[];
-  routing?: { query: string; topic: string | null; providers: string[] }[] | null;
-  runs?: { provider: string; query: string; status: string; resultCount: number; latencyMs: number | null; error: string | null }[];
-  duplicates?: number;
-  interactionId?: string | null;
+  runs?: { provider: string; resultCount: number; status: string }[];
 };
 
+/** "How we found these": the run as a flow chart. Each step shows one count; details stay collapsed. */
 export default function FollowDiscovery() {
   const view = useRun();
   const { run, events } = view;
+  const stageStatus = useStageStatus(view);
+
   const solutions = view.hypotheses.filter((h) => h.kind === "solution");
   const capabilities = view.hypotheses.filter((h) => h.kind === "capability" && h.origin === "llm_inference");
-  const revealed = view.hypotheses.filter((h) => h.origin === "public_evidence");
-  const publicEvents = events.filter((e) => e.kind === "telem_search" || e.kind === "telem_fetch" || e.kind === "guard");
-  const memberEvents = events.filter((e) => e.kind === "retrieval");
+  const leads = view.hypotheses.filter((h) => h.origin === "public_evidence");
+
+  const searches = events.filter((e) => e.kind === "telem_search");
+  const queries = searches.flatMap((e) => (e.detail as SearchDetail | null)?.queries ?? []);
+  const providers = providerTotals(searches);
+  const pagesRead = view.sources.filter((s) => s.fetch.status === "succeeded").length;
+  const memberSearches = events.filter((e) => e.kind === "retrieval");
+
+  const checked = view.candidates.filter((c) => c.status === "checked");
+  const excluded = view.candidates.filter((c) => c.status === "rejected");
+  const conditions = view.opportunities.flatMap((o) => o.conditions);
+  const quotesFound = conditions.filter((c) => c.status === "confirmed").length;
+  const ways = view.options.filter((o) => !o.excluded).length;
+  const running = run.status === "running";
+
+  const fu = run.followUp;
+  const followUpText = fu.status === "skipped" ? "Not needed" : fu.status === "running" ? "Searching again" : fu.status === "succeeded" ? "Searched once more" : fu.status === "failed" ? "Failed" : "Waiting";
 
   return (
-    <div className="flex flex-col gap-5">
-      <StageStrip view={view} />
+    <div className="mx-auto flex max-w-[760px] flex-col items-stretch pb-10">
+      <Step
+        status="done"
+        title="Intention"
+        summary={view.intention?.title ?? "Your intention"}
+      />
+      <Connector on={stageStatus("solution_planning") !== "pending"} />
 
-      <div className="grid gap-5 xl:grid-cols-[340px_minmax(0,1fr)_minmax(0,1fr)]">
-        <Panel className="self-start p-5">
-          <h2 className="mb-1 text-[15px] font-bold">What the model inferred</h2>
-          <p className="mb-3 text-[12.5px] text-muted-foreground">From the intention alone, before any search.</p>
-          <ul className="grid gap-2.5">
-            {solutions.map((h) => (
-              <li key={h._id} className="grid grid-cols-[1fr_auto] items-start gap-3 text-[13.5px]">
-                <span>{h.text}</span>
-                <Postmark kind="inferred" size="sm" detail="LLM" />
-              </li>
-            ))}
-          </ul>
-          <div className="mt-4 border-t border-border pt-3">
-            <SectionLabel>Capabilities searched among members</SectionLabel>
-            <ul className="grid gap-1.5 text-[13px]">
-              {capabilities.map((h) => (
-                <li key={h._id}>{h.text}</li>
-              ))}
-            </ul>
-          </div>
-          {revealed.length ? (
-            <div className="mt-4 border-t border-border pt-3">
-              <SectionLabel>Found in public sources</SectionLabel>
-              <ul className="grid gap-2 text-[13px]">
-                {revealed.map((h) => (
-                  <li key={h._id} className="grid grid-cols-[1fr_auto] items-start gap-3">
-                    <span>
-                      <span className="font-semibold">{h.text}</span>
-                      <span className="block text-xs text-muted-foreground">{h.rationale} Member search ran again with this capability.</span>
-                    </span>
-                    <Postmark kind="public" size="sm" detail={h.sourceUrl ? hostOf(h.sourceUrl) : "Telem"} />
+      <Step
+        status={stageStatus("solution_planning")}
+        title="Ideas"
+        summary={`${solutions.length} ways · ${capabilities.length} helpers to look for`}
+        badge={<Postmark kind="inferred" size="sm" detail="LLM" tilt={-3} />}
+      >
+        <DetailList label="Ways" items={solutions.map((h) => h.text)} />
+        <DetailList label="Helpers" items={capabilities.map((h) => h.text)} />
+      </Step>
+
+      <Fork on={stageStatus("discovery") !== "pending"} />
+      <div className="grid grid-cols-2 gap-4">
+        <Step
+          status={branchStatus(run.branches.public)}
+          title="Public web"
+          summary={run.branches.public === "skipped" ? "Skipped" : `${queries.length} searches · ${view.sources.length} sources`}
+          meta="Telem"
+        >
+          <DetailList label="Searches" items={queries.map((q) => `“${q}”`)} />
+          {providers.length ? (
+            <div>
+              <DetailLabel>Providers</DetailLabel>
+              <div className="flex flex-wrap gap-1.5">
+                {providers.map(([p, n]) => (
+                  <span key={p} className="rounded border border-border bg-white px-1.5 py-0.5 text-[11.5px]">
+                    <b className="font-semibold">{p}</b> {n}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ) : null}
+          {pagesRead ? <p className="text-[12.5px] text-[var(--ink-muted)]">{pagesRead} pages read</p> : null}
+          {leads.length ? (
+            <div>
+              <DetailLabel>New leads</DetailLabel>
+              <ul className="grid gap-1 text-[13px]">
+                {leads.map((h) => (
+                  <li key={h._id}>
+                    {h.text}
+                    {h.sourceUrl ? <span className="text-muted-foreground"> · {hostOf(h.sourceUrl)}</span> : null}
                   </li>
                 ))}
               </ul>
             </div>
           ) : null}
-        </Panel>
-
-        <Panel className="min-w-0 self-start">
-          <BranchHead title="Public evidence" sub="Telem search and page reads" status={run.branches.public} />
-          <div className="px-5 py-3">
-            {publicEvents.length === 0 ? (
-              <p className="text-sm text-muted-foreground">{run.branches.public === "skipped" ? "Skipped in this run." : "Waiting for the first search."}</p>
-            ) : (
-              <ol className="grid gap-3">
-                {publicEvents.map((e) => (
-                  <PublicEvent key={e._id} event={e} />
-                ))}
-              </ol>
-            )}
-          </div>
-        </Panel>
-
-        <Panel className="min-w-0 self-start">
-          <BranchHead title="Approved member intentions" sub="Vector search inside Wayfinder" status={run.branches.members} />
-          <div className="px-5 py-3">
-            {memberEvents.map((e) => {
-              const d = e.detail as { queries?: { label: string; text: string }[]; top?: { name: string; similarity: number; by: string[] }[] } | null;
-              return (
-                <div key={e._id} className="mb-3 last:mb-0">
-                  <p className="text-[13px] font-semibold">
-                    {e.label} <span className="font-normal text-muted-foreground">· {seconds(e.durationMs)}</span>
-                  </p>
-                  {d?.queries ? (
-                    <ul className="mt-1 grid gap-0.5 text-[12.5px] text-[var(--ink-muted)]">
-                      {d.queries.map((q, i) => (
-                        <li key={i}>
-                          <span className="font-semibold text-foreground">{q.label}</span>: {q.text}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-              );
-            })}
-            {view.candidates.length ? (
-              <div className="mt-3 border-t border-border pt-3">
-                <SectionLabel aside="similarity is a retrieval diagnostic">Members after both checks</SectionLabel>
-                <ul className="grid gap-1.5">
-                  {view.candidates.map((c) => (
-                    <li key={c._id} className="grid grid-cols-[1fr_auto] items-center gap-3 text-[13px]">
-                      <span className="min-w-0">
-                        <span className="flex items-center gap-1.5 font-semibold">
-                          {c.member.displayName} <SyntheticTag>Synthetic</SyntheticTag>
-                        </span>
-                        <span className="block truncate text-xs text-muted-foreground">{c.networkCard.title}</span>
-                      </span>
-                      <span className="text-right text-xs">
-                        <CandidateStatus status={c.status} outcome={c.counterpart?.outcome} />
-                        <span className="block text-muted-foreground tabular-nums">{c.similarity.toFixed(2)}</span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : memberEvents.length === 0 ? (
-              <p className="text-sm text-muted-foreground">Waiting for member retrieval.</p>
-            ) : null}
-          </div>
-        </Panel>
+        </Step>
+        <Step
+          status={branchStatus(run.branches.members)}
+          title="Members"
+          summary={`${view.candidates.length} matched`}
+          meta="Sample"
+        >
+          {memberSearches.map((e) => {
+            const d = e.detail as { queries?: { label: string; text: string }[] } | null;
+            return <DetailList key={e._id} label={e.label} items={(d?.queries ?? []).map((q) => `${q.label}: ${q.text}`)} />;
+          })}
+        </Step>
       </div>
+      <Merge on={stageStatus("compatibility_checks") !== "pending"} />
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <Panel className="p-5">
-          <h2 className="mb-2 text-[15px] font-bold">Follow-up search decision</h2>
-          {run.followUp.status === "pending" ? (
-            <p className="text-sm text-muted-foreground">Decided after both sides are checked.</p>
-          ) : (
-            <div className="text-[13.5px]">
-              <p className="font-semibold">
-                {run.followUp.status === "skipped" ? "Skipped" : run.followUp.status === "running" ? "Searching again" : run.followUp.status === "succeeded" ? "Ran one follow-up search" : "Follow-up search failed"}
-              </p>
-              {run.followUp.question ? (
-                <p className="mt-1">
-                  <span className="text-muted-foreground">Open question: </span>
-                  {run.followUp.question}
-                </p>
-              ) : null}
-              {run.followUp.affects ? (
-                <p className="mt-1">
-                  <span className="text-muted-foreground">Could change: </span>
-                  {run.followUp.affects}
-                </p>
-              ) : null}
-              {run.followUp.reason ? <p className="mt-1 text-[var(--ink-muted)]">{run.followUp.reason}</p> : null}
-            </div>
-          )}
-        </Panel>
-        <Panel className="flex flex-col justify-between gap-3 p-5">
-          <div>
-            <h2 className="mb-1 text-[15px] font-bold">{run.status === "running" ? "Discovery is running" : "Ready to compare"}</h2>
-            <p className="text-[13.5px] text-muted-foreground">
-              {run.status === "running"
-                ? "Results appear stage by stage. Partial results stay visible if a provider or page fails."
-                : `${view.options.filter((o) => !o.excluded).length} ways forward from ${view.opportunities.length} public opportunities and ${view.candidates.filter((c) => c.status === "checked").length} checked members.`}
-            </p>
-            {run.error ? <p className="mt-2 text-[13px] text-[var(--airmail-red)]">{run.error}</p> : null}
-          </div>
-          <Link href="/" className={cn(buttonVariants({ size: "lg" }), "h-10 self-start px-4 font-bold", run.status === "running" && "pointer-events-none opacity-50")}>
-            See ways forward <ArrowRight data-icon="inline-end" />
-          </Link>
-        </Panel>
-      </div>
-
-      <Panel>
-        <div className="border-b border-border px-5 py-3">
-          <h2 className="text-[15px] font-bold">Run log</h2>
-          <p className="text-[12.5px] text-muted-foreground">Decisions and tool calls as they happened. Model reasoning is not shown.</p>
-        </div>
-        <ol className="max-h-[420px] overflow-auto px-5 py-2 text-[13px]">
-          {events.map((e) => (
-            <li key={e._id} className="grid grid-cols-[64px_120px_minmax(0,1fr)_64px] items-start gap-3 border-b border-dashed border-border py-1.5 last:border-b-0 max-md:grid-cols-[56px_minmax(0,1fr)]">
-              <span className="text-muted-foreground tabular-nums">{clockTime(e.at)}</span>
-              <span className="text-xs font-semibold text-muted-foreground max-md:hidden">{STAGE_LABEL[e.stage as RunStage]}</span>
-              <span>
-                <EventIcon status={e.status} /> {e.label}
-                {e.error ? <span className="block text-xs text-[var(--airmail-red)]">{e.error}</span> : null}
-              </span>
-              <span className="text-right text-muted-foreground tabular-nums max-md:hidden">{e.durationMs ? seconds(e.durationMs) : ""}</span>
-            </li>
-          ))}
-        </ol>
-      </Panel>
-    </div>
-  );
-}
-
-function StageStrip({ view }: { view: RunView }) {
-  const current = RUN_STAGES.indexOf(view.run.stage as RunStage);
-  const stages = RUN_STAGES.filter((s) => s !== "created");
-  return (
-    <Panel className="overflow-x-auto px-5 py-3">
-      <ol className="flex min-w-[720px] items-center gap-2">
-        {stages.map((s, i) => {
-          const idx = RUN_STAGES.indexOf(s);
-          const done = idx < current || view.run.stage === "complete";
-          const active = idx === current && view.run.status === "running";
-          const skipped = s === "followup_decision" && view.run.followUp.status === "skipped";
-          const failed = view.run.status === "failed" && idx === current;
-          const stageEvents = view.events.filter((e) => e.stage === s && e.durationMs);
-          const ms = stageEvents.reduce((m, e) => Math.max(m, e.durationMs ?? 0), 0);
-          return (
-            <li key={s} className="flex flex-1 items-center gap-2">
-              <span
-                className={cn(
-                  "flex size-6 shrink-0 items-center justify-center rounded-full border-[1.5px] text-[11px] font-bold",
-                  failed ? "border-[var(--airmail-red)] text-[var(--airmail-red)]" : done ? "border-[var(--airmail)] bg-[var(--airmail)] text-white" : active ? "border-[var(--airmail)] text-[var(--airmail)]" : "border-border text-muted-foreground",
-                )}
-              >
-                {failed ? <CircleAlert className="size-3.5" /> : skipped ? <SkipForward className="size-3" /> : done ? <Check className="size-3.5" /> : active ? <Loader2 className="size-3.5 animate-spin" /> : i + 1}
-              </span>
-              <span className="min-w-0">
-                <span className={cn("block text-[12.5px] font-semibold whitespace-nowrap", !done && !active && "text-muted-foreground")}>{STAGE_LABEL[s]}</span>
-                <span className="block text-[11px] text-muted-foreground">{skipped ? "skipped" : s === "discovery" ? "public + members" : ms ? seconds(ms) : ""}</span>
-              </span>
-              {i < stages.length - 1 ? <span aria-hidden className={cn("h-px flex-1", done ? "bg-[var(--airmail)]" : "bg-border")} /> : null}
-            </li>
-          );
-        })}
-      </ol>
-    </Panel>
-  );
-}
-
-function BranchHead({ title, sub, status }: { title: string; sub: string; status: string }) {
-  return (
-    <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-3">
-      <div>
-        <h2 className="text-[15px] font-bold">{title}</h2>
-        <p className="text-[12.5px] text-muted-foreground">{sub}</p>
-      </div>
-      <span className={cn("text-xs font-bold tracking-[0.08em] uppercase", status === "failed" ? "text-[var(--airmail-red)]" : status === "partial" ? "text-[var(--kraft-ink)]" : "text-[var(--airmail)]")}>
-        {status}
-      </span>
-    </div>
-  );
-}
-
-function PublicEvent({ event: e }: { event: Event }) {
-  if (e.kind === "telem_search") {
-    const d = (e.detail ?? {}) as SearchDetail;
-    const byProvider = new Map<string, { results: number; failed: number }>();
-    for (const r of d.runs ?? []) {
-      const x = byProvider.get(r.provider) ?? { results: 0, failed: 0 };
-      x.results += r.resultCount;
-      if (r.status !== "succeeded") x.failed++;
-      byProvider.set(r.provider, x);
-    }
-    return (
-      <li className="text-[13px]">
-        <p className="font-semibold">
-          <EventIcon status={e.status} /> {e.label} <span className="font-normal text-muted-foreground">· {seconds(e.durationMs)}</span>
-        </p>
-        {d.queries ? (
-          <ul className="mt-1 grid gap-0.5 text-[12.5px]">
-            {d.queries.map((q, i) => (
-              <li key={i} className="text-[var(--ink-muted)]">
-                “{q}”
+      <Step
+        status={stageStatus("compatibility_checks")}
+        title="Check both sides"
+        summary={view.candidates.length ? `${checked.length} fit · ${excluded.length} excluded` : "No members to check"}
+      >
+        {view.candidates.length ? (
+          <ul className="grid gap-1.5">
+            {view.candidates.map((c) => (
+              <li key={c._id} className="flex items-center justify-between gap-3 text-[13px]">
+                <span className="flex min-w-0 items-center gap-1.5">
+                  <span className="truncate font-semibold">{c.member.displayName}</span>
+                  <SyntheticTag>Sample</SyntheticTag>
+                </span>
+                <CandidateStatus status={c.status} outcome={c.counterpart?.outcome} />
               </li>
             ))}
           </ul>
         ) : null}
-        {byProvider.size ? (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {[...byProvider.entries()].map(([p, x]) => (
-              <span key={p} className={cn("rounded border px-1.5 py-0.5 text-[11.5px]", x.failed ? "border-[var(--kraft)] bg-[var(--kraft-soft)]" : "border-border bg-white")}>
-                <b className="font-semibold">{p}</b> {x.results}
-                {x.failed ? ` · ${x.failed} failed` : ""}
-              </span>
-            ))}
-          </div>
+      </Step>
+      <Connector on={stageStatus("followup_decision") !== "pending"} />
+
+      <Step
+        status={fu.status === "skipped" ? "skipped" : stageStatus("followup_decision")}
+        title="Follow-up"
+        summary={followUpText}
+      >
+        {fu.question ? <DetailRow label="Question">{fu.question}</DetailRow> : null}
+        {fu.affects ? <DetailRow label="Could change">{fu.affects}</DetailRow> : null}
+        {fu.reason ? <DetailRow label="Why">{fu.reason}</DetailRow> : null}
+      </Step>
+      <Connector on={stageStatus("evidence_verification") !== "pending"} />
+
+      <Step
+        status={stageStatus("evidence_verification")}
+        title="Verify quotes"
+        summary={conditions.length ? `${quotesFound} of ${conditions.length} quotes found on the page` : "Nothing to verify"}
+      >
+        {view.opportunities.length ? (
+          <Link href={`/r/${run._id}/evidence`} className="text-[13px] font-semibold text-[var(--airmail)] hover:underline">
+            See every source and quote
+          </Link>
         ) : null}
-        <p className="mt-1 text-xs text-muted-foreground">
-          {d.routing ? "Automatic routing chose these providers per query. " : "Routing data was not returned. "}
-          {d.duplicates ? `${d.duplicates} duplicate results merged, attribution kept.` : ""}
-        </p>
-        {e.error ? <p className="text-xs text-[var(--airmail-red)]">{e.error}</p> : null}
-      </li>
-    );
+      </Step>
+      <Connector on={stageStatus("ranking") !== "pending"} />
+
+      <div
+        className={cn(
+          "flex flex-wrap items-center justify-between gap-3 rounded-lg px-5 py-4",
+          running ? "border border-dashed border-border bg-card" : "bg-[var(--airmail)] text-white",
+        )}
+      >
+        <div>
+          <p className="text-[15px] font-bold">{running ? "Finding ways…" : `${ways} ways forward`}</p>
+          {run.error ? <p className="mt-0.5 text-[13px] text-[var(--airmail-red)]">{run.error}</p> : null}
+        </div>
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ size: "lg" }),
+            "h-10 px-4 font-bold",
+            running ? "pointer-events-none opacity-50" : "bg-white text-[var(--airmail)] hover:bg-[var(--airmail-ink)]",
+          )}
+        >
+          See them <ArrowRight data-icon="inline-end" />
+        </Link>
+      </div>
+
+      <RunLog events={events} />
+    </div>
+  );
+}
+
+function useStageStatus(view: RunView) {
+  const current = RUN_STAGES.indexOf(view.run.stage as RunStage);
+  return (s: RunStage): Status => {
+    const idx = RUN_STAGES.indexOf(s);
+    if (view.run.stage === "complete" || idx < current) return "done";
+    if (idx === current) return view.run.status === "failed" ? "failed" : view.run.status === "running" ? "active" : "done";
+    return "pending";
+  };
+}
+
+function branchStatus(s: RunView["run"]["branches"]["public"]): Status {
+  if (s === "succeeded") return "done";
+  if (s === "running") return "active";
+  return s;
+}
+
+function providerTotals(searches: Event[]): [string, number][] {
+  const totals = new Map<string, number>();
+  for (const e of searches) {
+    for (const r of (e.detail as SearchDetail | null)?.runs ?? []) totals.set(r.provider, (totals.get(r.provider) ?? 0) + r.resultCount);
   }
-  const d = (e.detail ?? {}) as { url?: string; cacheState?: string | null; query?: string };
+  return [...totals.entries()];
+}
+
+function Step({ status, title, summary, meta, badge, children }: { status: Status; title: string; summary: string; meta?: string; badge?: ReactNode; children?: ReactNode }) {
+  const head = (
+    <div className="flex items-start gap-3">
+      <StatusDot status={status} />
+      <div className="min-w-0 flex-1">
+        <p className="flex flex-wrap items-baseline gap-x-2 text-[11px] font-bold tracking-[0.1em] text-muted-foreground uppercase">
+          {title}
+          {meta ? <span className="font-semibold tracking-normal normal-case">· {meta}</span> : null}
+        </p>
+        <p className={cn("mt-0.5 text-[14.5px] leading-snug font-semibold text-balance", status === "pending" && "text-muted-foreground")}>{summary}</p>
+      </div>
+      {badge ? <span className="hidden shrink-0 sm:block">{badge}</span> : null}
+      {children ? <ChevronDown aria-hidden className="mt-1 size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" /> : null}
+    </div>
+  );
+  const box = cn("rounded-lg border bg-card", status === "active" ? "border-[var(--airmail)]" : status === "failed" ? "border-[var(--airmail-red)]" : "border-border");
+  if (!children) return <Panel className={cn(box, "px-4 py-3")}>{head}</Panel>;
   return (
-    <li className="flex items-start gap-2 text-[13px]">
-      <EventIcon status={e.status} />
-      <span className="min-w-0">
-        {e.label}
-        {e.kind === "telem_fetch" ? <span className="text-muted-foreground"> · {seconds(e.durationMs)}{d.cacheState ? ` · Telem cache: ${d.cacheState}` : ""}</span> : null}
-        {d.query ? <span className="block text-xs text-muted-foreground">“{d.query}”</span> : null}
-        {e.error ? <span className="block text-xs text-[var(--airmail-red)]">{e.error}</span> : null}
+    <Panel className={box}>
+      <details className="group">
+        <summary className="cursor-pointer list-none rounded-lg px-4 py-3 hover:bg-[var(--soft)] focus-visible:outline-2 focus-visible:outline-[var(--airmail)] [&::-webkit-details-marker]:hidden">
+          {head}
+        </summary>
+        <div className="grid gap-3 border-t border-border px-4 py-3">{children}</div>
+      </details>
+    </Panel>
+  );
+}
+
+function StatusDot({ status }: { status: Status }) {
+  const base = "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-[1.5px]";
+  if (status === "done") return <span className={cn(base, "border-[var(--airmail)] bg-[var(--airmail)] text-white")}><Check className="size-3.5" /></span>;
+  if (status === "active") return <span className={cn(base, "border-[var(--airmail)] text-[var(--airmail)]")}><Loader2 className="size-3.5 animate-spin" /></span>;
+  if (status === "failed") return <span className={cn(base, "border-[var(--airmail-red)] text-[var(--airmail-red)]")}><CircleAlert className="size-3.5" /></span>;
+  if (status === "partial") return <span className={cn(base, "border-[var(--kraft)] text-[var(--kraft-ink)]")}><CircleAlert className="size-3.5" /></span>;
+  if (status === "skipped") return <span className={cn(base, "border-border text-muted-foreground")}><Minus className="size-3.5" /></span>;
+  return <span className={cn(base, "border-dashed border-border")} />;
+}
+
+/** Vertical arrow between two steps. */
+function Connector({ on }: { on: boolean }) {
+  return (
+    <div aria-hidden className="flex flex-col items-center py-0.5">
+      <span className={cn("h-5 w-[1.5px]", on ? "bg-[var(--airmail)]" : "bg-[var(--line)]")} />
+      <Arrowhead on={on} />
+    </div>
+  );
+}
+
+/** One line splitting into the two parallel searches. */
+function Fork({ on }: { on: boolean }) {
+  const c = on ? "bg-[var(--airmail)]" : "bg-[var(--line)]";
+  return (
+    <div aria-hidden className="relative h-9">
+      <span className={cn("absolute top-0 left-1/2 h-3 w-[1.5px] -translate-x-1/2", c)} />
+      <span className={cn("absolute top-3 right-[calc(25%-4px)] left-[calc(25%-4px)] h-[1.5px]", c)} />
+      <span className="absolute top-3 left-[calc(25%-4px)] flex -translate-x-1/2 flex-col items-center">
+        <span className={cn("h-[calc(1.5rem-6px)] w-[1.5px]", c)} />
+        <Arrowhead on={on} />
       </span>
-    </li>
+      <span className="absolute top-3 left-[calc(75%+4px)] flex -translate-x-1/2 flex-col items-center">
+        <span className={cn("h-[calc(1.5rem-6px)] w-[1.5px]", c)} />
+        <Arrowhead on={on} />
+      </span>
+    </div>
+  );
+}
+
+/** The two searches joining back into one step. */
+function Merge({ on }: { on: boolean }) {
+  const c = on ? "bg-[var(--airmail)]" : "bg-[var(--line)]";
+  return (
+    <div aria-hidden className="relative h-9">
+      <span className={cn("absolute top-0 left-[calc(25%-4px)] h-3 w-[1.5px] -translate-x-1/2", c)} />
+      <span className={cn("absolute top-0 left-[calc(75%+4px)] h-3 w-[1.5px] -translate-x-1/2", c)} />
+      <span className={cn("absolute top-3 right-[calc(25%-4px)] left-[calc(25%-4px)] h-[1.5px]", c)} />
+      <span className="absolute top-3 left-1/2 flex -translate-x-1/2 flex-col items-center">
+        <span className={cn("h-[calc(1.5rem-6px)] w-[1.5px]", c)} />
+        <Arrowhead on={on} />
+      </span>
+    </div>
+  );
+}
+
+function Arrowhead({ on }: { on: boolean }) {
+  return (
+    <svg width="9" height="6" viewBox="0 0 9 6" className={on ? "text-[var(--airmail)]" : "text-[var(--line)]"}>
+      <path d="M0 0h9L4.5 6z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function DetailLabel({ children }: { children: ReactNode }) {
+  return <p className="mb-1 text-[10.5px] font-bold tracking-[0.12em] text-muted-foreground uppercase">{children}</p>;
+}
+
+function DetailList({ label, items }: { label: string; items: string[] }) {
+  if (!items.length) return null;
+  return (
+    <div>
+      <DetailLabel>{label}</DetailLabel>
+      <ul className="grid gap-1 text-[13px]">
+        {items.map((t, i) => (
+          <li key={i}>{t}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function DetailRow({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <p className="text-[13px]">
+      <span className="text-muted-foreground">{label}: </span>
+      {children}
+    </p>
+  );
+}
+
+function RunLog({ events }: { events: Event[] }) {
+  return (
+    <details className="group mt-8 text-[13px]">
+      <summary className="flex cursor-pointer list-none items-center gap-1.5 font-semibold text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+        <ChevronDown aria-hidden className="size-4 transition-transform group-open:rotate-180" />
+        Run log · {events.length}
+      </summary>
+      <ol className="mt-2 max-h-[420px] overflow-auto rounded-lg border border-border bg-card px-4 py-2">
+        {events.map((e) => (
+          <li key={e._id} className="grid grid-cols-[56px_minmax(0,1fr)_56px] items-start gap-3 border-b border-dashed border-border py-1.5 last:border-b-0">
+            <span className="text-muted-foreground tabular-nums">{clockTime(e.at)}</span>
+            <span>
+              <EventIcon status={e.status} /> {e.label}
+              {e.error ? <span className="block text-xs text-[var(--airmail-red)]">{e.error}</span> : null}
+            </span>
+            <span className="text-right text-muted-foreground tabular-nums">{e.durationMs ? seconds(e.durationMs) : ""}</span>
+          </li>
+        ))}
+      </ol>
+    </details>
   );
 }
 
@@ -327,8 +361,7 @@ function EventIcon({ status }: { status: string }) {
 }
 
 function CandidateStatus({ status, outcome }: { status: string; outcome?: string }) {
-  if (status === "rejected") return <span className="font-semibold text-[var(--airmail-red)]">Excluded</span>;
-  if (status === "checked") return <span className="font-semibold text-[var(--airmail)]">{outcome === "needs_input" ? "Needs input" : "Compatible"}</span>;
-  if (status === "shortlisted") return <span className="font-semibold">Passed your check</span>;
-  return <span className="text-muted-foreground">Retrieved</span>;
+  if (status === "rejected") return <span className="shrink-0 text-xs font-semibold text-[var(--airmail-red)]">Excluded</span>;
+  if (status === "checked") return <span className="shrink-0 text-xs font-semibold text-[var(--airmail)]">{outcome === "needs_input" ? "Needs input" : "Fits"}</span>;
+  return <span className="shrink-0 text-xs text-muted-foreground">Not checked</span>;
 }
