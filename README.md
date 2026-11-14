@@ -1,8 +1,8 @@
 # Search Agent
 
-**Your agents know you best. Why can’t you find someone you need by searching others’ agents?**
+**Your agents know you best. Why can't you find someone you need by searching others' agents?**
 
-**Tell your agent what you’re trying to do. It finds opportunities on the web—and people you could make them happen with.**
+Tell your agent what you want to do. It finds public opportunities and people who could help.
 
 ```text
 Memory from AI tools → Understand intention → Discover opportunities + Match people → Take action
@@ -10,18 +10,20 @@ Memory from AI tools → Understand intention → Discover opportunities + Match
 
 Built for [SearchHack: Build the next layer of AI search](https://luma.com/e13wf1bd), November 14, 2026. Our goal is to win by demonstrating a useful new way to search for people through the context their agents already understand.
 
+The [implementation plan](docs/implementation-plan.md) defines the five-hour, three-person build, the Telem demonstration, the data model, and the evaluation. It refines the initial architecture below with two search rounds that shape member matching and a public next step.
+
 ## The idea
 
-Our conversations with AI tools contain context about what we’re working on, what we need, what we can offer, and what we want to do next. Much of that context never makes it into a public profile or a search query.
+Our conversations with AI tools contain context about what we're working on, what we need, what we can offer, and what we want to do next. Much of that context never makes it into a public profile or a search query.
 
-Search Agent helps fulfill intentions through web discovery and person-to-person matching. Your agent helps articulate what you’re trying to do, finds existing opportunities through Telem AI, searches intentions that other people have chosen to share, and explains which options fit your needs.
+Search Agent helps fulfill intentions through web discovery and person-to-person matching. Your agent helps articulate what you're trying to do, finds existing opportunities through Telem AI, searches intentions that other people have chosen to share, and explains which options fit your needs.
 
 The core experience is general intention discovery across personal, creative, professional, and community life. The same flow should work across these contexts.
 
 ## Two paths to fulfilling an intention
 
 1. **Discover an existing opportunity on the web.** Find a service, project, community, listing, or open request through Telem search and page fetching.
-2. **Create an opportunity with another person.** Match complementary intentions so people can collaborate, share, exchange, or help each other—even when neither knew whom to search for.
+2. **Create an opportunity with another person.** Match complementary intentions so people can collaborate, share, exchange, or help each other. Neither person needs to know whom to search for beforehand.
 
 The marketplace + P2P swap analogy captures two ways of meeting a need: an existing offering or a mutually useful arrangement between people. Swaps are one connection pattern; collaboration, shared goals, and voluntary help matter too.
 
@@ -32,11 +34,11 @@ The marketplace + P2P swap analogy captures two ways of meeting a need: an exist
 | Learn conversational Korean | Classes and conversation groups | Someone learning your language with compatible availability |
 | Get feedback on a product | Testing communities and research services | Someone facing the problem your product addresses |
 
-The agent compares options against the user’s constraints, including timing, cost where stated, availability, and desired involvement. Explain the evidence and trade-offs, then let the user choose a next step. An existing service can be the best answer; a person-to-person connection can create an opportunity that was never listed.
+The agent compares options against the user's constraints, including timing, cost where stated, availability, and desired involvement. Explain the evidence and trade-offs, then let the user choose a next step. An existing service can be the best answer; a person-to-person connection can create an opportunity that was never listed.
 
 ## What is an intention?
 
-An intention captures something you’re trying to do, something blocking you, or something you could contribute. It has context and can change over time.
+An intention captures something you're trying to do, something blocking you, or something you could contribute. It has context and can change over time.
 
 - **Aim:** What are you trying to achieve?
 - **Blocker:** What would help you move forward?
@@ -45,17 +47,17 @@ An intention captures something you’re trying to do, something blocking you, o
 - **Constraints:** What conditions would make a connection useful?
 - **Openness:** What have you explicitly agreed to share, and with whom?
 
-For example, “I write music” is a profile detail. “I have three unfinished melodies and want to turn one into a song with a lyricist” is an intention an agent can help connect.
+For example, "I write music" is a profile detail. "I have three unfinished melodies and want to turn one into a song with a lyricist" is an intention an agent can help connect.
 
 ## Connections we could discover
 
 These are illustrative scenarios to validate, using synthetic participants for the hackathon.
 
-| One person’s context | Another person’s context | The opportunity |
+| One person's context | Another person's context | The opportunity |
 | --- | --- | --- |
 | Stuck getting an obscure sensor working | Recently fixed the same firmware issue | Fresh experience unblocks a problem before the fix becomes a public tutorial |
 | Has unfinished melodies that need lyrics | Writes poems and wonders whether they could become songs | Different creative intentions become a shared project |
-| Needs firsthand details for a novel’s hospital scene | A retired nurse organizing memories into a memoir | Lived experience finds an audience and supports authentic writing |
+| Needs firsthand details for a novel's hospital scene | A retired nurse organizing memories into a memoir | Lived experience finds an audience and supports authentic writing |
 | Wants a safer crossing near a school | Other residents separately trying to improve that intersection | Independent efforts become collective action |
 | Exploring furniture-making as a second career | A retiring craftsperson wants their skills and workshop to keep being used | A possible apprenticeship or succession |
 | Needs a replacement clip for a discontinued household item | Has a 3D printer and wants useful projects | A problem meets a capability its owner might never think to search for |
@@ -68,9 +70,9 @@ These are illustrative scenarios to validate, using synthetic participants for t
 
 Four patterns recur across these examples:
 
-1. **You’ve done what I’m trying to do.** Recent experience helps someone earlier on the same path.
+1. **You've done what I'm trying to do.** Recent experience helps someone earlier on the same path.
 2. **You have something that could unblock me.** A capability, resource, or piece of knowledge meets a need.
-3. **We’re independently trying to achieve the same thing.** People discover shared effort and can act together.
+3. **We're independently trying to achieve the same thing.** People discover shared effort and can act together.
 4. **Our different goals become possible together.** Complementary intentions create a collaboration.
 
 Connections can involve two people or a group. They do not require barter: someone might gain an audience, a collaborator, a sense of purpose, or the satisfaction of helping.
@@ -91,21 +93,21 @@ The search challenge is to retrieve complementary intentions, check practical co
 2. **Connect intention.** Extract needs, offers, goals, and relevant constraints. Let the user edit and approve each intention before making it discoverable.
 3. **Discover opportunities.** Search approved intentions within the network and use Telem AI to discover relevant public projects, communities, and collaboration requests. Evaluate complementary needs, timing, location, and preferences.
 4. **Compare ways forward.** Explain how public opportunities and person-to-person matches could fulfill the intention, including practical constraints and evidence. Distinguish evidence from inference.
-5. **Choose a next step.** Let the user follow a published participation route or request an introduction. Network introductions require both people’s acceptance before revealing contact details or sharing further context.
+5. **Choose a next step.** Let the user follow a published participation route or request an introduction. Network introductions require both people's acceptance before revealing contact details or sharing further context.
 
-## Telem AI’s role
+## Telem AI's role
 
 Telem AI is a core dependency of the proposed public discovery path. Its [official overview](https://docs.telem.ai/overview/) describes multi-provider web search and page fetching; its [search documentation](https://docs.telem.ai/resources/search-parameters/) documents automatic provider routing. Our application owns the private intention index, extraction, ranking, and introduction permissions.
 
 For each approved intention, the agent should:
 
-1. **Plan searches for ways forward.** Translate a blocker into relevant services, listings, projects, communities, or collaboration requests, rather than simply repeating the user’s words.
+1. **Plan searches for ways forward.** Translate a blocker into relevant services, listings, projects, communities, or collaboration requests, rather than simply repeating the user's words.
 2. **Search through Telem.** Use `POST /v1/search` with automatic routing or an explicit provider selection to find public evidence of relevant work and requests.
 3. **Read promising sources.** Use `POST /v1/fetch` to inspect the actual pages for the stated need, contribution, dates, and contact or participation route.
-4. **Rank with evidence.** Combine these public opportunities with approved network matches, clearly distinguish their origins, and cite the supporting sources. Public content does not establish someone’s current willingness to connect.
+4. **Rank with evidence.** Combine these public opportunities with approved network matches, clearly distinguish their origins, and cite the supporting sources. Public content does not establish someone's current willingness to connect.
 5. **Explain the next step.** For network members, propose a mutual introduction. For public opportunities, offer the published participation route for the user to review; do not imply an agent handshake or send unsolicited outreach.
 
-For example, a poet’s intention could lead Telem searches toward composers explicitly seeking lyrics or community songwriting projects. A public request can provide a useful next step even before another person joins our network. This is a hypothesis to validate through real search results.
+For example, a poet's intention could lead Telem searches toward composers explicitly seeking lyrics or community songwriting projects. A public request can provide a useful next step even before another person joins our network. This is a hypothesis to validate through real search results.
 
 The demo must show a connection opportunity found through Telem, the fetched evidence that supports it, and why it was selected over near misses. Record queries, selected providers when returned, sources, latency, failures, and usage information when available. Compare network-only retrieval with network plus Telem to measure what public discovery adds.
 
@@ -134,8 +136,11 @@ Selected memory
     → intention extraction
     → user review and sharing approval
     → approved intention index + approved external search brief
-    → network retrieval + Telem web search and page fetch
-    → constraint checks and option ranking
+    → Telem search and fetch to discover relevant approaches and counterpart roles
+    → member retrieval using intentions and source-backed roles
+    → requester and counterpart compatibility checks
+    → second Telem search and fetch for a public next step
+    → evidence checks and option ranking
     → evidence-backed comparison and user choice
     → published participation route OR introduction request and mutual acceptance
 ```
@@ -153,18 +158,18 @@ Proposed searchable fields:
 | Evidence | Approved excerpts that support the intention |
 | Sharing scope | Who may discover this intention |
 
-Retrieve across fields: a blocker against another person’s contribution or recent experience, and an aim against other people’s shared or complementary aims. Explore query expansion from “what do I need?” to “who might have experience or a capability that helps?” Apply explicit constraints before presenting results. Rank for usefulness and approved openness, and allow “no suitable match” when the evidence is insufficient.
+Retrieve across fields: a blocker against another person's contribution or recent experience, and an aim against other people's shared or complementary aims. Explore query expansion from "what do I need?" to "who might have experience or a capability that helps?" Apply explicit constraints before presenting results. Rank for usefulness and approved openness, and allow "no suitable match" when the evidence is insufficient.
 
 The MVP should demonstrate pairwise retrieval and grouping around a shared aim. More complex reasoning across several complementary participants is an extension to validate later.
 
-This is a proposed architecture. Telem is selected for public search and page fetching; the rest of the stack, private retrieval method, ranking implementation, and agent interface remain open. Implementation will require a server-side `TELEM_API_KEY` following the [Telem quickstart](https://docs.telem.ai/quickstart/).
+This is a proposed architecture. The selected stack is Next.js, TypeScript, and Convex, with Telem for public search and page fetching. OpenAI is the recommended provider for structured model tasks and embeddings. See the implementation plan for the pipeline and module boundaries. Implementation will require a server-side `TELEM_API_KEY` following the [Telem quickstart](https://docs.telem.ai/quickstart/).
 
 ## One experience, three demo scenarios
 
-The experience is: **“Here’s what I’m working toward” → “Here are ways forward” → “Here’s why they fit” → “Choose a next step.”**
+The experience is: **"Here's what I'm working toward" → "Here are ways forward" → "Here's why they fit" → "Choose a next step."**
 
 - **Composer + poet:** Show different creative goals becoming a collaboration. A candidate with a matching music interest but no relevant intention should not automatically rank first.
-- **Independent crosswalk efforts:** Show several residents discovering that they’re working toward the same local outcome. Distinguish the same intersection from similar concerns elsewhere.
+- **Independent crosswalk efforts:** Show several residents discovering that they're working toward the same local outcome. Distinguish the same intersection from similar concerns elsewhere.
 - **Obscure bug + someone who recently solved it:** Show the value of recent experience captured in approved agent context. Distinguish the exact issue and hardware from superficially similar problems.
 
 Make composer + poet the primary demonstration of both paths for one intention. A poet wants to turn poems into songs: use live Telem search and fetch to find a relevant workshop or open collaboration, then show a synthetic network composer explicitly seeking lyrics. Compare the options using supported facts such as format, timing, stated cost, and creative goals; let the poet choose a published route or request a mutual introduction. Do not fabricate public results or present a simulated member as real.
@@ -180,7 +185,7 @@ For each scenario:
 5. Compare against keyword search and profile similarity on the same dataset; measure rather than assume an improvement.
 6. For a network match, finish with an introduction request and a clearly labeled simulation of mutual acceptance. For a public result, show its published participation route and the limits of what has been verified.
 
-The demo should answer: **How did the agent turn this intention into useful options—and what did person-to-person matching discover beyond the web results?**
+The demo should answer how Telem changed the proposed connection and what the people could do together next.
 
 ## What would make this competitive?
 
@@ -207,10 +212,10 @@ The longer-term success metric is **intentions users report making progress on t
 
 - Raw AI conversation history stays private by default; only explicitly approved content becomes searchable.
 - Users can edit or remove shared intentions and control their audience.
-- Another person’s agent receives only the information approved for that audience.
+- Another person's agent receives only the information approved for that audience.
 - Search results must not invent needs, offers, availability, or willingness to connect.
-- An agent may privately suggest that someone’s experience could help another person. That inference remains a draft until the person approves making it discoverable; inferred relevance never grants permission to share.
-- Introductions require both people’s acceptance before contact information is revealed.
+- An agent may privately suggest that someone's experience could help another person. That inference remains a draft until the person approves making it discoverable; inferred relevance never grants permission to share.
+- Introductions require both people's acceptance before contact information is revealed.
 
 These are product requirements for implementation, not claims about protections already built.
 
