@@ -32,7 +32,15 @@ export default function FollowDiscovery() {
   const queries = searches.flatMap((e) => (e.detail as SearchDetail | null)?.queries ?? []);
   const providers = providerTotals(searches);
   const pagesRead = view.sources.filter((s) => s.fetch.status === "succeeded").length;
-  const memberSearches = events.filter((e) => e.kind === "retrieval");
+  const shownProviders = providers.filter(([, n]) => n > 0);
+  const emptyProviders = providers.length - shownProviders.length;
+  const memberQueries = [
+    ...new Set(
+      events
+        .filter((e) => e.kind === "retrieval")
+        .flatMap((e) => ((e.detail as { queries?: { text: string }[] } | null)?.queries ?? []).map((q) => q.text)),
+    ),
+  ];
 
   const checked = view.candidates.filter((c) => c.status === "checked");
   const excluded = view.candidates.filter((c) => c.status === "rejected");
@@ -40,6 +48,7 @@ export default function FollowDiscovery() {
   const quotesFound = conditions.filter((c) => c.status === "confirmed").length;
   const ways = view.options.filter((o) => !o.excluded).length;
   const running = run.status === "running";
+  const noWays = !running && ways === 0;
 
   const fu = run.followUp;
   const followUpText = fu.status === "skipped" ? "Not needed" : fu.status === "running" ? "Searching again" : fu.status === "succeeded" ? "Searched once more" : fu.status === "failed" ? "Failed" : "Waiting";
@@ -75,12 +84,13 @@ export default function FollowDiscovery() {
           {providers.length ? (
             <div>
               <DetailLabel>Providers</DetailLabel>
-              <div className="flex flex-wrap gap-1.5">
-                {providers.map(([p, n]) => (
+              <div className="flex flex-wrap items-center gap-1.5">
+                {shownProviders.map(([p, n]) => (
                   <span key={p} className="rounded border border-border bg-white px-1.5 py-0.5 text-[11.5px]">
                     <b className="font-semibold">{p}</b> {n}
                   </span>
                 ))}
+                {emptyProviders ? <span className="text-[11.5px] text-muted-foreground">+{emptyProviders} empty</span> : null}
               </div>
             </div>
           ) : null}
@@ -105,10 +115,7 @@ export default function FollowDiscovery() {
           summary={`${view.candidates.length} matched`}
           meta="Sample"
         >
-          {memberSearches.map((e) => {
-            const d = e.detail as { queries?: { label: string; text: string }[] } | null;
-            return <DetailList key={e._id} label={e.label} items={(d?.queries ?? []).map((q) => `${q.label}: ${q.text}`)} />;
-          })}
+          <DetailList label="Searches" items={memberQueries} />
         </Step>
       </div>
       <Merge on={stageStatus("compatibility_checks") !== "pending"} />
@@ -161,14 +168,14 @@ export default function FollowDiscovery() {
       <div
         className={cn(
           "flex flex-wrap items-center justify-between gap-3 rounded-lg px-5 py-4",
-          running ? "border border-dashed border-border bg-card" : "bg-[var(--airmail)] text-white",
+          running || noWays ? "border border-dashed border-border bg-card" : "bg-[var(--airmail)] text-white",
         )}
       >
         <div>
-          <p className="text-[15px] font-bold">{running ? "Finding ways…" : `${ways} ways forward`}</p>
-          {run.error ? <p className="mt-0.5 text-[13px] text-[var(--airmail-red)]">{run.error}</p> : null}
+          <p className="text-[15px] font-bold">{running ? "Finding ways…" : noWays ? "No ways found" : `${ways} ${ways === 1 ? "way" : "ways"} forward`}</p>
+          {run.error ? <p className={cn("mt-0.5 text-[13px]", running || noWays ? "text-[var(--airmail-red)]" : "text-[var(--airmail-ink)]")}>{run.error}</p> : null}
         </div>
-        <Link
+        {noWays ? null : <Link
           href="/"
           className={cn(
             buttonVariants({ size: "lg" }),
@@ -177,7 +184,7 @@ export default function FollowDiscovery() {
           )}
         >
           See them <ArrowRight data-icon="inline-end" />
-        </Link>
+        </Link>}
       </div>
 
       <RunLog events={events} />
