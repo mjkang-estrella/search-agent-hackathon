@@ -1,0 +1,44 @@
+{
+  "id": "voice-cofounder",
+  "label": "Voice AI co-founder (synthetic requester)",
+  "requester": {
+    "name": "Sam",
+    "synthetic": true,
+    "intention": {
+      "aim": "Find a technical co-founder to build a voice AI agent that answers phone calls for small businesses (restaurants, salons): bookings, orders, and questions.",
+      "blocker": "I can't build real-time voice myself: latency, turn-taking, interruptions, and phone (SIP/Twilio) integration.",
+      "contributions": [
+        "Three years selling software to small businesses",
+        "Relationships with about 20 shops willing to be first customers",
+        "Pricing and go-to-market design"
+      ],
+      "timing": "Ready to start within two months",
+      "location": "San Francisco Bay Area",
+      "constraints": [
+        { "text": "Full-time", "strength": "hard", "visibility": "network" },
+        { "text": "Based in the SF Bay Area", "strength": "hard", "visibility": "network" },
+        { "text": "Has shipped a voice agent to real users", "strength": "soft", "visibility": "network" },
+        { "text": "Can only offer equity for the first six months", "strength": "hard", "visibility": "private" }
+      ],
+      "category": "startup",
+      "seeking": "people"
+    }
+  },
+  "_searchPlanNote": "Hand-written placeholder until the LLM planner is wired in. Queries use only public topics: no name, shop names, or private constraints.",
+  "searchPlan": {
+    "since": "2026-05-14",
+    "recentDays": 90,
+    "queries": [
+      { "platform": "x", "query": "building a real-time voice agent", "why": "Engineers sharing voice work in progress" },
+      { "platform": "x", "query": "built a voice agent with pipecat", "why": "Hands-on builders on the most common open-source stack" },
+      { "platform": "x", "query": "livekit agents side project", "why": "Builders on the other common stack" },
+      { "platform": "x", "query": "voice agent turn detection latency what I learned", "why": "People who solved the hard parts Sam can't" },
+      { "platform": "x", "query": "looking for a cofounder voice AI", "why": "People openly seeking a partner" },
+      { "platform": "x", "query": "engineer looking for a GTM cofounder", "why": "Builders who need sales/customers, which Sam offers" },
+      { "platform": "linkedin", "query": "voice AI engineer left to build something new", "why": "Recent departures from voice AI companies" },
+      { "platform": "linkedin", "query": "voice agents engineer exploring founding", "why": "Engineers considering starting a company" },
+      { "platform": "substack", "query": "building voice agents lessons latency", "why": "Build logs from people deep in real-time voice" },
+      { "platform": "substack", "query": "voice AI side project build log", "why": "Indie builders writing in public" }
+    ]
+  }
+}

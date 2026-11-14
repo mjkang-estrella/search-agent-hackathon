@@ -1,0 +1,19 @@
+[Synthetic demo conversation. Sam is a fictional person.]
+
+--- Conversation 1 (Oct 28) ---
+Sam: I'm prototyping a phone agent for small restaurants. It picks up when the staff are too busy and takes reservations. Right now I glued together a speech-to-text API, GPT and a TTS voice.
+Assistant: That's a common stack. What's the main issue so far?
+Sam: Latency. There's always a 2+ second gap after the caller stops talking, and when they interrupt, the bot keeps talking over them. Callers hang up.
+Assistant: That's turn-taking and barge-in. Frameworks like Pipecat or LiveKit Agents handle a lot of it, plus streaming every stage.
+Sam: Honestly I'm not an engineer. I sold POS software to restaurants for three years. I can read code but I can't build real-time audio stuff.
+
+--- Conversation 2 (Nov 3) ---
+Sam: Spent the whole weekend trying to connect Twilio SIP to the agent. Gave up. I don't think I can be the person who builds this.
+Assistant: Telephony is genuinely hard. Would hiring a contractor help?
+Sam: I tried an agency, they quoted $40k and didn't really get the product. I need someone who actually cares about this problem and wants to build it with me long-term, not a contractor. I can't pay salaries yet though.
+Sam: The good news is about 20 restaurant and salon owners I know said they'd try it if it works. Two of them want to start next month.
+
+--- Conversation 3 (Nov 10) ---
+Sam: I'm going all in on this. Quit my job last week. I'm in San Francisco, so I'd love to work with someone in person, at least a few days a week.
+Assistant: That's a big step. What does your next month look like?
+Sam: Get a working pilot with those two restaurants. Figure out pricing — maybe per-location monthly. And I keep wondering how other voice AI teams get latency under a second.
