@@ -633,7 +633,7 @@ async function pipeline(c: Ctx, intention: Doc<"intentions">, brief: Doc<"search
   const checks = shortlist.length
     ? await task(c, "compatibility_checks", `Requester check of ${shortlist.length} candidates (network-approved fields only)`, async () => {
         const started = Date.now();
-        const value = await requesterChecks(c.ctx, c.io, c.threadId, card, shortlist.map((s) => ({ alias: s.alias, card: s.member.networkCard })));
+        const value = await requesterChecks(c.ctx, c.io, c.threadId, card, shortlist.map((s) => ({ alias: s.alias, card: s.member.networkCard })), intention.kind === "offer");
         return { value, durationMs: Date.now() - started };
       })
     : [];

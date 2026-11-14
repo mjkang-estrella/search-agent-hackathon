@@ -170,6 +170,7 @@ export async function requesterChecks(
   threadId: string | null,
   requester: IntentionCard,
   candidates: { alias: string; card: NetworkCard }[],
+  offer = false,
 ) {
   if (candidates.length === 0) return [];
   const { value } = await modelTask(ctx, io, {
@@ -178,7 +179,7 @@ export async function requesterChecks(
     threadId,
     schema: zRequesterChecks,
     prompt: `Check each candidate member against the requester's intention. Shared interests alone are not enough: mark relevant=false when the candidate's intention would not help or be helped by the requester.
-Complementary intentions are relevant: the requester's contribution meets the candidate's need, the candidate's contribution meets the requester's need, or both share the same aim. Who starts the collaboration does not matter.
+Complementary intentions are relevant: the requester's contribution meets the candidate's need, the candidate's contribution meets the requester's need, or both share the same aim. Who starts the collaboration does not matter.${offer ? "\nThe requester is OFFERING this. A candidate who offers or sells the same thing is a competitor: mark relevant=false. Relevant candidates are people who need it." : ""}
 For every requester hard constraint, return meets, conflicts, or unknown. Use unknown when the candidate's card does not state the fact. Do not infer availability from interests.
 
 Requester:
