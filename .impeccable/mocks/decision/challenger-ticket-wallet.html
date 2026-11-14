@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<title>Wayfinder · Ways forward</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B2A5C;--navy2:#24366F;--ground:#ECEEF3;--white:#fff;--red:#D3263A;--carbon:#5A3E8C;--ink:#141B33;--mute:#5B6380;--rule:#CDD2DD;--soft:#F6F7FA}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden}
+body{font-family:Archivo,system-ui,sans-serif;font-variant-numeric:tabular-nums;color:var(--ink);background:var(--ground);display:grid;grid-template-columns:224px 1fr;font-size:13px;line-height:1.4}
+.cap{font-stretch:75%;text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:10.5px}
+.val{font-family:"Courier Prime",monospace;font-weight:700;color:var(--carbon)}
+/* rail */
+.rail{background:var(--navy);color:#DCE1F0;padding:22px 14px;display:flex;flex-direction:column}
+.brand{font-stretch:112%;font-weight:800;font-size:20px;color:#fff;letter-spacing:-.01em;padding:0 10px 22px}
+.brand small{display:block;font-size:10px;font-stretch:75%;letter-spacing:.14em;color:#8E9AC4;font-weight:600;margin-top:2px}
+.rail ol{list-style:none;display:grid;gap:2px}
+.rail a{display:grid;grid-template-columns:26px 1fr;align-items:center;padding:8px 10px;border-radius:4px;color:#C3CBE4;text-decoration:none;font-size:13px}
+.rail a b{font-stretch:75%;font-size:11px;color:#7F8BB5;font-weight:700}
+.rail a.done b{color:#B9C3E6}
+.rail a[aria-current]{background:#fff;color:var(--navy);font-weight:700}
+.rail a[aria-current] b{color:var(--carbon)}
+.rail .foot{margin-top:auto;border-top:1px dashed #44558C;padding:14px 10px 0;font-size:12px;color:#AEB8DA}
+.rail .foot .cap{color:#7F8BB5;display:block;margin-bottom:4px}
+/* top */
+main{display:grid;grid-template-rows:auto 1fr;min-width:0}
+.top{background:var(--white);border-bottom:1px solid var(--rule);padding:16px 28px 14px;display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:end}
+.crumb{color:var(--mute)}
+h1{font-stretch:88%;font-weight:800;font-size:25px;letter-spacing:-.01em;line-height:1.15;margin-top:3px}
+h1 em{font-style:normal;font-size:12px;font-weight:600;color:var(--mute);font-stretch:100%;margin-left:10px;vertical-align:3px}
+.badge{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--navy);color:var(--navy);padding:3px 8px 3px 7px;border-radius:3px;font-size:11px;vertical-align:5px;margin-left:10px}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--navy)}
+.fields{display:flex;gap:0;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.f{padding:5px 10px 6px;border-left:1px solid var(--rule);min-width:76px}
+.f:first-child{border-left:0}
+.f .cap{display:block;color:var(--mute);font-size:9.5px}
+.f .val{font-size:15px}
+.hard{grid-column:1/-1;display:flex;gap:8px;align-items:center;color:var(--mute)}
+.hard .chip{border:1px solid var(--rule);border-radius:3px;padding:3px 8px;background:var(--soft);white-space:nowrap;font-size:12px}
+.hard .prov{margin-left:auto;white-space:nowrap;font-size:9.5px}
+.hard .chip .val{font-size:12.5px}
+/* work */
+.work{display:grid;grid-template-columns:1fr 470px;gap:22px;padding:18px 28px 0;min-height:0}
+.colhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.colhead h2,.panel h2{font-stretch:80%;font-size:13px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:4px;background:#fff;overflow:hidden}
+.seg button{font:inherit;font-size:12px;border:0;background:none;padding:6px 13px;color:var(--mute);border-left:1px solid var(--rule);cursor:pointer}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed=true]{background:var(--navy);color:#fff;font-weight:600}
+.seg button span{opacity:.65;margin-left:4px}
+.skip{font-size:11.5px;color:var(--mute);margin:-4px 0 10px}
+.skip b{color:var(--ink);font-weight:600}
+/* coupon */
+.list{display:grid;gap:9px}
+.cp{position:relative;display:grid;grid-template-columns:1fr 136px;background:#fff;border:1px solid var(--rule);border-radius:5px;box-shadow:0 1px 0 rgba(27,42,92,.06)}
+.cp.sel{border-color:var(--navy);box-shadow:inset 4px 0 0 var(--navy),0 2px 8px rgba(27,42,92,.12)}
+.body{padding:10px 14px 10px 16px;min-width:0}
+.head{display:flex;gap:8px;align-items:center;margin-bottom:3px}
+.tag{border:1px solid currentColor;padding:1px 5px;border-radius:2px;color:var(--navy)}
+.fit{color:var(--mute)}.fit.strong{color:var(--ink)}
+.syn{font-stretch:80%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:#EEE9F6;color:var(--carbon);padding:1px 5px;border-radius:2px}
+.cp h3{font-size:15px;font-weight:700;line-height:1.25;letter-spacing:-.005em}
+.cp p{font-size:12px;color:var(--mute);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cons{display:flex;gap:5px;margin-top:7px}
+.c{white-space:nowrap;border:1px solid var(--rule);border-radius:2px;padding:2px 6px 2px;display:grid;grid-template-columns:auto auto;gap:0 8px;align-items:baseline}
+.c .cap{font-size:9px;color:var(--mute);grid-column:1/-1}
+.c .val{font-size:12px}
+.c .r{font-size:10.5px;font-weight:700;font-stretch:80%;text-transform:uppercase;color:var(--navy)}
+.c.unk{border-style:dashed;background:var(--soft)}.c.unk .r{color:var(--mute)}
+.c.no{border-color:var(--red)}.c.no .r,.c.no .val{color:var(--red)}
+.stub{position:relative;border-left:2px dashed var(--rule);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;background:var(--soft);border-radius:0 5px 5px 0}
+.stub::before,.stub::after{content:"";position:absolute;left:-9px;width:16px;height:16px;border-radius:50%;background:var(--ground);border:1px solid var(--rule)}
+.stub::before{top:-9px;clip-path:inset(50% 0 0 0)}.stub::after{bottom:-9px;clip-path:inset(0 0 50% 0)}
+.stub .cap{color:var(--mute);font-size:9px}
+.stamp{font-stretch:80%;font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.06em;border:1.5px solid var(--navy);color:var(--navy);border-radius:3px;padding:3px 6px;text-align:center;transform:rotate(-3deg);margin:4px 0}
+.stamp.open{border-style:dashed;color:var(--mute);border-color:var(--mute);transform:none}
+.stub label{display:flex;gap:6px;align-items:center;font-size:11.5px;color:var(--ink)}
+.stub input{accent-color:var(--navy);width:14px;height:14px}
+/* excluded */
+.excl{margin-top:14px}
+.excl .colhead{margin-bottom:8px}
+.excl .note{font-size:11.5px;color:var(--mute)}
+.voids{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.vc{position:relative;background:#fff;border:1px solid var(--rule);border-radius:4px;padding:8px 70px 9px 12px;overflow:hidden;color:var(--mute)}
+.vc h4{font-size:13px;color:var(--ink);font-weight:700;opacity:.7}
+.vc p{font-size:11.5px;margin-top:2px}.vc p b{color:var(--red);font-weight:600}
+.void{position:absolute;right:10px;top:18px;transform:rotate(-14deg);border:2.5px solid var(--red);color:var(--red);font-family:Archivo,sans-serif;font-stretch:70%;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.14em;padding:0 6px;border-radius:3px;opacity:.88;mix-blend-mode:multiply}
+/* panel */
+.panel{background:#fff;border:1px solid var(--rule);border-bottom:0;border-radius:6px 6px 0 0;padding:16px 20px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.panel .sub{color:var(--mute)}
+.panel h3{font-size:18px;font-stretch:92%;font-weight:800;line-height:1.2;margin-top:2px}
+.legs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.leg{border:1px solid var(--rule);border-radius:4px;padding:8px 10px;font-size:12px}
+.leg strong{display:block;font-size:13px;margin:2px 0 1px}
+.leg .cap{color:var(--mute);font-size:9.5px}
+.ev{display:grid;gap:7px}
+.q{border-left:3px solid var(--navy);padding:2px 0 2px 10px}
+.q.inf{border-left-style:dotted;border-color:var(--mute)}.q.mem{border-color:var(--carbon)}
+.q .cap{font-size:9.5px;color:var(--navy)}.q.inf .cap{color:var(--mute)}.q.mem .cap{color:var(--carbon)}
+.q blockquote{font-size:13px;margin-top:1px}
+.q small{font-size:11px;color:var(--mute)}
+.ask{border:1px dashed var(--mute);background:var(--soft);border-radius:4px;padding:8px 10px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:baseline}
+.ask .val{color:var(--mute)}
+.ask p{grid-column:1/-1;font-size:12px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:4px}
+.btn{white-space:nowrap;font:inherit;font-weight:700;font-size:13px;border-radius:4px;padding:9px 16px;cursor:pointer;border:1.5px solid var(--navy)}
+.btn.pri{background:var(--navy);color:#fff}.btn.sec{background:#fff;color:var(--navy)}
+.actions small{font-size:11px;color:var(--mute);line-height:1.3;flex-basis:100%;order:-1}
+.panel .cons{flex-wrap:wrap}
+:focus-visible{outline:2px solid var(--carbon);outline-offset:2px}
+</style></head><body>
+<nav class="rail" aria-label="Steps"><div class="brand">Wayfinder<small>DANA · ONE INTENTION</small></div>
+<ol><li><a class="done" href="#"><b>01</b>Bring context</a></li><li><a class="done" href="#"><b>02</b>Review intention</a></li><li><a class="done" href="#"><b>03</b>Review sharing</a></li><li><a class="done" href="#"><b>04</b>Follow discovery</a></li><li><a href="#" aria-current="step"><b>05</b>Ways forward</a></li><li><a href="#"><b>06</b>Compare</a></li><li><a href="#"><b>07</b>Introduction</a></li><li><a href="#"><b>08</b>Evidence &amp; evaluation</a></li></ol>
+<div class="foot"><span class="cap">Intention</span>Revision 2 · approved. Only the approved search brief left the app.</div></nav>
+<main><header class="top"><div><div class="crumb cap">Step 5 of 8 · Ways forward</div><h1>Turn one of my poems into a song<span class="badge cap"><i></i>Live</span><em>Revision 2 · approved</em></h1></div>
+<div class="fields" aria-label="Run statistics"><div class="f"><span class="cap">Run time</span><span class="val">42 s</span></div><div class="f"><span class="cap">Telem queries</span><span class="val">6</span></div><div class="f"><span class="cap">Providers</span><span class="val">7</span></div><div class="f"><span class="cap">Unique URLs</span><span class="val">169</span></div><div class="f"><span class="cap">Pages read</span><span class="val">4</span></div></div>
+<div class="hard"><span class="cap">Hard constraints</span><span class="chip">Budget <span class="val">≤ $40/month</span></span><span class="chip">Weeknights <span class="val">after 7pm</span></span><span class="chip">Place <span class="val">Oakland in person or video</span></span><span class="chip">Travel <span class="val">will not cross the bay</span></span><span class="cap prov">exa · tavily · brave · parallel · ceramic · seltz · you</span></div></header>
+<div class="work"><section aria-labelledby="opt"><div class="colhead"><h2 id="opt">4 ways forward</h2><div class="seg" role="group" aria-label="Filter options"><button aria-pressed="true">All<span>4</span></button><button aria-pressed="false">Public<span>1</span></button><button aria-pressed="false">Member<span>2</span></button><button aria-pressed="false">Combined<span>1</span></button></div></div>
+<p class="skip"><b>Follow-up search skipped:</b> a compatible member and a confirmed public option already cover the goal.</p>
+<div class="list">
+<article class="cp sel"><div class="body"><div class="head"><span class="tag cap">Combined</span><span class="fit strong cap">Strong fit</span></div><h3>Co-write with Theo, then debut it at the Discovery Collab Open Mic</h3><p>Theo M. <span class="syn">Synthetic member</span> · Discovery Community Cafe, Oakland · last Friday monthly, 7pm</p>
+<div class="cons"><div class="c"><span class="cap">Budget</span><span class="val">free collab</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Weeknights</span><span class="val">Fri 7pm</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Place</span><span class="val">Oakland/video</span><span class="r">✓ meets</span></div><div class="c unk"><span class="cap">Open mic cost</span><span class="val">—</span><span class="r">? unknown</span></div></div></div>
+<div class="stub"><span class="cap">Counterpart agent</span><div class="stamp">Compatible</div><label><input type="radio" name="o" checked> Selected</label></div></article>
+<article class="cp"><div class="body"><div class="head"><span class="tag cap">Member</span><span class="fit strong cap">Strong fit</span><span class="syn">Synthetic member</span></div><h3>Introduction to Theo M.</h3><p>His melodies need words; your poems need music. His agent asks: “Are you open to adapting a poem to fit an existing melody?”</p>
+<div class="cons"><div class="c"><span class="cap">Budget</span><span class="val">free</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Weeknights</span><span class="val">yes</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Place</span><span class="val">Oakland/video</span><span class="r">✓ meets</span></div></div></div>
+<div class="stub"><span class="cap">Introduction</span><div class="stamp open">Not requested</div><label><input type="radio" name="o"> Select</label></div></article>
+<article class="cp"><div class="body"><div class="head"><span class="tag cap">Public</span><span class="fit cap">Possible fit</span></div><h3>FLUID Open Mic, 7th West, Oakland</h3><p>Every 3rd Thursday · live band · “$10 Performer • $15 General” (confirmed quote)</p>
+<div class="cons"><div class="c"><span class="cap">Budget</span><span class="val">$10</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Weeknights</span><span class="val">3rd Thu</span><span class="r">✓ meets</span></div><div class="c unk"><span class="cap">Collaboration</span><span class="val">—</span><span class="r">? unknown</span></div></div></div>
+<div class="stub"><span class="cap">Route</span><div class="stamp">Published</div><label><input type="radio" name="o"> Select</label></div></article>
+<article class="cp"><div class="body"><div class="head"><span class="tag cap">Member</span><span class="fit cap">Possible fit</span><span class="syn">Synthetic member</span></div><h3>Rena O. songwriting feedback circle</h3><p>Missing fact asked as a question: when does the circle meet?</p>
+<div class="cons"><div class="c unk"><span class="cap">Schedule</span><span class="val">—</span><span class="r">? unknown</span></div></div></div>
+<div class="stub"><span class="cap">Introduction</span><div class="stamp open">Awaiting answer</div><label><input type="radio" name="o"> Select</label></div></article>
+</div>
+<div class="excl"><div class="colhead"><h2>Excluded · 3</h2><span class="note">Kept visible, removed from recommendations</span></div><div class="voids">
+<div class="vc"><h4>Hana W.</h4><span class="syn">Synthetic member</span><p><b>Hard conflict:</b> budget, $120 workshop</p><span class="void">Void</span></div>
+<div class="vc"><h4>Marisol V.</h4><span class="syn">Synthetic member</span><p><b>Reverse need:</b> paid commission</p><span class="void">Void</span></div>
+<div class="vc"><h4>Ines P.</h4><span class="syn">Synthetic member</span><p><b>Not a fit:</b> related interest, no fitting intention</p><span class="void">Void</span></div>
+</div></div></section>
+<aside class="panel" aria-labelledby="sel"><div><div class="sub cap">Selected · Combined · Strong fit</div><h3 id="sel">Co-write with Theo, then debut it at the Discovery Collab Open Mic</h3></div>
+<div class="legs"><div class="leg"><span class="cap">Member connection</span><strong>Theo M. <span class="syn">Synthetic member</span></strong>Weeknights, video or Oakland, free collaboration</div><div class="leg"><span class="cap">Public option</span><strong>Discovery Collab Open Mic</strong>Discovery Community Cafe, Oakland · last Friday monthly, 7pm</div></div>
+<h2>Why this fits</h2><div class="ev">
+<div class="q inf"><span class="cap">Inferred · LLM, no web search</span><blockquote>“A composer with unfinished melodies could set a poem to music.”</blockquote></div>
+<div class="q"><span class="cap">Public source · exa</span><blockquote>“Music and poetry welcome.”</blockquote><small>bayareaopenmics.com · page fetched in this run</small></div>
+<div class="q mem"><span class="cap">Member intention · approved for sharing</span><blockquote>“Find a lyricist for my unfinished melodies”</blockquote><small>Theo M. · Synthetic member</small></div></div>
+<div><h2>Checked against your constraints</h2><div class="cons"><div class="c"><span class="cap">Budget ≤ $40/mo</span><span class="val">free collab</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Weeknights after 7pm</span><span class="val">Fri 7pm</span><span class="r">✓ meets</span></div><div class="c"><span class="cap">Oakland or video</span><span class="val">Oakland</span><span class="r">✓ meets</span></div></div></div>
+<div class="ask"><span class="cap">Cost</span><span class="val">UNKNOWN</span><p>No public page states a performer fee. Question for the venue: does the open mic charge performers?</p></div>
+<div class="actions"><button class="btn pri">Request introduction</button><button class="btn sec">Open published route</button><small>Acceptance is simulated. Contact details appear after both sides accept.</small></div>
+</aside></div></main></body></html>

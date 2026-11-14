@@ -227,4 +227,22 @@ These are product requirements for implementation, not claims about protections 
 
 ## Project status
 
-Implementation is in progress. The implementation plan describes target behavior. Setup instructions and measured demo results will be added as the working prototype takes shape.
+A first working version is live at https://wayfinder-woad.vercel.app. Wayfinder is a memory MCP server for personal agents such as Grok, Dot, or Muse. An agent saves memories with the `add_memory` tool, and Wayfinder turns each memory into intentions and starts looking on its own. Telem searches the public web and, through its social providers (X, TikTok, Reddit, Instagram, Facebook, LinkedIn), finds posts by people who have done what you need. Convex searches 51 sample member intentions, and both sides' agents check the fit. The best option becomes the "Idea for you." **Start with a demo persona** loads sample memories for one of four people:
+
+- **Dana (personal and creative).** Turn a poem into a song, plan a first trip to Seoul, build a bench.
+- **Jun (passing remarks).** "I like washing cars" becomes an offer to wash cars for neighbors who would pay. An idle 3D printer and unused Korean become offers too.
+- **Marcus (work).** Becoming a team lead, finding beta testers, and a logo for a side business.
+- **Priya (community).** A safer school crossing and volunteers for a library coding club. Sample members, contacts, and acceptance are labeled. Measured results are in [docs/evaluation-results.md](docs/evaluation-results.md).
+
+## Run it locally
+
+1. Run `npm install`.
+2. Run `npx convex dev`. On first run it creates a local deployment and writes `.env.local`.
+3. Set the server keys: `npx convex env set TELEM_API_KEY <key>` and `npx convex env set OPENAI_API_KEY <key>`. `OPENAI_MODEL` is optional and defaults to `gpt-5.4-mini`.
+4. Seed the synthetic members: `npx convex run seed:seedMembers`.
+5. Run `npm run dev` and open http://localhost:3000.
+
+Scripts:
+
+- `npx tsx scripts/e2e.ts creative --replay` runs one scenario end to end, then replays it from the recording.
+- `npx tsx scripts/evaluate.ts` compares the matching methods on 12 labeled cases and rewrites `docs/evaluation-results.md`.

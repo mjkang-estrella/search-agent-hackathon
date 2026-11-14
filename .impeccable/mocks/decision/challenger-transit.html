@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Wayfinder · Ways forward</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Red+Hat+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12224A;--ink2:#1C3166;--por:#F4F6F8;--paper:#fff;--line:#DCE1EA;--mute:#5A6680;--sc:#E0402F;--co:#2D6BE0;--gr:#2FA35B;--am:#F2A900;--amt:#8A5A00;--grt:#1E7A42;--mono:"Red Hat Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1440px;height:900px;overflow:hidden}
+body{font-family:"Hanken Grotesk",sans-serif;background:var(--por);color:var(--ink);font-size:14px;line-height:1.4;display:grid;grid-template-columns:232px 1fr;font-variant-numeric:tabular-nums}
+button,select{font:inherit;color:inherit;cursor:pointer}
+.rail{background:var(--ink);color:#C9D2E6;display:flex;flex-direction:column;padding:20px 14px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:19px;letter-spacing:-.01em;padding:0 8px 22px}
+.rail h2{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#7F8DB0;padding:0 8px 8px}
+.rail ol{list-style:none;display:flex;flex-direction:column;gap:2px}
+.rail a{display:flex;align-items:center;gap:10px;padding:8px;border-radius:6px;color:inherit;text-decoration:none;font-weight:500}
+.rail a .n{width:22px;height:22px;border-radius:50%;border:1.5px solid #4A5A85;display:grid;place-items:center;font:600 11px var(--mono)}
+.rail a.done .n{background:#2A3D70;border-color:#2A3D70;color:#fff}
+.rail a.on{background:#F4F6F8;color:var(--ink);font-weight:700}
+.rail a.on .n{background:var(--am);border-color:var(--am);color:var(--ink)}
+.rail a.todo{color:#8391B3}
+.note{margin-top:auto;border-top:1px solid #2A3D70;padding:14px 8px 0;font-size:12px;color:#9AA7C6}
+.note b{display:block;color:#fff;font-weight:600;margin-bottom:3px}
+.wrap{display:grid;grid-template-rows:68px 1fr;min-width:0}
+.top{background:var(--ink);color:#fff;display:flex;align-items:center;gap:16px;padding:0 24px;border-left:1px solid #2A3D70}
+.top .crumb{font:500 11px var(--mono);color:#8FA0C8;letter-spacing:.06em;text-transform:uppercase}
+.top h1{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.chip{font-size:12px;font-weight:600;padding:3px 8px;border-radius:999px;border:1px solid #3A4E82;color:#C9D2E6}
+.live{display:inline-flex;align-items:center;gap:6px;background:#E7F6EC;color:#14532D;font:700 11px var(--mono);letter-spacing:.08em;padding:4px 9px;border-radius:4px}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--gr);box-shadow:0 0 0 3px rgba(47,163,91,.25)}
+.stats{margin-left:auto;display:flex;gap:18px;font-size:12px;color:#9AA7C6}
+.stats b{display:block;color:#fff;font:600 15px var(--mono)}
+.body{display:grid;grid-template-columns:1fr 408px;min-height:0}
+main{padding:18px 24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px}
+.map{padding:10px 16px 4px;position:relative}
+.map h3,.side h3{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.map h3 span{float:right;text-transform:none;letter-spacing:0;font-family:"Hanken Grotesk";font-weight:500}
+svg text{font-family:"Hanken Grotesk";fill:var(--ink)}
+.bar{display:flex;align-items:center;gap:12px}
+.seg{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:5px;font-weight:600;font-size:13px;display:flex;align-items:center;gap:7px;color:var(--mute)}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.seg s{width:14px;height:4px;border-radius:2px;display:inline-block}
+.seg em{font:500 12px var(--mono);font-style:normal;opacity:.7}
+.bar .hint{font-size:13px;color:var(--mute);white-space:nowrap}
+.bar select{margin-left:auto;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 10px;font-size:13px;font-weight:500}
+.list{position:relative;overflow:hidden}
+.list:before,.list:after{content:"";position:absolute;z-index:1;top:0;bottom:0;width:5px}
+.list:before{left:20px;background:var(--co)}.list:after{left:40px;background:var(--gr)}
+.opt{position:relative;padding:13px 18px 13px 70px;border-top:1px solid var(--line)}
+.opt:first-child{border-top:0}
+.opt.sel{background:#FFF8E6;box-shadow:inset 0 0 0 2px var(--am)}
+.st{position:absolute;z-index:2;top:16px;width:17px;height:17px;border-radius:50%;background:#fff;border:4px solid}
+.st.p{left:14px;border-color:var(--co)}.st.m{left:34px;border-color:var(--gr)}
+.st.x{left:12px;width:39px;height:19px;border-radius:10px;border-color:var(--ink);top:15px}
+.st.x:after{content:"";position:absolute;inset:3px 9px;background:var(--am);border-radius:3px}
+.kind{display:flex;gap:8px;align-items:center;font:600 11px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.kind .fit{font-family:"Hanken Grotesk";letter-spacing:0;text-transform:none;font-size:12px;padding:1px 7px;border-radius:4px;background:#EEF1F6;color:var(--ink)}
+.kind .fit.s{background:var(--ink);color:#fff}
+.syn{margin-left:auto;font-family:"Hanken Grotesk";text-transform:none;letter-spacing:0;font-size:11px;font-weight:600;color:var(--grt);border:1px dashed var(--gr);padding:1px 7px;border-radius:4px}
+.opt h4{font-size:16px;font-weight:700;margin:4px 0 2px;letter-spacing:-.005em}
+.opt p{font-size:13px;color:var(--mute)}
+.opt q{color:var(--ink);font-weight:500}
+.cs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.c{font-size:12px;font-weight:500;padding:2px 8px 2px 6px;border-radius:4px;display:inline-flex;gap:5px;align-items:center;background:#EEF7F1;color:#174F2D}
+.c:before{content:"✓";font-weight:800;color:var(--gr)}
+.c.u{background:#FFF4D6;color:var(--amt)}.c.u:before{content:"?";color:var(--amt)}
+.c.f{background:#FDECEA;color:#A3271A}.c.f:before{content:"×";color:var(--sc)}
+details.card{padding:11px 16px;font-size:13px}
+summary{font-weight:600;cursor:pointer;display:flex;gap:10px;align-items:center}
+summary span{color:var(--mute);font-weight:400}.dot{width:8px;height:8px;border-radius:50%;background:var(--sc)}
+.side{background:var(--paper);border-left:1px solid var(--line);padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-height:0}
+.side h2{font-size:19px;font-weight:700;line-height:1.25;letter-spacing:-.01em;margin-top:6px}
+.ev{border-left:4px solid;padding:3px 0 3px 12px;margin-top:9px}
+.ev small{display:block;font:600 10.5px var(--mono);letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.ev.i{border-color:#A9B3C7}.ev.i small{color:var(--mute)}
+.ev.p{border-color:var(--co)}.ev.p small{color:#1F4FAE}
+.ev.m{border-color:var(--gr)}.ev.m small{color:var(--grt)}
+.ev div{font-size:13.5px}.ev span{font-size:12px;color:var(--mute)}
+.cl{list-style:none;margin-top:6px}
+.cl li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #EDF0F5;font-size:13px}
+.cl b{font-size:12px;font-weight:700;color:var(--grt)}.cl b.u{color:var(--amt)}
+.ask{background:#FFF4D6;border-radius:8px;padding:10px 12px;font-size:13px;margin-top:8px}
+.ask small{font:600 10.5px var(--mono);letter-spacing:.07em;color:var(--amt);display:block}
+.acts{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.btn{border-radius:8px;padding:11px 14px;font-weight:700;font-size:14px;border:1px solid var(--ink)}
+.btn.pri{background:var(--ink);color:#fff}.btn.sec{background:#fff;color:var(--ink);border-color:#C5CCDA}
+.acts p{font-size:11.5px;color:var(--mute)}
+</style></head>
+<body>
+<nav class="rail" aria-label="Steps">
+  <div class="brand"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 5h6l6 8h8" stroke="#2D6BE0" stroke-width="3" fill="none"/><path d="M3 21h6l6-8" stroke="#2FA35B" stroke-width="3" fill="none"/><circle cx="20" cy="13" r="4.5" fill="#F4F6F8" stroke="#F2A900" stroke-width="2.5"/></svg>Wayfinder</div>
+  <h2>Intention · 8 steps</h2>
+  <ol>
+    <li><a class="done" href="#"><span class="n">✓</span>Bring context</a></li>
+    <li><a class="done" href="#"><span class="n">✓</span>Review intention</a></li>
+    <li><a class="done" href="#"><span class="n">✓</span>Review sharing</a></li>
+    <li><a class="done" href="#"><span class="n">✓</span>Follow discovery</a></li>
+    <li><a class="on" href="#" aria-current="step"><span class="n">5</span>Ways forward</a></li>
+    <li><a class="todo" href="#"><span class="n">6</span>Compare</a></li>
+    <li><a class="todo" href="#"><span class="n">7</span>Introduction</a></li>
+    <li><a class="todo" href="#"><span class="n">8</span>Evidence &amp; evaluation</a></li>
+  </ol>
+  <div class="note"><b>What left the app</b>Only your approved search brief went to Telem. No names, contact details, or excerpts.</div>
+</nav>
+<div class="wrap">
+  <header class="top">
+    <div><div class="crumb">Step 5 of 8 · Ways forward</div><h1>Turn one of my poems into a song</h1></div>
+    <span class="chip">Revision 2 · approved</span>
+    <span class="live"><i></i>LIVE</span>
+    <div class="stats"><div><b>42 s</b>run time</div><div><b>6</b>Telem queries</div><div><b>7</b>providers</div><div><b>169</b>unique URLs</div><div><b>4</b>pages read</div></div>
+  </header>
+  <div class="body">
+    <main>
+      <section class="card map" aria-label="Run stages">
+        <h3>Run line <span>Follow-up skipped: a compatible member and a confirmed public option already cover the goal</span></h3>
+        <svg width="718" height="112" viewBox="0 0 718 112" role="img" aria-label="Plan, then public and member discovery in parallel, checks, follow-up skipped, verify, rank, arriving at your intention">
+          <path d="M20 56H52" stroke="#12224A" stroke-width="5" stroke-linecap="round"/>
+          <path d="M52 56L74 34H250L272 50H640" stroke="#2D6BE0" stroke-width="5" fill="none" stroke-linejoin="round"/>
+          <path d="M52 56L74 78H250L272 62H640" stroke="#2FA35B" stroke-width="5" fill="none" stroke-linejoin="round"/>
+          <path d="M272 56H664" stroke="#F2A900" stroke-width="5"/>
+          <circle cx="20" cy="56" r="8" fill="#fff" stroke="#12224A" stroke-width="4"/>
+          <text x="8" y="86" font-size="12.5" font-weight="700">Plan</text>
+          <circle cx="160" cy="34" r="7" fill="#fff" stroke="#2D6BE0" stroke-width="4"/>
+          <text x="84" y="22" font-size="12" font-weight="700">Public line <tspan font-weight="500" fill="#5A6680">· Telem · 7 providers · 169 URLs</tspan></text>
+          <circle cx="160" cy="78" r="7" fill="#fff" stroke="#2FA35B" stroke-width="4"/>
+          <text x="84" y="102" font-size="12" font-weight="700">Member line <tspan font-weight="500" fill="#5A6680">· Convex · approved intentions</tspan></text>
+          <text x="84" y="60" font-size="11" font-weight="700" fill="#5A6680" letter-spacing="1">DISCOVERY</text>
+          <rect x="276" y="42" width="24" height="28" rx="12" fill="#fff" stroke="#12224A" stroke-width="4"/>
+          <text x="268" y="88" font-size="12.5" font-weight="700">Checks</text>
+          <rect x="374" y="42" width="24" height="28" rx="12" fill="#F4F6F8" stroke="#A9B3C7" stroke-width="3" stroke-dasharray="4 3"/>
+          <path d="M380 50l12 12M392 50l-12 12" stroke="#A9B3C7" stroke-width="2.5"/>
+          <text x="352" y="88" font-size="12.5" font-weight="700" fill="#5A6680">Follow-up</text><text x="352" y="102" font-size="11" fill="#5A6680">Closed · skipped</text>
+          <rect x="470" y="42" width="24" height="28" rx="12" fill="#fff" stroke="#12224A" stroke-width="4"/>
+          <text x="462" y="88" font-size="12.5" font-weight="700">Verify</text><text x="462" y="102" font-size="11" fill="#5A6680">4 pages read</text>
+          <rect x="566" y="42" width="24" height="28" rx="12" fill="#fff" stroke="#12224A" stroke-width="4"/>
+          <text x="558" y="88" font-size="12.5" font-weight="700">Rank</text><text x="558" y="102" font-size="11" fill="#5A6680">4 ways forward</text>
+          <circle cx="680" cy="56" r="17" fill="#F2A900"/><circle cx="680" cy="56" r="8" fill="#fff" stroke="#12224A" stroke-width="3"/>
+          <text x="638" y="22" font-size="12" font-weight="700">Your intention</text>
+        </svg>
+      </section>
+      <div class="bar">
+        <div class="seg" role="group" aria-label="Filter options">
+          <button aria-pressed="true">All <em>4</em></button>
+          <button aria-pressed="false"><s style="background:#2D6BE0"></s>Public <em>1</em></button>
+          <button aria-pressed="false"><s style="background:#2FA35B"></s>Member <em>2</em></button>
+          <button aria-pressed="false"><s style="background:#F2A900"></s>Combined <em>1</em></button>
+        </div>
+        <span class="hint">Checked against 4 hard constraints</span>
+        <select aria-label="Sort"><option>Sort: fit, then evidence</option></select>
+      </div>
+      <section class="card list" aria-label="Ways forward">
+        <article class="opt sel"><span class="st x"></span>
+          <div class="kind" style="color:var(--amt)">Combined <span class="fit s">Strong fit</span><span class="syn">Includes synthetic member</span></div>
+          <h4>Co-write with Theo, then debut it at the Discovery Collab Open Mic</h4>
+          <p>Theo M. · counterpart agent: compatible &nbsp;+&nbsp; Discovery Community Cafe, Oakland · last Friday monthly, 7pm</p>
+          <div class="cs"><span class="c">Budget meets</span><span class="c">Weeknights meets</span><span class="c">Oakland or video meets</span><span class="c u">Open mic cost unknown</span></div>
+        </article>
+        <article class="opt"><span class="st m"></span>
+          <div class="kind" style="color:var(--grt)">Member <span class="fit s">Strong fit</span><span class="syn">Synthetic member</span></div>
+          <h4>Introduction to Theo M.</h4>
+          <p>His melodies need words; your poems need music. His agent asks: <q>Are you open to adapting a poem to fit an existing melody?</q></p>
+          <div class="cs"><span class="c">Budget meets</span><span class="c">Weeknights meets</span><span class="c">Oakland or video meets</span><span class="c">Stays east of the bay meets</span></div>
+        </article>
+        <article class="opt"><span class="st p"></span>
+          <div class="kind" style="color:#1F4FAE">Public <span class="fit">Possible fit</span></div>
+          <h4>FLUID Open Mic, 7th West, Oakland</h4>
+          <p>Every 3rd Thursday · live band · <q>$10 Performer • $15 General</q> (confirmed on page)</p>
+          <div class="cs"><span class="c">Budget meets</span><span class="c">Weeknights meets</span><span class="c u">Collaboration unknown</span></div>
+        </article>
+        <article class="opt"><span class="st m"></span>
+          <div class="kind" style="color:var(--grt)">Member <span class="fit">Possible fit</span><span class="syn">Synthetic member</span></div>
+          <h4>Rena O. songwriting feedback circle</h4>
+          <p>The meeting schedule is missing. Wayfinder asked Rena's agent instead of guessing.</p>
+          <div class="cs"><span class="c u">Meeting schedule unknown</span></div>
+        </article>
+      </section>
+      <details class="card"><summary><i class="dot"></i>3 candidates excluded <span>Hana W. budget conflict ($120 workshop) · Marisol V. reverse need · Ines P. no fitting intention</span></summary></details>
+    </main>
+    <aside class="side" aria-label="Selected option">
+      <div><h3 style="color:var(--amt)">Selected · Combined option</h3>
+      <h2>Co-write with Theo, then debut it at the Discovery Collab Open Mic</h2></div>
+      <section><h3>Why this connects</h3>
+        <div class="ev i"><small>Inferred · LLM, no web search</small><div>A composer with unfinished melodies could set a poem to music.</div></div>
+        <div class="ev m"><small>Member intention · Theo M. · Synthetic member</small><div>“Find a lyricist for my unfinished melodies”</div><span>Weeknights, video or Oakland, free collaboration</span></div>
+        <div class="ev p"><small>Public source · exa · bayareaopenmics.com</small><div>“Music and poetry welcome.”</div><span>Discovery Collab Open Mic · last Friday monthly, 7pm</span></div>
+      </section>
+      <section><h3>Your constraints</h3>
+        <ul class="cl"><li>Budget at most $40/month<b>meets</b></li><li>Weeknights after 7pm<b>meets</b></li><li>In person in Oakland or video call<b>meets</b></li><li>Will not cross the bay<b>meets</b></li><li>Cost of the open mic<b class="u">unknown</b></li></ul>
+        <div class="ask"><small>OPEN QUESTION</small>The fetched page does not list a performer fee. Does the Discovery Collab Open Mic charge to perform?</div>
+      </section>
+      <div class="acts">
+        <button class="btn pri">Request introduction</button>
+        <button class="btn sec">Open published route</button>
+        <p>Theo's acceptance is simulated. Contact details appear only after both sides accept.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+</body></html>
