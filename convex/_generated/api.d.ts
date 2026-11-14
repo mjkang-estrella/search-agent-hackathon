@@ -9,6 +9,7 @@
  */
 
 import type * as agents from "../agents.js";
+import type * as auth from "../auth.js";
 import type * as board from "../board.js";
 import type * as demo from "../demo.js";
 import type * as discovery from "../discovery.js";
@@ -21,6 +22,7 @@ import type * as intentions from "../intentions.js";
 import type * as introductions from "../introductions.js";
 import type * as matching from "../matching.js";
 import type * as seed from "../seed.js";
+import type * as sessions from "../sessions.js";
 import type * as telem from "../telem.js";
 import type * as validators from "../validators.js";
 
@@ -32,6 +34,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   agents: typeof agents;
+  auth: typeof auth;
   board: typeof board;
   demo: typeof demo;
   discovery: typeof discovery;
@@ -44,6 +47,7 @@ declare const fullApi: ApiFromModules<{
   introductions: typeof introductions;
   matching: typeof matching;
   seed: typeof seed;
+  sessions: typeof sessions;
   telem: typeof telem;
   validators: typeof validators;
 }>;
@@ -76,4 +80,6 @@ export declare const internal: FilterApi<
 
 export declare const components: {
   agent: import("@convex-dev/agent/_generated/component.js").ComponentApi<"agent">;
+  auth: import("@convex-dev/auth/_generated/component.js").ComponentApi<"auth">;
+  authGoogle: import("@convex-dev/auth/components/google/_generated/component.js").ComponentApi<"authGoogle">;
 };

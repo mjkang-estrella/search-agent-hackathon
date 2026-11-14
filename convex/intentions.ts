@@ -1,6 +1,7 @@
 // Drafts, approval, revisions, solution plans, and approved projections.
 import { v } from "convex/values";
-import { action, internalAction, internalMutation, internalQuery, mutation, query, type ActionCtx } from "./_generated/server";
+import { action, internalAction, internalMutation, internalQuery, mutation, query, type ActionCtx, type QueryCtx } from "./_generated/server";
+import { requireSession, requireSessionInAction } from "./sessions";
 import { createRun } from "./discovery";
 import { internal } from "./_generated/api";
 import type { Doc, Id } from "./_generated/dataModel";
@@ -13,23 +14,14 @@ import { DEMO_PERSONA } from "./fixtures/persona";
 
 const EMAIL_G = /[\w.+-]+@[\w-]+\.[\w.-]+/g;
 
-export const createSession = mutation({
-  args: {},
-  returns: v.id("demoSessions"),
-  handler: async (ctx) => ctx.db.insert("demoSessions", { createdAt: Date.now() }),
-});
-
 export const listScenarios = query({
   args: {},
   handler: async () =>
     SCENARIOS.map((s) => ({ id: s.id, label: s.label, requesterName: s.requesterName, context: s.context })),
 });
 
-async function ownedIntention(
-  ctx: { db: { get: (id: Id<"intentions">) => Promise<Doc<"intentions"> | null> } },
-  sessionId: Id<"demoSessions">,
-  intentionId: Id<"intentions">,
-) {
+async function ownedIntention(ctx: QueryCtx, sessionId: Id<"demoSessions">, intentionId: Id<"intentions">) {
+  await requireSession(ctx, sessionId);
   const intention = await ctx.db.get(intentionId);
   if (!intention || intention.owner.kind !== "requester" || intention.owner.sessionId !== sessionId) {
     throw new Error("Intention not found in this session");
@@ -116,7 +108,10 @@ ${text}
 export const addMemory = action({
   args: { sessionId: v.id("demoSessions"), text: v.string(), scenarioId: v.union(vScenarioId, v.null()) },
   returns: v.array(v.id("intentions")),
-  handler: async (ctx, args): Promise<Id<"intentions">[]> => extractMemory(ctx, { ...args, auto: true }),
+  handler: async (ctx, args): Promise<Id<"intentions">[]> => {
+    await requireSessionInAction(ctx, args.sessionId);
+    return extractMemory(ctx, { ...args, auto: true });
+  },
 });
 
 /** Called by the memory MCP endpoint when an agent saves a memory. */
@@ -143,6 +138,7 @@ export const getPersona = query({
 export const startDemoPersona = action({
   args: { sessionId: v.id("demoSessions") },
   handler: async (ctx, { sessionId }): Promise<void> => {
+    await requireSessionInAction(ctx, sessionId);
     const already: boolean = await ctx.runMutation(internal.intentions.markPersona, { sessionId, persona: DEMO_PERSONA.name });
     if (already) return;
     const copied: boolean = await ctx.runAction(internal.demo.copyTemplate, { sessionId });
@@ -185,40 +181,6 @@ export const markPersona = internalMutation({
   },
 });
 
-function mcpUrl(key: string): string {
-  const site = process.env.CONVEX_SITE_URL ?? "";
-  return `${site}/mcp?key=${key}`;
-}
-
-export const getConnection = query({
-  args: { sessionId: v.id("demoSessions") },
-  handler: async (ctx, { sessionId }) => {
-    const session = await ctx.db.get(sessionId);
-    if (!session) return null;
-    return { mcpUrl: session.mcpKey ? mcpUrl(session.mcpKey) : null, persona: session.persona ?? null };
-  },
-});
-
-/** Creates this session's memory MCP address. Anyone with the address can save memories here. */
-export const enableMcp = mutation({
-  args: { sessionId: v.id("demoSessions") },
-  returns: v.string(),
-  handler: async (ctx, { sessionId }) => {
-    const session = await ctx.db.get(sessionId);
-    if (!session) throw new Error("Session not found");
-    if (session.mcpKey) return mcpUrl(session.mcpKey);
-    const bytes = crypto.getRandomValues(new Uint8Array(18));
-    const key = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-    await ctx.db.patch(sessionId, { mcpKey: key });
-    return mcpUrl(key);
-  },
-});
-
-export const sessionByMcpKey = internalQuery({
-  args: { key: v.string() },
-  handler: async (ctx, { key }) => ctx.db.query("demoSessions").withIndex("by_mcp_key", (q) => q.eq("mcpKey", key)).first(),
-});
-
 export const listMemoriesForMcp = internalQuery({
   args: { sessionId: v.id("demoSessions") },
   handler: async (ctx, { sessionId }) => {
@@ -231,8 +193,10 @@ export const listMemoriesForMcp = internalQuery({
 export const extractIntentions = action({
   args: { sessionId: v.id("demoSessions"), selectedText: v.string(), scenarioId: v.union(vScenarioId, v.null()) },
   returns: v.id("intentions"),
-  handler: async (ctx, args): Promise<Id<"intentions">> =>
-    (await extractMemory(ctx, { sessionId: args.sessionId, text: args.selectedText, scenarioId: args.scenarioId, auto: false }))[0],
+  handler: async (ctx, args): Promise<Id<"intentions">> => {
+    await requireSessionInAction(ctx, args.sessionId);
+    return (await extractMemory(ctx, { sessionId: args.sessionId, text: args.selectedText, scenarioId: args.scenarioId, auto: false }))[0];
+  },
 });
 
 export const insertMemory = internalMutation({
@@ -334,6 +298,7 @@ export const createDirectIntention = mutation({
   args: { sessionId: v.id("demoSessions"), card: vIntentionCard },
   returns: v.id("intentions"),
   handler: async (ctx, args) => {
+    await requireSession(ctx, args.sessionId);
     const now = Date.now();
     return await ctx.db.insert("intentions", {
       owner: { kind: "requester", sessionId: args.sessionId },
@@ -411,6 +376,7 @@ export const getIntention = query({
 export const listSessionIntentions = query({
   args: { sessionId: v.id("demoSessions") },
   handler: async (ctx, { sessionId }) => {
+    await requireSession(ctx, sessionId);
     const rows = await ctx.db
       .query("intentions")
       .withIndex("by_session", (q) => q.eq("owner.sessionId", sessionId))
@@ -528,6 +494,7 @@ export const planSolutions = action({
   args: { sessionId: v.id("demoSessions"), intentionId: v.id("intentions"), revision: v.number() },
   returns: v.id("solutionPlans"),
   handler: async (ctx, args): Promise<Id<"solutionPlans">> => {
+    await requireSessionInAction(ctx, args.sessionId);
     const intention: Doc<"intentions"> | null = await ctx.runQuery(internal.intentions.getForPlanning, { intentionId: args.intentionId });
     if (!intention || intention.owner.kind !== "requester" || intention.owner.sessionId !== args.sessionId) {
       throw new Error("Intention not found in this session");

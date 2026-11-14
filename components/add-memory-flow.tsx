@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { errorText } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-type Board = FunctionReturnType<typeof api.board.get>;
+type Board = NonNullable<FunctionReturnType<typeof api.board.get>>;
 type Intention = Board["memories"][number]["intentions"][number];
 
 const EXAMPLES = [
