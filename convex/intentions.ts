@@ -49,7 +49,7 @@ const vDraft = v.object({
 });
 
 /** Extracts up to three intentions from one memory and stores them. */
-async function extractMemory(
+export async function extractMemory(
   ctx: ActionCtx,
   args: { sessionId: Id<"demoSessions">; text: string; scenarioId: "creative" | "firmware" | "civic" | null; auto: boolean; source?: string; sample?: boolean; category?: string; createdAt?: number },
 ): Promise<Id<"intentions">[]> {
@@ -65,7 +65,7 @@ async function extractMemory(
     prompt: `Read the person's memory below and extract the distinct things they are trying to do. Return one to three intentions; most memories hold one or two. Do not split one goal into steps.
 
 Rules for each intention:
-- kind: need when they want something, offer when they could give something to others.
+- kind: need when they want something, offer when they could give something to others. Selling, lending, or giving away something they own is an offer.
 - A memory may state no goal, only an interest, skill, habit, or spare resource ("I like washing cars", "my 3D printer sits idle"). Then propose an offer: what they could do for people who need it, for pay, a trade, or goodwill. Set inferred to true. Example: "I like washing cars" becomes the offer "Wash cars for people who'd pay or trade". A skill they rarely use or miss using is an offer too: "I speak Korean but rarely use it" becomes "Help Korean learners practice".
 - title: 2 to 5 plain words, starting with a verb, e.g. "Turn a poem into a song" or "Wash cars for neighbors".
 - aim: what they are trying to achieve. blocker: what would help them move forward. contributions: what they could offer others.
@@ -136,21 +136,40 @@ export const getPersona = query({
   }),
 });
 
-/** Loads the demo persona's sample memories, as if Dot, Grok, and Muse had saved them through the MCP. */
+/**
+ * Loads the demo persona. When saved results exist for the current persona version, they are copied
+ * into this session at once. Otherwise every memory is read and searched live.
+ */
 export const startDemoPersona = action({
   args: { sessionId: v.id("demoSessions") },
   handler: async (ctx, { sessionId }): Promise<void> => {
     const already: boolean = await ctx.runMutation(internal.intentions.markPersona, { sessionId, persona: DEMO_PERSONA.name });
     if (already) return;
-    // Timestamps follow list order, so the first memories stay on top however fast each extraction finishes.
-    const base = Date.now();
-    await Promise.all(
-      DEMO_PERSONA.memories.map((m, i) =>
-        extractMemory(ctx, {
-          sessionId, text: m.text, scenarioId: m.scenarioId, auto: true, source: m.source, sample: true, category: m.category, createdAt: base - i * 1000,
-        }),
-      ),
-    );
+    const copied: boolean = await ctx.runAction(internal.demo.copyTemplate, { sessionId });
+    if (copied) return;
+    await loadPersonaLive(ctx, sessionId);
+  },
+});
+
+export async function loadPersonaLive(ctx: ActionCtx, sessionId: Id<"demoSessions">) {
+  // Timestamps follow list order, so the first memories stay on top however fast each extraction finishes.
+  const base = Date.now();
+  await Promise.all(
+    DEMO_PERSONA.memories.map((m, i) =>
+      extractMemory(ctx, {
+        sessionId, text: m.text, scenarioId: m.scenarioId, auto: true, source: m.source, sample: true, category: m.category, createdAt: base - i * 1000,
+      }),
+    ),
+  );
+}
+
+/** Runs one intention's search again, live. */
+export const searchAgain = mutation({
+  args: { sessionId: v.id("demoSessions"), intentionId: v.id("intentions") },
+  handler: async (ctx, { sessionId, intentionId }) => {
+    const intention = await ownedIntention(ctx, sessionId, intentionId);
+    await ctx.db.patch(intention._id, { status: "approved", auto: { state: "planning", error: null } });
+    await ctx.scheduler.runAfter(0, internal.intentions.autoDiscover, { intentionId });
   },
 });
 

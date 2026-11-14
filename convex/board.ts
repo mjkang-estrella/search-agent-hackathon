@@ -93,7 +93,7 @@ export const get = query({
           need: it.card.blocker,
           offers: it.card.contributions,
           status: it.status,
-          state: it.auto?.state === "failed" ? "failed" : !run ? "planning" : run.status === "running" ? "searching" : run.status === "failed" ? "failed" : "ready",
+          state: it.auto?.state === "failed" ? "failed" : !run || it.auto?.state === "planning" ? "planning" : run.status === "running" ? "searching" : run.status === "failed" ? "failed" : "ready",
           error: it.auto?.error ?? run?.error ?? null,
           run: run && {
             _id: run._id,
@@ -104,6 +104,7 @@ export const get = query({
             queries: run.budget.searchQueries,
             pages: run.budget.fetchedPages,
             followUp: run.followUp.status,
+            saved: run.mode === "replay",
           },
           ways: result?.ways ?? [],
           people: people.map((p) => ({ _id: p._id, platform: p.platform, url: p.url, author: p.author, title: p.title, reason: p.reason ?? null, publishedAt: p.publishedAt })),

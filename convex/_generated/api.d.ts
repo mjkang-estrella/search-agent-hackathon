@@ -10,6 +10,7 @@
 
 import type * as agents from "../agents.js";
 import type * as board from "../board.js";
+import type * as demo from "../demo.js";
 import type * as discovery from "../discovery.js";
 import type * as evaluation from "../evaluation.js";
 import type * as evidence from "../evidence.js";
@@ -32,6 +33,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   agents: typeof agents;
   board: typeof board;
+  demo: typeof demo;
   discovery: typeof discovery;
   evaluation: typeof evaluation;
   evidence: typeof evidence;
