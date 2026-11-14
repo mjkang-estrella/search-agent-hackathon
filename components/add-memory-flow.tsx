@@ -59,6 +59,8 @@ export function AddMemoryFlow({
 
   const memory = board?.memories.find((m) => m.intentions.some((i) => ids.includes(i._id)));
   const found = memory?.intentions.filter((i) => ids.includes(i._id)) ?? [];
+  // The action returns before the live board includes the new memory. Keep reading until it arrives.
+  const view = step === "found" && found.length === 0 ? "reading" : step;
 
   async function submit() {
     if (!sessionId) return;
@@ -89,9 +91,9 @@ export function AddMemoryFlow({
       >
         <div className="mb-4 flex items-center justify-between gap-3">
           <h2 className="text-[20px] font-extrabold tracking-[-0.015em]">
-            {step === "write" ? "Add a memory" : step === "reading" ? "Reading your memory" : found.length === 1 ? "Found 1 intention" : `Found ${found.length} intentions`}
+            {view === "write" ? "Add a memory" : view === "reading" ? "Reading your memory" : found.length === 1 ? "Found 1 intention" : `Found ${found.length} intentions`}
           </h2>
-          {step !== "reading" ? (
+          {view !== "reading" ? (
             <button aria-label="Close" onClick={onClose} className="flex size-9 items-center justify-center rounded-full hover:bg-[#eef1f6]">
               <X className="size-4" />
             </button>
@@ -125,7 +127,7 @@ export function AddMemoryFlow({
           </>
         ) : null}
 
-        {step === "reading" ? (
+        {view === "reading" ? (
           <div className="grid gap-3">
             <p className="rounded-2xl bg-[#f4f6fa] p-3.5 text-[15px] text-[var(--ink-muted)]">“{text.trim()}”</p>
             <p className="flex items-center gap-2 text-[15px] font-semibold">
@@ -134,7 +136,7 @@ export function AddMemoryFlow({
           </div>
         ) : null}
 
-        {step === "found" ? (
+        {view === "found" ? (
           <>
             <ul className="grid gap-2">
               {found.map((i) => {
