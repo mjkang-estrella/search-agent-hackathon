@@ -1,5 +1,6 @@
 // The one-page view: memories, their intentions, ways forward, and a proposal.
 // Returns client-safe projections only: no member private constraints, no counterpart reasoning, no page content.
+import { paginationOptsValidator } from "convex/server";
 import { v } from "convex/values";
 import { query } from "./_generated/server";
 import type { Doc, Id } from "./_generated/dataModel";
@@ -17,22 +18,18 @@ const KIND_ORDER = { combined: 0, member: 1, public: 2 } as const;
 const FIT_ORDER = { strong_fit: 0, possible_fit: 1, not_a_fit: 2 } as const;
 
 async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessions">) {
-  const [options, candidates, opportunities, sources, intros] = await Promise.all([
+  const [options, candidates] = await Promise.all([
     ctx.db.query("options").withIndex("by_run", (q) => q.eq("runId", run._id)).collect(),
     ctx.db.query("candidates").withIndex("by_run", (q) => q.eq("runId", run._id)).collect(),
-    ctx.db.query("opportunities").withIndex("by_run", (q) => q.eq("runId", run._id)).collect(),
-    ctx.db.query("sources").withIndex("by_run", (q) => q.eq("runId", run._id)).collect(),
-    ctx.db.query("introductions").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).collect(),
   ]);
-  const ways = [];
-  for (const o of options.filter((x) => !x.excluded).sort((a, b) => a.rank - b.rank)) {
+  const ways = await Promise.all(options.filter((x) => !x.excluded).sort((a, b) => a.rank - b.rank).map(async (o) => {
     const cand = o.candidateId ? candidates.find((c) => c._id === o.candidateId) : undefined;
     const member = cand ? await ctx.db.get(cand.memberId) : null;
-    const opp = o.opportunityId ? opportunities.find((x) => x._id === o.opportunityId) : undefined;
-    const source = opp ? sources.find((s) => s._id === opp.sourceId) : undefined;
-    const intro = intros.find((i) => i.optionId === o._id);
+    const opp = o.opportunityId ? await ctx.db.get(o.opportunityId) : null;
+    const source = opp ? await ctx.db.get(opp.sourceId) : null;
+    const intro = await ctx.db.query("introductions").withIndex("by_option", (q) => q.eq("optionId", o._id)).first();
     const quote = opp?.conditions.find((c) => c.status === "confirmed" && c.quote)?.quote ?? null;
-    ways.push({
+    return {
       _id: o._id,
       kind: o.kind,
       title: o.title,
@@ -45,7 +42,7 @@ async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessi
       source: opp
         ? { title: opp.title, url: opp.url, host: hostOf(opp.url), read: opp.fetched, quote, provider: source?.fetch.provider ?? source?.hits[0]?.provider ?? null, route: opp.participationRoute }
         : null,
-      intro: intro
+      intro: intro?.sessionId === sessionId
         ? {
             _id: intro._id,
             state: intro.state,
@@ -53,8 +50,8 @@ async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessi
             contact: intro.state === "accepted" && intro.counterpartAccepted === true && member ? member.contact : null,
           }
         : null,
-    });
-  }
+    };
+  }));
   // Show each person once and each website once. The list is already in rank order, so the first one wins.
   const seen = new Set<string>();
   const unique = ways.filter((w) => {
@@ -67,16 +64,15 @@ async function waysFor(ctx: QueryCtx, run: Doc<"runs">, sessionId: Id<"demoSessi
 }
 
 export const get = query({
-  args: { sessionId: v.id("demoSessions") },
-  handler: async (ctx, { sessionId }) => {
-    const memories = (await ctx.db.query("memorySources").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).collect()).sort(
+  args: { sessionId: v.id("demoSessions"), memoryId: v.optional(v.id("memorySources")) },
+  handler: async (ctx, { sessionId, memoryId }) => {
+    const selected = memoryId ? await ctx.db.get(memoryId) : null;
+    const memories = memoryId ? (selected?.sessionId === sessionId ? [selected] : []) : (await ctx.db.query("memorySources").withIndex("by_session", (q) => q.eq("sessionId", sessionId)).collect()).sort(
       (a, b) => b.createdAt - a.createdAt,
     );
-    const out = [];
-    for (const m of memories) {
+    const out = await Promise.all(memories.map(async (m) => {
       const intentions = await ctx.db.query("intentions").withIndex("by_memory", (q) => q.eq("memorySourceId", m._id)).collect();
-      const rows = [];
-      for (const it of intentions) {
+      const rows = await Promise.all(intentions.map(async (it) => {
         const run = await ctx.db
           .query("runs")
           .withIndex("by_intention_revision", (q) => q.eq("intentionId", it._id).eq("revision", it.revision))
@@ -84,7 +80,7 @@ export const get = query({
           .first();
         const result = run && run.status !== "running" ? await waysFor(ctx, run, sessionId) : null;
         const people = run ? await ctx.db.query("people").withIndex("by_run", (q) => q.eq("runId", run._id)).take(12) : [];
-        rows.push({
+        return {
           _id: it._id,
           title: it.card.title,
           kind: it.kind ?? "need",
@@ -109,10 +105,10 @@ export const get = query({
           ways: result?.ways ?? [],
           people: people.map((p) => ({ _id: p._id, platform: p.platform, url: p.url, author: p.author, title: p.title, reason: p.reason ?? null, publishedAt: p.publishedAt })),
           excluded: result?.excluded ?? 0,
-        });
-      }
-      out.push({ _id: m._id, title: m.title ?? m.text.slice(0, 48), text: m.text, source: m.source ?? null, sample: m.sample ?? false, category: m.category ?? null, createdAt: m.createdAt, intentions: rows });
-    }
+        };
+      }));
+      return { _id: m._id, title: m.title ?? m.text.slice(0, 48), text: m.text, source: m.source ?? null, sample: m.sample ?? false, category: m.category ?? null, createdAt: m.createdAt, intentions: rows };
+    }));
 
     // The proposal: the best way forward across every ready intention, preferring a person over a page.
     // Skip anyone you already contacted, for any intention, so the next idea is new.
@@ -127,5 +123,29 @@ export const get = query({
     candidates.sort((a, b) => FIT_ORDER[a.w.fit] - FIT_ORDER[b.w.fit] || KIND_ORDER[a.w.kind] - KIND_ORDER[b.w.kind]);
     const proposals = candidates.slice(0, 6).map((c) => ({ memoryId: c.memoryId, intentionId: c.intentionId, intention: c.intention, way: c.w }));
     return { memories: out, proposals };
+  },
+});
+
+/** The memory picker never reads discovery results or fetched page content. */
+export const listMemories = query({
+  args: { sessionId: v.id("demoSessions"), search: v.string(), paginationOpts: paginationOptsValidator },
+  returns: v.object({
+    page: v.array(v.object({
+      _id: v.id("memorySources"), title: v.string(), source: v.union(v.string(), v.null()),
+      category: v.union(v.string(), v.null()), sample: v.boolean(),
+    })),
+    isDone: v.boolean(), continueCursor: v.string(),
+    splitCursor: v.optional(v.union(v.string(), v.null())),
+    pageStatus: v.optional(v.union(v.literal("SplitRecommended"), v.literal("SplitRequired"), v.null())),
+  }),
+  handler: async (ctx, { sessionId, search, paginationOpts }) => {
+    const term = search.trim();
+    const result = term
+      ? await ctx.db.query("memorySources").withSearchIndex("search_text", (q) => q.search("text", term).eq("sessionId", sessionId)).paginate(paginationOpts)
+      : await ctx.db.query("memorySources").withIndex("by_session_created_at", (q) => q.eq("sessionId", sessionId)).order("desc").paginate(paginationOpts);
+    return { ...result, page: result.page.map((m) => ({
+      _id: m._id, title: m.title ?? m.text.slice(0, 48), source: m.source ?? null,
+      category: m.category ?? null, sample: m.sample ?? false,
+    })) };
   },
 });

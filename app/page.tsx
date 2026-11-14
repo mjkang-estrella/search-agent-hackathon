@@ -1,15 +1,16 @@
 "use client";
 
-import { useAction, useMutation, useQuery } from "convex/react";
+import { useAction, useMutation, usePaginatedQuery, useQuery } from "convex/react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Globe, Loader2, Plus, Sparkles, Star, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Copy, Globe, Loader2, Plus, Search, Sparkles, Star, X } from "lucide-react";
 import type { FunctionReturnType } from "convex/server";
 import { api } from "@/convex/_generated/api";
 import type { Id } from "@/convex/_generated/dataModel";
 import { resetSession, useSessionId } from "@/components/providers";
 import { AddMemoryFlow, WaysFooter } from "@/components/add-memory-flow";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { errorText } from "@/lib/format";
@@ -27,14 +28,26 @@ export default function Home() {
   const [memoryId, setMemoryId] = useState<string | null>(null);
   const [intentionId, setIntentionId] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  useEffect(() => {
+    const timer = setTimeout(() => setSearchTerm(search.trim()), 200);
+    return () => clearTimeout(timer);
+  }, [search]);
+  const { results: memories, status, loadMore } = usePaginatedQuery(
+    api.board.listMemories, sessionId ? { sessionId, search: searchTerm } : "skip", { initialNumItems: 25 },
+  );
+  const selectedId = memories.find((m) => m._id === memoryId)?._id
+    ?? board?.memories.find((m) => m._id === memoryId)?._id ?? memories[0]?._id;
+  const cachedMemory = board?.memories.find((m) => m._id === selectedId);
+  const detail = useQuery(api.board.get, sessionId && selectedId && !cachedMemory ? { sessionId, memoryId: selectedId } : "skip");
   const memoryList = useRef<HTMLDivElement>(null);
   const waysColumn = useRef<HTMLElement>(null);
 
-  const memories = board?.memories ?? [];
-  const memory = memories.find((m) => m._id === memoryId) ?? memories[0];
+  const memory = cachedMemory ?? detail?.memories[0];
   const intention = memory?.intentions.find((i) => i._id === intentionId) ?? memory?.intentions[0];
-  const empty = board !== undefined && memories.length === 0;
-  const intentions = memories.flatMap((m) => m.intentions);
+  const empty = status === "Exhausted" && memories.length === 0 && !searchTerm;
+  const intentions = board?.memories.flatMap((m) => m.intentions) ?? [];
   const progress = { done: intentions.filter((i) => i.state === "ready").length, failed: intentions.filter((i) => i.state === "failed").length, total: intentions.length };
 
   // Keep the selected memory in view inside its own scroller: a row on phones, a list on desktop.
@@ -70,11 +83,11 @@ export default function Home() {
           <span aria-hidden className="size-3 rounded-full bg-[var(--airmail-red)]" />
           Wayfinder
         </span>
-        {!empty && board ? <McpButton /> : null}
+        {!empty && status !== "LoadingFirstPage" ? <McpButton /> : null}
       </header>
 
       <main className="mx-auto max-w-[1280px] px-5 pb-12">
-        {board === undefined ? (
+        {status === "LoadingFirstPage" && !searchTerm ? (
           <div role="status" aria-label="Loading" className="flex justify-center pt-24">
             <Loader2 className="size-6 animate-spin text-[var(--airmail)]" />
           </div>
@@ -82,7 +95,7 @@ export default function Home() {
           <Connect />
         ) : (
           <>
-            <Proposal board={board} progress={progress} onOpen={openIdea} />
+            {board ? <Proposal board={board} progress={progress} onOpen={openIdea} /> : <Quiet><Spinner label="Loading ideas" /></Quiet>}
             <AddMemoryFlow
               open={adding}
               board={board}
@@ -98,7 +111,7 @@ export default function Home() {
                 title="Your memories"
                 action={
                   <span className="flex items-center gap-2">
-                    <Aside>{memories.length}</Aside>
+                    <Aside>{memories.length}{status !== "Exhausted" ? "+" : ""}</Aside>
                     <button
                       onClick={() => setAdding(true)}
                       aria-label="Add a memory"
@@ -110,6 +123,17 @@ export default function Home() {
                 }
                 className="lg:sticky lg:top-4"
               >
+                <div className="relative mb-2">
+                  <Search aria-hidden className="pointer-events-none absolute top-3 left-3 size-4 text-muted-foreground" />
+                  <Input
+                    type="search"
+                    aria-label="Search memories"
+                    placeholder="Search memories"
+                    value={search}
+                    onChange={(e) => { setSearch(e.target.value); setMemoryId(null); setIntentionId(null); }}
+                    className="h-10 rounded-xl bg-white pl-9"
+                  />
+                </div>
                 <div
                   ref={memoryList}
                   className="no-scrollbar relative -mx-5 -mt-1 flex snap-x scroll-px-5 gap-2 overflow-x-auto px-5 pt-1 pb-3 lg:-mx-2 lg:max-h-[calc(100dvh-5.5rem)] lg:flex-col lg:overflow-y-auto lg:px-2"
@@ -119,23 +143,31 @@ export default function Home() {
                       key={m._id}
                       compact
                       className="w-[232px] shrink-0 snap-start lg:w-full"
-                      selected={m._id === memory?._id}
+                      selected={m._id === selectedId}
                       onClick={() => (setMemoryId(m._id), setIntentionId(null))}
                     >
                       <span className="min-w-0 flex-1">
                         <span className="block truncate">{m.title}</span>
-                        <span className={cn("block truncate text-[12.5px] font-medium", m._id === memory?._id ? "text-[#c9d4ee]" : "text-muted-foreground")}>
+                        <span className={cn("block truncate text-[12.5px] font-medium", m._id === selectedId ? "text-[#c9d4ee]" : "text-muted-foreground")}>
                           from {m.source ?? "you"}
                           {m.category ? ` · ${m.category}` : ""}
                         </span>
                       </span>
-                      {m.intentions.some(isSearching) ? <Spinner label="Searching" /> : <Count n={m.intentions.length} />}
+                      {m.sample ? <span className="text-[12px] opacity-70">Sample</span> : null}
                     </Tile>
                   ))}
+                  {status === "LoadingFirstPage" || search.trim() !== searchTerm ? <Spinner label="Searching memories" /> : null}
+                  {status === "Exhausted" && memories.length === 0 ? <Quiet>No memories match.</Quiet> : null}
+                  {status === "CanLoadMore" || status === "LoadingMore" ? (
+                    <Button variant="outline" className="shrink-0 rounded-full" disabled={status === "LoadingMore"} onClick={() => loadMore(25)}>
+                      {status === "LoadingMore" ? "Loading…" : "Load more"}
+                    </Button>
+                  ) : null}
                 </div>
               </Column>
 
               <Column title="What you want" className="lg:sticky lg:top-4">
+                {selectedId && !memory ? <Spinner label="Loading memory" /> : null}
                 {memory ? <MemoryQuote key={memory._id} memory={memory} /> : null}
                 {memory?.intentions.map((i) => (
                   <Tile key={i._id} selected={i._id === intention?._id} onClick={() => openIdea(memory!._id, i._id)}>
