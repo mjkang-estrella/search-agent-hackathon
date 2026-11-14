@@ -64,7 +64,10 @@ export default defineSchema({
     sample: v.optional(v.boolean()), // demo persona memory
     text: v.string(),
     createdAt: v.number(),
-  }).index("by_session", ["sessionId"]),
+  })
+    .index("by_session", ["sessionId"])
+    .index("by_session_created_at", ["sessionId", "createdAt"])
+    .searchIndex("search_text", { searchField: "text", filterFields: ["sessionId"] }),
 
   intentions: defineTable({
     owner: v.union(
