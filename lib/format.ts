@@ -1,5 +1,8 @@
+import { ConvexError } from "convex/values";
+
 /** The user-facing part of a Convex or network error. */
 export function errorText(e: unknown): string {
+  if (e instanceof ConvexError && typeof e.data === "string") return e.data;
   const msg = e instanceof Error ? e.message : String(e);
   const m = msg.match(/Uncaught Error: (.*?)(\n|$)/);
   return m ? m[1] : msg.replace(/^\[CONVEX[^\]]*\]\s*/, "").split("\n")[0];

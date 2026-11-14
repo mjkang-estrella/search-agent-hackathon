@@ -36,7 +36,7 @@ async function waitForRun(sessionId: Id<"demoSessions">, runId: Id<"runs">) {
 async function main() {
   const scenarios = await client.query(api.intentions.listScenarios, {});
   const scenario = scenarios.find((s) => s.id === arg);
-  const sessionId = await client.mutation(api.intentions.createSession, {});
+  const sessionId = await client.mutation(api.sessions.openSession, {});
   const text = scenario ? scenario.context : arg;
   console.log(`Extracting from ${scenario ? `scenario ${scenario.id}` : "typed text"}...`);
   let t = Date.now();

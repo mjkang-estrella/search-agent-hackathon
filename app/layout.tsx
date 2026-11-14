@@ -6,7 +6,7 @@ import "./globals.css";
 const publicSans = Public_Sans({ variable: "--font-sans", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata: Metadata = {
-  title: "Wayfinder",
+  title: "Relay",
   description: "Turn approved context into an intention, find public ways forward, and meet members who could help.",
 };
 

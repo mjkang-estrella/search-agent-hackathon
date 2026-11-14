@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T23:10:00Z",
+  "title": "Design System: Relay",
+  "extensions": {
+    "colorMeta": {
+      "airmail": { "role": "primary", "displayName": "Airmail Blue" },
+      "ground": { "role": "neutral", "displayName": "Cool Ground" },
+      "card": { "role": "neutral", "displayName": "Card White" },
+      "kraft-ink": { "role": "tertiary", "displayName": "Kraft" },
+      "airmail-red": { "role": "error", "displayName": "Airmail Red" },
+      "postmark": { "role": "secondary", "displayName": "Postmark Violet" }
+    },
+    "typographyMeta": {
+      "page-title": { "displayName": "Page title", "purpose": "Run page heading and the empty-state heading." },
+      "feature-title": { "displayName": "Feature title", "purpose": "The proposal in the Idea for you block." },
+      "card-title": { "displayName": "Card title", "purpose": "Names of people, pages, and posts." }
+    },
+    "shadows": [
+      { "name": "rest", "value": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)", "purpose": "Cards and resting tiles (shadow-sm)." },
+      { "name": "raised", "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)", "purpose": "Selected tile and hover (shadow-md)." }
+    ],
+    "motion": [
+      { "name": "stamp-in", "value": "420ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Postmarks stamp in once. Off under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one next step on a card, such as Say hi.",
+      "html": "<button class=\"ds-btn\">Say hi</button>",
+      "css": ".ds-btn { height: 40px; padding: 0 16px; border: 0; border-radius: 9999px; background: #1d3f8f; color: #fff; font: 700 14px/1 'Public Sans', sans-serif; } .ds-btn:hover { background: #2a4fa3; }"
+    },
+    {
+      "name": "Sample Tag",
+      "kind": "chip",
+      "refersTo": "tag-sample",
+      "description": "Labels every synthetic member.",
+      "html": "<span class=\"ds-tag\">Sample</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; height: 20px; padding: 0 8px; border-radius: 9999px; background: #eef1f6; color: #545d70; font: 500 11px/1 'Public Sans', sans-serif; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A way forward or a public post.",
+      "html": "<article class=\"ds-card\"><strong>Rena O.</strong><p>Structured feedback sessions on lyrics and drafts.</p></article>",
+      "css": ".ds-card { padding: 16px; border-radius: 14.4px; background: #fff; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); font: 400 14px/1.6 'Public Sans', sans-serif; color: #18202f; } .ds-card p { margin: 4px 0 0; color: #545d70; }"
+    }
+  ]
+}

@@ -1,30 +1,30 @@
 ---
-version: 1
+version: 2
 slug: "app"
 primary_target: "app"
 related_targets: []
 ---
 
-# Wayfinder app surface
+# Relay app surface
 
-Scope: the eight-step member flow under `app/` (bring context through evidence and evaluation). Mode: Operate. Primary moment: Ways forward, with the source of every claim visible.
+Scope: everything under `app/`. That is the one-page board (`/`), the run page "How we found these" (`/r/[runId]`), its Sources tab (`/r/[runId]/evidence`), and `/evaluation`. Mode: Operate. Primary moment: the selected intention's people and opportunities, each showing where it came from.
 
-Audience and job: a community member turns selected context into an approved intention, sees ways forward, and chooses a published route or a mutual introduction. Judges watch over a laptop screen share.
+Audience and job: a general consumer opens a memory, reads what Relay found in it, and takes one step: say hi to a sample member, open a page, or read a public post. Judges watch over a laptop screen share.
 
-Constraints: Synthetic, simulated, cached, and replay labels are always visible. Meets, conflicts, and unknown only; no percentages. Avoid AI-chat chrome, terminal traces, swipe or match-score idioms, and dense enterprise dashboards.
+Constraints: Sample members, simulated acceptance, and replayed runs are labeled wherever they appear. Fit is shown in words ("Great fit"), never as a percentage. No approval or sharing-review steps. Avoid AI-chat chrome, terminal traces, swipe or match-score idioms, and dense enterprise dashboards.
 
 ## Direction contract
 
-THESIS: What leaves is itemized on a declaration, and every claim carries a postmark saying where it came from. Refuses the card-grid AI app with coloured badges.
+THESIS: A calm board of white cards on a cool light ground, with airmail blue for the selected item and the one next step. Postmarks appear only where a claim's source needs naming: an Inferred postmark on LLM ideas and a Public source postmark on Telem sources.
 
-OWN-WORLD: Airmail blue #1D3F8F shell (rail and header band) with a 3px airmail-red rule under the header; pale blue-grey ground #E9EDF4; cool form-white #FBFBF8 panels; postmark violet-grey #5B5577 for provenance; kraft #B98E5A only for unknowns and questions; red #C8323C only for conflicts. Public Sans, tabular figures. Oval rubber-stamp postmarks: solid ring for Public source and Member intention, dashed ring for Inferred. Stamped status words, slightly rotated.
+OWN-WORLD: Airmail blue `#1D3F8F` for selection, the proposal block, and primary actions. Cool ground `#F4F6FA`, white cards with a soft shadow, rounded `2xl` cards and `3xl` feature blocks, pill buttons. Kraft only for "Great fit" and unknowns; red only for failures. Public Sans with tabular figures. See DESIGN.md for tokens.
 
-STORY: The member sees what was inferred, what public pages say, and what other members approved. They compare options on the same constraints and act.
+STORY: The member picks a memory, sees the intentions in it, and acts on a person, a page, or a post. "How we found these" shows the same search as a flow chart, with the same totals as the board.
 
-FIRST VIEWPORT: Blue rail with the eight steps on the left; blue header with the intention title, run stats, and a circular LIVE or REPLAY cancellation mark on the right; an itemized options list with a right-hand constraint column; the selected item's detail panel on the right with postmarked claims, the unknown question, and the primary action at its foot.
+FIRST VIEWPORT: The Relay mark and account controls on the light ground; the airmail-blue "Idea for you" block with one action; then three columns: memories, what you want, people and opportunities.
 
-FORM: Customs declaration, candidate 1 of my ordered list (seed key a098e2de, chosen as the pick).
+FORM: One page with three columns that stack on phones. The memory list becomes a horizontal row below 1024px.
 
-Signature interaction: the cancellation mark and postmarks stamp in once (a short scale-and-settle) when a run completes or an item is selected.
+Signature interaction: postmarks stamp in once (a short scale-and-settle) when a run page opens.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

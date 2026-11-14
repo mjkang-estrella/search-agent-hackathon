@@ -69,7 +69,7 @@ export function normalizeUrl(url: string): string {
   }
 }
 
-export type SearchHit = { url: string; title: string | null; snippet: string | null; provider: string; query: string; rank: number; author?: string | null; publishedAt?: string | null };
+export type SearchHit = { url: string; title: string | null; snippet: string | null; provider: string; query: string; rank: number; author?: string | null; publishedAt?: string | null; avatarUrl?: string | null; profileUrl?: string | null };
 export type MergedSource = {
   url: string;
   normalizedUrl: string;

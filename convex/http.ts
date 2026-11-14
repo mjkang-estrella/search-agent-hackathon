@@ -1,5 +1,5 @@
-// Wayfinder's memory MCP server. Personal agents (Grok, Dot, Muse, or any MCP client) save memories here,
-// and Wayfinder turns each one into intentions and starts looking for ways forward.
+// Relay's memory MCP server. Personal agents (Grok, Dot, Muse, or any MCP client) save memories here,
+// and Relay turns each one into intentions and starts looking for ways forward.
 // Transport: MCP Streamable HTTP with plain JSON responses. The session key comes from ?key= or a Bearer token.
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
@@ -12,7 +12,7 @@ const TOOLS = [
   {
     name: "add_memory",
     description:
-      "Save something the user is working on, wants, or could offer. Wayfinder reads it, finds the intentions in it, and searches the web and its member network for people and places that can help.",
+      "Save something the user is working on, wants, or could offer. Relay reads it, finds the intentions in it, and searches the web and its member network for people and places that can help.",
     inputSchema: {
       type: "object",
       properties: {
@@ -24,7 +24,7 @@ const TOOLS = [
   },
   {
     name: "list_memories",
-    description: "List the memories saved to Wayfinder for this user, newest first.",
+    description: "List the memories saved to Relay for this user, newest first.",
     inputSchema: { type: "object", properties: {} },
   },
 ];
@@ -48,9 +48,9 @@ function rpcError(id: RpcRequest["id"], code: number, message: string) {
 const mcp = httpAction(async (ctx, request) => {
   const url = new URL(request.url);
   const key = url.searchParams.get("key") ?? request.headers.get("Authorization")?.replace(/^Bearer\s+/i, "") ?? "";
-  const session = key ? await ctx.runQuery(internal.intentions.sessionByMcpKey, { key }) : null;
-  if (!session) return json(rpcError(null, -32001, "Unknown or missing Wayfinder memory key"), 401);
-  const sessionId = session._id as Id<"demoSessions">;
+  const board: Id<"demoSessions"> | null = key ? await ctx.runMutation(internal.sessions.boardForMcpKey, { key }) : null;
+  if (!board) return json(rpcError(null, -32001, "Unknown or missing Relay memory key"), 401);
+  const sessionId = board;
 
   let body: RpcRequest | RpcRequest[];
   try {
@@ -77,8 +77,8 @@ const mcp = httpAction(async (ctx, request) => {
         return {
           protocolVersion: (req.params?.protocolVersion as string) ?? PROTOCOL_VERSION,
           capabilities: { tools: { listChanged: false } },
-          serverInfo: { name: "wayfinder-memory", version: "0.1.0" },
-          instructions: "Save the user's goals, needs, and offers with add_memory. Wayfinder finds people and places that can help.",
+          serverInfo: { name: "relay-memory", version: "0.1.0" },
+          instructions: "Save the user's goals, needs, and offers with add_memory. Relay finds people and places that can help.",
         };
       case "ping":
         return {};
@@ -96,9 +96,9 @@ const mcp = httpAction(async (ctx, request) => {
             text: args.text.slice(0, 8000),
             source: (args.source ?? "MCP agent").slice(0, 40),
           });
-          return {
-            content: [{ type: "text", text: `Saved. Wayfinder found ${ids.length} ${ids.length === 1 ? "intention" : "intentions"} and is looking for ways forward.` }],
-          };
+          const found = `Saved. Relay found ${ids.length} ${ids.length === 1 ? "intention" : "intentions"} and is looking for ways forward.`;
+          const app = process.env.APP_URL;
+          return { content: [{ type: "text", text: app ? `${found} See them at ${app}` : found }] };
         }
         if (name === "list_memories") {
           const rows = await ctx.runQuery(internal.intentions.listMemoriesForMcp, { sessionId });
@@ -118,6 +118,6 @@ http.route({ path: "/mcp", method: "OPTIONS", handler: httpAction(async () => ne
 http.route({
   path: "/mcp",
   method: "GET",
-  handler: httpAction(async () => new Response("Wayfinder memory MCP: send JSON-RPC with POST", { status: 405, headers: { Allow: "POST", ...CORS } })),
+  handler: httpAction(async () => new Response("Relay memory MCP: send JSON-RPC with POST", { status: 405, headers: { Allow: "POST", ...CORS } })),
 });
 export default http;

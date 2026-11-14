@@ -1,4 +1,4 @@
-# Search Agent
+# Relay
 
 **Your agents know you best. Why can't you find someone you need by searching others' agents?**
 
@@ -227,7 +227,7 @@ These are product requirements for implementation, not claims about protections 
 
 ## Project status
 
-A first working version is live at https://wayfinder-woad.vercel.app. Wayfinder is a memory MCP server for personal agents such as Grok, Dot, or Muse. An agent saves memories with the `add_memory` tool, and Wayfinder turns each memory into intentions and starts looking on its own. Telem searches the public web and, through its social providers (X, TikTok, Reddit, Instagram, Facebook, LinkedIn), finds posts by people who have done what you need. Convex searches 51 sample member intentions, and both sides' agents check the fit. The best option becomes the "Idea for you." **Start with a demo persona** loads sample memories for one of four people:
+A first working version is live at https://wayfinder-woad.vercel.app. Relay is a memory MCP server for personal agents such as Grok, Dot, or Muse. An agent saves memories with the `add_memory` tool, and Relay turns each memory into intentions and starts looking on its own. Telem searches the public web and, through its social providers (X, TikTok, Reddit, Instagram, Facebook, LinkedIn), finds posts by people who have done what you need. Convex searches 51 sample member intentions, and both sides' agents check the fit. The best option becomes the "Idea for you." **Start with a demo persona** loads sample memories for one of four people:
 
 - **Dana (personal and creative).** Turn a poem into a song, plan a first trip to Seoul, build a bench.
 - **Jun (passing remarks).** "I like washing cars" becomes an offer to wash cars for neighbors who would pay. An idle 3D printer and unused Korean become offers too.
@@ -239,8 +239,21 @@ A first working version is live at https://wayfinder-woad.vercel.app. Wayfinder 
 1. Run `npm install`.
 2. Run `npx convex dev`. On first run it creates a local deployment and writes `.env.local`.
 3. Set the server keys: `npx convex env set TELEM_API_KEY <key>` and `npx convex env set OPENAI_API_KEY <key>`. `OPENAI_MODEL` is optional and defaults to `gpt-5.4-mini`.
-4. Seed the synthetic members: `npx convex run seed:seedMembers`.
-5. Run `npm run dev` and open http://localhost:3000.
+4. Set up Google sign-in. In Google Cloud Console, create an OAuth client of type "Web application". Add `<CONVEX_SITE_URL>/oauth/google/callback` as an authorized redirect URI. For a local deployment that URL is `http://127.0.0.1:3211/oauth/google/callback`. Then set the client and the app origin:
+   - `npx convex env set AUTH_GOOGLE_CLIENT_ID <id>`
+   - `npx convex env set AUTH_GOOGLE_CLIENT_SECRET <secret>`
+   - `npx convex env set AUTH_REDIRECT_ORIGINS http://localhost:3000`. Separate several origins with commas. Google can only send people back to these origins.
+   - `npx convex env set APP_URL http://localhost:3000`. This is optional. When it is set, the `add_memory` reply links to the app.
+
+   Convex refuses to deploy until both `AUTH_GOOGLE_*` variables are set.
+5. Seed the synthetic members: `npx convex run seed:seedMembers`.
+6. Run `npm run dev` and open http://localhost:3000.
+
+## Accounts and the memory MCP
+
+Guests can use the whole app without signing in. A guest's board lives in one browser, through a board id in localStorage. Signing in with Google makes that board the user's, and the user can then open it on any device. If the user already has a board, it opens instead of the guest board.
+
+The memory MCP link requires sign-in. Each user has one link, and it writes to their latest board. **New link** in the MCP panel replaces the key, and agents that still use the old link get a 401. Every public Convex function that takes a `sessionId` checks the board's owner, so a signed-in user's board id is useless to anyone else. `convex/sessions.ts` holds these checks.
 
 Scripts:
 

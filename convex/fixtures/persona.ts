@@ -1,4 +1,4 @@
-// Demo personas: sample memories that personal agents saved to Wayfinder's memory MCP.
+// Demo personas: sample memories that personal agents saved to Relay's memory MCP.
 // They span personal, work, community, and passive memories (an interest with no stated goal).
 // Everything here is synthetic and labeled as a sample in the app.
 import type { Constraint, FixtureMember } from "../../lib/contracts";

@@ -27,11 +27,23 @@ import {
 } from "./validators";
 
 export default defineSchema({
+  // People who signed in with Google. Each has one memory MCP key.
+  users: defineTable({
+    name: v.optional(v.string()),
+    email: v.optional(v.string()),
+    image: v.optional(v.string()),
+    mcpKey: v.optional(v.string()), // secret in this user's memory MCP URL
+  }).index("by_mcp_key", ["mcpKey"]),
+
+  // A board. A guest opens it by its id, kept in localStorage. A signed-in user's board opens only for them.
   demoSessions: defineTable({
     createdAt: v.number(),
-    mcpKey: v.optional(v.string()), // secret in the memory MCP URL for this session
+    userId: v.optional(v.id("users")),
+    mcpKey: v.optional(v.string()), // legacy per-board MCP key from before sign-in
     persona: v.optional(v.string()), // set when the demo persona was loaded
-  }).index("by_mcp_key", ["mcpKey"]),
+  })
+    .index("by_mcp_key", ["mcpKey"])
+    .index("by_user", ["userId"]),
 
   // A hidden session that holds one complete live run of the demo persona.
   // "Start with demo persona" copies it, so the demo does not search again every time.
@@ -177,6 +189,11 @@ export default defineSchema({
     embeddingModel: v.string(),
     promptVersion: v.string(),
     threadId: v.union(v.string(), v.null()),
+    more: v.optional(v.object({
+      target: v.union(v.literal("people"), v.literal("places")),
+      status: v.union(v.literal("running"), v.literal("succeeded"), v.literal("failed")),
+      attempt: v.number(), startedAt: v.number(), added: v.number(), error: v.union(v.string(), v.null()),
+    })),
     budget: v.object({ searchQueries: v.number(), fetchedPages: v.number(), modelCalls: v.number() }),
     error: v.union(v.string(), v.null()),
     startedAt: v.number(),
@@ -238,7 +255,13 @@ export default defineSchema({
     url: v.string(),
     author: v.union(v.string(), v.null()),
     title: v.string(),
-    reason: v.optional(v.string()), // why this person's experience is relevant (LLM, from the post text)
+    reason: v.optional(v.string()), // generated relevance explanation, separate from source text
+    about: v.optional(v.string()),
+    excerpt: v.optional(v.string()),
+    evidenceQuote: v.optional(v.string()),
+    matchChecked: v.optional(v.boolean()),
+    avatarUrl: v.optional(v.string()),
+    profileUrl: v.optional(v.string()),
     publishedAt: v.union(v.string(), v.null()),
     query: v.string(),
   }).index("by_run", ["runId"]),

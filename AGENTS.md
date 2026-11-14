@@ -6,7 +6,7 @@ Apply the pstack unslop skill to documentation, implementation notes, and user-f
 
 The stack is Next.js, TypeScript, Convex, Telem AI, and OpenAI. Convex hosts the backend and Vercel hosts the app.
 
-This is a hackathon demo for general consumers, not an enterprise product. Optimize for a working, intuitive demo. Do not add permission, approval, or sharing-review steps. Memories arrive through Wayfinder's memory MCP (`convex/http.ts`) or the demo persona, and each one starts discovery automatically. People search uses Telem's social providers to show public posts with source links.
+This is a hackathon demo for general consumers, not an enterprise product. Optimize for a working, intuitive demo. Do not add permission, approval, or sharing-review steps. Memories arrive through Relay's memory MCP (`convex/http.ts`) or the demo persona, and each one starts discovery automatically. Google sign-in (Convex Auth v2, `convex/auth.ts`) is optional for the board and required for a memory MCP link. Keep the guest path working. People search uses Telem's social providers to show public posts with source links.
 
 The app is one page: memories, the intentions extracted from them, ways to get there, and a proposed next step. Keep the UI minimal and direct. Prefer short labels and one clear action over explanatory text.
 
