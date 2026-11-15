@@ -1,0 +1,4638 @@
+{
+  "brief": {
+    "allowExpansion": true,
+    "initialQueries": [
+      "Seoul travel vegetarian dining restaurant research",
+      "Seoul travel vegetarian restaurant research",
+      "vegetarian dining restaurant research Seoul travel",
+      "Seoul travel vegetarian dishes restaurant research",
+      "restaurant research vegetarian dining Seoul travel"
+    ],
+    "sharedTopics": [
+      "Seoul travel",
+      "vegetarian dining",
+      "restaurant research"
+    ]
+  },
+  "candidates": [
+    {
+      "_id": "j979eq7h971ttt2rn1sy77d3ns8j7787",
+      "counterpart": null,
+      "intentionId": "jx748zsnd7tg919m5qda4sfpzx8j6vs3",
+      "member": {
+        "displayName": "Min-seo L.",
+        "key": "minseo-korean-tutor"
+      },
+      "networkCard": {
+        "aim": "Find adult students for in-person Korean lessons.",
+        "blocker": null,
+        "contributions": [
+          "Structured Korean lessons"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "In person only, in Fort Lee, New Jersey"
+          },
+          {
+            "hard": true,
+            "label": "Cost",
+            "value": "$40 per hour"
+          },
+          {
+            "hard": true,
+            "label": "Schedule",
+            "value": "Weekday afternoons"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Weekday afternoons",
+        "title": "Find in-person Korean students"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate is looking for adult students for in-person Korean lessons, which does not help identify vegetarian-friendly Seoul restaurants or vegetarian dishes.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate is looking for adult students for in-person Korean lessons, which does not help identify vegetarian-friendly Seoul restaurants or vegetarian dishes.",
+          "The requester’s restaurant-shortlisting and dish-checking offers do not meet the candidate’s need for students."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "aim",
+        "capability: recent Seoul traveler with vegetarian dining experience",
+        "capability: restaurant researcher who reads menus and ingredients",
+        "capability: vegetarian local or expat familiar with Korean dishes",
+        "capability: travel planner who can shortlist dining options"
+      ],
+      "similarity": 0.462,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j9740ff6z043pegj7xpv794c0h8j7mat",
+      "counterpart": null,
+      "intentionId": "jx71ye5fc079htdwv9qp1hccwd8j7szc",
+      "member": {
+        "displayName": "Bo H.",
+        "key": "bo-sourdough"
+      },
+      "networkCard": {
+        "aim": "Get help from someone who bakes sourdough regularly.",
+        "blocker": "My starter keeps dying.",
+        "contributions": [
+          "Homemade kimchi to trade"
+        ],
+        "hardConstraints": [],
+        "softConstraints": [],
+        "timing": "Weekends",
+        "title": "Learn to keep a sourdough starter alive"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate wants help from someone who bakes sourdough regularly; that does not align with identifying vegetarian-friendly restaurants or dishes.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate wants help from someone who bakes sourdough regularly; that does not align with identifying vegetarian-friendly restaurants or dishes.",
+          "The requester’s offers about saved restaurants and trip timing do not meet the candidate’s sourdough need."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "blocker vs contributions",
+        "aim",
+        "capability: recent Seoul traveler with vegetarian dining experience",
+        "capability: restaurant researcher who reads menus and ingredients",
+        "capability: vegetarian local or expat familiar with Korean dishes",
+        "capability: travel planner who can shortlist dining options"
+      ],
+      "similarity": 0.438,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j976rzb224qce3vkqvfxgg93fx8j6zt0",
+      "counterpart": null,
+      "intentionId": "jx77931a3bfdqn60mv1bg5cmw98j75d9",
+      "member": {
+        "displayName": "Ji-woo P.",
+        "key": "jiwoo-korean-exchange"
+      },
+      "networkCard": {
+        "aim": "Trade conversation practice: half the call in Korean, half in English.",
+        "blocker": null,
+        "contributions": [
+          "Native Korean conversation practice",
+          "Corrections on everyday spoken Korean"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "Video calls"
+          },
+          {
+            "hard": true,
+            "label": "Cost",
+            "value": "Free exchange, no payment"
+          }
+        ],
+        "softConstraints": [
+          {
+            "hard": false,
+            "label": "Level",
+            "value": "Partner should be at least a beginner in Korean"
+          }
+        ],
+        "timing": "Mornings in Korea, which are evenings in the US, two calls a week",
+        "title": "Korean-English conversation exchange"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate seeks Korean/English conversation exchange, which does not help with checking whether Seoul restaurant dishes are vegetarian.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate seeks Korean/English conversation exchange, which does not help with checking whether Seoul restaurant dishes are vegetarian.",
+          "The requester’s restaurant list and trip timing do not meet the candidate’s language-practice need."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "aim",
+        "capability: recent Seoul traveler with vegetarian dining experience",
+        "capability: restaurant researcher who reads menus and ingredients",
+        "capability: vegetarian local or expat familiar with Korean dishes"
+      ],
+      "similarity": 0.396,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j974twjshbyqwr5tk6h8c6g6n98j65gq",
+      "counterpart": null,
+      "intentionId": "jx7bcr69yzq45tf1tvy9td64cx8j7xx6",
+      "member": {
+        "displayName": "Tom R.",
+        "key": "tom-korean-learner"
+      },
+      "networkCard": {
+        "aim": "Have regular conversations with a fluent Korean speaker before my move to Seoul.",
+        "blocker": "Apps don't prepare me for real conversation.",
+        "contributions": [
+          "$15 per hour or coffee",
+          "Help with resumes and tech interviews"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "Video call or in person in the East Bay"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Weeknight evenings, once a week",
+        "title": "Practice Korean with a native speaker"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate wants regular conversations with a fluent Korean speaker before a move to Seoul; that does not connect to identifying vegetarian-friendly dishes at saved restaurants.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate wants regular conversations with a fluent Korean speaker before a move to Seoul; that does not connect to identifying vegetarian-friendly dishes at saved restaurants.",
+          "The requester’s offers do not address the candidate’s need for conversation practice."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "aim",
+        "capability: recent Seoul traveler with vegetarian dining experience",
+        "capability: vegetarian local or expat familiar with Korean dishes",
+        "capability: travel planner who can shortlist dining options"
+      ],
+      "similarity": 0.391,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j97b1h0avv85e0n7s6rqaz49vs8j6mqw",
+      "counterpart": null,
+      "intentionId": "jx7eegbp2jtc60p88gcbg3pax18j683k",
+      "member": {
+        "displayName": "Carla B.",
+        "key": "carla-kdrama"
+      },
+      "networkCard": {
+        "aim": "Find people to watch and discuss Korean dramas together each week.",
+        "blocker": null,
+        "contributions": [
+          "Hosting at my apartment",
+          "Snacks"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "In person"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Friday nights",
+        "title": "Start a K-drama watch party"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate is looking for people to watch and discuss Korean dramas, which does not help determine which Seoul restaurant dishes are vegetarian.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate is looking for people to watch and discuss Korean dramas, which does not help determine which Seoul restaurant dishes are vegetarian.",
+          "The requester’s offers about restaurants and trip timing do not meet the candidate’s drama-watching need."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "blocker vs contributions",
+        "capability: travel planner who can shortlist dining options"
+      ],
+      "similarity": 0.326,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j975g2t6t5ywn21c0fzrgsh2r98j77a0",
+      "counterpart": null,
+      "intentionId": "jx7ctrtwhkzf24fezkvdftdcsn8j72q5",
+      "member": {
+        "displayName": "Ruth S.",
+        "key": "ruth-furniture-career"
+      },
+      "networkCard": {
+        "aim": "Learn whether I could make a living building furniture by working alongside an experienced maker.",
+        "blocker": "I don't know any professional furniture makers.",
+        "contributions": [
+          "Bookkeeping help for a small shop",
+          "Weekend woodworking experience"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Location",
+            "value": "Within a day's drive of Charlotte, North Carolina"
+          }
+        ],
+        "softConstraints": [
+          {
+            "hard": false,
+            "label": "Schedule",
+            "value": "Part-time at first"
+          }
+        ],
+        "timing": "Could move to part-time work next year",
+        "title": "Explore furniture-making as a second career"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate wants to learn furniture making by working alongside an experienced maker, which is unrelated to identifying vegetarian-friendly Seoul restaurants.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Trip timing: April, about ten days",
+            "evidence": "The candidate card does not mention April or a ten-day trip.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate wants to learn furniture making by working alongside an experienced maker, which is unrelated to identifying vegetarian-friendly Seoul restaurants.",
+          "The requester’s restaurant shortlist and trip timing do not meet the candidate’s furniture-making need."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "blocker vs contributions",
+        "capability: restaurant researcher who reads menus and ingredients"
+      ],
+      "similarity": 0.32,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j977zy9b9kewhm47nztj8akchs8j6azp",
+      "counterpart": null,
+      "intentionId": "jx74k1ep5efabn7wdtezs934kn8j7sxg",
+      "member": {
+        "displayName": "Yuna K.",
+        "key": "yuna-ecology-researcher"
+      },
+      "networkCard": {
+        "aim": "Find dated bird observations from a specific river valley before 2015 to compare migration timing.",
+        "blocker": "Public databases have sparse records there.",
+        "contributions": [
+          "Digitizing help",
+          "Co-authorship or acknowledgment"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Data",
+            "value": "Observations must include dates and locations"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Data needed by spring",
+        "title": "Find historical bird observations from a river valley"
+      },
+      "rejectionReason": null,
+      "requesterCheck": null,
+      "retrievedBy": [
+        "contributions vs needs"
+      ],
+      "similarity": 0.288,
+      "status": "retrieved",
+      "synthetic": true
+    },
+    {
+      "_id": "j972ksswyb42aebjgmevhtbvtn8j7fag",
+      "counterpart": null,
+      "intentionId": "jx7bq1jdq9sk16em7xptk5d35n8j6twa",
+      "member": {
+        "displayName": "Ken D.",
+        "key": "ken-detailing"
+      },
+      "networkCard": {
+        "aim": "Grow my mobile detailing business with recurring customers.",
+        "blocker": "Need more clients on weekdays.",
+        "contributions": [
+          "Professional detailing at $120 per car"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Service",
+            "value": "Paid detailing only"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Weekdays",
+        "title": "Find new detailing customers"
+      },
+      "rejectionReason": null,
+      "requesterCheck": null,
+      "retrievedBy": [
+        "contributions vs needs"
+      ],
+      "similarity": 0.269,
+      "status": "retrieved",
+      "synthetic": true
+    }
+  ],
+  "events": [
+    {
+      "_creationTime": 1794699416731.8499,
+      "_id": "kn745ccsbja5bhjsqe5e532scs8j7g9p",
+      "at": 1794699416731,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Solution planning",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "solution_planning",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699416819.731,
+      "_id": "kn7fdtzt77c023m3b478q035xs8j78jf",
+      "at": 1794699416819,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Using the approved plan for revision 1: 4 ways forward and 4 counterpart capabilities, inferred by gpt-5.4-mini without web search.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "solution_planning",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699416900.2952,
+      "_id": "kn7cfm73q9zbvw983me0z8nhhn8j63zd",
+      "at": 1794699416900,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Public discovery and member retrieval",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699417440.0154,
+      "_id": "kn76ev3cdy8jdwc6xzxzqwg02n8j69ra",
+      "at": 1794699417440,
+      "detail": {
+        "queries": [
+          {
+            "fields": [
+              "aim",
+              "contribution"
+            ],
+            "label": "aim",
+            "text": "Identify which saved Seoul restaurants have vegetarian-friendly dishes for an upcoming trip in April."
+          },
+          {
+            "fields": [
+              "contribution"
+            ],
+            "label": "blocker vs contributions",
+            "text": "Need help telling which dishes are vegetarian."
+          },
+          {
+            "fields": [
+              "blocker",
+              "aim"
+            ],
+            "label": "contributions vs needs",
+            "text": "Can share a list of saved restaurants and trip timing.; Can compare options and shortlist places."
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: recent Seoul traveler with vegetarian dining experience",
+            "text": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: restaurant researcher who reads menus and ingredients",
+            "text": "restaurant research help vegetarian menu check for Seoul trip"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: vegetarian local or expat familiar with Korean dishes",
+            "text": "vegetarian in Seoul familiar with Korean restaurant menus"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: travel planner who can shortlist dining options",
+            "text": "travel planner can help shortlist vegetarian-friendly restaurants for Seoul trip"
+          }
+        ],
+        "top": [
+          {
+            "by": [
+              "aim",
+              "capability: recent Seoul traveler with vegetarian dining experience",
+              "capability: restaurant researcher who reads menus and ingredients",
+              "capability: vegetarian local or expat familiar with Korean dishes",
+              "capability: travel planner who can shortlist dining options"
+            ],
+            "name": "Min-seo L.",
+            "similarity": 0.462
+          },
+          {
+            "by": [
+              "blocker vs contributions",
+              "aim",
+              "capability: recent Seoul traveler with vegetarian dining experience",
+              "capability: restaurant researcher who reads menus and ingredients",
+              "capability: vegetarian local or expat familiar with Korean dishes",
+              "capability: travel planner who can shortlist dining options"
+            ],
+            "name": "Bo H.",
+            "similarity": 0.438
+          },
+          {
+            "by": [
+              "aim",
+              "capability: recent Seoul traveler with vegetarian dining experience",
+              "capability: restaurant researcher who reads menus and ingredients",
+              "capability: vegetarian local or expat familiar with Korean dishes"
+            ],
+            "name": "Ji-woo P.",
+            "similarity": 0.396
+          },
+          {
+            "by": [
+              "aim",
+              "capability: recent Seoul traveler with vegetarian dining experience",
+              "capability: vegetarian local or expat familiar with Korean dishes",
+              "capability: travel planner who can shortlist dining options"
+            ],
+            "name": "Tom R.",
+            "similarity": 0.391
+          },
+          {
+            "by": [
+              "blocker vs contributions",
+              "capability: travel planner who can shortlist dining options"
+            ],
+            "name": "Carla B.",
+            "similarity": 0.326
+          },
+          {
+            "by": [
+              "blocker vs contributions",
+              "capability: restaurant researcher who reads menus and ingredients"
+            ],
+            "name": "Ruth S.",
+            "similarity": 0.32
+          },
+          {
+            "by": [],
+            "name": "Tess N.",
+            "similarity": 0.297
+          },
+          {
+            "by": [
+              "contributions vs needs"
+            ],
+            "name": "Yuna K.",
+            "similarity": 0.288
+          }
+        ]
+      },
+      "durationMs": 454,
+      "error": null,
+      "kind": "retrieval",
+      "label": "Searched approved member intentions with 7 queries",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699420300.0022,
+      "_id": "kn76nymvnm5rgs8jcz1kmbghtx8j73re",
+      "at": 1794699420300,
+      "detail": {
+        "duplicates": 108,
+        "interactionId": "9d4ff256-20ab-487b-9fef-bb947dc27d9c",
+        "queries": [
+          "Seoul travel vegetarian dining restaurant research",
+          "Seoul travel vegetarian restaurant research",
+          "vegetarian dining restaurant research Seoul travel",
+          "Seoul travel vegetarian dishes restaurant research",
+          "restaurant research vegetarian dining Seoul travel"
+        ],
+        "routing": [
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul travel vegetarian restaurant research",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "topic": "general"
+          }
+        ],
+        "runs": [
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 374,
+            "provider": "exa",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 1314,
+            "provider": "tavily",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 1011,
+            "provider": "brave",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 373,
+            "provider": "parallel",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 219,
+            "provider": "ceramic",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 714,
+            "provider": "seltz",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 2577,
+            "provider": "exa",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1598,
+            "provider": "tavily",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1005,
+            "provider": "brave",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 382,
+            "provider": "parallel",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 232,
+            "provider": "ceramic",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 726,
+            "provider": "seltz",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "Seoul travel vegetarian restaurant research",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 383,
+            "provider": "exa",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 1179,
+            "provider": "tavily",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 989,
+            "provider": "brave",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 379,
+            "provider": "parallel",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 137,
+            "provider": "ceramic",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 741,
+            "provider": "seltz",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 2,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "vegetarian dining restaurant research Seoul travel",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 280,
+            "provider": "exa",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 1019,
+            "provider": "tavily",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 931,
+            "provider": "brave",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 315,
+            "provider": "parallel",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 123,
+            "provider": "ceramic",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 652,
+            "provider": "seltz",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 3,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "Seoul travel vegetarian dishes restaurant research",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 446,
+            "provider": "exa",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 955,
+            "provider": "tavily",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 934,
+            "provider": "brave",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 304,
+            "provider": "parallel",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 124,
+            "provider": "ceramic",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 657,
+            "provider": "seltz",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 4,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "restaurant research vegetarian dining Seoul travel",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          }
+        ]
+      },
+      "durationMs": 3241,
+      "error": null,
+      "kind": "telem_search",
+      "label": "Telem search: 5 queries, 7 providers, 150 results, 42 unique URLs",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "partial"
+    },
+    {
+      "_creationTime": 1794699427287.4077,
+      "_id": "kn797qs7g25mx9a854gdkq7j0d8j6c8k",
+      "at": 1794699427287,
+      "detail": null,
+      "durationMs": 1681,
+      "error": null,
+      "kind": "model",
+      "label": "Pick relevant people from 8 posts",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699427370.1377,
+      "_id": "kn75yh3a1dd6ekabqggbnjv4xh8j70fn",
+      "at": 1794699427370,
+      "detail": {
+        "duplicates": 0,
+        "interactionId": "a3e9c7eb-99a5-4fed-8d4a-ae139621cb0f",
+        "queries": [
+          "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+          "vegetarian in Seoul familiar with Korean restaurant menus"
+        ],
+        "routing": null,
+        "runs": [
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_x",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_tiktok",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_reddit",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 5955,
+            "provider": "apify_facebook",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 3,
+            "status": "succeeded",
+            "warnings": [
+              "dropped_results"
+            ]
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_instagram",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 3305,
+            "provider": "apify_linkedin",
+            "query": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+            "resultCount": 4,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_x",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_tiktok",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_reddit",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 8191,
+            "provider": "apify_facebook",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 3,
+            "status": "succeeded",
+            "warnings": [
+              "dropped_results"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_instagram",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 2680,
+            "provider": "apify_linkedin",
+            "query": "vegetarian in Seoul familiar with Korean restaurant menus",
+            "resultCount": 4,
+            "status": "succeeded",
+            "warnings": []
+          }
+        ]
+      },
+      "durationMs": 8530,
+      "error": null,
+      "kind": "telem_search",
+      "label": "People search: 3 posts from Facebook, LinkedIn",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699437410.4126,
+      "_id": "kn7bam1r0c0vwta6wrph6qevh98j7xdj",
+      "at": 1794699437410,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.nishiv.com/guide-to-vegetarian-food-in-seoul"
+      },
+      "durationMs": 181,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read nishiv.com via exa",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699437495.4004,
+      "_id": "kn78nvs3xc9v5btvma99sseny58j6c30",
+      "at": 1794699437495,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://georgeats.com/posts/resources/vegetarian-in-seoul"
+      },
+      "durationMs": 6409,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read georgeats.com via jina",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699437576.7898,
+      "_id": "kn7fn2k0r01s4pq0vj1xq140r18j7m7c",
+      "at": 1794699437576,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.cntraveller.in/story/what-to-eat-in-seoul-a-guide-for-vegetarians"
+      },
+      "durationMs": 1655,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read cntraveller.in via tinyfish",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699437661.7935,
+      "_id": "kn73qzk1m70zavpsn54bd4n9wd8j6q1n",
+      "at": 1794699437661,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://veggiesabroad.com/vegan-restaurants-seoul-korea"
+      },
+      "durationMs": 16599,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read veggiesabroad.com via tinyfish",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699439622.1743,
+      "_id": "kn78smf37dfhj8w1zng0hvbxy18j7dfg",
+      "at": 1794699439622,
+      "detail": null,
+      "durationMs": 1869,
+      "error": null,
+      "kind": "model",
+      "label": "Extract conditions from 4 sources (initial)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699439785.319,
+      "_id": "kn75n4pqktv61akp9z5d8xnchd8j747t",
+      "at": 1794699439785,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Compatibility checks",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "compatibility_checks",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699443585.6438,
+      "_id": "kn7fyxgc43ptbnp1fhxy21qcqs8j7c82",
+      "at": 1794699443585,
+      "detail": null,
+      "durationMs": 3752,
+      "error": null,
+      "kind": "model",
+      "label": "Requester check of 6 candidates (network-approved fields only)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "compatibility_checks",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699443914.2695,
+      "_id": "kn78t7djfczh3v60vpacf9hx2s8j6rsm",
+      "at": 1794699443914,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Follow-up decision",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699445568.7559,
+      "_id": "kn77csxbwm91qfm9z4zf3mr3vs8j6744",
+      "at": 1794699445568,
+      "detail": null,
+      "durationMs": 1519,
+      "error": null,
+      "kind": "model",
+      "label": "Decide whether public evidence can resolve an open question",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699445644.411,
+      "_id": "kn71m2bs99pre3pwenp3wsc2mx8j7m5v",
+      "at": 1794699445644,
+      "detail": {
+        "affects": "This could change which restaurants to recommend by adding confirmed vegetarian-friendly options and excluding restaurants without suitable dishes.",
+        "queries": [
+          "Seoul travel vegetarian dining restaurant research",
+          "Seoul vegetarian-friendly restaurants menu",
+          "Seoul travel vegetarian dining public restaurant research",
+          "Seoul vegetarian restaurant research"
+        ]
+      },
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Follow-up search: Which Seoul restaurants have vegetarian-friendly dishes or clearly labeled vegetarian options suitable for a ten-day April trip?",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699448515.0256,
+      "_id": "kn7ca24b70g8fvhxeep621ycbx8j6wzq",
+      "at": 1794699448515,
+      "detail": {
+        "duplicates": 66,
+        "interactionId": "581f7ea7-2c9f-41d7-9032-36d1f9ac0472",
+        "queries": [
+          "Seoul travel vegetarian dining restaurant research",
+          "Seoul vegetarian-friendly restaurants menu",
+          "Seoul travel vegetarian dining public restaurant research",
+          "Seoul vegetarian restaurant research"
+        ],
+        "routing": [
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "perplexity",
+              "brave",
+              "exa"
+            ],
+            "query": "Seoul vegetarian restaurant research",
+            "topic": "academic_papers"
+          }
+        ],
+        "runs": [
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 364,
+            "provider": "exa",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 86,
+            "provider": "tavily",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 844,
+            "provider": "brave",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 470,
+            "provider": "parallel",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 171,
+            "provider": "ceramic",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 593,
+            "provider": "seltz",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 527,
+            "provider": "you",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 980,
+            "provider": "fetchlayer_google_maps",
+            "query": "Seoul travel vegetarian dining restaurant research",
+            "resultCount": 1,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1594,
+            "provider": "exa",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1265,
+            "provider": "tavily",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1023,
+            "provider": "brave",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 380,
+            "provider": "parallel",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 118,
+            "provider": "ceramic",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 572,
+            "provider": "seltz",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 587,
+            "provider": "you",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1003,
+            "provider": "fetchlayer_google_maps",
+            "query": "Seoul vegetarian-friendly restaurants menu",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 807,
+            "provider": "exa",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 994,
+            "provider": "tavily",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 911,
+            "provider": "brave",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 277,
+            "provider": "parallel",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 133,
+            "provider": "ceramic",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 578,
+            "provider": "seltz",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 465,
+            "provider": "you",
+            "query": "Seoul travel vegetarian dining public restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 1985,
+            "provider": "exa",
+            "query": "Seoul vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 944,
+            "provider": "brave",
+            "query": "Seoul vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 220,
+            "provider": "perplexity",
+            "query": "Seoul vegetarian restaurant research",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          }
+        ]
+      },
+      "durationMs": 2752,
+      "error": null,
+      "kind": "telem_search",
+      "label": "Telem search: 4 queries, 9 providers, 126 results, 60 unique URLs",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699449240.9922,
+      "_id": "kn7e588ywns52gkfvkaadt0ekn8j6gj6",
+      "at": 1794699449240,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://georgeats.com/posts/resources/vegetarian-in-seoul"
+      },
+      "durationMs": 165,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read georgeats.com via jina",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699449325.2354,
+      "_id": "kn7d9m2d30z6s9kdtyx3zp0fms8j70k6",
+      "at": 1794699449325,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.nishiv.com/guide-to-vegetarian-food-in-seoul"
+      },
+      "durationMs": 151,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read nishiv.com via exa",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699449410.4565,
+      "_id": "kn7cgs2zckbw66zxy0y7k8we1s8j7s4j",
+      "at": 1794699449410,
+      "detail": {
+        "cacheState": "cached",
+        "providerChain": [],
+        "url": "https://english.visitseoul.net/restaurants/Vegan-Life-In-Seoul/ENN033498"
+      },
+      "durationMs": 210,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read english.visitseoul.net via exa",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699449496.6548,
+      "_id": "kn7a3ydv96m3h9d9fzrwyyxzzs8j78g4",
+      "at": 1794699449496,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.seoultourism.org/vegetarian-vegan-seoul/"
+      },
+      "durationMs": 173,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read seoultourism.org via exa",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699451643.8455,
+      "_id": "kn78sm49s91gxgj4t24ksgf1d98j61mh",
+      "at": 1794699451643,
+      "detail": null,
+      "durationMs": 2068,
+      "error": null,
+      "kind": "model",
+      "label": "Extract conditions from 4 sources (followup)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699451754.1338,
+      "_id": "kn7f01jxgqhhqn3nfadyfva8n98j6pcp",
+      "at": 1794699451754,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Evidence verification",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "evidence_verification",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699451856.3374,
+      "_id": "kn74s2zge29mvs34xzjdvs3ymn8j6xce",
+      "at": 1794699451856,
+      "detail": {
+        "confirmed": 0,
+        "unknown": 0,
+        "unverified": 0
+      },
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Checked quotes against fetched pages: 0 confirmed, 0 unverified, 0 unknown. 0 sources could not be read and stay unverified leads.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "evidence_verification",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699451930.2068,
+      "_id": "kn7cvnw8g5jbryzwwyf2j521t98j6y1f",
+      "at": 1794699451930,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Ranking",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "ranking",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699452041.4575,
+      "_id": "kn706vf4bvbca82kepahj4en0s8j6bm4",
+      "at": 1794699452041,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "No public opportunity or member passed the checks. No options to rank.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "ranking",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699452132.5752,
+      "_id": "kn70y8ya6gwyhj3b20dp6td6b18j7p0x",
+      "at": 1794699452132,
+      "detail": null,
+      "durationMs": 35449,
+      "error": null,
+      "kind": "stage",
+      "label": "Complete with partial results",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "stage": "complete",
+      "status": "partial"
+    }
+  ],
+  "hypotheses": [
+    {
+      "_creationTime": 1794699416779.8706,
+      "_id": "js77ad5j7xv1na8g1mbkdp5qqx8j7rsr",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "This directly addresses the blocker by relying on public menu and review evidence rather than guessing about dishes. (public resource)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "Use a Seoul vegetarian dining map or restaurant research forum to identify which saved restaurants have clearly marked vegetarian dishes, then shortlist the best-fit places for the April trip.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699416779.8708,
+      "_id": "js7abrbqahnjstd6e81edjsne18j76ds",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "Public groups and Q&A spaces can help decode menu items and ingredient pitfalls without needing a private contact. (public resource)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "Ask a travel planning community for help interpreting saved restaurant menus and dish names, especially for Korean dishes that may look vegetarian but use fish sauce, anchovy stock, or broth.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699416779.871,
+      "_id": "js79f1tnnrmsrmqn58g2dqttqn8j7tyk",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "Someone with firsthand experience can quickly assess the list and give practical judgment on common Korean ingredients and substitutions. (member connection)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "Work with a traveler or resident who has recently navigated vegetarian eating in Seoul to compare the saved list and flag safe options and risky dishes.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699416779.8713,
+      "_id": "js70m1hsznz4az1qvbh6khd0v58j6xve",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "This can be handled either through a public request or by connecting with a member who enjoys restaurant research and itinerary help. (either)",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "Post a request for menu-checking help in a travel or vegetarian community, offering the list of saved restaurants and trip timing in exchange for a shortlist of vegetarian-friendly options.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699416779.8716,
+      "_id": "js74m4k9276czb2q6nw7rnj0n98j6dc8",
+      "kind": "capability",
+      "memberQuery": "recent Seoul traveler vegetarian dining looking to help with restaurant menu checks",
+      "origin": "llm_inference",
+      "rationale": "They can recognize which menu items are truly vegetarian and which may contain hidden animal-based ingredients.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "recent Seoul traveler with vegetarian dining experience",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699416779.8718,
+      "_id": "js73whsxcm2sd07d9cyp2hgv8s8j65z7",
+      "kind": "capability",
+      "memberQuery": "restaurant research help vegetarian menu check for Seoul trip",
+      "origin": "llm_inference",
+      "rationale": "They can compare menu descriptions, identify vegetarian-safe dishes, and produce a shortlist from a saved restaurant list.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "restaurant researcher who reads menus and ingredients",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699416779.872,
+      "_id": "js70gexvmfzvqheje6c8h6ywpx8j62c2",
+      "kind": "capability",
+      "memberQuery": "vegetarian in Seoul familiar with Korean restaurant menus",
+      "origin": "llm_inference",
+      "rationale": "They can spot broth, sauce, and side-dish issues that are easy to miss when judging dishes from names alone.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "vegetarian local or expat familiar with Korean dishes",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699416779.8723,
+      "_id": "js73nqsysaybb1qejek57sn64x8j77d6",
+      "kind": "capability",
+      "memberQuery": "travel planner can help shortlist vegetarian-friendly restaurants for Seoul trip",
+      "origin": "llm_inference",
+      "rationale": "They can turn a long saved list into a practical April trip plan with vegetarian-friendly choices grouped by area or meal type.",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "sourceUrl": null,
+      "text": "travel planner who can shortlist dining options",
+      "usedInRetrieval": true
+    }
+  ],
+  "intention": {
+    "_id": "jx7e7rjktfa5f3agm6m389zg318j7y72",
+    "card": {
+      "aim": "Identify which saved Seoul restaurants have vegetarian-friendly dishes for an upcoming trip in April.",
+      "blocker": "Need help telling which dishes are vegetarian.",
+      "contributions": [
+        "Can share a list of saved restaurants and trip timing.",
+        "Can compare options and shortlist places."
+      ],
+      "hardConstraints": [
+        {
+          "hard": true,
+          "label": "Trip timing",
+          "value": "April, about ten days"
+        }
+      ],
+      "privateConstraints": [],
+      "softConstraints": [],
+      "timing": "April, about ten days",
+      "title": "Find vegetarian Seoul dishes",
+      "topics": [
+        "Seoul travel",
+        "vegetarian dining",
+        "restaurant research"
+      ]
+    },
+    "title": "Find vegetarian Seoul dishes"
+  },
+  "introductions": [],
+  "opportunities": [],
+  "options": [],
+  "run": {
+    "_id": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+    "branches": {
+      "members": "succeeded",
+      "public": "partial"
+    },
+    "briefId": "kx76cjkbg6xcm5mse0wfkk49158j6bzt",
+    "budget": {
+      "fetchedPages": 8,
+      "modelCalls": 5,
+      "searchQueries": 11
+    },
+    "completedAt": 1794699452078,
+    "embeddingModel": "text-embedding-3-small",
+    "error": null,
+    "followUp": {
+      "affects": "This could change which restaurants to recommend by adding confirmed vegetarian-friendly options and excluding restaurants without suitable dishes.",
+      "question": "Which Seoul restaurants have vegetarian-friendly dishes or clearly labeled vegetarian options suitable for a ten-day April trip?",
+      "reason": "There is a specific unresolved question that public evidence can answer: which Seoul restaurants have vegetarian-friendly dishes for an April trip. No public options are confirmed yet, so a web search could identify restaurants and menus that materially affect the recommendation.",
+      "status": "succeeded"
+    },
+    "intentionStatus": "approved",
+    "mode": "live",
+    "model": "gpt-5.4-mini",
+    "promptVersion": "2026-11-14.2",
+    "recordedAt": null,
+    "replayOf": null,
+    "revision": 1,
+    "stage": "complete",
+    "stale": false,
+    "startedAt": 1794699390490,
+    "status": "partial",
+    "variant": "full"
+  },
+  "sources": [
+    {
+      "_creationTime": 1794699420337.4277,
+      "_id": "m579ejq76nzy3001mjz2pw7x0s8j6gcg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 19105,
+        "error": null,
+        "fetchedAt": "2026-11-14T21:00:00+00:00",
+        "latencyMs": 181,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "tavily",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "parallel",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "nishiv.com/guide-to-vegetarian-food-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "HappyCow is my lifesaver when trying to locate nearby vegetarian or vegan-friendly restaurants abroad. I use the website before I travel to map out restaurants, but they have an app too, which you can use on the go.\n\nAlso, check Korean food blogs, Instagram or Facebook groups focused on plant-based eating in Seoul. Local and expat vegans often share hidden gems you won’t find in guidebooks.\n\n### Stick to simpler, adaptable dishes\n\nWhen in doubt, opt for things like: [...] You could also book a hands-on class with a Buddhist monk, cooking vegan dishes and learning the philosophy behind temple c",
+      "title": "The Ultimate Guide to Vegetarian Food in Seoul",
+      "url": "https://www.nishiv.com/guide-to-vegetarian-food-in-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.428,
+      "_id": "m57c58eykxv867jyftc2hc98ch8j6czq",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 23684,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:37:07.090707+00:00",
+        "latencyMs": 6409,
+        "provider": "jina",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "parallel",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "georgeats.com/posts/resources/vegetarian-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "An image of customers sitting at a stall in Gwanjang market, Seoul, South Korea\n\nGwangjang market, Seoul\n\n## Apps to have when hunting for vegan and vegan food in Seoul\n\nI recommend researching on TikTok or Happy Cow before you choose a place to stay. We chose Insadong for the culture but also the amount of vegetarian restaurants. I found a lot of my restaurants on TikTok or on Naver. [...] If you want to try Korean temple food, I recommend staying in Insadong/Ikseondong/Jongno areas. This area had the largest concentration of temple food restaurants that I researched. This meant that there we",
+      "title": "Vegetarian in Seoul - George Eats",
+      "url": "https://georgeats.com/posts/resources/vegetarian-in-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.4282,
+      "_id": "m57enbchk5szkpzzd9dk0qtaas8j6qj9",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 12391,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:37:02.387278+00:00",
+        "latencyMs": 1655,
+        "provider": "tinyfish",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "parallel",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "cntraveller.in/story/what-to-eat-in-seoul-a-guide-for-vegetarians",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Lotus leaf wraps, rice cakes and hearty veg stews - what to eat as a vegetarian traveller in South Korea’s capital\nBy Matthew C. Crawford\n20 May 2024\n©Photo korea-IR Studio\nIt’s easy to assume that South Korean food is meat-centric, but this doesn’t hold true. Since ancient times, Koreans have been extremely versatile in using non-meat ingredients including grains, greens, herbs, roots, spices, berries, mushrooms and seaweed. And the country boasts a long tradition of Buddhist temple food , which is vegan and eschews the five pungent vegetables (garlic, scallions, leeks, onions and chives).\nTe",
+      "title": "What to eat in Seoul: a guide for vegetarians | Condé Nast Traveller India",
+      "url": "https://www.cntraveller.in/story/what-to-eat-in-seoul-a-guide-for-vegetarians"
+    },
+    {
+      "_creationTime": 1794699420337.4285,
+      "_id": "m570fzwqzpc6hcf1fsvdb8x96d8j7ny0",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 14099,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:37:17.292971+00:00",
+        "latencyMs": 16599,
+        "provider": "tinyfish",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "brave",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "seltz",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "veggiesabroad.com/vegan-restaurants-seoul-korea",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "If you’re looking for a memorable dining experience, look no further than this Michelin-starred vegan-friendly restaurant. In 2021, they were awarded a Bib Gourmand and Michelin Green Star for their commitment to quality dishes that are sourced sustainably. The Korean fusion menu focuses on healthy and flavorful dishes highlighting the country’s unique cuisine. I enjoyed their full veggie course, which featured an array of traditional fermented salads, mushrooms, plump buns, tofu, and more. The [...] Book Your Stay\n\n## Is Seoul Vegan-Friendly?\n\nYou will find plenty of really fabulous vegan and",
+      "title": "8 Must-Try Vegan Restaurants in Seoul + Travel Tips 2026 - Veggies Abroad",
+      "url": "https://veggiesabroad.com/vegan-restaurants-seoul-korea"
+    },
+    {
+      "_creationTime": 1794699420337.4287,
+      "_id": "m570q6xjxaet4av5aa8wyt4m4h8j6hjt",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "ceramic",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "lux-mag.com/category/travel",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "  I discover new art and trends when visiting the multiple contemporary art galleries surrounding Bukchon. The artworks exhibited share the depth of skill obtained by Korean artists and their visionary practices. The MMCA (National Museum of Modern and Contemporary Art) is also nearby and I always attend when in Seoul.\n\n  The lobby, with its ornate Belle époque atrium, is the place for a drink when the weather doesnt suit the terrace with a view outside: the speciality \n\n  For a culinary whirlwind, Dorchester Collection’s first Middle East location, The Lana Dubai, is one to watch. Set to open",
+      "title": "Travel - Lux Magazine",
+      "url": "https://www.lux-mag.com/category/travel/"
+    },
+    {
+      "_creationTime": 1794699420337.429,
+      "_id": "m579egj3cmehv2mdks280ev7618j6tbh",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "wheretarawent.com/blog/where-to-find-the-best-vegetarian-food-in-seoul-south-korea-25-veggie-food-spots",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# 25 of the Best Spots for Vegetarian Food in Seoul, South Korea — Where Tara Went\n\n*Seoul might not be the most vegetarian-friendly city but I’ve created this guide with 25 of the best spots for vegetarian food in Seoul, and included some information about South Korean cuisine at large\\.*\n\nSeoul is a carnivore’s dream destination but, while fish markets and Korean BBQ fill every street in the city, there are a number of vegetarian \\(and even vegan\\) options for hungry travelers\\. I scoured Seoulduring our 14 days in the city to find the most scrumptious vegetarian food spots and have compiled",
+      "title": null,
+      "url": "https://wheretarawent.com/blog/where-to-find-the-best-vegetarian-food-in-seoul-south-korea-25-veggie-food-spots"
+    },
+    {
+      "_creationTime": 1794699420337.4292,
+      "_id": "m573wavtydfwd5n5ve6mv9s0018j65cg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "exa",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "tasteofseoul.visitseoul.net/eng/restaurants/list_e",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "카테고리 선택 한식 양식 아시아 그릴 채식 바&펍 디저트&카페 호텔다이닝 백화점 전통시장 레스토랑 찾기 -- -- -- 50 plant-based of Seoul 50 Plant-Based Restaurant of Seoul 2023 서울채식 50선 서울만의 건강한 미식을 자랑하는 서울채식 50선을 만나보세요. -- #### Plant-Based Restaurant Search - Jungnang-gu - Jung-gu - Jongro-gu - Eunpyeong-gu - Yongsan-gu - Yeongdeungpo-gu - Yangcheon-gu - Songpa-gu - Seongbuk-gu - Seongdong-gu - Seocho-gu - Seodaemun-gu - Mapo-gu - Dongjak-gu - Dongdaemun-gu - Dobong-gu - Nowon-gu - Geumcheon-gu - Guro-gu - Gwangjin-gu - Gwanak-gu - Gangseo-gu - Gangbuk-gu - Gangdong-gu - Gangnam-gu - All | · Select region | | --- | 50 places found. - Pla",
+      "title": "서울미식주간",
+      "url": "https://tasteofseoul.visitseoul.net/eng/restaurants/list_e"
+    },
+    {
+      "_creationTime": 1794699420337.4294,
+      "_id": "m57f830nxw537w50h7r1se8j918j7q38",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "english.visitseoul.net/restaurants/Vegan-Life-In-Seoul/ENN033498",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "## Vegan Life In Seoul Published Date : Mar 27, 2020 / Edited Date : Oct 31, 2026 Based in the tradition of rice agriculture, as well as being home to a mountainous topography and roots deeply grounded in Buddhism, veganism has been passed down from generation to generation since long ago. King Yeongjo of Joseon’s secret to longevity that witnessed him reach beyond 80 years of age is also founded in a vegan diet. On that note, we set out to explore vegan life in Seoul – a unique lifestyle that promotes bodily health and contentment to both your body and the animals and nature that live around ",
+      "title": "Vegan Life in Seoul | The Official Travel Guide to Seoul",
+      "url": "https://english.visitseoul.net/restaurants/Vegan-Life-In-Seoul/ENN033498"
+    },
+    {
+      "_creationTime": 1794699420337.4297,
+      "_id": "m57dxtxd33hbhyqb33gfpmagp58j7de9",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "parallel",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "globalclaire.com/seoul-veg",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "\nBest Vegetarian/Vegan Restaurants + Food in Seoul\n\n* Post published: September 11, 2024\nHeading to Seoul? Read my travel guide for all the info you need to plan your trip.\n\n...\n\nYou will again need to communicate with the waiter to understand which banchans are vegan.\nHowever, there are many great vegetarian/vegan restaurants and cafes in Seoul, so you can still get the full Korean food experience!\nWhile in Seoul, I prioritized eating Korean cuisine. There are many highly rated veg restaurants, however, if they did not serve Korean cuisine, I did not eat there. At the end of this article, I’v",
+      "title": "Best Vegetarian/Vegan Restaurants + Food in Seoul - Global Claire",
+      "url": "https://globalclaire.com/seoul-veg"
+    },
+    {
+      "_creationTime": 1794699420337.43,
+      "_id": "m578gxsj1tk5adkz3f30y8jymx8j6tf5",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "lonelyplanet.com/best-in-travel",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "  Enclosed by a fortified stone wall that once kept foes at bay, Cartagena de Indias ’ historic center overflows with charm, attracting visitors with its well-preserved Spanish architecture. Once the homes of Spanish sea merchants, military officers and well-to-do families, the city’s grand mansions now house chic boutique hotels, stylish shops and candlelit rooftop restaurants like Mar y Zielo , where Colombia’s rich gastronomic diversity shines.\n\n  Just over an hour fligh\n\n  Most memorable moment A lovingly prepared sadya  (a traditional vegetarian banquet served on a banana leaf) perfectly ",
+      "title": "Best Travel Destinations 2026 - Lonely Planet",
+      "url": "https://www.lonelyplanet.com/best-in-travel"
+    },
+    {
+      "_creationTime": 1794699420337.4302,
+      "_id": "m575sy20w4mf7zm8c6h7qw965s8j6f5e",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "exa",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "koreavisitguide.com/en/essentials/vegetarian-vegan-food-seoul-guide",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "By Korea Visit Guide Editorial · Published 2026-09-23 · Updated 2026-09-23 Vegetarian and vegan travelers in Seoul need to watch for fish sauce and anchovy broth hidden in kimchi, soups, and sauces, since most menus don't flag them. Learn the Korean phrases that get you a safe dish, which everyday dishes are naturally plant-based, and where Seoul's dedicated vegetarian and vegan restaurants (including Buddhist temple food) actually are. Vegan and Vegetarian Food in Seoul: Full Survival Guide Korean food looks plant-heavy on the surface: rice, vegetables, tofu, endless small banchan. Look close",
+      "title": "Vegan and Vegetarian Food in Seoul: Full Survival Guide",
+      "url": "https://www.koreavisitguide.com/en/essentials/vegetarian-vegan-food-seoul-guide"
+    },
+    {
+      "_creationTime": 1794699420337.4304,
+      "_id": "m57c7e7270fqqsjtan7y4t31s98j7ttv",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "beetsoflife.com/2018/12/vegetarian-food-south-korea-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "For more elaborate meals, we felt most comfortable having them in a vegetarian restaurant. Apps such as Happy Cow, Google Maps, and Trip Advisor are very useful for this. Also, some of the more uncommon methods are to search for local Facebook groups for vegetarians (we found this one for restaurants in Seoul), or ask your host/concierge if they have any recommendations. Here are couple restaurants that stood out.",
+      "title": "Vegetarian Food in South Korea (Seoul) - BEETS OF LIFE",
+      "url": "https://beetsoflife.com/2018/12/vegetarian-food-south-korea-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.4307,
+      "_id": "m5725fzbe8zbjyq9j72t3j3qkh8j7kak",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "ceramic",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "ceramic",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "feeds.megaphone.fm/this-is-taste",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "tle  Cha McCoy is an entrepreneur, educator, and sommelier from Harlem. She is the founder of the wine event series the Communion and, later, the brick-and-mortar bottle shop the Communion Wine & Spirits. Now she’s sharing her wine knowledge in her first book: Wine Pairing for the People: The Communion of Wine, Food, and Culture from Africa and Beyond. It’s an invaluable guide to pairing wine with food, anchored by Cha’s own experience traveling in wine regions across the globe, and today on the show, we dig into the process of bringing the book to life. And, at the top of the show, it’s the r",
+      "title": "765: Inside Steak Zine, Cake Zine’s Medium-Rare New Issue",
+      "url": "https://feeds.megaphone.fm/this-is-taste"
+    },
+    {
+      "_creationTime": 1794699420337.431,
+      "_id": "m57btvby1p1p0f75gtaj1fazg98j7xb4",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "ceramic",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        },
+        {
+          "provider": "ceramic",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "wanderlog.com/list/geoCategory/408/where-to-eat-best-restaurants-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": " 1 Mingles  4.5 ( 840 ) • 4.5 ( 193 ) • Mentioned on   + 5 other lists   $$$$ very expensive Korean restaurant If youre on the hunt for an unforgettable dining experience in Seoul, look no further than Mingles. Nestled in the vibrant Cheongdam-dong district, this modern fine dining establishment beautifully blends traditional Korean flavors with contemporary culinary techniques. Under the expert guidance of Chef Kang Mingoo, who has honed his skills at renowned places like Nobu, Mingles showcases seasonal ingredients and innovative fermentation methods to create dishes that are both rooted in ",
+      "title": "Where to eat: the 50 best restaurants in Seoul",
+      "url": "https://wanderlog.com/list/geoCategory/408/where-to-eat-best-restaurants-in-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.4312,
+      "_id": "m57am07w38791fbxe32r7kjkg18j6n35",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "seltz",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "10mag.com/the-best-vegetarian-and-vegan-restaurants-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# Restaurants & Tips On How To Be A Vegetarian In Seoul \\| 10 Magazine\n\n## The Best Vegetarian and Vegan Restaurants in Seoul\n\nCruelty-free consumption is no small task in Seoul\\. Case in point, Korea was recently named by the Huffington Post as one of the 13 worst countries in the world for vegans and a recent report showed that Koreans consume more meat per capita than neighboring countries like China or Japan\\. Whilst Korean meat consumption still clocks in under the average of OECD countries, Korea was named one of the worst countries for vegans with good reason: almost every Korean dish s",
+      "title": null,
+      "url": "https://10mag.com/the-best-vegetarian-and-vegan-restaurants-in-seoul/"
+    },
+    {
+      "_creationTime": 1794699420337.4314,
+      "_id": "m57eehjmjgh0sscxvepke9na418j7ns1",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "travelwithtrekkingpals.com/blog/vegan-and-vegetarian-restaurants-in-seoul-a-guide-for-travelers",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "0\n\nVegan and Vegetarian Restaurants in Seoul: A Guide for Travelers\n\nOct 8\nWritten by Pilar Miguel Ximénez de Embún\nAre you vegetarian or vegan and planning a trip to South Korea?\n\n...\n\nThankfully, that’s changing. As vegetarian and vegan food has become increasingly popular, particularly among international visitors, Seoul has seen a growing number of restaurants offering delicious plant-based options.\nHere are some of the best vegetarian and vegan restaurants in Seoul that I recommend checking out during your trip.\n\nPlant Café Seoul\n\nThe owner, a Korean with a very international background, ",
+      "title": "Best Vegetarian & Vegan Restaurants in Seoul, South Korea",
+      "url": "https://www.travelwithtrekkingpals.com/blog/vegan-and-vegetarian-restaurants-in-seoul-a-guide-for-travelers"
+    },
+    {
+      "_creationTime": 1794699420337.4316,
+      "_id": "m571qtakqa0npjxkzp1xf6yqj58j7a33",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "reddit.com/r/KoreaTravelAdvice/comments/1vdpqmx/tips_for_vegetarians_in_south_korea",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": ". Korean Buddhist food is typically vegan. There’s a temple style restaurant in Insadong and a high end temple restaurant across from Jogyesa.\n\nUse Happy Cow and do some research, vegan restaurants serving Korean snack food like tteokbokki are popping up in Seoul.\n\nLook for Loving Hut, these buffet restaurants are vegetarian, maybe vegan. They are often in major cities. [...] Best \n   Top \n   New \n   Controversial \n   Old \n   Q&A \n\n# Comments Section\n\n and bakeries.\n\nI strongly encourage you to research the options near your hotels in advance. In Seoul, for example, there was a vegan kimbap pl",
+      "title": "Tips for vegetarians in South Korea? : r/KoreaTravelAdvice",
+      "url": "https://www.reddit.com/r/KoreaTravelAdvice/comments/1vdpqmx/tips_for_vegetarians_in_south_korea"
+    },
+    {
+      "_creationTime": 1794699420337.432,
+      "_id": "m574x60vec5t3b96y3gt4h7x218j66pg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "brave",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "halyourtravelpal.com/vegetarian-restaurants-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "But one of the best parts of travel is the food! You can still enjoy your mealtimes abroad if you know where to go. After 3 years of eating around Seoul as a vegetarian, I’ve put together a guide to the best vegetarian restaurants in Seoul, ranging from fully vegan to vegetarian-friendly.",
+      "title": "The best vegetarian and vegan restaurants in Seoul (2026)",
+      "url": "https://halyourtravelpal.com/vegetarian-restaurants-in-seoul/"
+    },
+    {
+      "_creationTime": 1794699420337.4321,
+      "_id": "m57bad8s6x431cvwvmwzs120sx8j7t83",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "seoultourism.org/seoul-michelin-restaurants",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# Seoul Michelin Star Restaurants: Complete 2026 Guide\n\nThe 2026 **MICHELIN Guide Seoul & Busan** lists a total of 233 restaurants, including **42 starred restaurants in Seoul alone**: one three-star, 10 two-stars and 31 one-stars. On top of those come 71 Bib Gourmand listings and 116 MICHELIN Selected restaurants across Seoul and Busan. It’s the 10th anniversary edition of the Korean guide, and Seoul’s standing as a global fine-dining destination has never been clearer.\n\nThis article contains advertising. Our booking links are routed through a partner that adds commission tracking automatical",
+      "title": null,
+      "url": "https://www.seoultourism.org/seoul-michelin-restaurants/"
+    },
+    {
+      "_creationTime": 1794699420337.4324,
+      "_id": "m577bfv4p0msw2gazyhg1h668s8j7y6d",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        },
+        {
+          "provider": "tavily",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "veganfoodquest.com/vegan-guide-to-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Miss Aeree from o.verte recommend this place as did a number of other vegan travel guides and social media posts we had come across whilst researching our trip to Seoul. Sadly, this Michelin Guide rated vegan restaurant was closed for Lunar New Year during the duration of our stay so it remains right near the top of our list for when we return as their food looks and sounds amazing!\n\nalt.a vegan seoul guide 2\n\nalt.a vegan seoul guide 1\n\n## Vegan Insa [...] ## Other Vegan Guides to Seoul\n\nBelow are a selection of vegan guides to Seoul that we found whilst researching our trip that will help you",
+      "title": "Vegan Guide to Seoul | Vegan Food Quest",
+      "url": "https://www.veganfoodquest.com/vegan-guide-to-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.4326,
+      "_id": "m57a3ybbf44kdgfyx9egpnkrfs8j6za6",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "tripadvisor.com/Restaurants-g294197-zfz10665-Seoul.html",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Best Vegetarian-Friendly Restaurants in Seoul, South Korea: Find Tripadvisor traveler reviews of Seoul Vegetarian restaurants and search by price, location, and more.",
+      "title": "The 10 Best Vegetarian Restaurants in Seoul ... - Tripadvisor",
+      "url": "https://www.tripadvisor.com/Restaurants-g294197-zfz10665-Seoul.html"
+    },
+    {
+      "_creationTime": 1794699420337.4329,
+      "_id": "m578ra00zvmd5s29k86ka9yh4d8j7wvv",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "ceramic",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        },
+        {
+          "provider": "ceramic",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "feeds.feedburner.com/-selinawing-",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": " My sister and I had a rejuvenating sensation while perspiring in the Infrared sauna after we used the hot spring when we traveled to Seoul, South Korea. Because of this, when the Japanese and South Korean people are familiar with using this, their health improves, including putting their weight down. So, SweatSpa lets you concentrate on warming up your body and working up a sweat during this treatment, which will be your ultimate healing experience! Or get the beautiful shape of your body! \n\n Cheongdam Jaya has renamed its name to K-Jaya BBQ this year. Since receiving the JAKIM Halal certific",
+      "title": "Selina Wing - Travel, Food, Tech, Events • Deaf Geek Blogger",
+      "url": "https://feeds.feedburner.com/-selinawing-"
+    },
+    {
+      "_creationTime": 1794699420337.433,
+      "_id": "m579zbsf7k928w8bhae6wz78f58j7zz4",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "seouloffscript.com/article/vegetarian-vegan-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "The short version - The safest bet is temple food (사찰음식): vegan by default, without onion or garlic, concentrated in Insadong (인사동); an all-vegan temple-food buffet runs about ₩15,000. - Fully vegan places cluster in Itaewon (이태원), Hannam-dong (한남동) and Haebangchon (해방촌) — HappyCow lists more than 100 in Seoul. - Avoid: standard kimchi (salted seafood), soups and stews (anchovy stock), bibimbap toppings, tteokbokki (fish cake) and japchae (a little beef). - Ask:\"Jeoneun chaesik-haeyo\" (I'm vegetarian) and \"Myeolchi yuksu deureogayo?\" (Is there anchovy stock in it?). - Worth a half-day: the tem",
+      "title": "Vegetarian & Vegan Seoul: Temple Food, Where to Eat, What to Avoid (2026) | Seoul Off Script",
+      "url": "https://www.seouloffscript.com/article/vegetarian-vegan-seoul"
+    },
+    {
+      "_creationTime": 1794699420337.4333,
+      "_id": "m574kav4n8cxzp2tt0scqrb56h8j7nm4",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "halyourtravelpal.com/vegetarian-in-korea",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "  Traveling with dietary restrictions can be difficult, and South Korea is no exception. In fact, after many years of travel as a vegetarian, I find Korea to be the most difficult country to be plant-based in. K-BBQ is up there with K-pop, K-dramas, and K-beauty as Koreas best-known cultures. Meat is a staple in almost every Korean dish, making it hard to even amend or modify dishes. But  if you know how to prepare, you can still have a delicious plant-based trip . Ive lived in Seoul as a vegetarian for 3 years, and Ive put together this survival guide to being vegetarian in Korea to save you ",
+      "title": "Vegetarian in Korea: The Ultimate Survival Guide",
+      "url": "https://halyourtravelpal.com/vegetarian-in-korea/"
+    },
+    {
+      "_creationTime": 1794699420337.4336,
+      "_id": "m57dba0zcfep80v0wv6kp6hyjn8j7rdj",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=158975",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "People's expectations for food are high as ever due to the increasing diversity of dietary options and health concerns. In particular, as the number of people looking for vegetarian options continues to grow, several restaurants and cafés make efforts to come up with vegetarian menus to meet the customer’s needs. Vegetarians can be categorized into eight different types, ranging from vegans, who abstain from all animal-based products, and flexitarians, who occasionally consume meat. Read on for recommended vegetarian restaurants in Korea and tips on how to make an order according to your dieta",
+      "title": "TIPS FOR VEGETARIANS-  VISITKOREA",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=158975"
+    },
+    {
+      "_creationTime": 1794699420337.4338,
+      "_id": "m5799hy7nyrpv9653c7mdedtn18j6hn5",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "vegetarian dining restaurant research Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "english.visitseoul.net/area/Sanchon-en/ENP014518",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "## Sanchon Published Date : / Edited Date : May 05, 2026 - Travel Info - Nearby - Current Weather 11° Low 10.0° High 13.0° Overcast weather. - Air Quality Index Good Fine Dust : Good Ultra-Fine Dust : Good The owner of Sanchon, a former monk who learned to cook while living in a temple, prepares authentic temple food which is rustic and neatly presented. Your table is filled with a wide variety of side dishes. Their dishes are prepared without meat from seasonal vegetables and mountain herbs, so it is suitable for those with a vegetarian diet. Phone : +82-2-735-0312 Website : View Website Webs",
+      "title": "Sanchon | The Official Travel Guide to Seoul",
+      "url": "https://english.visitseoul.net/area/Sanchon-en/ENP014518"
+    },
+    {
+      "_creationTime": 1794699420337.434,
+      "_id": "m57a2m1c7vmezwxwes62tagnnx8j68eq",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "messyvegancook.com/vegan-in-seoul-food-travel-notes",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Ose Gye Hyang Vegan Restaurant in Seoul\n\nBiji, wild sesame soup, and sundubu jjigae sets at Ose Gye Hyang in Seoul\n\nThe banchan changed slightly each time I visited, with many repeats but a few new plates each time. With the sundubu jjigae (tofu stew) set came a sticky, sweet, and savoury lotus and mushroom stem dish. Another came with soy braised mock beef. Some different types of kimchi were also served.\n\n## See and Do [...] Of the three meals I ate here, the biji (okara) stew set was my favourite, and inspired me to post a recipe for kongbiji jjigae. The sets at the restaurant come with the",
+      "title": "Vegan in Seoul (Food + Travel Notes) - Messy Vegan Cook",
+      "url": "https://messyvegancook.com/vegan-in-seoul-food-travel-notes"
+    },
+    {
+      "_creationTime": 1794699420337.4343,
+      "_id": "m5704hxn3jz8jvchy9hq958q7d8j6wqs",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "brave",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "seoultourism.org/vegetarian-vegan-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "This guide covers the best vegan and vegetarian restaurants in Seoul by neighborhood, the Korean dishes that are naturally plant-based (and the ones that secretly aren’t), how to communicate dietary needs in Korean, and a few honest warnings.",
+      "title": "Vegetarian & Vegan Guide to Seoul: Where to Eat in 2026",
+      "url": "https://www.seoultourism.org/vegetarian-vegan-seoul/"
+    },
+    {
+      "_creationTime": 1794699420337.4346,
+      "_id": "m5717nert6p7w048hh8w6jtdkn8j6yta",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "vegnews.com/south-korea-vegan-hotspot",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "When you’re choosing a vacation destination, there are probably a few things you’re aiming to check off your list\\. And it might go something like this: stunning scenery, vibrant nightlife, rich culture, and fascinating history\\. But without a doubt, for most vegan travelers, delicious food is one of the most important vacation must-haves\\. And South Korea has it in spades—as well as the scenery, nightlife, culture, history, and … well, you get the picture, it has it all\\.\n\nWhen you think of Korean food, kimchi is probably one of the first things to come to mind\\. The spicy, pickled cabbage is",
+      "title": null,
+      "url": "https://vegnews.com/south-korea-vegan-hotspot"
+    },
+    {
+      "_creationTime": 1794699420337.4348,
+      "_id": "m570d9f0x5a2c6gzc3wc2ztkq58j6bjj",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dishes restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "restaurant research vegetarian dining Seoul travel",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "blog.trazy.com/vegetarian-restaurants-in-seoul",
+      "round": "initial",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Places to Eat & Drink in Seoul for Vegetarians or Vegans\n\nJessie Kang June 23, 2024 August 19, 2024\nHave you ever suffered from finding a place to have vegetarian meals in Seoul ? Don’t worry about it anymore! Here is the ultimate list of the restaurants, bakeries, and cafés in Seoul by the district where you can have vegetarian food.\n\n...\n\nSignature Menu: Hummus & Roasted Squash Salad, Mushroom Burger, Lentil Veggie Bowl, Thai Style Green Curry, Mango Coconut Smoothie\nAddress: 2F, 117 Bogwang-ro, Yongsan-gu, Seoul\n\n...\n\nHere we introduce a high-quality temple food restaurant where you can hav",
+      "title": "Places to Eat & Drink in Seoul for Vegetarians or Vegans - Trazy Blog",
+      "url": "https://blog.trazy.com/vegetarian-restaurants-in-seoul"
+    },
+    {
+      "_creationTime": 1794699448555.8472,
+      "_id": "m57bzxqwc9z4mkprdqbnc445f58j631q",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 23684,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:00:00+00:00",
+        "latencyMs": 165,
+        "provider": "jina",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 3
+        },
+        {
+          "provider": "you",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "perplexity",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "georgeats.com/posts/resources/vegetarian-in-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "An image of customers sitting at a stall in Gwanjang market, Seoul, South Korea\n\nGwangjang market, Seoul\n\n## Apps to have when hunting for vegan and vegan food in Seoul\n\nI recommend researching on TikTok or Happy Cow before you choose a place to stay. We chose Insadong for the culture but also the amount of vegetarian restaurants. I found a lot of my restaurants on TikTok or on Naver. [...] If you want to try Korean temple food, I recommend staying in Insadong/Ikseondong/Jongno areas. This area had the largest concentration of temple food restaurants that I researched. This meant that there we",
+      "title": "Vegetarian in Seoul - George Eats",
+      "url": "https://georgeats.com/posts/resources/vegetarian-in-seoul"
+    },
+    {
+      "_creationTime": 1794699448555.8474,
+      "_id": "m5735kdp1bwgdkk1bqm1qv0h4h8j7mbf",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 19105,
+        "error": null,
+        "fetchedAt": "2026-11-14T21:00:00+00:00",
+        "latencyMs": 151,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 3
+        },
+        {
+          "provider": "you",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "perplexity",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "nishiv.com/guide-to-vegetarian-food-in-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "HappyCow is my lifesaver when trying to locate nearby vegetarian or vegan-friendly restaurants abroad. I use the website before I travel to map out restaurants, but they have an app too, which you can use on the go.\n\nAlso, check Korean food blogs, Instagram or Facebook groups focused on plant-based eating in Seoul. Local and expat vegans often share hidden gems you won’t find in guidebooks.\n\n### Stick to simpler, adaptable dishes\n\nWhen in doubt, opt for things like: [...] You could also book a hands-on class with a Buddhist monk, cooking vegan dishes and learning the philosophy behind temple c",
+      "title": "The Ultimate Guide to Vegetarian Food in Seoul",
+      "url": "https://www.nishiv.com/guide-to-vegetarian-food-in-seoul"
+    },
+    {
+      "_creationTime": 1794699448555.8477,
+      "_id": "m573gm3gqtp7xeqvzma6846f7h8j726r",
+      "fetch": {
+        "cacheState": "cached",
+        "contentLength": 5702,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:37:29.106376+00:00",
+        "latencyMs": 210,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": false
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "perplexity",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "english.visitseoul.net/restaurants/Vegan-Life-In-Seoul/ENN033498",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "## Vegan Life In Seoul Published Date : Mar 27, 2020 / Edited Date : Oct 31, 2026 Based in the tradition of rice agriculture, as well as being home to a mountainous topography and roots deeply grounded in Buddhism, veganism has been passed down from generation to generation since long ago. King Yeongjo of Joseon’s secret to longevity that witnessed him reach beyond 80 years of age is also founded in a vegan diet. On that note, we set out to explore vegan life in Seoul – a unique lifestyle that promotes bodily health and contentment to both your body and the animals and nature that live around ",
+      "title": "Vegan Life in Seoul | The Official Travel Guide to Seoul",
+      "url": "https://english.visitseoul.net/restaurants/Vegan-Life-In-Seoul/ENN033498"
+    },
+    {
+      "_creationTime": 1794699448555.848,
+      "_id": "m575maj21rkty9cqfw7n7fz06n8j6zqm",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 23157,
+        "error": null,
+        "fetchedAt": "2026-11-14T20:00:00+00:00",
+        "latencyMs": 173,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "seoultourism.org/vegetarian-vegan-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Eating vegetarian or vegan in Seoul is easier than you think. Discover the best plant-based restaurants, temple food & how to order meat-free.",
+      "title": "Vegetarian & Vegan Guide to Seoul: Where to Eat in 2026",
+      "url": "https://www.seoultourism.org/vegetarian-vegan-seoul/"
+    },
+    {
+      "_creationTime": 1794699448555.8481,
+      "_id": "m575tr5tsf3cymkqaqrddr0m6d8j6ha5",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 4
+        },
+        {
+          "provider": "you",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 3
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "cntraveller.in/story/what-to-eat-in-seoul-a-guide-for-vegetarians",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Lotus leaf wraps, rice cakes and hearty veg stews - what to eat as a vegetarian traveller in South Korea’s capital\nBy Matthew C. Crawford\n20 May 2024\n©Photo korea-IR Studio\nIt’s easy to assume that South Korean food is meat-centric, but this doesn’t hold true. Since ancient times, Koreans have been extremely versatile in using non-meat ingredients including grains, greens, herbs, roots, spices, berries, mushrooms and seaweed. And the country boasts a long tradition of Buddhist temple food , which is vegan and eschews the five pungent vegetables (garlic, scallions, leeks, onions and chives).\nTe",
+      "title": "What to eat in Seoul: a guide for vegetarians | Condé Nast Traveller India",
+      "url": "https://www.cntraveller.in/story/what-to-eat-in-seoul-a-guide-for-vegetarians"
+    },
+    {
+      "_creationTime": 1794699448555.8484,
+      "_id": "m57f11cqqh8mh8x3g7ex751yc98j6vz2",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "10mag.com/the-best-vegetarian-and-vegan-restaurants-in-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# Restaurants & Tips On How To Be A Vegetarian In Seoul \\| 10 Magazine\n\n## The Best Vegetarian and Vegan Restaurants in Seoul\n\nCruelty-free consumption is no small task in Seoul\\. Case in point, Korea was recently named by the Huffington Post as one of the 13 worst countries in the world for vegans and a recent report showed that Koreans consume more meat per capita than neighboring countries like China or Japan\\. Whilst Korean meat consumption still clocks in under the average of OECD countries, Korea was named one of the worst countries for vegans with good reason: almost every Korean dish s",
+      "title": "Restaurants & Tips On How To Be A Vegetarian In Seoul | 10 Magazine",
+      "url": "https://10mag.com/the-best-vegetarian-and-vegan-restaurants-in-seoul/"
+    },
+    {
+      "_creationTime": 1794699448555.8486,
+      "_id": "m57ez0d1beyvpbg1beg2wcw5fd8j7mnv",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "you",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "tripadvisor.com/Restaurants-g294197-zfz10665-Seoul.html",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Best Vegetarian-Friendly Restaurants in Seoul, South Korea: Find Tripadvisor traveler reviews of Seoul Vegetarian restaurants and search by price, location, and more.",
+      "title": "The 10 Best Vegetarian Restaurants in Seoul ... - Tripadvisor",
+      "url": "https://www.tripadvisor.com/Restaurants-g294197-zfz10665-Seoul.html"
+    },
+    {
+      "_creationTime": 1794699448555.8489,
+      "_id": "m571ma8d261pz870k1ftek8dds8j771a",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "english.seoul.go.kr/seoul-releases-948-vegetarian-restaurants-online",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "plant foods plus eggs and also milk products; and “Pesco-Vegetarians” who avoid meat but eat fish, seafood, eggs, and dairy foods. Out of a total of 1,555 qualified restaurants, 948 restaurants that agreed to provide their information were finally listed up to open it to the public. Such an examination, the first of its kind, was conducted from July to December 2020 as part of the city’s scheme to create an environment for citizens to enjoy vegetarian foods. In addition to posting the list on [...] of it with 110 restaurants (11.6%), followed by Jongno-gu with 70 (7.4%), Songpa-gu with 68 (7.2",
+      "title": "Seoul releases 948 vegetarian restaurants online - Seoul Metropolitan Government",
+      "url": "https://english.seoul.go.kr/seoul-releases-948-vegetarian-restaurants-online"
+    },
+    {
+      "_creationTime": 1794699448555.849,
+      "_id": "m578as3ghg9jpc4vjdw395ygfs8j6xc2",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "veggiesabroad.com/vegan-restaurants-seoul-korea",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "If you’re looking for a memorable dining experience, look no further than this Michelin-starred vegan-friendly restaurant. In 2021, they were awarded a Bib Gourmand and Michelin Green Star for their commitment to quality dishes that are sourced sustainably. The Korean fusion menu focuses on healthy and flavorful dishes highlighting the country’s unique cuisine. I enjoyed their full veggie course, which featured an array of traditional fermented salads, mushrooms, plump buns, tofu, and more. The [...] Book Your Stay\n\n## Is Seoul Vegan-Friendly?\n\nYou will find plenty of really fabulous vegan and",
+      "title": "8 Must-Try Vegan Restaurants in Seoul + Travel Tips 2026 - Veggies Abroad",
+      "url": "https://veggiesabroad.com/vegan-restaurants-seoul-korea"
+    },
+    {
+      "_creationTime": 1794699448555.8494,
+      "_id": "m57emwgj2gvf1eh4fh6ba09qsn8j6tvd",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "you",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "halyourtravelpal.com/vegetarian-restaurants-in-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "But one of the best parts of travel is the food! You can still enjoy your mealtimes abroad if you know where to go. After 3 years of eating around Seoul as a vegetarian, I’ve put together a guide to the best vegetarian restaurants in Seoul, ranging from fully vegan to vegetarian-friendly.",
+      "title": "The best vegetarian and vegan restaurants in Seoul (2026)",
+      "url": "https://halyourtravelpal.com/vegetarian-restaurants-in-seoul/"
+    },
+    {
+      "_creationTime": 1794699448555.8496,
+      "_id": "m57de3s25kwse49vksdnqv5cp98j64c5",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "travelwhilenerdy.com/blog/seoul-busan-vegetarian-vegan-food-guide",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "About\nContact Us\nSearch\n\nSeoul and Busan for plant-based foodies: our favourite vegetarian and vegan eats\n\n16 Aug\nWritten by Richard\nSeoul is a city where sizzling barbecue, bubbling stews and fried chicken dominate the dining scene—but we found that it’s quietly become a haven for vegetarians and vegans. From traditional temple cuisine to inventive plant-based twists on Korean classics, there’s plenty to devour if you know where to look.\n\n...\n\nLoved by international travellers, you’ll find a familiar Western cafe mix of bowls, burgers, cakes, and smoothies.\n\n...\n\nWash it down with a domestic ",
+      "title": "Vegetarian & Vegan Food in Seoul & Busan – Plant-Based Travel Guide — Travel While Nerdy",
+      "url": "https://www.travelwhilenerdy.com/blog/seoul-busan-vegetarian-vegan-food-guide"
+    },
+    {
+      "_creationTime": 1794699448555.8499,
+      "_id": "m57d5jtstpbh7wk5ncczrjgfy98j6ejj",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "veganfoodquest.com/vegan-guide-to-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "The team at Conrad Seoul were very accommodating and advised us of which dishes were vegan at each of the restaurants, but also made it clear they were happy to adapt existing menu items and create new dishes during our stay. We enjoyed delicious aglio olio, penne pomodoro, roasted vegetable pizza and asparagus and artichoke salad from ATRIO for dinner one night. There were multiple vegan options available as part of the extensive breakfast buﬀet at ZEST, with additional dishes available each [...] Our first stop during our Seoul vegan adventure was this cool vegan restaurant tucked away in Jo",
+      "title": "Vegan Guide to Seoul | Vegan Food Quest",
+      "url": "https://www.veganfoodquest.com/vegan-guide-to-seoul"
+    },
+    {
+      "_creationTime": 1794699448555.85,
+      "_id": "m57fsrve301yvb1grf1qdqkce18j6jpg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "reddit.com/r/KoreaTravelAdvice/comments/1vdpqmx/tips_for_vegetarians_in_south_korea",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": ". Korean Buddhist food is typically vegan. There’s a temple style restaurant in Insadong and a high end temple restaurant across from Jogyesa.\n\nUse Happy Cow and do some research, vegan restaurants serving Korean snack food like tteokbokki are popping up in Seoul.\n\nLook for Loving Hut, these buffet restaurants are vegetarian, maybe vegan. They are often in major cities. [...] Best \n   Top \n   New \n   Controversial \n   Old \n   Q&A \n\n# Comments Section\n\n and bakeries.\n\nI strongly encourage you to research the options near your hotels in advance. In Seoul, for example, there was a vegan kimbap pl",
+      "title": "Tips for vegetarians in South Korea? : r/KoreaTravelAdvice",
+      "url": "https://www.reddit.com/r/KoreaTravelAdvice/comments/1vdpqmx/tips_for_vegetarians_in_south_korea"
+    },
+    {
+      "_creationTime": 1794699448555.8503,
+      "_id": "m578czj25rajt06rykkac6h3hh8j6eqw",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "globalclaire.com/seoul-veg",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "\nBest Vegetarian/Vegan Restaurants + Food in Seoul\n\n* Post published: September 11, 2024\nHeading to Seoul? Read my travel guide for all the info you need to plan your trip.\n\n...\n\nYou will again need to communicate with the waiter to understand which banchans are vegan.\nHowever, there are many great vegetarian/vegan restaurants and cafes in Seoul, so you can still get the full Korean food experience!\nWhile in Seoul, I prioritized eating Korean cuisine. There are many highly rated veg restaurants, however, if they did not serve Korean cuisine, I did not eat there. At the end of this article, I’v",
+      "title": "Best Vegetarian/Vegan Restaurants + Food in Seoul - Global Claire",
+      "url": "https://globalclaire.com/seoul-veg"
+    },
+    {
+      "_creationTime": 1794699448555.8506,
+      "_id": "m5762heja4dyp5jrb25jx6cbw98j7dxt",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "lonelyplanet.com/best-in-travel",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "  Enclosed by a fortified stone wall that once kept foes at bay, Cartagena de Indias ’ historic center overflows with charm, attracting visitors with its well-preserved Spanish architecture. Once the homes of Spanish sea merchants, military officers and well-to-do families, the city’s grand mansions now house chic boutique hotels, stylish shops and candlelit rooftop restaurants like Mar y Zielo , where Colombia’s rich gastronomic diversity shines.\n\n  Just over an hour fligh\n\n  Most memorable moment A lovingly prepared sadya  (a traditional vegetarian banquet served on a banana leaf) perfectly ",
+      "title": "Best Travel Destinations 2026 - Lonely Planet",
+      "url": "https://www.lonelyplanet.com/best-in-travel"
+    },
+    {
+      "_creationTime": 1794699448555.8508,
+      "_id": "m57fh24jfyttyybe9vp8b1xs998j721c",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "lux-mag.com/category/travel",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "  I discover new art and trends when visiting the multiple contemporary art galleries surrounding Bukchon. The artworks exhibited share the depth of skill obtained by Korean artists and their visionary practices. The MMCA (National Museum of Modern and Contemporary Art) is also nearby and I always attend when in Seoul.\n\n  The lobby, with its ornate Belle époque atrium, is the place for a drink when the weather doesnt suit the terrace with a view outside: the speciality \n\n  For a culinary whirlwind, Dorchester Collection’s first Middle East location, The Lana Dubai, is one to watch. Set to open",
+      "title": "Travel - Lux Magazine",
+      "url": "https://www.lux-mag.com/category/travel/"
+    },
+    {
+      "_creationTime": 1794699448555.851,
+      "_id": "m5799bm2g1hd6zbmheqrp0v3fh8j6x34",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 2
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "wheretarawent.com/blog/where-to-find-the-best-vegetarian-food-in-seoul-south-korea-25-veggie-food-spots",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# 25 of the Best Spots for Vegetarian Food in Seoul, South Korea — Where Tara Went\n\n*Seoul might not be the most vegetarian-friendly city but I’ve created this guide with 25 of the best spots for vegetarian food in Seoul, and included some information about South Korean cuisine at large\\.*\n\nSeoul is a carnivore’s dream destination but, while fish markets and Korean BBQ fill every street in the city, there are a number of vegetarian \\(and even vegan\\) options for hungry travelers\\. I scoured Seoulduring our 14 days in the city to find the most scrumptious vegetarian food spots and have compiled",
+      "title": null,
+      "url": "https://wheretarawent.com/blog/where-to-find-the-best-vegetarian-food-in-seoul-south-korea-25-veggie-food-spots"
+    },
+    {
+      "_creationTime": 1794699448555.8513,
+      "_id": "m5785s64ctjzp46m6vbrt1fqxx8j7z71",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=158975",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "## Tips on ordering a menu A majority of the restaurants in Korea do not have a set procedure or a manual for those who have dietary concerns. Therefore, travelers who are vegetarians are advised to inform the staff of their diet and provide detailed instructions on what ingredients to exclude when making an order. ### 1. Korean Cuisine - Bibimbap: Basic ingredients include meat, egg, gochujang (Korean chili paste), and various vegetables. When ordering, ask to check if any meat is included in the dish. As bibimbap is almost always served with an egg on top, make a request to exclude it from y",
+      "title": "TIPS FOR VEGETARIANS-  VISITKOREA",
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=158975"
+    },
+    {
+      "_creationTime": 1794699448555.8516,
+      "_id": "m578cppvdm7n3nqj2nwrx8v9258j7v6c",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "tasteofseoul.visitseoul.net/eng/restaurants/list_e",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "카테고리 선택 한식 양식 아시아 그릴 채식 바&펍 디저트&카페 호텔다이닝 백화점 전통시장 레스토랑 찾기 -- -- -- 50 plant-based of Seoul 50 Plant-Based Restaurant of Seoul 2023 서울채식 50선 서울만의 건강한 미식을 자랑하는 서울채식 50선을 만나보세요. -- #### Plant-Based Restaurant Search - Jungnang-gu - Jung-gu - Jongro-gu - Eunpyeong-gu - Yongsan-gu - Yeongdeungpo-gu - Yangcheon-gu - Songpa-gu - Seongbuk-gu - Seongdong-gu - Seocho-gu - Seodaemun-gu - Mapo-gu - Dongjak-gu - Dongdaemun-gu - Dobong-gu - Nowon-gu - Geumcheon-gu - Guro-gu - Gwangjin-gu - Gwanak-gu - Gangseo-gu - Gangbuk-gu - Gangdong-gu - Gangnam-gu - All | · Select region | | --- | 50 places found. - Pla",
+      "title": "서울미식주간",
+      "url": "https://tasteofseoul.visitseoul.net/eng/restaurants/list_e"
+    },
+    {
+      "_creationTime": 1794699448555.8518,
+      "_id": "m572xpfjv5y321mmf24hv32a8h8j7d2n",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "exa",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "english.seoul.go.kr/seoul-introduces-948-local-vegetarian-restaurants",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Seoul Introduces 948 Local Vegetarian Restaurants - Seoul Metropolitan Government ## Welfare, Health & Security News - ### Seoul Introduces 948 Local Vegetarian Restaurants - Welfare, Health & Security News Registration date 01/20/2021 Writer SMG views 2,959 As more and more people show interest in healthy foods and vegetarian diets, the Seoul Metropolitan Government (SMG) has uploaded 948 vegetarian restaurants online to guarantee the right to choose foods not only for vegetarians but all citizens who seek where to eat healthy vegetarian dishes. A total of 948 vegetarian restaurants (368 gene",
+      "title": "Seoul Introduces 948 Local Vegetarian Restaurants - Seoul Metropolitan Government",
+      "url": "https://english.seoul.go.kr/seoul-introduces-948-local-vegetarian-restaurants/"
+    },
+    {
+      "_creationTime": 1794699448555.852,
+      "_id": "m5748yjbhs40ap54wd9kxd2sbd8j67wg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "beetsoflife.com/2018/12/vegetarian-food-south-korea-seoul",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "For more elaborate meals, we felt most comfortable having them in a vegetarian restaurant. Apps such as Happy Cow, Google Maps, and Trip Advisor are very useful for this. Also, some of the more uncommon methods are to search for local Facebook groups for vegetarians (we found this one for restaurants in Seoul), or ask your host/concierge if they have any recommendations. Here are couple restaurants that stood out.",
+      "title": "Vegetarian Food in South Korea (Seoul) - BEETS OF LIFE",
+      "url": "https://beetsoflife.com/2018/12/vegetarian-food-south-korea-seoul"
+    },
+    {
+      "_creationTime": 1794699448555.8523,
+      "_id": "m57c4h8tn33hdvkbj1gv7fc0nx8j7wpg",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "feeds.megaphone.fm/this-is-taste",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "tle  Cha McCoy is an entrepreneur, educator, and sommelier from Harlem. She is the founder of the wine event series the Communion and, later, the brick-and-mortar bottle shop the Communion Wine & Spirits. Now she’s sharing her wine knowledge in her first book: Wine Pairing for the People: The Communion of Wine, Food, and Culture from Africa and Beyond. It’s an invaluable guide to pairing wine with food, anchored by Cha’s own experience traveling in wine regions across the globe, and today on the show, we dig into the process of bringing the book to life. And, at the top of the show, it’s the r",
+      "title": "765: Inside Steak Zine, Cake Zine’s Medium-Rare New Issue",
+      "url": "https://feeds.megaphone.fm/this-is-taste"
+    },
+    {
+      "_creationTime": 1794699448555.8525,
+      "_id": "m57a5390gjfbe7ty06vw3hjbnh8j6fm2",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 5
+        },
+        {
+          "provider": "ceramic",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "feeds.feedburner.com/-selinawing-",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": " My sister and I had a rejuvenating sensation while perspiring in the Infrared sauna after we used the hot spring when we traveled to Seoul, South Korea. Because of this, when the Japanese and South Korean people are familiar with using this, their health improves, including putting their weight down. So, SweatSpa lets you concentrate on warming up your body and working up a sweat during this treatment, which will be your ultimate healing experience! Or get the beautiful shape of your body! \n\n Cheongdam Jaya has renamed its name to K-Jaya BBQ this year. Since receiving the JAKIM Halal certific",
+      "title": "Selina Wing - Travel, Food, Tech, Events • Deaf Geek Blogger",
+      "url": "https://feeds.feedburner.com/-selinawing-"
+    },
+    {
+      "_creationTime": 1794699448555.8528,
+      "_id": "m578s2zsr3e5nrs1khr7hrrf8n8j6a7q",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 3
+        },
+        {
+          "provider": "seltz",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "seoultourism.org/seoul-michelin-restaurants",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# Seoul Michelin Star Restaurants: Complete 2026 Guide\n\nThe 2026 **MICHELIN Guide Seoul & Busan** lists a total of 233 restaurants, including **42 starred restaurants in Seoul alone**: one three-star, 10 two-stars and 31 one-stars. On top of those come 71 Bib Gourmand listings and 116 MICHELIN Selected restaurants across Seoul and Busan. It’s the 10th anniversary edition of the Korean guide, and Seoul’s standing as a global fine-dining destination has never been clearer.\n\nThis article contains advertising. Our booking links are routed through a partner that adds commission tracking automatical",
+      "title": null,
+      "url": "https://www.seoultourism.org/seoul-michelin-restaurants/"
+    },
+    {
+      "_creationTime": 1794699448555.853,
+      "_id": "m5721wrfhvj2syc2q84wbvaxfh8j7v50",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 4
+        },
+        {
+          "provider": "parallel",
+          "query": "Seoul travel vegetarian dining public restaurant research",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "epicureasia.com/dining/39336/explore-seouls-growing-vegetarian-food-scene",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Explore Seoul’s Growing Vegetarian Food Scene\n\n* Picture of Amy By Amy\n* March 20, 2025\n\nCheck out Seoul’s flourishing plant-powered paradise.\n\nBY JOCELYN TAN\n\n...\n\nUpcycled items — think eco-friendly plates crafted from coffee bean bags, coconut shells, and outer shells from the rice milling — are also used at the restaurant. Guests get to engage in an eco-conscious experience while savouring dishes that feature a diverse array of seasonal vegetables grown in South Korea.\nThe decision to create a plant-based restaurant stemmed from Chef Sung’s culinary past: “During my tenure as head chef at ",
+      "title": "Explore Seoul’s Thriving Vegetarian Food Scene",
+      "url": "https://www.epicureasia.com/dining/39336/explore-seouls-growing-vegetarian-food-scene/"
+    },
+    {
+      "_creationTime": 1794699448555.8533,
+      "_id": "m5779p6a2bw5jqgrdnhaw3r4nd8j73d0",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 2
+        },
+        {
+          "provider": "you",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "tripadvisor.in/Restaurants-g294197-zfz10665-Seoul.html",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "The owner was incredibly friendly and helpful and the food was amazing... Pretty good tacos on the fly... ... From the moment we sat down the staff was attentive, warm and welcoming! The... ... We booked for the lunch and had the chef’s degustation. The food is Korean... ... Jyoti restaurant where you can find delicious nepali and indian food ☺️ Perfect...",
+      "title": "The 10 Best Vegetarian Restaurants in Seoul (Updated 2026)",
+      "url": "https://www.tripadvisor.in/Restaurants-g294197-zfz10665-Seoul.html"
+    },
+    {
+      "_creationTime": 1794699448555.8535,
+      "_id": "m571c2kyk6y3s9kwk8rwhatx1n8j6q79",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "fetchlayer_google_maps",
+          "query": "Seoul travel vegetarian dining restaurant research",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "google.com/maps/place?q=place_id%3AChIJUYmDLuejfDURFIIDZHZBuV4",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Vegan restaurant · South Korea, Seoul, Jung District, Toegye-ro 20-gil, 21 1층 · ★4.9 (2055)",
+      "title": "Vegan Kitchen",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJUYmDLuejfDURFIIDZHZBuV4"
+    },
+    {
+      "_creationTime": 1794699448555.8538,
+      "_id": "m5743tb0a5vpcy6hcpe17d0rss8j64m4",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "menu.mahinavegan.com/en",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "# Mahina Vegan Table Menu Plant-Based Dining Every menu item is 100% plant-based. We create vibrant, fresh plant-based food without dairy, eggs, butter or any other animal-derived ingredients. Burger buns, pasta sauces, and vegan bread are made in-house. Special Course Lunch Course Regular Menu Lunch Menu Buddhist-Friendly No Five Pungent Vegetables Nut-free Gluten-free Monday–Saturday · Lunch 12:00–16:30 (Last order 15:50) · Dinner 17:00–21:00 (Last order 20:20) · Sunday closed ... 1. No outside food or beverages are allowed. 2. Menu customization is not available. 3. For à la carte dining, o",
+      "title": "Mahina Vegan Table Menu | Vegan Restaurant in Seoul",
+      "url": "https://menu.mahinavegan.com/en/"
+    },
+    {
+      "_creationTime": 1794699448555.854,
+      "_id": "m57679geeba9zmk7xhez5d0k998j7s4t",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "fetchlayer_google_maps",
+          "query": "Seoul vegetarian-friendly restaurants menu",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "google.com/maps/place?q=place_id%3AChIJz7nazOVlJA0RZpAkRqODKLU",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "Vegan restaurant · Av. da República 1120 Loja 23, 4430-257 Vila Nova de Gaia, Portugal · ★5 (319)",
+      "title": "Baomerang - Plant-Based Street Food",
+      "url": "https://www.google.com/maps/place/?q=place_id:ChIJz7nazOVlJA0RZpAkRqODKLU"
+    },
+    {
+      "_creationTime": 1794699448555.8542,
+      "_id": "m5782b1863yftvk9bnp187ryyd8j6hbn",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Seoul vegetarian restaurant research",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "mdpi.com/2071-1050/16/12/4975",
+      "round": "followup",
+      "runId": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+      "snippet": "## Abstract Adopting strategies to reduce meat consumption can help overcome environmental problems associated with meat-based diets, including water scarcity and pollution, soil erosion, and global hunger. Increasing vegetarian diets can result in significant environmental benefits and has been focused on as a way to mitigate environmental changes. Therefore, this study aimed to identify the antecedents affecting customers’ storytelling and subjective well-being in vegetarian restaurants from an eco-friendly perspective. For the surveyed vegetarian restaurants, the four most frequently used b",
+      "title": "The Role of Experiential Quality in a Vegetarian Restaurant from an Eco-Friendly Perspective",
+      "url": "https://www.mdpi.com/2071-1050/16/12/4975"
+    }
+  ]
+}

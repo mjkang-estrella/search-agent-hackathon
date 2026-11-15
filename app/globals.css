@@ -10,6 +10,14 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -41,34 +49,36 @@
 }
 
 :root {
-  /* Relay: airmail blue on a cool light ground, white cards, soft depth. Postmarks mark where a claim came from. */
-  --airmail: #1d3f8f;
-  --airmail-2: #2a4fa3;
-  --airmail-ink: #dce4f5;
-  --on-airmail-muted: #c9d4ee;
-  --airmail-tint: #dfe7f6;
-  --airmail-tint-strong: #d2ddf2;
-  --airmail-red: #c8323c;
-  --red-tint: #f2c9cc;
-  --red-soft: #fbecec;
+  /* Relay's violet and peach mark, with dark ink for readable text. */
+  --relay-purple: #e0d6f5;
+  --relay-purple-strong: #57496e;
+  --relay-lavender: #f0eaf8;
+  --relay-peach: #f9dcc1;
+  --relay-peach-ink: #7b5538;
+  --relay-peach-soft: #fff2e7;
   --form: #ffffff;
-  --ground: #f4f6fa;
-  --soft: #f1f3f8;
-  --tint: #e7ecf5;
-  --chip: #eef1f6;
-  --chip-strong: #e3e8f1;
-  --postmark: #5b5577;
-  --postmark-soft: #ecebf3;
-  --kraft: #b98e5a;
-  --kraft-ink: #7d5a2a;
-  --kraft-soft: #f6efe5;
-  --success: #1f6b47;
-  --success-soft: #e3f1ea;
-  --live: #2f9e6a;
+  --ground: #fcfaf8;
+  --soft: #f4f0f7;
+  --ink: #242833;
+  --ink-muted: #6b6373;
+  --line: #e7e0e9;
+  --danger: #ba354a;
+  --airmail: var(--relay-purple-strong);
+  --airmail-2: var(--relay-purple-strong);
+  --airmail-ink: var(--relay-purple-strong);
+  --airmail-red: var(--danger);
+  --on-airmail-muted: #ffffff;
+  --tint: var(--relay-lavender);
+  --chip: var(--soft);
+  --postmark: var(--relay-purple-strong);
+  --postmark-soft: var(--relay-lavender);
+  --kraft: var(--relay-peach-ink);
+  --kraft-ink: var(--relay-peach-ink);
+  --kraft-soft: var(--relay-peach-soft);
+  --live: #247149;
   --scrim: #0e1626;
-  --ink: #18202f;
-  --ink-muted: #545d70;
-  --line: #d6dce7;
+  --airmail-tint: var(--relay-lavender);
+  --chip-strong: var(--relay-purple);
 
   --background: var(--ground);
   --foreground: var(--ink);
@@ -76,24 +86,32 @@
   --card-foreground: var(--ink);
   --popover: var(--form);
   --popover-foreground: var(--ink);
-  --primary: var(--airmail);
-  --primary-foreground: #ffffff;
-  --secondary: #dce2ec;
+  --primary: var(--relay-purple);
+  --primary-foreground: var(--ink);
+  --secondary: #eee8f7;
   --secondary-foreground: var(--ink);
   --muted: var(--soft);
   --muted-foreground: var(--ink-muted);
-  --accent: #e3e9f5;
+  --accent: var(--relay-lavender);
   --accent-foreground: var(--ink);
-  --destructive: var(--airmail-red);
+  --destructive: var(--danger);
   --border: var(--line);
-  --input: #c6cedc;
-  --ring: var(--airmail-2);
+  --input: #d6cce4;
+  --ring: var(--relay-purple-strong);
   --radius: 0.5rem;
-  --chart-1: var(--airmail);
-  --chart-2: var(--postmark);
-  --chart-3: var(--kraft);
-  --chart-4: var(--airmail-red);
+  --chart-1: var(--relay-purple);
+  --chart-2: var(--relay-purple-strong);
+  --chart-3: var(--relay-peach);
+  --chart-4: var(--danger);
   --chart-5: #2f7a5b;
+  --sidebar: var(--relay-purple);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: var(--ink);
+  --sidebar-accent: rgb(255 255 255 / 0.13);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: rgb(255 255 255 / 0.14);
+  --sidebar-ring: var(--relay-purple-strong);
 }
 
 @layer base {
@@ -102,21 +120,21 @@
   }
   html {
     font-variant-numeric: tabular-nums;
-    scrollbar-color: #b8c2d4 transparent;
+    scrollbar-color: #c7b8dc transparent;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "tnum" 1;
   }
   ::selection {
-    background: #c9d6f2;
+    background: #e3d6fc;
     color: var(--ink);
   }
   a {
     text-underline-offset: 3px;
   }
   :focus-visible {
-    outline: 2px solid var(--airmail-2);
+    outline: 2px solid var(--relay-purple-strong);
     outline-offset: 2px;
   }
 }
@@ -141,5 +159,31 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .stamp-in { animation: none; }
-  html { scroll-behavior: auto; }
+}
+
+@keyframes onboarding-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.onboarding-enter {
+  animation: onboarding-enter 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onboarding-enter { animation: none; }
+}
+
+/* A panel that opens inside a card: the intro preview and the connected result. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(-4px); clip-path: inset(0 0 100% 0 round 16px); }
+  to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0 round 16px); }
+}
+
+.reveal {
+  animation: reveal 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
 }

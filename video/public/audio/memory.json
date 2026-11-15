@@ -1,0 +1,285 @@
+{
+ "duration": 21.083,
+ "words": [
+  {
+   "text": "Here's",
+   "start": 0,
+   "end": 0.29
+  },
+  {
+   "text": "a",
+   "start": 0.337,
+   "end": 0.36
+  },
+  {
+   "text": "sample",
+   "start": 0.418,
+   "end": 0.778
+  },
+  {
+   "text": "traveler's",
+   "start": 0.813,
+   "end": 1.312
+  },
+  {
+   "text": "memory:",
+   "start": 1.37,
+   "end": 1.974
+  },
+  {
+   "text": "\"I've",
+   "start": 2.299,
+   "end": 2.635
+  },
+  {
+   "text": "saved",
+   "start": 2.67,
+   "end": 2.972
+  },
+  {
+   "text": "restaurants",
+   "start": 3.042,
+   "end": 3.553
+  },
+  {
+   "text": "for",
+   "start": 3.599,
+   "end": 3.715
+  },
+  {
+   "text": "Seoul,",
+   "start": 3.785,
+   "end": 4.249
+  },
+  {
+   "text": "but",
+   "start": 4.342,
+   "end": 4.505
+  },
+  {
+   "text": "I",
+   "start": 4.551,
+   "end": 4.574
+  },
+  {
+   "text": "can't",
+   "start": 4.632,
+   "end": 4.865
+  },
+  {
+   "text": "tell",
+   "start": 4.899,
+   "end": 5.062
+  },
+  {
+   "text": "what's",
+   "start": 5.108,
+   "end": 5.294
+  },
+  {
+   "text": "vegetarian.",
+   "start": 5.329,
+   "end": 6.13
+  },
+  {
+   "text": "I'm",
+   "start": 6.304,
+   "end": 6.467
+  },
+  {
+   "text": "learning",
+   "start": 6.513,
+   "end": 6.78
+  },
+  {
+   "text": "Korean",
+   "start": 6.827,
+   "end": 7.198
+  },
+  {
+   "text": "on",
+   "start": 7.279,
+   "end": 7.384
+  },
+  {
+   "text": "an",
+   "start": 7.419,
+   "end": 7.488
+  },
+  {
+   "text": "app,",
+   "start": 7.546,
+   "end": 7.755
+  },
+  {
+   "text": "but",
+   "start": 7.779,
+   "end": 7.93
+  },
+  {
+   "text": "speaking",
+   "start": 7.988,
+   "end": 8.371
+  },
+  {
+   "text": "is",
+   "start": 8.417,
+   "end": 8.499
+  },
+  {
+   "text": "harder.",
+   "start": 8.557,
+   "end": 9.044
+  },
+  {
+   "text": "And",
+   "start": 9.16,
+   "end": 9.323
+  },
+  {
+   "text": "I",
+   "start": 9.381,
+   "end": 9.404
+  },
+  {
+   "text": "can't",
+   "start": 9.462,
+   "end": 9.694
+  },
+  {
+   "text": "afford",
+   "start": 9.718,
+   "end": 9.985
+  },
+  {
+   "text": "a",
+   "start": 10.019,
+   "end": 10.054
+  },
+  {
+   "text": "tutor.\"",
+   "start": 10.089,
+   "end": 10.599
+  },
+  {
+   "text": "As",
+   "start": 11.041,
+   "end": 11.203
+  },
+  {
+   "text": "soon",
+   "start": 11.25,
+   "end": 11.447
+  },
+  {
+   "text": "as",
+   "start": 11.493,
+   "end": 11.575
+  },
+  {
+   "text": "that",
+   "start": 11.621,
+   "end": 11.795
+  },
+  {
+   "text": "memory",
+   "start": 11.865,
+   "end": 12.202
+  },
+  {
+   "text": "arrives,",
+   "start": 12.248,
+   "end": 12.852
+  },
+  {
+   "text": "Relay",
+   "start": 13.003,
+   "end": 13.398
+  },
+  {
+   "text": "starts",
+   "start": 13.467,
+   "end": 13.781
+  },
+  {
+   "text": "looking.",
+   "start": 13.839,
+   "end": 14.384
+  },
+  {
+   "text": "It",
+   "start": 14.767,
+   "end": 14.895
+  },
+  {
+   "text": "finds",
+   "start": 14.942,
+   "end": 15.232
+  },
+  {
+   "text": "two",
+   "start": 15.29,
+   "end": 15.441
+  },
+  {
+   "text": "intentions:",
+   "start": 15.511,
+   "end": 16.323
+  },
+  {
+   "text": "vegetarian",
+   "start": 16.706,
+   "end": 17.38
+  },
+  {
+   "text": "food",
+   "start": 17.438,
+   "end": 17.658
+  },
+  {
+   "text": "she",
+   "start": 17.705,
+   "end": 17.798
+  },
+  {
+   "text": "can",
+   "start": 17.844,
+   "end": 17.96
+  },
+  {
+   "text": "trust",
+   "start": 17.995,
+   "end": 18.25
+  },
+  {
+   "text": "in",
+   "start": 18.309,
+   "end": 18.378
+  },
+  {
+   "text": "Seoul,",
+   "start": 18.459,
+   "end": 18.912
+  },
+  {
+   "text": "and",
+   "start": 18.935,
+   "end": 19.202
+  },
+  {
+   "text": "free",
+   "start": 19.295,
+   "end": 19.539
+  },
+  {
+   "text": "speaking",
+   "start": 19.574,
+   "end": 19.969
+  },
+  {
+   "text": "practice.",
+   "start": 20.027,
+   "end": 21.083
+  }
+ ]
+}

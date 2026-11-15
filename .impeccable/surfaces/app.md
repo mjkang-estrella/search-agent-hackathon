@@ -1,5 +1,5 @@
 ---
-version: 2
+version: 1
 slug: "app"
 primary_target: "app"
 related_targets: []
@@ -7,24 +7,28 @@ related_targets: []
 
 # Relay app surface
 
-Scope: everything under `app/`. That is the one-page board (`/`), the run page "How we found these" (`/r/[runId]`), its Sources tab (`/r/[runId]/evidence`), and `/evaluation`. Mode: Operate. Primary moment: the selected intention's people and opportunities, each showing where it came from.
+Mode: Operate. Relay connects a memory to intentions, possible ways forward, and a next step. The audience is general consumers. Personal, professional, creative, and community intentions use the same flow.
 
-Audience and job: a general consumer opens a memory, reads what Relay found in it, and takes one step: say hi to a sample member, open a page, or read a public post. Judges watch over a laptop screen share.
+## Layout
 
-Constraints: Sample members, simulated acceptance, and replayed runs are labeled wherever they appear. Fit is shown in words ("Great fit"), never as a percentage. No approval or sharing-review steps. Avoid AI-chat chrome, terminal traces, swipe or match-score idioms, and dense enterprise dashboards.
+The board has three columns: Your memories, What you want, and People & opportunities. A proposed next step appears above them. At phone width the columns stack, memories scroll horizontally, and selecting an intention brings its results into view. The header keeps Connect and Sign in visible.
 
-## Direction contract
+The optional guided view introduces the same data on the same page. It uses the board's search stages and action labels. Returning to the board preserves the selected intention. Evidence and evaluation are secondary pages reached through How we found these.
 
-THESIS: A calm board of white cards on a cool light ground, with airmail blue for the selected item and the one next step. Postmarks appear only where a claim's source needs naming: an Inferred postmark on LLM ideas and a Public source postmark on Telem sources.
+## Visual direction
 
-OWN-WORLD: Airmail blue `#1D3F8F` for selection, the proposal block, and primary actions. Cool ground `#F4F6FA`, white cards with a soft shadow, rounded `2xl` cards and `3xl` feature blocks, pill buttons. Kraft only for "Great fit" and unknowns; red only for failures. Public Sans with tabular figures. See DESIGN.md for tokens.
+Preserve Relay's violet and peach logo and warm white background. White cards separate memories and results. Lavender marks selection and primary actions. Peach draws attention to the proposed next step. Dark purple text and focus outlines stay legible against those pale surfaces.
 
-STORY: The member picks a memory, sees the intentions in it, and acts on a person, a page, or a post. "How we found these" shows the same search as a flow chart, with the same totals as the board.
+Use the shared tokens in app/globals.css. Body text uses the app's sans-serif font. Rounded cards and pill buttons follow the incumbent interface. Source marks are compact labels, not a separate postal theme.
 
-FIRST VIEWPORT: The Relay mark and account controls on the light ground; the airmail-blue "Idea for you" block with one action; then three columns: memories, what you want, people and opportunities.
+## Actions and evidence
 
-FORM: One page with three columns that stack on phones. The memory list becomes a horizontal row below 1024px.
+Memories start discovery automatically. Guests can use the board. Google sign-in is required only for a memory MCP link. Do not add approval or sharing-review screens.
 
-Signature interaction: postmarks stamp in once (a short scale-and-settle) when a run page opens.
+Public posts retain source links. Explanations carry Inferred marks. Sample members and their generated photos are labeled. Say hi opens an inline message, Send starts the simulated exchange, and acceptance reveals a labeled sample contact with Copy. Public intro drafts are editable and copied by the user; Relay does not send them.
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+Search again remains available after a failure, including a failure before a run exists. Invalid search links offer a route back to the board. Start a new board acts directly.
+
+## Accessibility and motion
+
+Keep text labels readable, visible keyboard focus, and named controls. Dialogs contain focus, restore it on close, and scroll within the viewport. Completed sample connections reveal once. Reduced-motion settings suppress decorative movement.

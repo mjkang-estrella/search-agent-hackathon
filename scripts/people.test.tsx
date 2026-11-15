@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -9,6 +10,7 @@ import { EXTRA_MEMBERS } from "../convex/fixtures/persona";
 import { normalizeSearch } from "../convex/telem";
 import { PublicPersonCard } from "../components/public-person-card";
 import type { ComponentProps } from "react";
+import type { Id } from "../convex/_generated/dataModel";
 
 test("every sample member has a distinct local generated portrait", () => {
   const portraits = [...MEMBERS, ...EXTRA_MEMBERS].map((m) => {
@@ -82,4 +84,21 @@ test("old results and missing photos render without initials or a checked-match 
   assert.ok(html.includes(post.snippet));
   assert.ok(!html.includes("Why this fits"));
   assert.ok(!html.includes("Invalid Date"));
+});
+
+test("a failed intention offers search again even before a run exists", async () => {
+  process.env.NEXT_PUBLIC_CONVEX_URL ??= "https://test.convex.cloud";
+  const { WaysFooter } = await import("../components/add-memory-flow");
+  const client = new ConvexReactClient("https://test.convex.cloud");
+  try {
+    const html = renderToStaticMarkup(
+      <ConvexProvider client={client}>
+        <WaysFooter intention={{ _id: "failed-intention" as Id<"intentions">, state: "failed", run: null }} />
+      </ConvexProvider>,
+    );
+    assert.match(html, /Search again/);
+    assert.doesNotMatch(html, /How we found these/);
+  } finally {
+    await client.close();
+  }
 });

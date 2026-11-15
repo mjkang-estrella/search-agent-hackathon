@@ -4,11 +4,11 @@
   "title": "Design System: Relay",
   "extensions": {
     "colorMeta": {
-      "airmail": { "role": "primary", "displayName": "Airmail Blue" },
-      "ground": { "role": "neutral", "displayName": "Cool Ground" },
+      "airmail": { "role": "primary", "displayName": "Relay Dark Purple" },
+      "ground": { "role": "neutral", "displayName": "Warm Ground" },
       "card": { "role": "neutral", "displayName": "Card White" },
       "kraft-ink": { "role": "tertiary", "displayName": "Kraft" },
-      "airmail-red": { "role": "error", "displayName": "Airmail Red" },
+      "airmail-red": { "role": "error", "displayName": "Error Red" },
       "postmark": { "role": "secondary", "displayName": "Postmark Violet" }
     },
     "typographyMeta": {

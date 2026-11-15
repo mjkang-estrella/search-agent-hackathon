@@ -1,0 +1,17 @@
+import { open, shot } from "./pw";
+const { browser, page } = await open({ storage: "capture/state.json" });
+const dump = async (label: string, n = 1500) => { await shot(page, label); console.log(`=== ${label}\n` + (await page.locator("main").innerText()).slice(0, n)); };
+await page.goto("http://localhost:3000", { waitUntil: "networkidle" });
+await page.getByText("Guided discovery").click();
+await page.waitForTimeout(1500);
+await page.getByText(/other things noticed/).click();
+await page.getByRole("button", { name: "Practice Korean speaking" }).click();
+await page.waitForTimeout(1000);
+await page.getByText("See why").click();
+await page.waitForTimeout(800);
+await dump("11-guided-why", 2000);
+await page.getByText("That's right").click();
+await page.waitForTimeout(2000);
+await dump("12-guided-results", 2500);
+console.log("BUTTONS", (await page.locator("main button, main a").allInnerTexts()).filter(Boolean));
+await browser.close();

@@ -1,0 +1,34 @@
+{
+  "voiceId": "EXAVITQu4vr4xnSDxMaL",
+  "modelId": "eleven_multilingual_v2",
+  "scenes": [
+    {
+      "id": "hook",
+      "text": "My AI knows I'm going to Korea for the first time. It knows I'm vegetarian, and that I freeze when I try to speak Korean. But when I need help, I still have to figure out what to search for. We built Relay to turn those memories into useful connections and a next step."
+    },
+    {
+      "id": "memory",
+      "text": "Here's a sample traveler's memory: \"I've saved restaurants for Seoul, but I can't tell what's vegetarian. I'm learning Korean on an app, but speaking is harder. And I can't afford a tutor.\" As soon as that memory arrives, Relay starts looking. It finds two intentions: vegetarian food she can trust in Seoul, and free speaking practice."
+    },
+    {
+      "id": "telem",
+      "text": "First, Relay looks for people with relevant experience. The model turns her situation into searches, like free Korean speaking practice for ordering food. Telem runs them across eight providers, including social search, and reads the most promising pages. It finds public posts from people who've been there: a traveler back from South Korea, and someone sharing the exact phrase for ordering at a restaurant. Every quote is checked against its source, with a link to the original post. The model proposes what kind of experience could help. Telem retrieves the public evidence behind the recommendation. A relevant post gives us a lead. Whether that person wants to connect is still an open question."
+    },
+    {
+      "id": "member",
+      "text": "Relay also searches member intentions through Convex. This is Ji-woo, a sample member. She speaks Korean and wants to practice English. Our traveler needs Korean practice. Ji-woo needs English practice. The exchange is free, and US evenings line up with mornings in Korea. A paid tutor and a K-drama fan were filtered out. Sharing an interest in Korea isn't enough. Each person can help the other make progress."
+    },
+    {
+      "id": "action",
+      "text": "The traveler can compare ways forward and choose a next step. For a public post, Relay drafts a message grounded in what that person shared. Memories can come from a personal agent through our memory MCP server, or from the demo. Memory, intention, search, evidence, and action all work end to end."
+    },
+    {
+      "id": "business",
+      "text": "We'd start with universities and exchange communities, where people regularly need language practice and help settling into a new place. Our initial business hypothesis is a subscription for community organizers. Telem's public search provides value even before the member network grows. As more members join, Relay can uncover more opportunities to help each other. The same approach works for creative collaborations and neighborhood projects."
+    },
+    {
+      "id": "close",
+      "text": "We want search to start with an understanding of your situation. Relay turns what your AI remembers into people, opportunities, and something you can do next."
+    }
+  ]
+}

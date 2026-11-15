@@ -1,0 +1,302 @@
+{
+  "_id": "k972sk6nk3hk5rbt91m610z60n8j7bt5",
+  "category": "Personal",
+  "createdAt": 1794699378060,
+  "intentions": [
+    {
+      "_id": "jx7e7rjktfa5f3agm6m389zg318j7y72",
+      "aim": "Identify which saved Seoul restaurants have vegetarian-friendly dishes for an upcoming trip in April.",
+      "error": null,
+      "excluded": 6,
+      "inferred": false,
+      "kind": "need",
+      "need": "Need help telling which dishes are vegetarian.",
+      "offers": [
+        "Can share a list of saved restaurants and trip timing.",
+        "Can compare options and shortlist places."
+      ],
+      "people": [
+        {
+          "_id": "md71trg4adbr3xxjse84ftv2958j7x6s",
+          "about": "Traveler/foodie sharing a vegan Seoul food experience",
+          "author": "Olga Frangella",
+          "avatarUrl": null,
+          "evidenceQuote": "Found a vegan version of all South Korean street food classics",
+          "excerpt": "Found a vegan version of all South Korean street food classics in one place lovingly and scrupulously prepared by a lovely chef/owner/lady! 💖 It feels amazing to experience the culture without causing harm! 💖 So grateful to all vegan establishments for making it possible! 🙏🏻 Life is better vegan! 🌱\n\nThe Creamy soup was unbelievable delicious! You could taste the love in it! 💖\n\n#VeganSeoul, #MaruJayeonsikGimbap",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2026-08-14T05:34:37Z",
+          "reason": "The post describes vegan South Korean street food in Seoul, directly indicating vegetarian-friendly dishes for a Seoul trip.",
+          "title": "Found a vegan version of all South Korean street food classics in one place lovingly and scrupulous...",
+          "url": "https://www.facebook.com/olga.frangella.2025/posts/pfbid0LVDJkzetQZQJtaYqtDN7mLL7c7rGW71XNi62g3KZT2GniF8qMHaMNMuumSYKWbJ7l"
+        },
+        {
+          "_id": "md73jrx0y9eeecaa59hybbbj4n8j61wc",
+          "about": "Recent traveler back from South Korea",
+          "author": "BoredMom",
+          "avatarUrl": null,
+          "evidenceQuote": "We are back from our trip to South Korea",
+          "excerpt": "We are back from our trip to South Korea & trying to adjust back to you Pacific standard Time. 🥵 This is just a Korean food appreciation post! Despite what you may think, it is actually fairly easy to find vegetarian food options in Seoul. We were on a tour at the Royal Palace and some guy from California was bitching that he hasn't been able to find any vegetarian food and that he would be eating pizza again. 🙄 I don't know if the guy was just not asking questions or if he was even trying, but there are truly many options everywhere. From tasty make your own tteokbokki bowls to simple bibim",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2023-07-05T23:22:52Z",
+          "reason": "The author says vegetarian options are easy to find in Seoul and names specific dishes, helping identify vegetarian-friendly choices.",
+          "title": "We are back from our trip to South Korea & trying to adjust back to you Pacific standard Time. Th...",
+          "url": "https://www.facebook.com/boredmom/posts/pfbid0229wasN1rXikrcAiqnSCLcYMZ1qgJHXtPzGhsj1AM1opepZouBGxEizEo3cgvrbERl"
+        },
+        {
+          "_id": "md79v33n67423xbanb17zkwrv18j79qj",
+          "about": "Travel guide writer sharing Korean food recommendations",
+          "author": "Seoul Diaries",
+          "avatarUrl": null,
+          "evidenceQuote": "Save this guide for your future Korea trip!",
+          "excerpt": "🍜🇰🇷 15 Must-Try Korean Foods!\n\nFrom spicy street food to comforting soups and iconic BBQ, Korean cuisine is packed with incredible flavors and unforgettable dishes. Whether you're visiting South Korea or simply love Korean food, these are some of the must-try classics!\n\n💬 Which Korean dish is your favorite, or which one would you love to try first?\n\n📍Save this guide for your future Korea trip!\n\n#SeoulDiaries #koreanfood  #travelguide  #explorekorea  #travelinspiration",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2026-07-21T15:13:56Z",
+          "reason": "This Seoul food guide lists Korean dishes and is framed as a Korea trip guide, useful for sorting which classics may have vegetarian versions.",
+          "title": "15 Must-Try Korean Foods!",
+          "url": "https://www.facebook.com/seouldiriesofficial/posts/pfbid036Kx78VFNChTGF7XyhxMHXispEqqYwRqjjj9TGJ79msFmoJ4dctxmKxkuc3sFsWvul"
+        }
+      ],
+      "run": {
+        "_id": "ks7cmh5zq1y8ns3cj5257mkpy58j7702",
+        "completedAt": 1794699452078,
+        "followUp": "succeeded",
+        "mode": "live",
+        "pages": 8,
+        "queries": 11,
+        "saved": false,
+        "stage": "complete",
+        "startedAt": 1794699390490
+      },
+      "state": "ready",
+      "status": "approved",
+      "title": "Find vegetarian Seoul dishes",
+      "ways": []
+    },
+    {
+      "_id": "jx74w6wcxcat95hazka8264jj58j6fh0",
+      "aim": "Get help speaking simple Korean orders out loud for an upcoming trip.",
+      "error": null,
+      "excluded": 5,
+      "inferred": false,
+      "kind": "need",
+      "need": "Reading is easier than speaking, and budget leaves no room for tutoring.",
+      "offers": [
+        "Can already read Korean better than speaking it.",
+        "Has evenings free after 7pm."
+      ],
+      "people": [
+        {
+          "_id": "md76vsqx3q1548zkfhyx635mx98j6wmg",
+          "about": "A Korean learner or teacher sharing trip phrases and speaking practice.",
+          "author": "Learn.korean.edinburgh",
+          "avatarUrl": null,
+          "evidenceQuote": "Restaurant: 이거 주세요 (I'll have this, please)",
+          "excerpt": "You don't need fluent Korean for your trip. You need 3 phrases and the confidence to point at things. 🇰🇷\n\n✈️ Airport: 화장실이 어디예요? (Where's the bathroom?)\n🚕 Taxi: 여기로 가 주세요 (Take me here, please — show your phone!)\n🍜 Restaurant: 이거 주세요 (I'll have this, please)\n\nSay them out loud a few times before you land. That's genuinely all the prep you need.\n\nWhich one are you saving? Drop AIRPORT, TAXI, or RESTAURANT below 👇\n\nSave this for your next trip — you'll want it at the airport, not in your camera roll from 6 months ago.\n\n...\n.\n.\n#LearnKorean #KoreanForBeginners #TravelKorean #KoreanPhrases #E",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2026-09-11T17:00:01Z",
+          "reason": "This post gives a simple restaurant phrase and explicitly centers speaking practice before a trip, matching the need to say basic orders out loud.",
+          "title": "You don't need fluent Korean for your trip. You need 3 phrases and the confidence to point at thing...",
+          "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0c6g2A5XDgFk5tSsjbbgcxJfCWtTV4uRR6Wgz99LACoQYjHmV1kXYmMEFggjH6dDLl&id=61594148046469"
+        },
+        {
+          "_id": "md73qb5qa00dn4ktj4jgz7qa2x8j77c3",
+          "about": "Korean language teacher from Korea.",
+          "author": "Memonadri",
+          "avatarUrl": null,
+          "evidenceQuote": "we practiced how to order food and drinks in Korea.",
+          "excerpt": "Hello! I’m Nadri, a Korean language teacher from Korea.\n\nThis week, we practiced how to order food and drinks in Korea. We learned how to ask about menu items, explain allergies, handle order mistakes, deal with payment problems, and pay the bill naturally.\n\nThese are real situations that travelers often experience in Korea!\n\n#koreanlearning #koreanstudent",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2026-06-22T09:23:55Z",
+          "reason": "The author says they taught ordering food and drinks in Korea, which directly matches needing practical spoken order help for travel.",
+          "title": "Hello! I’m Nadri, a Korean language teacher from Korea.",
+          "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid0pdU2iqHMyfhpi2Dcs2nMZNnafwiM2nLGU4rsUvFafD46KSo3KBosGCDCfi19Cj1Pl&id=61583474155951"
+        },
+        {
+          "_id": "md79ftjt1tfrp7y7t6vhzxv9nh8j64ch",
+          "about": null,
+          "author": "Seoul speak academy",
+          "avatarUrl": null,
+          "evidenceQuote": "These words will actually help you order at a café in Korea.",
+          "excerpt": "These words will actually help you order at a café in Korea.\n\n아메리카노 — Americano\n주세요 — Please give me\n포장 — To go\n물 — Water\n\nTry this sentence:\n\n아메리카노 포장해 주세요.\n\n(Americano to go, please.)\nWhich word are you going to practice first? 👇\nSave this and DM “STUDY” if you want lessons built around real conversations.",
+          "matchChecked": true,
+          "platform": "Facebook",
+          "profileUrl": null,
+          "publishedAt": "2026-10-31T10:00:44Z",
+          "reason": "This post provides short café ordering phrases in Korean, useful for a traveler who reads better than they speak.",
+          "title": "These words will actually help you order at a café in Korea.",
+          "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02yWq29EcmMsJ73DjwBGiGaZs2JPFHUy1gvxkV6ctjJSVW6F81vns4GeQoaG792KMZl&id=61587380596054"
+        }
+      ],
+      "run": {
+        "_id": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+        "completedAt": 1794699451906,
+        "followUp": "skipped",
+        "mode": "live",
+        "pages": 4,
+        "queries": 7,
+        "saved": false,
+        "stage": "complete",
+        "startedAt": 1794699392358
+      },
+      "state": "ready",
+      "status": "approved",
+      "title": "Practice Korean speaking",
+      "ways": [
+        {
+          "_id": "kh796hqx8f6sk5j6kcvqes74ps8j605w",
+          "constraints": [
+            {
+              "label": "Budget",
+              "result": "meets"
+            },
+            {
+              "label": "Availability",
+              "result": "meets"
+            }
+          ],
+          "fit": "strong_fit",
+          "intro": null,
+          "kind": "combined",
+          "member": {
+            "about": "Native Korean conversation practice. Corrections on everyday spoken Korean",
+            "agent": "compatible",
+            "avatarUrl": "/demo-portraits/jiwoo-korean-exchange.webp",
+            "name": "Ji-woo P.",
+            "note": "This could be a fit: the member is a native Korean speaker, offers free exchange by video, and is available in US evenings.",
+            "wants": "Trade conversation practice: half the call in Korean, half in English."
+          },
+          "nextStep": "Use the language exchange to practice a short set of trip phrases and order words out loud.",
+          "questions": [
+            "Are you comfortable doing video calls?",
+            "Would you want to practice half in Korean and half in English?"
+          ],
+          "source": {
+            "host": "mylanguageexchange.com",
+            "provider": "exa",
+            "quote": "Language Exchange via Email, Text Chat and Voice and Video Chat",
+            "read": true,
+            "route": "Find a Korean-speaking language exchange partner, then write, text chat, or speak with them via voice/video chat.",
+            "title": "Learn Korean Online - Write or Speak in Korean Language Exchange",
+            "url": "https://www.mylanguageexchange.com/Learn/Korean.asp"
+          },
+          "summary": "Connect with Ji-woo P. for free Korean-English video practice, using the exchange to say simple Korean orders out loud and get corrections. Their evenings in Korea line up with US evenings, which may help with your after-7pm availability.",
+          "title": "Pair practice with language exchange",
+          "why": "Free video exchange matches speaking practice and conversation correction."
+        },
+        {
+          "_id": "kh7b6ttwekng7mxw6r0f8b5z2s8j7x6d",
+          "constraints": [
+            {
+              "label": "Budget",
+              "result": "meets"
+            },
+            {
+              "label": "Availability",
+              "result": "unknown"
+            }
+          ],
+          "fit": "possible_fit",
+          "intro": null,
+          "kind": "public",
+          "member": null,
+          "nextStep": "Open the demo and spend a few minutes speaking one Korean order aloud.",
+          "questions": [
+            "Can you make time for the demo’s daily practice pace?"
+          ],
+          "source": {
+            "host": "lingualive.ai",
+            "provider": "exa",
+            "quote": "10 free minutes a day in your first week, then 5 a day",
+            "read": true,
+            "route": "Press play to hear a real Korean tutor, then take the mic yourself. Use the free demo in your browser and start speaking.",
+            "title": "Korean Speaking Practice with AI | LinguaLive",
+            "url": "https://www.lingualive.ai/learn-korean"
+          },
+          "summary": "Use LinguaLive’s free demo to rehearse simple Korean orders out loud before your trip. It works in a browser, needs no signup, and you can take the mic yourself.",
+          "title": "Practice Korean with AI",
+          "why": "Free browser demo lets you speak aloud without tutoring."
+        },
+        {
+          "_id": "kh79bh5474vt4etmsr0dwr3ba58j7h43",
+          "constraints": [
+            {
+              "label": "Budget",
+              "result": "meets"
+            },
+            {
+              "label": "Availability",
+              "result": "unknown"
+            }
+          ],
+          "fit": "possible_fit",
+          "intro": null,
+          "kind": "public",
+          "member": null,
+          "nextStep": "Pick one real-life scene and answer the three practice questions out loud.",
+          "questions": [
+            "Can you fit a short self-guided practice session into your evenings?"
+          ],
+          "source": {
+            "host": "ashleybaek.com",
+            "provider": "exa",
+            "quote": "SpeakLoop | Free Real-Life Korean Speaking Practice",
+            "read": true,
+            "route": "Choose one real-life Korean scene, answer three short practice questions, then get feedback before a real lesson from Ashley.",
+            "title": "SpeakLoop | Free Real-Life Korean Speaking Practice",
+            "url": "https://www.ashleybaek.com/speakloop"
+          },
+          "summary": "Try SpeakLoop’s free scenes and short questions to rehearse simple Korean speech before your trip. It focuses on speaking practice and feedback, which can help turn reading knowledge into spoken orders.",
+          "title": "Use free speaking prompts",
+          "why": "Three short practice questions give guided spoken rehearsal for travel phrases."
+        },
+        {
+          "_id": "kh7b56zrnrdxhsq1a2r8hcwymh8j722t",
+          "constraints": [
+            {
+              "label": "Budget",
+              "result": "meets"
+            },
+            {
+              "label": "Availability",
+              "result": "unknown"
+            }
+          ],
+          "fit": "possible_fit",
+          "intro": null,
+          "kind": "public",
+          "member": null,
+          "nextStep": "Choose the basic-phrases level and say a few Korean order phrases out loud.",
+          "questions": [
+            "Can you practice for a few minutes in the evenings before your trip?"
+          ],
+          "source": {
+            "host": "tryspeak.ai",
+            "provider": "tinyfish",
+            "quote": "Start your first Korean lesson in under 60 seconds - completely free.",
+            "read": true,
+            "route": "Choose your Korean level, then practice speaking Korean with the AI tutor.",
+            "title": "How It Works",
+            "url": "https://www.tryspeak.ai/learn-korean"
+          },
+          "summary": "Use TrySpeak’s free Korean practice to rehearse basic phrases and pronunciation feedback. It lets you start quickly and choose a basic-phrases level, which suits turning reading skills into spoken orders.",
+          "title": "Start instant AI lessons",
+          "why": "Free AI conversation practice supports speaking simple phrases without tutoring."
+        }
+      ]
+    }
+  ],
+  "sample": true,
+  "source": "Grok",
+  "text": "My first trip to Seoul is booked for April, about ten days. I spent last night saving restaurants, then realized I couldn't tell which dishes were vegetarian. The subway map is still open in another tab.\n\nI've kept up my Korean app lessons, but when I tried saying a simple order out loud, my mind went blank. Reading the answer is much easier than saying it. There's no room in my trip budget for tutoring. Most evenings I'm home after 7pm.",
+  "title": "Plan Seoul trip"
+}

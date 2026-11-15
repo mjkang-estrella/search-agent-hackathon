@@ -8,31 +8,32 @@ web
 
 ## Users
 
-The primary user is a general consumer with something they want to do. Their AI assistant saves memories to Relay through the memory MCP, or they start with the demo persona or type a memory by hand. They read the intentions Relay finds in each memory and choose a next step.
+Relay is a consumer hackathon demo for personal, professional, creative, and community intentions. People bring memories from their AI assistant or type a memory. Discovery starts automatically, and they choose a next step.
 
-Hackathon judges see the product through the demo persona, usually over a laptop screen share.
+Hackathon judges see the product through that member's story, usually over a laptop screen share. Community organizers are the first paying-customer hypothesis but are not the primary user of these screens.
 
 ## Product Purpose
 
-Relay turns memories into intentions and finds ways to act on them. Each new memory starts discovery automatically. The LLM proposes ways forward and the counterpart capabilities that could help. Telem retrieves current public evidence: projects, services, listings, open requests, communities, events, and public posts from social providers. Convex searches the intentions of sample members. The member says hi to a sample member, opens a public page, or reads a public post with its source link.
+Relay turns memories into intentions and finds ways to act on it. The LLM proposes ways forward and the counterpart capabilities that could help. Telem retrieves current public evidence: projects, services, listings, open requests, communities, and events. Convex searches sample member intentions. The member compares public options, member connections, and combined options against the same constraints, then follows a published route or requests a mutual introduction.
 
 Success is an intention the member makes progress on through a discovered opportunity or connection.
 
 ## Positioning
 
-A profile describes a person. An intention describes what would make a connection useful right now. Relay matches complementary intentions, checks them from both sides under separate permissions, and shows which claims are LLM inference, which come from public sources, and which come from another member's approved intention.
+A profile describes a person. An intention describes what would make a connection useful right now. Relay matches complementary intentions, checks both sides using the available intention data, and shows which claims are LLM inference, which come from public sources, and which come from a sample member's intention.
 
 ## Operating Context
 
-The first build is a hackathon demo (SearchHack, November 14, 2026). It uses live Telem search and fetch, synthetic members, and simulated acceptance. The lead story is Dana, a poet who wants to turn a poem into a song. Other demo memories cover work, community, and passing remarks. A newly typed memory works without a scenario template.
+The first build is a hackathon demo (SearchHack, November 14, 2026). It uses live Telem search and fetch, synthetic members, and simulated acceptance. The lead story is Dana, a poet who wants to turn a poem into a song. Firmware and crosswalk scenarios use the same screens. A newly typed intention works without a scenario template.
 
-The app is one page: memories, the intentions found in the selected memory, people and opportunities for the selected intention, and a proposed next step at the top. "How we found these" opens a run page with the search as a flow chart and a sources tab. Google sign-in is optional for the board and required for a memory MCP link.
+The app centers on one page: memories, extracted intentions, ways forward, and a proposed next step. An optional guided view introduces that flow. Evidence and evaluation are secondary pages.
 
 ## Capabilities and Constraints
 
 - Stack: Next.js, TypeScript, Convex, Telem AI, OpenAI, and shadcn/ui components.
 - Raw context reaches the model only for the owner's extraction. It never reaches Telem or another member's check. The interface says so explicitly and never claims memory stays on the device.
-- Only the search brief leaves the application. Names, contact details, and private excerpts stay out of public queries.
+- Memories start discovery automatically. Do not add approval or sharing-review steps. Names, contact details, and private excerpts stay out of public queries.
+- Google sign-in is optional for the board and required for a memory MCP link. Preserve the guest path.
 - Synthetic members, simulated acceptance, replay, and cached results carry visible labels wherever they appear.
 - Missing facts stay unknown. Constraint results use meets, conflicts, and unknown. There are no compatibility percentages.
 - A public page never establishes a person's willingness to connect. Contact details appear only after both sides accept.
@@ -45,8 +46,8 @@ The app is one page: memories, the intentions found in the selected memory, peop
 
 ## Product Principles
 
-1. Show the source of every claim: inference, public evidence, or a member's approved intention.
-2. No approval or sharing-review steps. The search brief keeps private details out of public queries instead.
+1. Show the source of every claim: inference, public evidence, or a sample member's intention.
+2. Keep the next action clear. Discovery starts when a memory arrives.
 3. An unknown stays unknown. A hard conflict removes an option from recommendations.
 4. One engine for any intention. Scenarios are sample inputs, not templates.
 5. Label anything synthetic, simulated, cached, or replayed.

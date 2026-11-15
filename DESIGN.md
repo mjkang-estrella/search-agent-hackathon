@@ -2,32 +2,32 @@
 name: Relay
 description: Turn memories into intentions, then find people and places that can help.
 colors:
-  airmail: "#1d3f8f"
-  airmail-hover: "#2a4fa3"
-  airmail-ink: "#dce4f5"
-  on-airmail-muted: "#c9d4ee"
-  airmail-tint: "#dfe7f6"
-  airmail-tint-strong: "#d2ddf2"
-  airmail-red: "#c8323c"
+  airmail: "#57496e"
+  airmail-hover: "#57496e"
+  airmail-ink: "#57496e"
+  on-airmail-muted: "#ffffff"
+  airmail-tint: "#f0eaf8"
+  airmail-tint-strong: "#e0d6f5"
+  airmail-red: "#ba354a"
   red-tint: "#f2c9cc"
   red-soft: "#fbecec"
-  ground: "#f4f6fa"
+  ground: "#fcfaf8"
   card: "#ffffff"
-  soft: "#f1f3f8"
-  tint: "#e7ecf5"
-  chip: "#eef1f6"
-  chip-strong: "#e3e8f1"
-  postmark: "#5b5577"
-  kraft: "#b98e5a"
-  kraft-ink: "#7d5a2a"
-  kraft-soft: "#f6efe5"
+  soft: "#f4f0f7"
+  tint: "#f0eaf8"
+  chip: "#f4f0f7"
+  chip-strong: "#e0d6f5"
+  postmark: "#57496e"
+  kraft: "#7b5538"
+  kraft-ink: "#7b5538"
+  kraft-soft: "#fff2e7"
   success: "#1f6b47"
   success-soft: "#e3f1ea"
   live: "#2f9e6a"
   scrim: "#0e1626"
-  ink: "#18202f"
-  ink-muted: "#545d70"
-  line: "#d6dce7"
+  ink: "#242833"
+  ink-muted: "#6b6373"
+  line: "#e7e0e9"
 typography:
   display:
     fontFamily: "Public Sans, system-ui, sans-serif"
@@ -163,22 +163,22 @@ components:
 
 **Creative North Star: "The Airmail Board"**
 
-Relay is one calm page that a judge can follow over a screen share. White cards sit on a cool light ground. Airmail blue marks two things only: what is selected and the one next step. Everything else stays quiet, so the person, page, or post being suggested gets the attention.
+Relay is one calm page that a judge can follow over a screen share. White cards sit on a warm light ground. Lavender marks selection and primary actions. Peach marks the proposed next step. Everything else stays quiet, so the person, page, or post being suggested gets the attention.
 
-Provenance is the one place the system becomes expressive. A dashed oval Inferred postmark sits on LLM ideas, and a solid Public source postmark sits on Telem sources. Samples carry a grey "Sample" tag everywhere they appear. Fit is said in words, never as a score.
+Provenance is the one place the system becomes expressive. A dashed oval Inferred postmark sits on LLM ideas, and a solid Public source postmark sits on Telem sources. Sample members carry a labeled source mark. Fit is said in words, never as a score.
 
 **Key Characteristics:**
-- One accent (airmail blue). Kraft and red are status colors, not decoration.
+- Violet and peach follow the Relay logo. Red identifies failures.
 - White cards with a soft shadow, `rounded-2xl` corners (14.4px), and no borders.
 - Pill-shaped controls at least 40px tall.
 - Short sentence-case labels. No uppercase eyebrows.
 
 ## Colors
 
-A single cool blue on a near-white ground. All colors are CSS custom properties in `app/globals.css`; components use `var(--token)` and never hex literals. The one exception is platform brand colors in `components/public-person-card.tsx`, each checked against the chip background at 4.5:1 or better.
+Violet and peach on a warm white ground. All colors are CSS custom properties in `app/globals.css`; components use `var(--token)` and never hex literals. The one exception is platform brand colors in `components/public-person-card.tsx`, each checked against the chip background at 4.5:1 or better.
 
-- **Airmail** (`--airmail`): selected tiles, the "Idea for you" block, primary buttons, links. `--airmail-2` is its hover.
-- **On-airmail muted** (`--on-airmail-muted`): secondary text on airmail surfaces (6.5:1).
+- **Legacy aliases** (`--airmail`, `--airmail-2`): dark purple for links and secondary pages. The board uses `--relay-purple` for selection and primary buttons, and `--relay-peach-soft` for its proposal.
+- **On-airmail muted** (`--on-airmail-muted`): white text on dark purple surfaces.
 - **Airmail tint** (`--airmail-tint`, `--airmail-tint-strong`): the "Open" link button and the globe avatar for public pages.
 - **Ground, card, tint, chip** (`--ground`, `--card`, `--tint`, `--chip`, `--chip-strong`): the page, cards, the memory quote, and tags or chips, from lightest to darkest.
 - **Kraft** (`--kraft-soft`, `--kraft-ink`): "Great fit" and "Unknown" tags only.
@@ -208,13 +208,13 @@ Radii come from `--radius` (0.5rem) through the Tailwind theme: cards and tiles 
 
 ## Components
 
-- **Tile** (`app/page.tsx`): a full-width button with `aria-pressed`. White at rest, airmail when selected.
+- **Tile** (`app/page.tsx`): a full-width button with `aria-pressed`. White at rest, lavender when selected.
 - **WayCard and PublicPersonCard**: card, avatar, title row with tags, "Why this fits", and one action at the foot.
-- **Idea for you**: an airmail feature block with the proposal and a progress bar while searches run.
+- **Idea for you**: a peach feature block with the proposal and a progress bar while searches run.
 - **Add a memory**: a native `<dialog>` opened with `showModal()`. It traps focus, closes on Escape or a backdrop click (except while reading), and returns focus to the + button. It is a bottom sheet on phones.
 - **Run step** (`app/r/[runId]/page.tsx`): a card with a status dot, a label, and a summary. Steps with details are `<details>` elements. Active and failed steps get a 2px ring.
 - **SampleTag, UnknownTag, Postmark** (`components/stamps.tsx`).
-- **SiteHeader** (`components/shell.tsx`): the Relay mark and account controls, shared by every page.
+- **SiteHeader** (`components/shell.tsx`): the Relay logo and account controls on secondary pages. The board uses the same logo and spacing.
 
 ## Do's and Don'ts
 

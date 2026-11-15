@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { RelayMark } from "@/components/relay-mark";
+import { RelayLogo } from "@/components/relay-logo";
 import { cn } from "@/lib/utils";
 
 /** The one header every page shares: the Relay mark on the left, account controls on the right. */
@@ -8,8 +8,7 @@ export function SiteHeader({ children }: { children?: ReactNode }) {
   return (
     <header className="mx-auto flex max-w-[1280px] items-center justify-between gap-3 px-5 pt-6 pb-2">
       <Link href="/" className="flex shrink-0 items-center gap-2 text-[20px] font-extrabold tracking-[-0.02em] text-[var(--airmail)]">
-        <RelayMark className="size-7" />
-        Relay
+        <RelayLogo />
       </Link>
       {children ? <span className="flex min-w-0 items-center gap-2">{children}</span> : null}
     </header>

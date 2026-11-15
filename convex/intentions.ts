@@ -249,7 +249,7 @@ export const autoDiscover = internalAction({
   args: { intentionId: v.id("intentions") },
   handler: async (ctx, { intentionId }): Promise<void> => {
     const intention: Doc<"intentions"> | null = await ctx.runQuery(internal.intentions.getForPlanning, { intentionId });
-    if (!intention || intention.owner.kind !== "requester") return;
+    if (!intention || intention.owner.kind !== "requester" || intention.status !== "approved") return;
     try {
       const threadId = await newThread(ctx, `Solution plan: ${intention.card.title}`);
       const { value, proposedQueries, rejectedQueries, peopleQueries } = await solutionPlan(ctx, intention.card, intention.blockedTerms, threadId);
@@ -275,7 +275,8 @@ export const autoApproveAndRun = internalMutation({
   handler: async (ctx, { intentionId, planId }) => {
     const intention = await ctx.db.get(intentionId);
     const plan = await ctx.db.get(planId);
-    if (!intention || !plan || intention.owner.kind !== "requester") return;
+    if (!intention || !plan || intention.owner.kind !== "requester"
+      || intention.status !== "approved" || plan.revision !== intention.revision) return;
     const briefId = await ctx.db.insert("searchBriefs", {
       intentionId,
       revision: intention.revision,

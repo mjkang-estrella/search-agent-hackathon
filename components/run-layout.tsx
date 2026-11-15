@@ -22,7 +22,7 @@ export function RunLayout({ children }: { children: ReactNode }) {
   // Back to the board with this memory and intention open, not the first one.
   const back = view?.intention?.memoryId ? `/?m=${view.intention.memoryId}&i=${view.intention._id}` : "/";
   const tabs = [
-    { href: `/r/${runId}`, label: "How it was found" },
+    { href: `/r/${runId}`, label: "How we found these" },
     { href: `/r/${runId}/evidence`, label: "Sources" },
   ];
 

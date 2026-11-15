@@ -83,7 +83,7 @@ export function Providers({ children }: { children: ReactNode }) {
       api={{ refreshSession: api.auth.refreshSession, signOut: api.auth.signOut, isAuthenticated: api.auth.isAuthenticated }}
     >
       <SessionProvider>{children}</SessionProvider>
-      <Toaster position="bottom-right" />
+      <Toaster position="bottom-right" theme="light" />
     </ConvexAuthProvider>
   );
 }

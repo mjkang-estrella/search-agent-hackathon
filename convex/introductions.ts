@@ -76,6 +76,28 @@ export const requestIntroduction = mutation({
   },
 });
 
+/** The message a one-click introduction sends. It names the aim and contributions, never private constraints. */
+function quickMessage(c: { aim: string; contributions: string[] }, counterpartTitle: string) {
+  return [
+    `Hi! I'm working on: ${c.aim}`,
+    c.contributions.length ? `I can bring: ${c.contributions.slice(0, 2).join("; ")}.` : "",
+    `Your intention "${counterpartTitle}" looks like a good fit. Would you like to connect?`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+/** The exact message quickIntroduce would send, so the person reads it before sending. */
+export const previewIntroduction = query({
+  args: { sessionId: v.id("demoSessions"), optionId: v.id("options") },
+  returns: v.union(v.string(), v.null()),
+  handler: async (ctx, { sessionId, optionId }) => {
+    if (!(await sessionAccess(ctx, sessionId))) return null;
+    const { candidate, intention } = await loadOption(ctx, sessionId, optionId);
+    return quickMessage(intention.card, candidate.networkCard.title);
+  },
+});
+
 /** One-click introduction: shares the aim, need, contributions, and timing, never private constraints. */
 export const quickIntroduce = mutation({
   args: { sessionId: v.id("demoSessions"), optionId: v.id("options") },
@@ -83,19 +105,11 @@ export const quickIntroduce = mutation({
   handler: async (ctx, { sessionId, optionId }) => {
     await requireSession(ctx, sessionId);
     const { candidate, intention } = await loadOption(ctx, sessionId, optionId);
-    const c = intention.card;
-    const message = [
-      `Hi! I'm working on: ${c.aim}`,
-      c.contributions.length ? `I can bring: ${c.contributions.slice(0, 2).join("; ")}.` : "",
-      `Your intention "${candidate.networkCard.title}" looks like a good fit. Would you like to connect?`,
-    ]
-      .filter(Boolean)
-      .join(" ");
     return createIntroduction(ctx, {
       sessionId,
       optionId,
       sharedFields: { aim: true, blocker: true, contributions: true, timing: true, constraints: false },
-      message,
+      message: quickMessage(intention.card, candidate.networkCard.title),
     });
   },
 });
@@ -122,6 +136,20 @@ export const setCheckResult = internalMutation({
     await ctx.db.patch(introductionId, { state: "counterpart_checked", counterpartOutcome: outcome, counterpartNote: note, updatedAt: Date.now() });
     // The checked state is recorded, then the request either waits for the member or ends.
     await ctx.db.patch(introductionId, { state: outcome === "decline" ? "declined" : "pending_acceptance", counterpartAccepted: outcome === "decline" ? false : null });
+    // Members are samples, so nobody is there to answer. The reply is simulated after a short pause, and the board labels it.
+    if (outcome !== "decline") await ctx.scheduler.runAfter(SIMULATED_REPLY_MS, internal.introductions.simulateAcceptance, { introductionId });
+  },
+});
+
+const SIMULATED_REPLY_MS = 1800;
+
+/** The sample member's simulated yes. Does nothing if the request already moved on. */
+export const simulateAcceptance = internalMutation({
+  args: { introductionId: v.id("introductions") },
+  handler: async (ctx, { introductionId }) => {
+    const intro = await ctx.db.get(introductionId);
+    if (intro?.state !== "pending_acceptance") return;
+    await ctx.db.patch(introductionId, { state: "accepted", counterpartAccepted: true, updatedAt: Date.now() });
   },
 });
 

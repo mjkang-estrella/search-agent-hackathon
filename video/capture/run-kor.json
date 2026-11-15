@@ -1,0 +1,2914 @@
+{
+  "brief": {
+    "allowExpansion": true,
+    "initialQueries": [
+      "Korean language practice speaking practice travel language prep",
+      "free Korean speaking practice travel language prep",
+      "Korean conversation practice ordering food cafe travel language prep",
+      "beginner Korean speaking practice evenings travel language prep",
+      "Korean language exchange speaking practice travel language prep"
+    ],
+    "sharedTopics": [
+      "Korean language practice",
+      "speaking practice",
+      "travel language prep"
+    ]
+  },
+  "candidates": [
+    {
+      "_id": "j974kk92g1zyc5pd2nvhbgfdzh8j77z1",
+      "counterpart": {
+        "outcome": "compatible",
+        "questions": [
+          "Are you comfortable doing video calls?"
+        ],
+        "sharedNote": "This could be a fit: the member is a native Korean speaker, offers free exchange by video, and is available in US evenings."
+      },
+      "intentionId": "jx77931a3bfdqn60mv1bg5cmw98j75d9",
+      "member": {
+        "displayName": "Ji-woo P.",
+        "key": "jiwoo-korean-exchange"
+      },
+      "networkCard": {
+        "aim": "Trade conversation practice: half the call in Korean, half in English.",
+        "blocker": null,
+        "contributions": [
+          "Native Korean conversation practice",
+          "Corrections on everyday spoken Korean"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "Video calls"
+          },
+          {
+            "hard": true,
+            "label": "Cost",
+            "value": "Free exchange, no payment"
+          }
+        ],
+        "softConstraints": [
+          {
+            "hard": false,
+            "label": "Level",
+            "value": "Partner should be at least a beginner in Korean"
+          }
+        ],
+        "timing": "Mornings in Korea, which are evenings in the US, two calls a week",
+        "title": "Korean-English conversation exchange"
+      },
+      "rejectionReason": null,
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "Free exchange, no payment.",
+            "result": "meets"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Mornings in Korea, which are evenings in the US, two calls a week.",
+            "result": "meets"
+          }
+        ],
+        "reasons": [
+          "Offers native Korean conversation practice and corrections on everyday spoken Korean, which directly helps with speaking simple Korean orders out loud.",
+          "The exchange format also matches the requester’s need for speaking practice rather than tutoring."
+        ],
+        "relevant": true
+      },
+      "retrievedBy": [
+        "contributions vs needs",
+        "aim",
+        "capability: Conversation-group organizer or participant for beginner speaking practice",
+        "capability: Korean learner or native speaker willing to do casual speaking drills",
+        "capability: Language-exchange partner who wants reading help in return",
+        "capability: Travel language prep partner focused on restaurant and cafe phrases"
+      ],
+      "similarity": 0.647,
+      "status": "checked",
+      "synthetic": true
+    },
+    {
+      "_id": "j97a8csweqcv4ez2hasy0pjnb58j7aan",
+      "counterpart": null,
+      "intentionId": "jx7bcr69yzq45tf1tvy9td64cx8j7xx6",
+      "member": {
+        "displayName": "Tom R.",
+        "key": "tom-korean-learner"
+      },
+      "networkCard": {
+        "aim": "Have regular conversations with a fluent Korean speaker before my move to Seoul.",
+        "blocker": "Apps don't prepare me for real conversation.",
+        "contributions": [
+          "$15 per hour or coffee",
+          "Help with resumes and tech interviews"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "Video call or in person in the East Bay"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Weeknight evenings, once a week",
+        "title": "Practice Korean with a native speaker"
+      },
+      "rejectionReason": "Hard conflict: Budget: No room for tutoring",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "$15 per hour or coffee.",
+            "result": "conflicts"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Weeknight evenings, once a week.",
+            "result": "meets"
+          }
+        ],
+        "reasons": [
+          "Wants regular conversations with a fluent Korean speaker, which overlaps with the requester’s need for spoken Korean practice.",
+          "Could potentially help the requester practice speaking before the trip, though the candidate’s card does not mention orders specifically."
+        ],
+        "relevant": true
+      },
+      "retrievedBy": [
+        "contributions vs needs",
+        "aim",
+        "capability: Conversation-group organizer or participant for beginner speaking practice",
+        "capability: Korean learner or native speaker willing to do casual speaking drills",
+        "capability: Language-exchange partner who wants reading help in return",
+        "capability: Travel language prep partner focused on restaurant and cafe phrases"
+      ],
+      "similarity": 0.625,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j97bcw49h10063ephp804fqqnx8j7d1s",
+      "counterpart": null,
+      "intentionId": "jx748zsnd7tg919m5qda4sfpzx8j6vs3",
+      "member": {
+        "displayName": "Min-seo L.",
+        "key": "minseo-korean-tutor"
+      },
+      "networkCard": {
+        "aim": "Find adult students for in-person Korean lessons.",
+        "blocker": null,
+        "contributions": [
+          "Structured Korean lessons"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "In person only, in Fort Lee, New Jersey"
+          },
+          {
+            "hard": true,
+            "label": "Cost",
+            "value": "$40 per hour"
+          },
+          {
+            "hard": true,
+            "label": "Schedule",
+            "value": "Weekday afternoons"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Weekday afternoons",
+        "title": "Find in-person Korean students"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate is looking for adult students for structured Korean lessons, which is tutoring rather than a fit for the requester’s no-tutoring budget.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "$40 per hour.",
+            "result": "conflicts"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Weekday afternoons.",
+            "result": "conflicts"
+          }
+        ],
+        "reasons": [
+          "The candidate is looking for adult students for structured Korean lessons, which is tutoring rather than a fit for the requester’s no-tutoring budget.",
+          "This is a lesson offer, not a conversational practice arrangement aligned with the requester’s need to speak simple orders out loud."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "contributions vs needs",
+        "aim",
+        "blocker vs contributions",
+        "capability: Conversation-group organizer or participant for beginner speaking practice",
+        "capability: Korean learner or native speaker willing to do casual speaking drills",
+        "capability: Language-exchange partner who wants reading help in return",
+        "capability: Travel language prep partner focused on restaurant and cafe phrases"
+      ],
+      "similarity": 0.605,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j97amzgqafqqmw6njpy81swfk18j6wtm",
+      "counterpart": null,
+      "intentionId": "jx7eegbp2jtc60p88gcbg3pax18j683k",
+      "member": {
+        "displayName": "Carla B.",
+        "key": "carla-kdrama"
+      },
+      "networkCard": {
+        "aim": "Find people to watch and discuss Korean dramas together each week.",
+        "blocker": null,
+        "contributions": [
+          "Hosting at my apartment",
+          "Snacks"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Format",
+            "value": "In person"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Friday nights",
+        "title": "Start a K-drama watch party"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The focus is watching and discussing Korean dramas, not helping the requester practice speaking simple Korean orders.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "No cost stated.",
+            "result": "unknown"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Friday nights.",
+            "result": "conflicts"
+          }
+        ],
+        "reasons": [
+          "The focus is watching and discussing Korean dramas, not helping the requester practice speaking simple Korean orders.",
+          "Shared interest in Korean content does not by itself meet the requester’s speaking-practice intention."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "contributions vs needs",
+        "aim",
+        "capability: Conversation-group organizer or participant for beginner speaking practice",
+        "capability: Language-exchange partner who wants reading help in return"
+      ],
+      "similarity": 0.52,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j97e9frxndpxqe1w1ey3nj5bph8j68t6",
+      "counterpart": null,
+      "intentionId": "jx71ye5fc079htdwv9qp1hccwd8j7szc",
+      "member": {
+        "displayName": "Bo H.",
+        "key": "bo-sourdough"
+      },
+      "networkCard": {
+        "aim": "Get help from someone who bakes sourdough regularly.",
+        "blocker": "My starter keeps dying.",
+        "contributions": [
+          "Homemade kimchi to trade"
+        ],
+        "hardConstraints": [],
+        "softConstraints": [],
+        "timing": "Weekends",
+        "title": "Learn to keep a sourdough starter alive"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate’s aim is about sourdough baking, which has no meaningful overlap with the requester’s Korean speaking practice need.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "No cost stated.",
+            "result": "unknown"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Weekends only.",
+            "result": "unknown"
+          }
+        ],
+        "reasons": [
+          "The candidate’s aim is about sourdough baking, which has no meaningful overlap with the requester’s Korean speaking practice need."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "capability: Travel language prep partner focused on restaurant and cafe phrases"
+      ],
+      "similarity": 0.45,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j979vbd7d4wq0yzd5xsn2ykr1d8j7bs6",
+      "counterpart": null,
+      "intentionId": "jx76njgmztm1wpsampr3jr970s8j61gr",
+      "member": {
+        "displayName": "Ada L.",
+        "key": "ada-music-teacher"
+      },
+      "networkCard": {
+        "aim": "Find two adult students for weekly piano or songwriting lessons.",
+        "blocker": null,
+        "contributions": [
+          "Weekly lessons",
+          "Songwriting basics curriculum"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Cost",
+            "value": "$60 per 45-minute lesson"
+          },
+          {
+            "hard": true,
+            "label": "Schedule",
+            "value": "Weekday afternoons or Saturday mornings"
+          }
+        ],
+        "softConstraints": [
+          {
+            "hard": false,
+            "label": "Location",
+            "value": "Teaching studio in Alameda"
+          }
+        ],
+        "timing": "Weekday afternoons and Saturday mornings",
+        "title": "Fill open lesson slots"
+      },
+      "rejectionReason": "Related interests, but no intention that fits: The candidate offers piano or songwriting lessons, which does not help with speaking simple Korean orders.",
+      "requesterCheck": {
+        "constraintResults": [
+          {
+            "constraint": "Budget: No room for tutoring",
+            "evidence": "$60 per 45-minute lesson.",
+            "result": "conflicts"
+          },
+          {
+            "constraint": "Availability: Most evenings after 7pm",
+            "evidence": "Weekday afternoons and Saturday mornings.",
+            "result": "conflicts"
+          }
+        ],
+        "reasons": [
+          "The candidate offers piano or songwriting lessons, which does not help with speaking simple Korean orders.",
+          "There is no Korean language practice or travel-order speaking support here."
+        ],
+        "relevant": false
+      },
+      "retrievedBy": [
+        "capability: Korean learner or native speaker willing to do casual speaking drills"
+      ],
+      "similarity": 0.419,
+      "status": "rejected",
+      "synthetic": true
+    },
+    {
+      "_id": "j97dqm6jxq61m3ysretqwmhyfd8j73c3",
+      "counterpart": null,
+      "intentionId": "jx71zr1q0ce76j49aj04e2qha18j6p2w",
+      "member": {
+        "displayName": "Paul Q.",
+        "key": "paul-history-teacher"
+      },
+      "networkCard": {
+        "aim": "Find letters, photos, or diaries from our town's mill years, 1920s to 1950s, for a classroom unit.",
+        "blocker": "The school library has only secondary sources.",
+        "contributions": [
+          "Classroom use with credit to the source",
+          "Student transcription help"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Rights",
+            "value": "Permission for classroom use"
+          }
+        ],
+        "softConstraints": [],
+        "timing": "Unit starts in February",
+        "title": "Find primary sources for a local-history unit"
+      },
+      "rejectionReason": null,
+      "requesterCheck": null,
+      "retrievedBy": [
+        "blocker vs contributions"
+      ],
+      "similarity": 0.347,
+      "status": "retrieved",
+      "synthetic": true
+    },
+    {
+      "_id": "j973q09zwm3zxxzhk97kgtn8ad8j79yt",
+      "counterpart": null,
+      "intentionId": "jx7d1wpkk42hte6atsy2ss29hx8j7s9m",
+      "member": {
+        "displayName": "Greg A.",
+        "key": "greg-car-help"
+      },
+      "networkCard": {
+        "aim": "Find a neighbor who could wash my car now and then, since my shoulder can't take it.",
+        "blocker": "I can't scrub or reach the roof anymore.",
+        "contributions": [
+          "Happy to pay",
+          "Can teach basic car maintenance"
+        ],
+        "hardConstraints": [
+          {
+            "hard": true,
+            "label": "Location",
+            "value": "Oakland"
+          }
+        ],
+        "softConstraints": [
+          {
+            "hard": false,
+            "label": "Who",
+            "value": "Prefers a neighbor over a business"
+          }
+        ],
+        "timing": "Weekends, flexible",
+        "title": "Find help washing my car"
+      },
+      "rejectionReason": null,
+      "requesterCheck": null,
+      "retrievedBy": [
+        "blocker vs contributions"
+      ],
+      "similarity": 0.261,
+      "status": "retrieved",
+      "synthetic": true
+    }
+  ],
+  "events": [
+    {
+      "_creationTime": 1794699426194.5618,
+      "_id": "kn717zedded1vpsvtyvbt3p3bs8j7va9",
+      "at": 1794699426194,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Solution planning",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "solution_planning",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699426261.447,
+      "_id": "kn7cnr0cf15cnmmeamry5d4y118j7gsm",
+      "at": 1794699426261,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Using the approved plan for revision 1: 4 ways forward and 4 counterpart capabilities, inferred by gpt-5.4-mini without web search.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "solution_planning",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699426340.9792,
+      "_id": "kn7f9mv80swdf08x552zzv23498j6fxq",
+      "at": 1794699426340,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Public discovery and member retrieval",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699426876.2058,
+      "_id": "kn762a0v7s7aan4tyr6zj2qanh8j7fhn",
+      "at": 1794699426876,
+      "detail": {
+        "queries": [
+          {
+            "fields": [
+              "aim",
+              "contribution"
+            ],
+            "label": "aim",
+            "text": "Get help speaking simple Korean orders out loud for an upcoming trip."
+          },
+          {
+            "fields": [
+              "contribution"
+            ],
+            "label": "blocker vs contributions",
+            "text": "Reading is easier than speaking, and budget leaves no room for tutoring."
+          },
+          {
+            "fields": [
+              "blocker",
+              "aim"
+            ],
+            "label": "contributions vs needs",
+            "text": "Can already read Korean better than speaking it.; Has evenings free after 7pm."
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: Korean learner or native speaker willing to do casual speaking drills",
+            "text": "Korean learner or native speaker willing to do short evening speaking practice for travel orders"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: Language-exchange partner who wants reading help in return",
+            "text": "looking for help reading Korean in exchange for speaking practice"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: Travel language prep partner focused on restaurant and cafe phrases",
+            "text": "need travel language practice for ordering food and drinks in Korean"
+          },
+          {
+            "fields": [
+              "aim",
+              "contribution",
+              "blocker"
+            ],
+            "label": "capability: Conversation-group organizer or participant for beginner speaking practice",
+            "text": "hosting beginner Korean speaking practice most evenings"
+          }
+        ],
+        "top": [
+          {
+            "by": [
+              "contributions vs needs",
+              "aim",
+              "capability: Conversation-group organizer or participant for beginner speaking practice",
+              "capability: Korean learner or native speaker willing to do casual speaking drills",
+              "capability: Language-exchange partner who wants reading help in return",
+              "capability: Travel language prep partner focused on restaurant and cafe phrases"
+            ],
+            "name": "Ji-woo P.",
+            "similarity": 0.647
+          },
+          {
+            "by": [
+              "contributions vs needs",
+              "aim",
+              "capability: Conversation-group organizer or participant for beginner speaking practice",
+              "capability: Korean learner or native speaker willing to do casual speaking drills",
+              "capability: Language-exchange partner who wants reading help in return",
+              "capability: Travel language prep partner focused on restaurant and cafe phrases"
+            ],
+            "name": "Tom R.",
+            "similarity": 0.625
+          },
+          {
+            "by": [
+              "contributions vs needs",
+              "aim",
+              "blocker vs contributions",
+              "capability: Conversation-group organizer or participant for beginner speaking practice",
+              "capability: Korean learner or native speaker willing to do casual speaking drills",
+              "capability: Language-exchange partner who wants reading help in return",
+              "capability: Travel language prep partner focused on restaurant and cafe phrases"
+            ],
+            "name": "Min-seo L.",
+            "similarity": 0.605
+          },
+          {
+            "by": [
+              "contributions vs needs",
+              "aim",
+              "capability: Conversation-group organizer or participant for beginner speaking practice",
+              "capability: Language-exchange partner who wants reading help in return"
+            ],
+            "name": "Carla B.",
+            "similarity": 0.52
+          },
+          {
+            "by": [
+              "capability: Travel language prep partner focused on restaurant and cafe phrases"
+            ],
+            "name": "Bo H.",
+            "similarity": 0.45
+          },
+          {
+            "by": [
+              "capability: Korean learner or native speaker willing to do casual speaking drills"
+            ],
+            "name": "Ada L.",
+            "similarity": 0.419
+          },
+          {
+            "by": [],
+            "name": "Sanjay R.",
+            "similarity": 0.396
+          },
+          {
+            "by": [
+              "blocker vs contributions"
+            ],
+            "name": "Paul Q.",
+            "similarity": 0.347
+          }
+        ]
+      },
+      "durationMs": 446,
+      "error": null,
+      "kind": "retrieval",
+      "label": "Searched approved member intentions with 7 queries",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699429050.9272,
+      "_id": "kn7epjh63y7z3s5y9t063q3yr98j6hgf",
+      "at": 1794699429050,
+      "detail": {
+        "duplicates": 25,
+        "interactionId": "218bd1b7-04d4-4588-aa2b-3c2e4128fec2",
+        "queries": [
+          "Korean language practice speaking practice travel language prep",
+          "free Korean speaking practice travel language prep",
+          "Korean conversation practice ordering food cafe travel language prep",
+          "beginner Korean speaking practice evenings travel language prep",
+          "Korean language exchange speaking practice travel language prep"
+        ],
+        "routing": [
+          {
+            "providers": [
+              "perplexity",
+              "brave",
+              "exa"
+            ],
+            "query": "Korean language practice speaking practice travel language prep",
+            "topic": "academic_papers"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "free Korean speaking practice travel language prep",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "perplexity",
+              "brave",
+              "exa"
+            ],
+            "query": "Korean conversation practice ordering food cafe travel language prep",
+            "topic": "academic_papers"
+          },
+          {
+            "providers": [
+              "exa",
+              "tavily",
+              "brave",
+              "parallel",
+              "ceramic",
+              "seltz",
+              "you"
+            ],
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "topic": "general"
+          },
+          {
+            "providers": [
+              "perplexity",
+              "brave",
+              "exa"
+            ],
+            "query": "Korean language exchange speaking practice travel language prep",
+            "topic": "academic_papers"
+          }
+        ],
+        "runs": [
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 272,
+            "provider": "perplexity",
+            "query": "Korean language practice speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 709,
+            "provider": "brave",
+            "query": "Korean language practice speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 383,
+            "provider": "exa",
+            "query": "Korean language practice speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 819,
+            "provider": "brave",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 355,
+            "provider": "exa",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 1666,
+            "provider": "tavily",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 425,
+            "provider": "parallel",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 252,
+            "provider": "ceramic",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 688,
+            "provider": "seltz",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "free Korean speaking practice travel language prep",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 279,
+            "provider": "perplexity",
+            "query": "Korean conversation practice ordering food cafe travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 826,
+            "provider": "brave",
+            "query": "Korean conversation practice ordering food cafe travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 2,
+            "error": null,
+            "latencyMs": 1725,
+            "provider": "exa",
+            "query": "Korean conversation practice ordering food cafe travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 778,
+            "provider": "brave",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 352,
+            "provider": "exa",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 2138,
+            "provider": "tavily",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 402,
+            "provider": "parallel",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 249,
+            "provider": "ceramic",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "trimmed_results"
+            ]
+          },
+          {
+            "batchIndex": 3,
+            "error": null,
+            "latencyMs": 654,
+            "provider": "seltz",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": [
+              "capability_gap"
+            ]
+          },
+          {
+            "batchIndex": 3,
+            "error": "no provider key available for 'you' (no_credit)",
+            "latencyMs": 0,
+            "provider": "you",
+            "query": "beginner Korean speaking practice evenings travel language prep",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 199,
+            "provider": "perplexity",
+            "query": "Korean language exchange speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 755,
+            "provider": "brave",
+            "query": "Korean language exchange speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 4,
+            "error": null,
+            "latencyMs": 303,
+            "provider": "exa",
+            "query": "Korean language exchange speaking practice travel language prep",
+            "resultCount": 5,
+            "status": "succeeded",
+            "warnings": []
+          }
+        ]
+      },
+      "durationMs": 2561,
+      "error": null,
+      "kind": "telem_search",
+      "label": "Telem search: 5 queries, 8 providers, 105 results, 80 unique URLs",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "partial"
+    },
+    {
+      "_creationTime": 1794699430168.28,
+      "_id": "kn71gsyktqtt3vhzv0jdtm3pcd8j6jt6",
+      "at": 1794699430168,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.lingualive.ai/learn-korean"
+      },
+      "durationMs": 497,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read lingualive.ai via exa",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699430248.427,
+      "_id": "kn77z4c71mdjvzgwn9dtrqg8618j7b7d",
+      "at": 1794699430248,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.mylanguageexchange.com/Learn/Korean.asp"
+      },
+      "durationMs": 513,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read mylanguageexchange.com via exa",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699430335.2651,
+      "_id": "kn7f00z2cgf4x3n5e0r3q89pwn8j7kmk",
+      "at": 1794699430335,
+      "detail": {
+        "cacheState": "cached",
+        "providerChain": [],
+        "url": "https://www.ashleybaek.com/speakloop"
+      },
+      "durationMs": 599,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read ashleybaek.com via exa",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699430418.3547,
+      "_id": "kn70s728fj756hg89jp33jh1858j6kyd",
+      "at": 1794699430418,
+      "detail": {
+        "cacheState": null,
+        "providerChain": [],
+        "url": "https://www.tryspeak.ai/learn-korean"
+      },
+      "durationMs": 505,
+      "error": null,
+      "kind": "telem_fetch",
+      "label": "Read tryspeak.ai via tinyfish",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699436420.189,
+      "_id": "kn78af54ed6h5schxf7twewabh8j75c5",
+      "at": 1794699436420,
+      "detail": null,
+      "durationMs": 5917,
+      "error": null,
+      "kind": "model",
+      "label": "Extract conditions from 4 sources (initial)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699438779.9595,
+      "_id": "kn72p6h9s8372y1zhyck6pgczn8j70vz",
+      "at": 1794699438779,
+      "detail": null,
+      "durationMs": 1872,
+      "error": null,
+      "kind": "model",
+      "label": "Pick relevant people from 4 posts",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699438859.554,
+      "_id": "kn7cw7zynvd143pw1vhg3skb498j6cz9",
+      "at": 1794699438859,
+      "detail": {
+        "duplicates": 0,
+        "interactionId": "fad1ac8b-a669-4b3d-82df-13c9b04b07cb",
+        "queries": [
+          "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+          "\"language exchange\" Korean reading help speaking practice"
+        ],
+        "routing": null,
+        "runs": [
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_x",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_tiktok",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_reddit",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 7203,
+            "provider": "apify_facebook",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 4,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_instagram",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 0,
+            "error": null,
+            "latencyMs": 1609,
+            "provider": "apify_linkedin",
+            "query": "\"Korean speaking practice\" \"travel\" \"ordering food\"",
+            "resultCount": 0,
+            "status": "succeeded",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_x",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_tiktok",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'fetchlayer' (no_credit)",
+            "latencyMs": 0,
+            "provider": "fetchlayer_reddit",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 10074,
+            "provider": "apify_facebook",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 2,
+            "status": "succeeded",
+            "warnings": [
+              "dropped_results"
+            ]
+          },
+          {
+            "batchIndex": 1,
+            "error": "no provider key available for 'socialdatax' (no_credit)",
+            "latencyMs": 0,
+            "provider": "socialdatax_instagram",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 0,
+            "status": "failed",
+            "warnings": []
+          },
+          {
+            "batchIndex": 1,
+            "error": null,
+            "latencyMs": 3592,
+            "provider": "apify_linkedin",
+            "query": "\"language exchange\" Korean reading help speaking practice",
+            "resultCount": 0,
+            "status": "succeeded",
+            "warnings": []
+          }
+        ]
+      },
+      "durationMs": 10384,
+      "error": null,
+      "kind": "telem_search",
+      "label": "People search: 3 posts from Facebook",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "discovery",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699439033.571,
+      "_id": "kn7fz529e4phedrwtmt1pcaje58j6pyn",
+      "at": 1794699439033,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Compatibility checks",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "compatibility_checks",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699443298.0789,
+      "_id": "kn786qqz64s6z7ps0984cqcxgx8j78e6",
+      "at": 1794699443298,
+      "detail": null,
+      "durationMs": 4233,
+      "error": null,
+      "kind": "model",
+      "label": "Requester check of 6 candidates (network-approved fields only)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "compatibility_checks",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699445680.1187,
+      "_id": "kn711nxeafvkzynyqd3q28zkbs8j670g",
+      "at": 1794699445680,
+      "detail": null,
+      "durationMs": 2079,
+      "error": null,
+      "kind": "model",
+      "label": "Counterpart check for Ji-woo P. (synthetic), in a separate thread",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "compatibility_checks",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699445799.3047,
+      "_id": "kn7c7whydpss4f9vvvh8smm29s8j6tps",
+      "at": 1794699445799,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Follow-up decision",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "followup_decision",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699447269.7686,
+      "_id": "kn7c70mzm2k6ddjs3r0es123yh8j7gzr",
+      "at": 1794699447269,
+      "detail": null,
+      "durationMs": 1323,
+      "error": null,
+      "kind": "model",
+      "label": "Decide whether public evidence can resolve an open question",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "followup_decision",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699447353.5828,
+      "_id": "kn79m6yvyavfq411xahvn8hd018j6pcf",
+      "at": 1794699447353,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Follow-up search skipped: A compatible public option already exists for simple Korean speaking practice, and the remaining open question is about a person's private preference (video calls), which public web evidence should not be used to resolve.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "followup_decision",
+      "status": "skipped"
+    },
+    {
+      "_creationTime": 1794699447436.1233,
+      "_id": "kn7e07s7emw1y8y1ym6bk1xm1n8j6dz9",
+      "at": 1794699447436,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Evidence verification",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "evidence_verification",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699447641.0322,
+      "_id": "kn706s718e52vrx0gjyfwsnkjn8j6434",
+      "at": 1794699447641,
+      "detail": {
+        "confirmed": 18,
+        "unknown": 0,
+        "unverified": 0
+      },
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Checked quotes against fetched pages: 18 confirmed, 0 unverified, 0 unknown. 0 sources could not be read and stay unverified leads.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "evidence_verification",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699447723.7153,
+      "_id": "kn70neqnt7t702cbf9vj7pmsa98j7em2",
+      "at": 1794699447723,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "stage",
+      "label": "Ranking",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "ranking",
+      "status": "started"
+    },
+    {
+      "_creationTime": 1794699451764.912,
+      "_id": "kn75h9vx9mzjny4sh674xmaetx8j6zd8",
+      "at": 1794699451764,
+      "detail": null,
+      "durationMs": 3875,
+      "error": null,
+      "kind": "model",
+      "label": "Rank 4 public opportunities and 1 members",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "ranking",
+      "status": "succeeded"
+    },
+    {
+      "_creationTime": 1794699451860.2969,
+      "_id": "kn7d1bdvd4y4mpn4crwjc2wnkh8j71fq",
+      "at": 1794699451860,
+      "detail": null,
+      "durationMs": null,
+      "error": null,
+      "kind": "decision",
+      "label": "Ranked 3 public, 0 member, and 1 combined options. 0 excluded.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "ranking",
+      "status": "info"
+    },
+    {
+      "_creationTime": 1794699451957.446,
+      "_id": "kn7asppvxm7zga0raqsneanpn18j66t3",
+      "at": 1794699451957,
+      "detail": null,
+      "durationMs": 25811,
+      "error": null,
+      "kind": "stage",
+      "label": "Complete with partial results",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "stage": "complete",
+      "status": "partial"
+    }
+  ],
+  "hypotheses": [
+    {
+      "_creationTime": 1794699426225.2544,
+      "_id": "js7ej355h9y8q2k7wfkjcr66gn8j63vb",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "This fits the no-tutoring budget and the need to practice speaking out loud before an April trip. A group setting can provide repeated, low-pressure speaking practice in the evenings. (public resource)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Join a free or low-cost Korean speaking practice group focused on travel phrases, then ask for a few minutes of live role-play on ordering food and coffee.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699426225.2546,
+      "_id": "js71faysj60vdrhebbzht418t58j6jjs",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "The person can already read Korean better than they can speak it, so they can contribute something useful in exchange. A peer swap can avoid tutoring costs and work after 7pm. (member connection)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Find a language-exchange partner who wants help with written Korean or English in return for speaking practice using travel-order scenarios.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699426225.255,
+      "_id": "js731bbzz9j31swt02433vt79d8j7zfw",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "The blocker is speaking confidence, not reading comprehension. Public events can provide structured repetition and real-time feedback without paying for tutoring. (public resource)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Use public conversation practice events or online meetup-style sessions where participants rehearse restaurant, cafe, and transit phrases aloud.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699426225.2551,
+      "_id": "js7c1dyz6v0bdr7myxjvpp9sjd8j6tm5",
+      "kind": "solution",
+      "memberQuery": null,
+      "origin": "llm_inference",
+      "rationale": "This could be answered by a volunteer member connection or by an existing public practice thread/group. The request is narrow, time-bounded, and compatible with evening availability. (either)",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Post a request in a language-learning or travel-prep community asking for a volunteer partner to do short evening role-plays of simple Korean orders.",
+      "usedInRetrieval": false
+    },
+    {
+      "_creationTime": 1794699426225.2554,
+      "_id": "js7d7gn3haj1qwwedbg4nqvpcn8j7a6w",
+      "kind": "capability",
+      "memberQuery": "Korean learner or native speaker willing to do short evening speaking practice for travel orders",
+      "origin": "llm_inference",
+      "rationale": "Someone who can correct pronunciation and role-play simple ordering exchanges would directly address the speaking blocker.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Korean learner or native speaker willing to do casual speaking drills",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699426225.2556,
+      "_id": "js720qy47bh5bt7zk0zfknf4718j7cx9",
+      "kind": "capability",
+      "memberQuery": "looking for help reading Korean in exchange for speaking practice",
+      "origin": "llm_inference",
+      "rationale": "The person can already read Korean better than speaking it, so a counterpart who values reading support could make a fair no-cost exchange.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Language-exchange partner who wants reading help in return",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699426225.2559,
+      "_id": "js7bm9cvpwmydfmmdqyme0d0sx8j62vc",
+      "kind": "capability",
+      "memberQuery": "need travel language practice for ordering food and drinks in Korean",
+      "origin": "llm_inference",
+      "rationale": "A person preparing for a trip may want the same narrow scenario practice, making short role-plays easy to coordinate.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Travel language prep partner focused on restaurant and cafe phrases",
+      "usedInRetrieval": true
+    },
+    {
+      "_creationTime": 1794699426225.256,
+      "_id": "js77yc6g413671aa1j0reyxz1n8j7jhf",
+      "kind": "capability",
+      "memberQuery": "hosting beginner Korean speaking practice most evenings",
+      "origin": "llm_inference",
+      "rationale": "A group host or member can provide repeated practice sessions without tutoring fees.",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceUrl": null,
+      "text": "Conversation-group organizer or participant for beginner speaking practice",
+      "usedInRetrieval": true
+    }
+  ],
+  "intention": {
+    "_id": "jx74w6wcxcat95hazka8264jj58j6fh0",
+    "card": {
+      "aim": "Get help speaking simple Korean orders out loud for an upcoming trip.",
+      "blocker": "Reading is easier than speaking, and budget leaves no room for tutoring.",
+      "contributions": [
+        "Can already read Korean better than speaking it.",
+        "Has evenings free after 7pm."
+      ],
+      "hardConstraints": [
+        {
+          "hard": true,
+          "label": "Budget",
+          "value": "No room for tutoring"
+        },
+        {
+          "hard": true,
+          "label": "Availability",
+          "value": "Most evenings after 7pm"
+        }
+      ],
+      "privateConstraints": [],
+      "softConstraints": [],
+      "timing": "Before April trip; most evenings after 7pm",
+      "title": "Practice Korean speaking",
+      "topics": [
+        "Korean language practice",
+        "speaking practice",
+        "travel language prep"
+      ]
+    },
+    "title": "Practice Korean speaking"
+  },
+  "introductions": [],
+  "opportunities": [
+    {
+      "_creationTime": 1794699436452.2468,
+      "_id": "kd73f4vr8c75zv8ezc97amy11n8j7v9r",
+      "conditions": [
+        {
+          "hard": true,
+          "label": "Schedule",
+          "quote": "10 free minutes a day in your first week, then 5 a day",
+          "status": "confirmed",
+          "value": "10 free minutes a day in your first week, then 5 a day"
+        },
+        {
+          "hard": true,
+          "label": "Cost",
+          "quote": "No credit card required",
+          "status": "confirmed",
+          "value": "No credit card required"
+        },
+        {
+          "hard": true,
+          "label": "Format",
+          "quote": "Free demo · No credit card · Works in your browser",
+          "status": "confirmed",
+          "value": "Free demo · Works in your browser"
+        },
+        {
+          "hard": true,
+          "label": "Eligibility",
+          "quote": "No mic, no signup.",
+          "status": "confirmed",
+          "value": "No signup is required for the demo"
+        },
+        {
+          "hard": true,
+          "label": "Participation",
+          "quote": "Then take the mic yourself.",
+          "status": "confirmed",
+          "value": "Take the mic yourself"
+        }
+      ],
+      "fetched": true,
+      "participationRoute": "Press play to hear a real Korean tutor, then take the mic yourself. Use the free demo in your browser and start speaking.",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceId": "m575f9dw0wscpnwxz1zqf130hs8j6wy0",
+      "title": "Korean Speaking Practice with AI | LinguaLive",
+      "url": "https://www.lingualive.ai/learn-korean"
+    },
+    {
+      "_creationTime": 1794699436496.8723,
+      "_id": "kd72yr093pp2kaqf12zy7f8eb98j6kr0",
+      "conditions": [
+        {
+          "hard": true,
+          "label": "Format",
+          "quote": "Language Exchange via Email, Text Chat and Voice and Video Chat",
+          "status": "confirmed",
+          "value": "Email, Text Chat and Voice and Video Chat"
+        },
+        {
+          "hard": true,
+          "label": "Participation",
+          "quote": "Write or speak Korean online to improve grammar or conversation.",
+          "status": "confirmed",
+          "value": "Write or speak Korean online to improve grammar or conversation"
+        },
+        {
+          "hard": false,
+          "label": "Cost",
+          "quote": "Language exchange learning is also inexpensive because we provide free tips and conversation lesson plans that allow you to do a language exchange on your own.",
+          "status": "confirmed",
+          "value": "Free tips and conversation lesson plans; language exchange is described as inexpensive"
+        },
+        {
+          "hard": true,
+          "label": "Eligibility",
+          "quote": "Learn Korean online by practicing with a native speaker who is learning your language.",
+          "status": "confirmed",
+          "value": "Practice with a native speaker who is learning your language"
+        },
+        {
+          "hard": true,
+          "label": "Participation",
+          "quote": "Click on a name for more information or to contact the member.",
+          "status": "confirmed",
+          "value": "Click on a name for more information or to contact the member"
+        }
+      ],
+      "fetched": true,
+      "participationRoute": "Find a Korean-speaking language exchange partner, then write, text chat, or speak with them via voice/video chat.",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceId": "m579wczcna3c2w4w86vfcpv1h18j6kp4",
+      "title": "Learn Korean Online - Write or Speak in Korean Language Exchange",
+      "url": "https://www.mylanguageexchange.com/Learn/Korean.asp"
+    },
+    {
+      "_creationTime": 1794699436527.4375,
+      "_id": "kd7djty5a4hs4jp3399p8fd6bd8j7241",
+      "conditions": [
+        {
+          "hard": true,
+          "label": "Cost",
+          "quote": "SpeakLoop | Free Real-Life Korean Speaking Practice",
+          "status": "confirmed",
+          "value": "Free"
+        },
+        {
+          "hard": true,
+          "label": "Format",
+          "quote": "Choose a real-life Korean scene, answer three short practice questions, then get feedback before a real lesson from Ashley.",
+          "status": "confirmed",
+          "value": "Answer three short practice questions"
+        },
+        {
+          "hard": true,
+          "label": "Participation",
+          "quote": "Swipe scenes, then tap one to practice.",
+          "status": "confirmed",
+          "value": "Swipe scenes, then tap one to practice"
+        },
+        {
+          "hard": true,
+          "label": "Eligibility",
+          "quote": "Choose your level and goal. You will see your worksheet links right away.",
+          "status": "confirmed",
+          "value": "Choose your level and goal"
+        }
+      ],
+      "fetched": true,
+      "participationRoute": "Choose one real-life Korean scene, answer three short practice questions, then get feedback before a real lesson from Ashley.",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceId": "m57604myteztt3fgz0vz5ch7vh8j71ct",
+      "title": "SpeakLoop | Free Real-Life Korean Speaking Practice",
+      "url": "https://www.ashleybaek.com/speakloop"
+    },
+    {
+      "_creationTime": 1794699436571.2498,
+      "_id": "kd7b873gxr23pvw54mmd009ehs8j761p",
+      "conditions": [
+        {
+          "hard": true,
+          "label": "Schedule",
+          "quote": "Start your first Korean lesson in under 60 seconds - completely free.",
+          "status": "confirmed",
+          "value": "Start your first Korean lesson in under 60 seconds"
+        },
+        {
+          "hard": true,
+          "label": "Cost",
+          "quote": "Start your first Korean lesson in under 60 seconds - completely free.",
+          "status": "confirmed",
+          "value": "Completely free"
+        },
+        {
+          "hard": true,
+          "label": "Format",
+          "quote": "Practice real Korean dialogues with your AI conversation partner. Role-play daily scenarios, get instant corrections, and build speaking confidence through natural interaction.",
+          "status": "confirmed",
+          "value": "AI conversation practice with instant pronunciation feedback"
+        },
+        {
+          "hard": true,
+          "label": "Eligibility",
+          "quote": "Select your starting point - complete beginner, basic phrases, or intermediate conversation.",
+          "status": "confirmed",
+          "value": "Select your starting point - complete beginner, basic phrases, or intermediate conversation"
+        }
+      ],
+      "fetched": true,
+      "participationRoute": "Choose your Korean level, then practice speaking Korean with the AI tutor.",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "sourceId": "m57a08xzj9fgkzc7gax0zxf7zs8j7245",
+      "title": "How It Works",
+      "url": "https://www.tryspeak.ai/learn-korean"
+    }
+  ],
+  "options": [
+    {
+      "_creationTime": 1794699451815.531,
+      "_id": "kh796hqx8f6sk5j6kcvqes74ps8j605w",
+      "candidateId": "j974kk92g1zyc5pd2nvhbgfdzh8j77z1",
+      "constraintResults": [
+        {
+          "constraint": "Budget: No room for tutoring",
+          "evidence": "\"Free exchange, no payment\"",
+          "result": "meets"
+        },
+        {
+          "constraint": "Availability: Most evenings after 7pm",
+          "evidence": "\"Mornings in Korea, which are evenings in the US, two calls a week.\"",
+          "result": "meets"
+        }
+      ],
+      "excluded": false,
+      "excludedReason": null,
+      "fitCategory": "strong_fit",
+      "kind": "combined",
+      "nextStep": "Use the language exchange to practice a short set of trip phrases and order words out loud.",
+      "opportunityId": "kd72yr093pp2kaqf12zy7f8eb98j6kr0",
+      "questions": [
+        "Are you comfortable doing video calls?",
+        "Would you want to practice half in Korean and half in English?"
+      ],
+      "rank": 0,
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "summary": "Connect with Ji-woo P. for free Korean-English video practice, using the exchange to say simple Korean orders out loud and get corrections. Their evenings in Korea line up with US evenings, which may help with your after-7pm availability.",
+      "title": "Pair practice with language exchange",
+      "trace": {
+        "conditionLabels": [
+          "Format",
+          "Participation",
+          "Cost",
+          "Eligibility",
+          "Participation"
+        ],
+        "inferredCapabilities": [
+          "capability: Conversation-group organizer or participant for beginner speaking practice",
+          "capability: Korean learner or native speaker willing to do casual speaking drills",
+          "capability: Language-exchange partner who wants reading help in return",
+          "capability: Travel language prep partner focused on restaurant and cafe phrases"
+        ],
+        "queries": [
+          "free Korean speaking practice travel language prep",
+          "Korean language exchange speaking practice travel language prep"
+        ],
+        "sourceUrls": [
+          "https://www.mylanguageexchange.com/Learn/Korean.asp"
+        ]
+      },
+      "why": "Free video exchange matches speaking practice and conversation correction."
+    },
+    {
+      "_creationTime": 1794699451815.5312,
+      "_id": "kh7b6ttwekng7mxw6r0f8b5z2s8j7x6d",
+      "candidateId": null,
+      "constraintResults": [
+        {
+          "constraint": "Budget: No room for tutoring",
+          "evidence": "\"Use the free demo in your browser\" and \"No credit card required\"",
+          "result": "meets"
+        },
+        {
+          "constraint": "Availability: Most evenings after 7pm",
+          "evidence": "The page gives time-per-day guidance, not a specific evening schedule.",
+          "result": "unknown"
+        }
+      ],
+      "excluded": false,
+      "excludedReason": null,
+      "fitCategory": "possible_fit",
+      "kind": "public",
+      "nextStep": "Open the demo and spend a few minutes speaking one Korean order aloud.",
+      "opportunityId": "kd73f4vr8c75zv8ezc97amy11n8j7v9r",
+      "questions": [
+        "Can you make time for the demo’s daily practice pace?"
+      ],
+      "rank": 1,
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "summary": "Use LinguaLive’s free demo to rehearse simple Korean orders out loud before your trip. It works in a browser, needs no signup, and you can take the mic yourself.",
+      "title": "Practice Korean with AI",
+      "trace": {
+        "conditionLabels": [
+          "Schedule",
+          "Cost",
+          "Format",
+          "Eligibility",
+          "Participation"
+        ],
+        "inferredCapabilities": [],
+        "queries": [
+          "Korean language practice speaking practice travel language prep",
+          "free Korean speaking practice travel language prep",
+          "Korean conversation practice ordering food cafe travel language prep",
+          "beginner Korean speaking practice evenings travel language prep",
+          "Korean language exchange speaking practice travel language prep"
+        ],
+        "sourceUrls": [
+          "https://www.lingualive.ai/learn-korean"
+        ]
+      },
+      "why": "Free browser demo lets you speak aloud without tutoring."
+    },
+    {
+      "_creationTime": 1794699451815.5315,
+      "_id": "kh79bh5474vt4etmsr0dwr3ba58j7h43",
+      "candidateId": null,
+      "constraintResults": [
+        {
+          "constraint": "Budget: No room for tutoring",
+          "evidence": "\"Cost=Free\"",
+          "result": "meets"
+        },
+        {
+          "constraint": "Availability: Most evenings after 7pm",
+          "evidence": "No schedule or evening availability is stated.",
+          "result": "unknown"
+        }
+      ],
+      "excluded": false,
+      "excludedReason": null,
+      "fitCategory": "possible_fit",
+      "kind": "public",
+      "nextStep": "Pick one real-life scene and answer the three practice questions out loud.",
+      "opportunityId": "kd7djty5a4hs4jp3399p8fd6bd8j7241",
+      "questions": [
+        "Can you fit a short self-guided practice session into your evenings?"
+      ],
+      "rank": 2,
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "summary": "Try SpeakLoop’s free scenes and short questions to rehearse simple Korean speech before your trip. It focuses on speaking practice and feedback, which can help turn reading knowledge into spoken orders.",
+      "title": "Use free speaking prompts",
+      "trace": {
+        "conditionLabels": [
+          "Cost",
+          "Format",
+          "Participation",
+          "Eligibility"
+        ],
+        "inferredCapabilities": [],
+        "queries": [
+          "Korean language practice speaking practice travel language prep",
+          "Korean conversation practice ordering food cafe travel language prep",
+          "beginner Korean speaking practice evenings travel language prep"
+        ],
+        "sourceUrls": [
+          "https://www.ashleybaek.com/speakloop"
+        ]
+      },
+      "why": "Three short practice questions give guided spoken rehearsal for travel phrases."
+    },
+    {
+      "_creationTime": 1794699451815.5317,
+      "_id": "kh7b56zrnrdxhsq1a2r8hcwymh8j722t",
+      "candidateId": null,
+      "constraintResults": [
+        {
+          "constraint": "Budget: No room for tutoring",
+          "evidence": "\"Completely free\"",
+          "result": "meets"
+        },
+        {
+          "constraint": "Availability: Most evenings after 7pm",
+          "evidence": "The page says you can start quickly, but gives no evening schedule.",
+          "result": "unknown"
+        }
+      ],
+      "excluded": false,
+      "excludedReason": null,
+      "fitCategory": "possible_fit",
+      "kind": "public",
+      "nextStep": "Choose the basic-phrases level and say a few Korean order phrases out loud.",
+      "opportunityId": "kd7b873gxr23pvw54mmd009ehs8j761p",
+      "questions": [
+        "Can you practice for a few minutes in the evenings before your trip?"
+      ],
+      "rank": 3,
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "summary": "Use TrySpeak’s free Korean practice to rehearse basic phrases and pronunciation feedback. It lets you start quickly and choose a basic-phrases level, which suits turning reading skills into spoken orders.",
+      "title": "Start instant AI lessons",
+      "trace": {
+        "conditionLabels": [
+          "Schedule",
+          "Cost",
+          "Format",
+          "Eligibility"
+        ],
+        "inferredCapabilities": [],
+        "queries": [
+          "Korean language practice speaking practice travel language prep",
+          "free Korean speaking practice travel language prep"
+        ],
+        "sourceUrls": [
+          "https://www.tryspeak.ai/learn-korean"
+        ]
+      },
+      "why": "Free AI conversation practice supports speaking simple phrases without tutoring."
+    }
+  ],
+  "run": {
+    "_id": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+    "branches": {
+      "members": "succeeded",
+      "public": "partial"
+    },
+    "briefId": "kx74q428nc5y4x7yct68xrkdd98j7ht4",
+    "budget": {
+      "fetchedPages": 4,
+      "modelCalls": 6,
+      "searchQueries": 7
+    },
+    "completedAt": 1794699451906,
+    "embeddingModel": "text-embedding-3-small",
+    "error": null,
+    "followUp": {
+      "affects": null,
+      "question": null,
+      "reason": "A compatible public option already exists for simple Korean speaking practice, and the remaining open question is about a person's private preference (video calls), which public web evidence should not be used to resolve.",
+      "status": "skipped"
+    },
+    "intentionStatus": "approved",
+    "mode": "live",
+    "model": "gpt-5.4-mini",
+    "promptVersion": "2026-11-14.2",
+    "recordedAt": null,
+    "replayOf": null,
+    "revision": 1,
+    "stage": "complete",
+    "stale": false,
+    "startedAt": 1794699392358,
+    "status": "partial",
+    "variant": "full"
+  },
+  "sources": [
+    {
+      "_creationTime": 1794699429085.6428,
+      "_id": "m575f9dw0wscpnwxz1zqf130hs8j6wy0",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 12731,
+        "error": null,
+        "fetchedAt": "2026-11-14T20:00:00+00:00",
+        "latencyMs": 497,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": true
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        },
+        {
+          "provider": "tavily",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 3
+        },
+        {
+          "provider": "brave",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 4
+        },
+        {
+          "provider": "brave",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "tavily",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "lingualive.ai/learn-korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Learn Hangul alongside spoken phrases so you can connect sounds to the writing. Recognizing letters and reading comfortably are different skills and take different amounts of practice.",
+      "title": "Korean Speaking Practice with AI | LinguaLive",
+      "url": "https://www.lingualive.ai/learn-korean"
+    },
+    {
+      "_creationTime": 1794699429085.643,
+      "_id": "m579wczcna3c2w4w86vfcpv1h18j6kp4",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 9865,
+        "error": null,
+        "fetchedAt": "2026-11-14T19:00:00+00:00",
+        "latencyMs": 513,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": false
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 4
+        },
+        {
+          "provider": "perplexity",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "mylanguageexchange.com/Learn/Korean.asp",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Learn to Speak Korean\n\nLanguage Exchange via Email, Text Chat and Voice and Video Chat\nLearn Korean online by practicing with a native speaker who is learning your language. Write or speak Korean online to improve grammar or conversation.\nA language exchange complements other forms of learning such as classroom, cultural immersion and multimedia, because you get to practice all that you have learned with native speakers in a safe and supportive environment.\n\n...\n\n* Getting accustomed to the way native speakers speak in real (casual) Korean conversation\n* Making a friend in the Korean-speaking ",
+      "title": "Learn Korean Online - Write or Speak in Korean Language Exchange",
+      "url": "https://www.mylanguageexchange.com/Learn/Korean.asp"
+    },
+    {
+      "_creationTime": 1794699429085.6433,
+      "_id": "m57604myteztt3fgz0vz5ch7vh8j71ct",
+      "fetch": {
+        "cacheState": "cached",
+        "contentLength": 2459,
+        "error": null,
+        "fetchedAt": "2026-11-14T23:37:10.026775+00:00",
+        "latencyMs": 599,
+        "provider": "exa",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": false
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "exa",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "exa",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "ashleybaek.com/speakloop",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "SpeakLoop | Free Real-Life Korean Speaking Practice # Real Korean Practice See Korean situations. Understand faster. Practice clearly. Choose a real-life Korean scene, answer three short practice questions, then get feedback before a real lesson from Ashley. ## Ordering coffee in Korean 1 ### See Look at the situation. 2 ### Understand Learn the phrase. 3 ### Practice Answer out loud. ## A simple practice loop before a real lesson. 01 ### See Start with a real Korean situation, not random words. 02 ### Understand See the phrase, meaning, and pronunciation. 03 ### Practice Answer short prompts ",
+      "title": "SpeakLoop | Free Real-Life Korean Speaking Practice",
+      "url": "https://www.ashleybaek.com/speakloop"
+    },
+    {
+      "_creationTime": 1794699429085.6436,
+      "_id": "m57a08xzj9fgkzc7gax0zxf7zs8j7245",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": 11751,
+        "error": null,
+        "fetchedAt": "2026-11-14T21:00:00+00:00",
+        "latencyMs": 505,
+        "provider": "tinyfish",
+        "providerChain": [],
+        "status": "succeeded",
+        "truncated": false
+      },
+      "hasContent": true,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "brave",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 3
+        },
+        {
+          "provider": "tavily",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        },
+        {
+          "provider": "seltz",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "tryspeak.ai/learn-korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "TrySpeak.ai includes Korean conversation scenarios specifically designed for travelers, covering topics like airport navigation, hotel check-in, ordering food, asking for directions, shopping, and using public transportation. Practicing these scenarios with an AI tutor before your trip helps you communicate confidently in real Korean situations. Yes. TrySpeak AI provides AI-generated Korean language proficiency certificates based on your total learning hours, conversation practice data, speaking fluency, grammar accuracy, and pronunciation quality.",
+      "title": "Learn Korean Online Free for Beginners — Lessons, Hangul, Phrases | TrySpeak.ai",
+      "url": "https://www.tryspeak.ai/learn-korean"
+    },
+    {
+      "_creationTime": 1794699429085.6438,
+      "_id": "m57ccqn9zzydg8vzyvyakykzjh8j6kb9",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "parallel",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 4
+        },
+        {
+          "provider": "seltz",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "teuida.net/en/blog/korean-conversation-practice-tips",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Table of Contents ▼\nFreeze when you try to speak Korean? These 7 practical tips — from shadowing to mini scripts — will build your speaking confidence in just one week.\nIf you want to get better at korean conversation practice , you are not alone.\n\n...\n\nYou can still listen, repeat in your head, and slowly join in when you feel ready.\n\n6. Mix free and paid resources wisely\n\nYou do not have to spend a lot of money at the beginning.\nYou can:\n\n...\n\n* Use your native language + Korean mix: say part in your language, then switch to Korean for “hello”, “thank you”, or “this please”.\nDay 4\n* Practice",
+      "title": "Korean Conversation Practice Tips | TEUIDA",
+      "url": "https://www.teuida.net/en/blog/korean-conversation-practice-tips"
+    },
+    {
+      "_creationTime": 1794699429085.644,
+      "_id": "m576nxv637g9n4ttztsgqdfv6h8j6jk5",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "perplexity",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "tavily",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "preply.com/en/blog/korean-travel-phrases",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Whether you’re ordering street food in Myeongdong, asking for directions to Bukchon Hanok Village, or checking into your hotel, the right Korean travel phrases transform awkward gestures into genuine connections.\n...\nThese 75+ Korean travel phrases are organized into eight practical categories that correspond to common travel situations – greetings, transportation, dining, shopping, emergencies, accommodation, socializing, and numbers.\n...\nStart by practicing each phrase aloud – Korean pronunciation values consistency over perfection, and locals respond positively to respectful attempts at spe",
+      "title": "Korean travel phrases – 75+ essential expressions for your ...",
+      "url": "https://preply.com/en/blog/korean-travel-phrases/"
+    },
+    {
+      "_creationTime": 1794699429085.6443,
+      "_id": "m57fg1th9npcrdfbv2bhbs9shn8j71rh",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 1
+        },
+        {
+          "provider": "brave",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 3
+        }
+      ],
+      "normalizedUrl": "preply.com/en/blog/korean-speaking-practice",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Take Korean classes online with experienced tutors and engage in speaking activities, such as role-plays, discussions, and focused practice on Korean verb conjugation. Explore some Korean websites to find more real-life dialogues.",
+      "title": "Korean speaking practice: Learn through dialogues",
+      "url": "https://preply.com/en/blog/korean-speaking-practice/"
+    },
+    {
+      "_creationTime": 1794699429085.6445,
+      "_id": "m57fqx76g4qv9hnhv37wzccx958j682e",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 3
+        },
+        {
+          "provider": "exa",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "sayitinkorean.com/games/speak",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Speak It — free Korean speaking practice with role-plays # Speak It Role-play a real situation: order coffee, take a taxi, chat at a concert. You hear the other person, answer out loud, and your browser checks what you said. ## What Speak It trains Speak It is speaking practice built around situations you are likely to meet in Korea: ordering at a café, eating at a restaurant, taking a taxi, paying at a convenience store and chatting with someone at a concert. The other person's lines are played with native audio; your lines you say out loud, and the game checks what you said. ## How to play -",
+      "title": "Speak It — free Korean speaking practice with role-plays",
+      "url": "https://sayitinkorean.com/games/speak/"
+    },
+    {
+      "_creationTime": 1794699429085.6448,
+      "_id": "m575p1gx3k1q8d78p7qfvwjcw58j62s6",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 5
+        },
+        {
+          "provider": "ceramic",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "allaboutai.com/best-ai-tools/productivity/language-learning",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "   Tool Name  Pricing Model  Supported Languages  Platform Availability  Key Features  Best For Duolingo Freemium ($9.99/month for premium) 38+ Web, iOS, Android Gamified lessons, streak rewards, bite-sized content Gamified beginners Babbel Paid ($8.95/month to $599 lifetime) 14 Web, iOS, Android Structured courses, grammar tips, cultural notes Grammar-focused learners Rosetta Stone Paid ($15.95/month or $199 lifetime) 25 Web, iOS, Android, Desktop Immersive learning, speech recognition Immersive language immersion Langua Freemium ($19.99/month Pro) 30+ Web, iOS, Android AI conversation practi",
+      "title": "I Tried 20 Best AI Language Learning Tools [Top Picks of 2026]",
+      "url": "https://www.allaboutai.com/best-ai-tools/productivity/language-learning/"
+    },
+    {
+      "_creationTime": 1794699429085.645,
+      "_id": "m57efexh3s01wseettz4jzx4d98j7kss",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "exa",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "talknative.io/korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "# Korean beyond Most Korean learners arrive through dramas and music, understand a surprising amount, and cannot say a sentence of their own. Listening builds recognition; only speaking builds speech. TalkNative gives you a Korean speaker to talk with every day: one who answers at the speech level the situation calls for, corrects the particle on screen, and keeps the conversation going. For students heading to Seoul and for workers on the EPS route, it is the daily practice between TOPIK books. Corrected on screen, never interrupted Explained in your own language Free to start, no card ... ㅓ ",
+      "title": "Practice Korean Speaking Online with AI | TalkNative",
+      "url": "https://www.talknative.io/korean"
+    },
+    {
+      "_creationTime": 1794699429085.6453,
+      "_id": "m57fq3kjtyy54vbfxhkephk8z18j60kz",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "brave",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "markyana.com/posts/korean-conversation-practice-scenarios",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Practice real Korean conversations with scenario-based dialogue exercises. Learn natural speaking patterns from restaurant, shopping, and travel…",
+      "title": "Korean Language Conversation Practice: Real Scenarios – Markyana · Yana's Corner",
+      "url": "https://markyana.com/posts/korean-conversation-practice-scenarios/"
+    },
+    {
+      "_creationTime": 1794699429085.6455,
+      "_id": "m573c5f8h5eermhjrjycbmp5yd8j7epr",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "perplexity",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 3
+        },
+        {
+          "provider": "perplexity",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 5
+        }
+      ],
+      "normalizedUrl": "preply.com/en/tutor/8610013",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "# Jiwon E.\n## ✨ Taught 500+ Learners | 5 Years of Language Exchange with 50 International Friends | 7 Years of Corporate Experience & 100+ Business Meetings✨ Go Beyond Textbook Korean and Learn the Korean That Native Speakers Actually Use in Real Life🤍\n#### About me\nI started and ran my own café for five years, so I’ve had countless real-life conversations with customers.\nFrom ordering and making requests to casual small talk, I can help you practice the kind of Korean you’ll actually hear and use in everyday life.\n✈️ Traveled to 20+ Countries — Practical Korean for Travelers\nI’ve traveled to",
+      "title": "Jiwon E., ✨ Taught 500+ Learners | 5 Years of Language Exchange with 50 International Friends | 7 Years of Corporate Experience & 100+ Business Meetings✨ Go Beyond Textbook Korean and Learn the Korean That Native Speakers Actually Use in Real Life🤍 | Learn with Korean Tutors",
+      "url": "https://preply.com/en/tutor/8610013"
+    },
+    {
+      "_creationTime": 1794699429085.6458,
+      "_id": "m5778mjj6fg1r3788tt699q8x58j6wy7",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 2
+        },
+        {
+          "provider": "tavily",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "hilokal.com/speak/Korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Free live Korean audio classes for you to practice speaking Korean. You’ll be addicted to speaking Korean. Meet natives, friends and trainers.",
+      "title": "Free online Korean speaking practice: live audio conversations",
+      "url": "https://www.hilokal.com/speak/Korean"
+    },
+    {
+      "_creationTime": 1794699429085.646,
+      "_id": "m57bznqt0ytshpegzat6sjxpb98j7s5n",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 4
+        },
+        {
+          "provider": "exa",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 4
+        }
+      ],
+      "normalizedUrl": "speakcoach.ai/korean-speaking-practice",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Yes. Travel-focused Korean speaking practice covers cafés, transportation, stores, directions, hotel check-in, simple problem solving, and everyday interactions you'll face on a trip to Seoul, Busan, or Jeju.",
+      "title": "Korean Speaking Practice — Talk Korean Out Loud with SpeakCoach AI",
+      "url": "https://www.speakcoach.ai/korean-speaking-practice"
+    },
+    {
+      "_creationTime": 1794699429085.6462,
+      "_id": "m577j9f6pqbw74cqhg3wn6v1jn8j6k6a",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "perplexity",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "linguapal.ai/learn-korean-online",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "# Learn Korean Online with Your AI Speaking Partner\nMaster Korean speaking through real conversations with LinguaPal.ai.\nWhether you're into K-dramas, preparing for TOPIK, or planning to work in Korea, practice speaking Korean naturally with instant AI feedback and earn verifiable language certificates.\nTOPIK Prep K-Drama Korean Business Korean Travel Korean\n...\n## Learn Korean Online Through K-Culture\nImmerse yourself in the language of K-dramas, K-pop, and Korean cuisine.\nLinguaPal.ai helps you understand the phrases you hear in your favorite shows and songs, so you can speak Korean naturall",
+      "title": "Learn Korean Online with Your AI Speaking Partner",
+      "url": "https://www.linguapal.ai/learn-korean-online"
+    },
+    {
+      "_creationTime": 1794699429085.6465,
+      "_id": "m5727rq5nc087vyyhy728ske658j73h8",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "memrise.com/en/learn-korean/korean-course",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "## Korean Language Course by Memrise ## About this course - Choose scenarios you want to prepare for and learn words - Hear those words spoken by native speakers - Practice speaking in private with your AI language partner ## About this course - Choose scenarios you want to prepare for and learn words - Hear those words spoken by native speakers - Practice speaking in private with your AI language partner ## 500+ lessons based on the topics below. Learn Korean phrases the locals use, so you can prepare for conversations. Basics Education Food Hangul Health ## 5000+ words The words you learn wi",
+      "title": "Online Korean Courses - Memrise: The Easiest way to Speak Korean",
+      "url": "https://www.memrise.com/en/learn-korean/korean-course"
+    },
+    {
+      "_creationTime": 1794699429085.6467,
+      "_id": "m570h3bhywaz1nxvzth79xbb418j72zh",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "hilokal.com/speak/korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Korean Conversation Practice for Free Right Now!\n\nSee what all the fuss is about - jump into the Korean speaking conversation or just listen in. Click below to get started.\n\nHilokal Around the World\n\n...\n\nAt Hilokal, we created this vision through our free Korean speaking app and it'll stay that free forever!\nStart Now for Free\n\nJoin In or Create Your Own Conversational Lessons!\n\nYou have the power to block, kick and report anyone who interrupts your Korean conversation practice.\n\n...\n\nHilokal is the easiest way to practice Korean speaking online free. Yes, free! If you’re not ready to speak o",
+      "title": "Free online Korean speaking practice: live audio conversations",
+      "url": "https://www.hilokal.com/speak/korean"
+    },
+    {
+      "_creationTime": 1794699429085.647,
+      "_id": "m57am3vx18z7j9aakcnbhv3qnh8j6n8f",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "ceramic",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "epdf.tips/handbook-of-natural-language-processing.html",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "   Handbook of natural language processing - PDF Free Download\n\n. Such texts also frequently contain ASCII headers. Multiple encodings also exist for these character sets; for example, the Chinese character set is represented in two widely used encodings, Big-5 for the complex-form (traditional) character set and GB for the simple-form (simpliﬁed) set, with several minor variants of these sets also commonly found. The Unicode 5.0 standard (Unicode Consortium 2006) seeks to eliminate this character set ambiguity by specifying a Universal Character Set that includes over 100,000 distinct coded c",
+      "title": "Handbook of natural language processing - PDF Free Download",
+      "url": "https://epdf.tips/handbook-of-natural-language-processing.html"
+    },
+    {
+      "_creationTime": 1794699429085.6472,
+      "_id": "m570881mqmdbzcmp9bwb5tpc718j6ysb",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "reddit.com/r/koreatravel/comments/1qx7v0a/5_korean_phrases_for_ordering_at_restaurantscaf%C3%A9s",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Mini role-play (1 minute practice): “안녕하세요” → (2) 추천 메뉴 있어요? → (1) 이거 하나 주세요 → (3) 덜 맵게 해주세요 → (4) 포장 가능해요? → (5) 계산할게요. If you want, tell me your travel month/city and what type of food you’ll order (BBQ, café, street food, etc.) and I can suggest a simple practice plan.",
+      "title": "r/koreatravel on Reddit: 5 Korean phrases for ordering at restaurants/cafés in Korea (beginner-friendly)",
+      "url": "https://www.reddit.com/r/koreatravel/comments/1qx7v0a/5_korean_phrases_for_ordering_at_restaurantscaf%C3%A9s/"
+    },
+    {
+      "_creationTime": 1794699429085.6475,
+      "_id": "m573nneth25eby066hhqf6vb018j6n9v",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean conversation practice ordering food cafe travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "learn-korean-hangul.com/speaking/conversation-practice/korean-coffee-order-role-play",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Korean Coffee Order Role Play: Practice Set with Answers # Korean Coffee Order Role Play: Practice Set with Answer Key This Korean coffee order role play is a ten-turn cafe scene for A1 learners. You order a drink, choose a size, say whether you will stay or take it away, and pay. Play the customer, then swap and play the staff, and score yourself with the rubric at the end. Estimated Time: 20 min Prerequisite: Korean Hobbies Conversation Practice Korean Coffee Order Role Play At a Glance - 어서오세요 is the standard welcome in a shop or cafe, and you do not need to repeat it. - 주문하시겠어요? is the sta",
+      "title": "Korean Coffee Order Role Play: Practice Set with Answers",
+      "url": "https://learn-korean-hangul.com/speaking/conversation-practice/korean-coffee-order-role-play/"
+    },
+    {
+      "_creationTime": 1794699429085.6477,
+      "_id": "m57567r5e8sazr8ce5zc9s8ye98j6gj2",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "sadaspeak.com/en/korean-speaking-practice",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Korean speaking practice for beginners works without a partner: listen to a short line a Korean speaker really says, say it after them, record it, and play your take next to the original.",
+      "title": "Korean Speaking Practice for Beginners: 11 Real Lines, Free",
+      "url": "https://sadaspeak.com/en/korean-speaking-practice/"
+    },
+    {
+      "_creationTime": 1794699429085.648,
+      "_id": "m57d8hrefy4mc3zjb7fdqy8fyh8j7taw",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "klec.sogang.ac.kr?lang=eng&url=%2Fdep_02%2F2212.php",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "## Korean Programs #### Course Goals - 1 Level 1 Student can perform basic communication necessary for daily life. - 2 Level 2 Student can perform basic communication necessary for daily life and also understand Korean culture. - 3 Level 3 Students can communicate in and understand almost all expressions used in most ordinary situations in Korean society. #### Timetable Scrolling from side to side. | Class | Time | Monday | Tuesday | Thursday | | --- | --- | --- | --- | --- | | 1 | 18:50 ~ 19:40 | Speaking (Grammar practice) | Speaking (dialogue practice, communication activities) | Reading | ",
+      "title": "Sogang University Korean Language Education Center",
+      "url": "https://klec.sogang.ac.kr/?lang=eng&url=%2Fdep_02%2F2212.php"
+    },
+    {
+      "_creationTime": 1794699429085.6482,
+      "_id": "m5772x7838h7fcf8yzenmeyxxd8j7b95",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "lingopie.com/blog/how-to-speak-korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "The good news? You can start with Hangul and polite 해요 (haeyo) speech. This guide covers seven practical steps, essential grammar and the best resources for turning lessons into real conversations.\n💡\n\n...\n\n(Does this sound natural?) or which speech level fits a situation.\n\nStep 5: Practice Speaking Korean Online\n\nYou don't need to be in Korea to have real conversations. Language exchange apps like HelloTalk and Tandem connect you with native Korean speakers who want to practice your language. Send voice notes instead of only texting, pick one topic per chat, such as a K-drama you both watched",
+      "title": "How to Speak Korean: Classes, Apps and Tips | Lingopie",
+      "url": "https://lingopie.com/blog/how-to-speak-korean/"
+    },
+    {
+      "_creationTime": 1794699429085.6484,
+      "_id": "m57d92e0sx4s3qjhe4hxqvnt6n8j7947",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "seltz",
+          "query": "beginner Korean speaking practice evenings travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "thekoreantutor.com/2026/06/14/what-is-conversational-korean-a-beginners-guide",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "# What Is Conversational Korean? A Beginner's Guide\n\nConversational Korean is the practical ability to communicate comfortably in everyday Korean situations without needing perfect grammar or a complete vocabulary\\. It is the skill of holding a real exchange, asking for directions, ordering food, greeting a colleague, or chatting with a neighbor, using what you know confidently\\. This guide explains what is conversational Korean, how it differs from formal grammar study, which phrases and cultural norms matter most, and how to build your Korean speaking skills from the ground up\\. Resources li",
+      "title": null,
+      "url": "https://thekoreantutor.com/2026/06/14/what-is-conversational-korean-a-beginners-guide/"
+    },
+    {
+      "_creationTime": 1794699429085.6487,
+      "_id": "m57a6m3qaqgmrxdv2cc103p0fh8j6127",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "perplexity",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "koreagapyear.com/en/program/1205",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "**Join the KGY Korean Conversation Club to make new friends and learn Korean!**\nThis program offers a relaxed and supportive environment where you can learn and practice Korean, connect with others, and take part in fun activities.\nIt’s a great way to share experiences, learn about different cultures, and enjoy interactive sessions.\n...\n**Through the Conversation Club**\n***#1 Learn Korean***\n**Learn practical Korean for daily life with Korean tutor**\n**#2 Meet People**\n**Make international friends**\n**#3 Create Connections**\n**Join cultural exchange activities and Feel more confident living in",
+      "title": "Korea GapYear - Korean Conversation Club",
+      "url": "https://koreagapyear.com/en/program/1205"
+    },
+    {
+      "_creationTime": 1794699429085.649,
+      "_id": "m5763e8yw94pa6gzjfc4j655c18j6dca",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "brave",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "en.language.exchange/language/KO-Korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Korean Language Exchange - Practice and learn foreign languages with many language exchange native partners 〔✓100% Free〕 〔✓From 250 countries〕 〔✓More than 200 languages〕",
+      "title": "🇰🇷 Korean Language Exchange - Find partners to practice languages",
+      "url": "https://en.language.exchange/language/KO-Korean/"
+    },
+    {
+      "_creationTime": 1794699429085.6492,
+      "_id": "m574gvtd4c7txbq8y6mb2rhrkx8j6r2j",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "Korean language exchange speaking practice travel language prep",
+          "rank": 1
+        }
+      ],
+      "normalizedUrl": "hellotalk.com/en/learn/korean",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "# Learn Korean Online with Native Speakers Join millions of language learners on HelloTalk. Practice Korean through real conversations, voice rooms, live streaming, and immersive language exchange. ## Why Language Exchange for Learning Korean? Language exchange is proven to be the most effective way to achieve fluency. Connect with native speakers and experience immersive learning. ### Improve Speaking Skills Practice real conversations with native Korean speakers. Get instant feedback and improve pronunciation naturally. ### Cultural Understanding Learn about Korean culture directly from loca",
+      "title": "Find Korean Language Partners - Free Language Exchange | HelloTalk",
+      "url": "https://www.hellotalk.com/en/learn/korean"
+    },
+    {
+      "_creationTime": 1794699429085.6494,
+      "_id": "m57ccrqae31pfmr6zq5nyze7p98j619p",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "perplexity",
+          "query": "Korean language practice speaking practice travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "courses.talktomeinkorean.com/course-curriculum-by-topic",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "## Conversation Skills\nSpeak more naturally and build confidence with practical, interactive courses.\nKorean Basics Conversation Skills Listening & Reading Vocabulary & Expressions TOPIK Preparation Business Korean Tricky Korean (TTMIK Exclusive) Korean Culture/Life/Travel\n1\n##### Beginners\n#### 1100 Short & Useful Korean Phrases for Beginners 1: In-Depth Explanations\nPractice making natural Korean sentences using key patterns and everyday phrases.\nStart Learning\n...\n##### Intermediate\n#### My Daily Routine In Korean: Listen & Repeat\nStudy essential Korean vocabulary related to things that you",
+      "title": "TTMIK Korean Courses by Topic | Learn Korean by Your Interests",
+      "url": "https://courses.talktomeinkorean.com/course-curriculum-by-topic"
+    },
+    {
+      "_creationTime": 1794699429085.6497,
+      "_id": "m574jjrxqd793f0d24k41eej7x8j7e5k",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "exa",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "echolangs.com/practice/korean/listen/practise",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Practise: 6 Free Korean Speaking Units | EchoLangs # Practise 300 short travel utterances for real-life situations. Each entry is 1–6 words, designed for quick recall and immediate use while traveling. 6 Korean units, 1,161 sentence drills in all. Each unit plays native-speed audio with the translation beside it, so you can listen, repeat aloud, and move on once the sentence comes without thinking. Start with “Travel Sentences”. ## All 6 units 1. Unit 1 Travel Sentences 300 short travel utterances for real-life situations. Each entry is 1–6 words, designed for quick recall and immediate use wh",
+      "title": "Practise: 6 Free Korean Speaking Units | EchoLangs",
+      "url": "https://echolangs.com/practice/korean/listen/practise"
+    },
+    {
+      "_creationTime": 1794699429085.65,
+      "_id": "m570e9px2p1ny5h6ahkqw1vcy58j6fcc",
+      "fetch": {
+        "cacheState": null,
+        "contentLength": null,
+        "error": null,
+        "fetchedAt": null,
+        "latencyMs": null,
+        "provider": null,
+        "providerChain": [],
+        "status": "not_fetched",
+        "truncated": false
+      },
+      "hasContent": false,
+      "hits": [
+        {
+          "provider": "parallel",
+          "query": "free Korean speaking practice travel language prep",
+          "rank": 2
+        }
+      ],
+      "normalizedUrl": "trykaiwa.com/blog/practice-speaking-korean-without-tutor",
+      "round": "initial",
+      "runId": "ks782zbn0gmsh6zcvs97f8rgkn8j65gr",
+      "snippet": "Method 2: Shadowing\n\nShadowing is simple, free, and remarkably effective. Listen to native Korean audio and repeat it immediately : while the audio is still playing, not after.\n\n...\n\n* Choose conversational scenes, not action\n* Pick characters with clear speech\n* Focus on same-age characters for appropriate speech levels\n* Avoid historical dramas initially (archaic language)\n\n...\n\n* Korean variety shows (real, unscripted speech)\n\nMethod 8: Language Exchange (Free but Social)\n\nLanguage exchange isn't tutoring: it's mutual practice.\nHow it works:\n1. Find a Korean native learning English\n2. Split",
+      "title": "Practice Korean Solo: 7 Tutor-Free Methods | Kaiwa Blog",
+      "url": "https://trykaiwa.com/blog/practice-speaking-korean-without-tutor"
+    }
+  ]
+}

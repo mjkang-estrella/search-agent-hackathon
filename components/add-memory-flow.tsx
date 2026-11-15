@@ -64,6 +64,13 @@ export function AddMemoryFlow({
     if (!open && d.open) d.close();
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = overflow; };
+  }, [open]);
+
   const found = intentions.filter((i) => ids.includes(i._id));
   const memoryId = found[0]?.memoryId;
   // The action returns before the live board includes the new memory. Keep reading until it arrives.
@@ -109,7 +116,7 @@ export function AddMemoryFlow({
         if (step !== "reading") close();
       }}
       onClick={(e) => e.target === e.currentTarget && step !== "reading" && close()}
-      className="mx-auto mt-auto mb-0 w-full max-w-[min(560px,100%)] rounded-t-3xl bg-popover p-5 text-foreground shadow-2xl backdrop:bg-[var(--scrim)]/45 sm:my-auto sm:max-w-[min(560px,calc(100%-3rem))] sm:rounded-3xl sm:p-6"
+      className="max-h-[90dvh] overflow-y-auto overscroll-contain mx-auto mt-auto mb-0 w-full max-w-[min(560px,100%)] rounded-t-3xl bg-popover p-5 text-foreground shadow-2xl backdrop:bg-[var(--scrim)]/45 sm:my-auto sm:max-w-[min(560px,calc(100%-3rem))] sm:rounded-3xl sm:p-6"
     >
       <div className="mb-4 flex items-center justify-between gap-3">
         <h2 className="text-[20px] font-extrabold tracking-[-0.015em]">
@@ -211,14 +218,13 @@ export function AddMemoryFlow({
 }
 
 /** Under the ways: saved-results label, "Search again", and the trace link. */
-export function WaysFooter({ intention }: { intention: Intention }) {
+export function WaysFooter({ intention }: { intention: Pick<Intention, "_id" | "state" | "run"> }) {
   const sessionId = useSessionId();
   const again = useMutation(api.intentions.searchAgain);
   const [busy, setBusy] = useState(false);
-  if (!intention.run) return null;
   return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 px-1 pt-1 text-[13px]">
-      {intention.run.saved ? <span className="text-muted-foreground">Saved results</span> : null}
+      {intention.run?.saved ? <span className="text-muted-foreground">Saved results</span> : null}
       <button
         disabled={busy || searching(intention) || !sessionId}
         onClick={async () => {
@@ -231,13 +237,13 @@ export function WaysFooter({ intention }: { intention: Intention }) {
             setBusy(false);
           }
         }}
-        className="flex min-h-10 items-center gap-1 font-semibold text-[var(--airmail)] hover:underline disabled:opacity-50"
+        className="flex min-h-8 items-center gap-1 font-semibold text-[var(--relay-purple-strong)] hover:underline disabled:opacity-50"
       >
-        <RotateCw aria-hidden className="size-3.5" /> Search again
+        <RotateCw className="size-3.5" /> Search again
       </button>
-      <Link href={`/r/${intention.run._id}`} className="flex min-h-10 items-center font-semibold text-[var(--airmail)] hover:underline">
+      {intention.run ? <Link href={`/r/${intention.run._id}`} className="inline-flex min-h-8 items-center font-semibold text-[var(--relay-purple-strong)] hover:underline">
         How we found these
-      </Link>
+      </Link> : null}
     </div>
   );
 }

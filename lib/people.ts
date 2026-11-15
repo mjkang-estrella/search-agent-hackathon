@@ -62,3 +62,13 @@ export function personExplanation(post: { title: string | null; snippet: string 
     evidenceQuote: matchChecked ? pick.evidenceQuote : undefined,
   };
 }
+
+/** A first message to the author of a public post. The person edits it and sends it themselves. */
+export function introDraft(person: { author: string | null; evidenceQuote?: string | null; excerpt?: string | null; title: string }, aim: string | null | undefined) {
+  const first = (person.author || "there").split(" ")[0];
+  const context = person.evidenceQuote || person.excerpt || person.title;
+  // The aim is a full sentence ("Get help ..."). Lowercase its first letter and drop its period to fit "I'm looking to ...".
+  const raw = (aim || "connect").trim().replace(/[.!\s]+$/, "");
+  const goal = raw.charAt(0).toLowerCase() + raw.slice(1);
+  return `Hi ${first}, I came across your post${context ? `: "${context.slice(0, 300)}"` : "."}\n\nI'm looking to ${goal}. Would you be open to a conversation?`;
+}
