@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/shell";
 import { SampleTag } from "@/components/stamps";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { AgentMark, hasAgentMark } from "@/components/agent-mark";
 import { cn } from "@/lib/utils";
 import { errorText } from "@/lib/format";
 
@@ -188,8 +189,8 @@ function Home() {
                       <span className="min-w-0 flex-1">
                         <span className="block truncate">{m.title}</span>
                         <span className={cn("block truncate text-[12.5px] font-medium", m._id === selectedId ? "text-[var(--on-airmail-muted)]" : "text-muted-foreground")}>
-                          from {m.source ?? "you"}
-                          {m.category ? ` · ${m.category}` : ""}
+                          <AgentMark source={m.source} className="mr-1.5" />
+                          {hasAgentMark(m.source) ? (m.category ?? "Memory") : `from ${m.source ?? "you"}${m.category ? ` · ${m.category}` : ""}`}
                         </span>
                       </span>
                       {m.sample ? <span className="text-[12px] opacity-70">Sample</span> : null}
@@ -326,7 +327,10 @@ function MemoryQuote({ memory }: { memory: Memory }) {
         aria-expanded={open}
         className="flex w-full items-center justify-between gap-2 text-left font-bold text-foreground after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-[var(--airmail-2)]"
       >
-        {memory.source ?? "You"} saved
+        <span className="flex min-w-0 flex-1 items-center gap-1.5">
+          {hasAgentMark(memory.source) ? "Saved" : `${memory.source ?? "You"} saved`}
+          <AgentMark source={memory.source} />
+        </span>
         <span className="sr-only">{open ? ", show less" : ", show all"}</span>
         <ChevronDown aria-hidden className={cn("size-4 shrink-0 text-muted-foreground transition-transform", open && "rotate-180")} />
       </button>
