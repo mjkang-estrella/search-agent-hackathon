@@ -33,6 +33,7 @@ The marketplace + P2P swap analogy captures two ways of meeting a need: an exist
 | Find somewhere to test furniture designs | Makerspaces and workshop rentals | A workshop owner seeking help with digital fabrication |
 | Learn conversational Korean | Classes and conversation groups | Someone learning your language with compatible availability |
 | Get feedback on a product | Testing communities and research services | Someone facing the problem your product addresses |
+| Find a technical co-founder | Founder posts on X, recent Product Hunt launches, Substack build logs, and accelerator programs | An engineer looking for a business co-founder in the same domain |
 
 The agent compares options against the user's constraints, including timing, cost where stated, availability, and desired involvement. Explain the evidence and trade-offs, then let the user choose a next step. An existing service can be the best answer; a person-to-person connection can create an opportunity that was never listed.
 
@@ -66,6 +67,7 @@ These are illustrative scenarios to validate, using synthetic participants for t
 | Preparing to become a first-time manager | Recently navigated that transition and wants to share what helped | Relevant, recent experience reaches someone at the right stage |
 | Wants to build something useful for community groups | A volunteer organizer struggling with shift coordination | A motivated builder discovers a concrete problem |
 | Wants to start running but feels intimidated by established groups | Another beginner seeking a low-pressure accountability partner | Shared stage, pace, and availability make starting easier |
+| A healthcare operator needs a technical co-founder | An ML engineer wants to start a company but lacks a market | Complementary founders meet before either posts a public search |
 | A library wants to host a coding club | A developer wants local volunteering opportunities, and teenagers want to learn game development | Several intentions create an opportunity together |
 
 Four patterns recur across these examples:
@@ -109,6 +111,8 @@ For each approved intention, the agent should:
 
 For example, a poet's intention could lead Telem searches toward composers explicitly seeking lyrics or community songwriting projects. A public request can provide a useful next step even before another person joins our network. This is a hypothesis to validate through real search results.
 
+When an intention is about finding people or a team, the planner can route queries to Telem's platform-specific providers instead of only the general web: X posts (`fetchlayer_x`, `socialdatax_x`), Product Hunt launches (`fetchlayer_producthunt`), Substack posts (`apify_substack`), and LinkedIn job and company posts (`apify_linkedin` search, `brightdata` fetch). See [supported platforms](https://docs.telem.ai/resources/supported-platforms/). The intention selects these providers; a scenario does not hard-code them. A public post is a lead, not consent: show its source link and date, and never contact the author on the user's behalf.
+
 The demo must show useful public evidence retrieved through Telem and how that evidence affected a recommendation. Record queries, selected providers when returned, sources, latency, failures, and usage information when available. Compare LLM planning and member matching alone with the evidence-enriched pipeline to measure what public discovery adds. A second search is optional and must answer a specific unresolved question. An introduction can already be a complete outcome.
 
 ### Discovery pools
@@ -131,7 +135,7 @@ Build one working path from personal context to useful options and a chosen next
 - Compare public opportunities and person-to-person matches against the same intention and constraints, with evidence, uncertainties, and reasons each option fits. Label their origins separately.
 - Demonstrate an introduction request and mutual acceptance; clearly label any simulated participant actions.
 
-Start with a small, curated dataset spanning the three demo scenarios below. Include misleading keyword matches, incompatible constraints, and cases with no useful connection. Use the same intention schema, retrieval pipeline, and interface across scenarios.
+Start with a small, curated dataset spanning the four demo scenarios below. Include misleading keyword matches, incompatible constraints, and cases with no useful connection. Use the same intention schema, retrieval pipeline, and interface across scenarios.
 
 Direct integrations with every AI tool, autonomous outreach, payments, and a production messaging system are future work. The initial import path should make the core search behavior testable within the hackathon.
 
@@ -170,17 +174,18 @@ The MVP should demonstrate pairwise retrieval and grouping around a shared aim. 
 
 This is a proposed architecture. The selected stack is Next.js, TypeScript, and Convex, with Telem for public search and page fetching. OpenAI is the recommended provider for structured model tasks and embeddings. See the implementation plan for the pipeline and module boundaries. Implementation will require a server-side `TELEM_API_KEY` following the [Telem quickstart](https://docs.telem.ai/quickstart/).
 
-## One experience, three demo scenarios
+## One experience, four demo scenarios
 
 The experience is: **"Here's what I'm working toward" → "Here are ways forward" → "Here's why they fit" → "Choose a next step."**
 
 - **Composer + poet:** Show different creative goals becoming a collaboration. A candidate with a matching music interest but no relevant intention should not automatically rank first.
 - **Independent crosswalk efforts:** Show several residents discovering that they're working toward the same local outcome. Distinguish the same intersection from similar concerns elsewhere.
+- **Founder + co-founder:** Show complementary founders finding each other through approved intentions and platform-specific public evidence. A candidate with the right keywords but a conflicting constraint, such as remote-only or part-time, or a months-old post should not rank first.
 - **Obscure bug + someone who recently solved it:** Show the value of recent experience captured in approved agent context. Distinguish the exact issue and hardware from superficially similar problems.
 
 Make composer + poet the primary demonstration of both paths for one intention. A poet wants to turn poems into songs: use live Telem search and fetch to find a relevant workshop or open collaboration, then show a synthetic network composer explicitly seeking lyrics. Compare the options using supported facts such as format, timing, stated cost, and creative goals; let the poet choose a published route or request a mutual introduction. Do not fabricate public results or present a simulated member as real.
 
-The crosswalk and private bug-fix examples test other connection patterns using synthetic, approved network intentions. Telem does not search those private memories.
+The founder, crosswalk, and private bug-fix examples test other connection patterns using synthetic, approved network intentions. Telem does not search those private memories.
 
 For each scenario:
 
